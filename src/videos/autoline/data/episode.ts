@@ -1,0 +1,46 @@
+/**
+ * The sample episode the pipeline "writes itself" in Sequence 5, and previews in
+ * the YouTube / Reels frames. Mirrors public/episode.json.
+ * `color` values are keys into COLORS.hi.
+ */
+export type Highlight = { atSecond: number; label: string; color: string };
+export type EpisodeCaption = { atSecond: number; text: string };
+export type Stat = { label: string; value: string };
+
+export type Episode = {
+  day: string;
+  date: string;
+  title: string;
+  subtitle: string;
+  recordingDuration: number;
+  highlights: Highlight[];
+  captions: EpisodeCaption[];
+  stats: Stat[];
+};
+
+export const EPISODE: Episode = {
+  day: "014",
+  date: "2026-06-03",
+  title: "I Automated My Entire Video Pipeline",
+  subtitle: "Recorded once · cut, re-voiced and rendered with zero manual editing",
+  recordingDuration: 960, // 16 min of raw footage
+  highlights: [
+    { atSecond: 36, label: "Silence cut", color: "blue" },
+    { atSecond: 210, label: "Re-voiced", color: "violet" },
+    { atSecond: 470, label: "Onyx VO", color: "emerald" },
+    { atSecond: 720, label: "Rendered", color: "amber" },
+    { atSecond: 900, label: "Published", color: "rose" },
+  ],
+  captions: [
+    { atSecond: 0, text: "One folder in. Two finished videos out." },
+    { atSecond: 36, text: "npm run cut — dead air removed automatically." },
+    { atSecond: 210, text: "npm run retell — re-voiced in a studio-grade tone." },
+    { atSecond: 720, text: "node render.mjs — 16:9 and 9:16, one command." },
+  ],
+  stats: [
+    { label: "Manual edit", value: "0 min" },
+    { label: "Render", value: "1 command" },
+    { label: "Formats", value: "16:9 + 9:16" },
+    { label: "AI cost", value: "< $1" },
+  ],
+};
