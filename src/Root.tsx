@@ -41,8 +41,15 @@ import {
   calculateTripReelMetadata,
   reelFrames,
   FPS as TRIP_FPS,
-  KANAZAWA_REEL,
+  TRIP_REELS,
 } from "./videos/trip-reel/config";
+import { Master as GitMaster } from "./videos/git-commit-push-guide/Master";
+import { Poster as GitPoster } from "./videos/git-commit-push-guide/Poster";
+import {
+  FPS as GIT_FPS,
+  SCENES as GIT_SCENES,
+  getMovieFrames as getGitFrames,
+} from "./videos/git-commit-push-guide/registry";
 
 /**
  * Compositions:
@@ -56,18 +63,47 @@ import {
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      {/* ── 旅遊照片 reel(9:16, 30fps)— 一個 TripReel 套所有旅程,金澤先上 ── */}
+      {/* ── Newest: Git commit 與 push 新手指南 — 新手向教學 (1920×1080, 30fps) ── */}
       <Composition
-        id="KanazawaReel"
-        component={TripReel}
-        schema={tripReelSchema}
-        defaultProps={KANAZAWA_REEL}
-        calculateMetadata={calculateTripReelMetadata}
-        durationInFrames={reelFrames(KANAZAWA_REEL)}
-        fps={TRIP_FPS}
-        width={1080}
-        height={1920}
+        id="GitCommitPushGuide"
+        component={GitMaster}
+        durationInFrames={getGitFrames()}
+        fps={GIT_FPS}
+        width={1920}
+        height={1080}
       />
+      <Still id="GitCommitPushGuidePoster" component={GitPoster} width={1920} height={1080} />
+      <Folder name="GitGuide-Scenes">
+        {GIT_SCENES.map((s) => (
+          <Composition
+            key={s.id}
+            id={`GG-${s.id}`}
+            component={s.Component}
+            durationInFrames={s.durationInFrames}
+            fps={GIT_FPS}
+            width={1920}
+            height={1080}
+          />
+        ))}
+      </Folder>
+
+      {/* ── 旅遊照片 reel(9:16, 30fps)— 一個 TripReel 套所有旅程(金澤/富山/新潟/大阪/京都/犬山) ── */}
+      <Folder name="Trip-Reels">
+        {TRIP_REELS.map((r) => (
+          <Composition
+            key={r.id}
+            id={r.id}
+            component={TripReel}
+            schema={tripReelSchema}
+            defaultProps={r.cfg}
+            calculateMetadata={calculateTripReelMetadata}
+            durationInFrames={reelFrames(r.cfg)}
+            fps={TRIP_FPS}
+            width={1080}
+            height={1920}
+          />
+        ))}
+      </Folder>
 
       {/* ── Newest: Claude Code 手機／遠端全解析 — 記憶、容器與 CLAUDE.md (1920×1080, 30fps) ── */}
       <Composition
