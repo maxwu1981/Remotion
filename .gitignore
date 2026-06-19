@@ -5,3 +5,18 @@ dist
 
 # Ignore the output video from Git but not videos you import into src/.
 out
+
+# Generated placeholder sound design (recreate with `npm run sfx`)
+public/bgm.mp3
+public/ui-pop.mp3
+public/soft-whoosh.mp3
+public/clean-ding.mp3
+public/typing.mp3
+public/digital-processing.mp3
+public/cash-register.mp3
+
+# Optional drop-in voiceover (public/vo/<cue-id>.mp3)
+public/vo
+
+# 小紅書登入憑證,勿提交
+cookies.json
