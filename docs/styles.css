@@ -157,6 +157,21 @@ a { color: inherit; text-decoration: none; }
 .skeleton .sk-line.short { width: 55%; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
+/* ── About / FAQ (SEO + GEO) ──────────────────────────────────────────── */
+.about { border-top: 1px solid var(--card-brd); }
+.about__inner { max-width: 880px; margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) clamp(1rem, 4vw, 2.5rem); }
+.about__h { font-size: 1.35rem; font-weight: 700; margin: 1.6rem 0 0.9rem; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.about__h:first-child { margin-top: 0; }
+.about__p { color: var(--txt-dim); line-height: 1.85; font-size: 0.97rem; }
+.about__p strong { color: var(--txt); }
+.faq details { background: var(--card); border: 1px solid var(--card-brd); border-radius: 12px; padding: 0.2rem 1.1rem; margin-bottom: 0.7rem; backdrop-filter: blur(8px); }
+.faq summary { cursor: pointer; font-weight: 600; padding: 0.85rem 0; list-style: none; color: var(--txt); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::before { content: "＋"; color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
+.faq details[open] summary::before { content: "－"; }
+.faq details[open] summary { color: var(--accent); }
+.faq details p { color: var(--txt-dim); line-height: 1.8; font-size: 0.92rem; padding: 0 0 1rem 1.6rem; margin: 0; }
+
 /* ── Footer ───────────────────────────────────────────────────────────── */
 .footer { border-top: 1px solid var(--card-brd); text-align: center; color: var(--txt-faint); font-size: 0.85rem; padding: 2rem 1rem; }
 
