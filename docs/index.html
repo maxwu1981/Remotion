@@ -5,6 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ai-Wisdom-01 · Claude AI 踩坑筆記 × 實戰解法</title>
   <meta name="description" content="Ai-Wisdom-01 — Claude AI 踩坑筆記 × 實戰解法。我每天用 Claude / Claude Code 真正遇到的問題與解法，自動彙整頻道所有影片。" />
+  <link rel="canonical" href="https://maxwu1981.github.io/Remotion/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ai-Wisdom-01" />
+  <meta property="og:title" content="Ai-Wisdom-01 · Claude AI 踩坑筆記 × 實戰解法" />
+  <meta property="og:description" content="我每天用 Claude / Claude Code 真正遇到的問題與解法 —— 不講大方向，只記錄實戰踩坑與排解。" />
+  <meta property="og:url" content="https://maxwu1981.github.io/Remotion/" />
+  <meta property="og:image" content="https://maxwu1981.github.io/Remotion/og.png" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Ai-Wisdom-01 · Claude AI 踩坑筆記 × 實戰解法" />
+  <meta name="twitter:description" content="我每天用 Claude / Claude Code 真正遇到的問題與解法 —— 實戰踩坑與排解。" />
+  <meta name="twitter:image" content="https://maxwu1981.github.io/Remotion/og.png" />
+
+  <!-- Structured data (SEO + GEO): site + creator -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Ai-Wisdom-01 影片中心",
+    "url": "https://maxwu1981.github.io/Remotion/",
+    "inLanguage": "zh-Hant",
+    "description": "Claude AI 踩坑筆記 × 實戰解法：我每天用 Claude / Claude Code 真正遇到的問題與解法。",
+    "author": {
+      "@type": "Person",
+      "name": "Ai-Wisdom-01",
+      "url": "https://www.youtube.com/@Ai-Wisdom-01",
+      "sameAs": [
+        "https://www.youtube.com/channel/UCeIUOn3e8QzITwPhLaYK4Yw",
+        "https://www.youtube.com/@Ai-Wisdom-01"
+      ],
+      "knowsAbout": ["Claude", "Claude Code", "MCP (Model Context Protocol)", "Remotion", "AI 自動化", "AI 踩坑與排解"]
+    }
+  }
+  </script>
+  <!-- Structured data (GEO): real-problem Q&A so AI engines can extract & cite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ai-Wisdom-01 這個頻道在分享什麼？",
+        "acceptedAnswer": { "@type": "Answer", "text": "不做大方向導覽，而是分享每天用 Claude / Claude Code 工作時真正踩到的坑與實測解法。每支影片從一個親身遇到的問題出發：先講卡在哪，再講怎麼解。" }
+      },
+      {
+        "@type": "Question",
+        "name": "Claude Code 的記憶與 CLAUDE.md 怎麼運作、會遇到什麼坑？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Claude Code 透過 CLAUDE.md 與記憶機制保留專案脈絡。頻道有實戰影片說明記憶、CLAUDE.md、容器、沙盒、遠端與手機操作實際會遇到的坑與對應解法。" }
+      },
+      {
+        "@type": "Question",
+        "name": "MCP 和 API 差在哪、何時該用哪個？",
+        "acceptedAnswer": { "@type": "Answer", "text": "MCP（Model Context Protocol）像 AI 的「萬能轉接頭」，把工具串接標準化；API 則是直接呼叫服務。頻道有一支「MCP vs API」實戰影片解析兩者差異與選擇時機。" }
+      },
+      {
+        "@type": "Question",
+        "name": "如何用 Remotion 搭配 Claude 打造自動化影片產線？",
+        "acceptedAnswer": { "@type": "Answer", "text": "用程式碼（Remotion）結合 Claude 自動剪輯、配音與算圖，組成每日影片產線。頻道有完整的踩坑紀錄與實作教學。" }
+      }
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,6 +125,40 @@
     <div id="status" class="status"></div>
     <section id="grid" class="grid" aria-live="polite"></section>
   </main>
+
+  <!-- 關於 + 常見問題（人類可讀 + AI 引擎可爬：SEO/GEO） -->
+  <section class="about">
+    <div class="about__inner">
+      <h2 class="about__h">關於這個頻道</h2>
+      <p class="about__p">
+        <strong>Ai-Wisdom-01</strong> 不做大方向導覽。這裡分享的，是我每天用
+        <strong>Claude / Claude Code</strong> 工作時「真正踩到的坑」，以及我一步步試出來的解法
+        —— 全部來自實際使用現場，不是紙上談兵。每支影片都從一個我親身遇到的問題出發：
+        先講卡在哪，再講怎麼解。主題涵蓋 Claude Code 記憶與 CLAUDE.md、容器與沙盒、遠端與手機操作、
+        MCP / API 串接、以及用 Remotion × Claude 打造自動化影片產線。
+      </p>
+
+      <h2 class="about__h">常見踩坑 Q&amp;A</h2>
+      <div class="faq">
+        <details>
+          <summary>這個頻道在分享什麼？</summary>
+          <p>不做大方向導覽，而是每天用 Claude / Claude Code 真正踩到的坑與實測解法。每支影片從一個親身遇到的問題出發：先講卡在哪，再講怎麼解。</p>
+        </details>
+        <details>
+          <summary>Claude Code 的記憶與 CLAUDE.md 怎麼運作、會遇到什麼坑？</summary>
+          <p>Claude Code 透過 CLAUDE.md 與記憶機制保留專案脈絡。頻道有實戰影片說明記憶、CLAUDE.md、容器、沙盒、遠端與手機操作實際會遇到的坑與對應解法。</p>
+        </details>
+        <details>
+          <summary>MCP 和 API 差在哪、何時該用哪個？</summary>
+          <p>MCP（Model Context Protocol）像 AI 的「萬能轉接頭」，把工具串接標準化；API 則是直接呼叫服務。頻道有一支「MCP vs API」實戰影片解析兩者差異與選擇時機。</p>
+        </details>
+        <details>
+          <summary>如何用 Remotion 搭配 Claude 打造自動化影片產線？</summary>
+          <p>用程式碼（Remotion）結合 Claude 自動剪輯、配音與算圖，組成每日影片產線。頻道有完整的踩坑紀錄與實作教學。</p>
+        </details>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <p id="footerText">© 2026 Ai-Wisdom-01 · Built with Claude Code</p>

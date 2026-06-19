@@ -139,6 +139,34 @@ function renderSkeleton(n = 8) {
     .join("");
 }
 
+// ── structured data (GEO): expose the live video list to AI/search crawlers ──
+function injectVideoSchema(videos) {
+  if (!videos.length) return;
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Ai-Wisdom-01 影片",
+    itemListElement: videos.map((v, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "VideoObject",
+        name: v.title,
+        thumbnailUrl: v.thumb,
+        uploadDate: v.published,
+        url: "https://www.youtube.com/watch?v=" + v.id,
+        embedUrl: "https://www.youtube.com/embed/" + v.id,
+      },
+    })),
+  };
+  document.getElementById("videoSchema")?.remove();
+  const s = document.createElement("script");
+  s.type = "application/ld+json";
+  s.id = "videoSchema";
+  s.textContent = JSON.stringify(data);
+  document.head.appendChild(s);
+}
+
 // ── modal ──────────────────────────────────────────────────────────────────
 function openModal(id, title) {
   $("#modalTitle").textContent = title;
@@ -183,6 +211,7 @@ async function boot() {
     const uploads = ch.contentDetails?.relatedPlaylists?.uploads;
     state.videos = await getUploads(uploads);
     renderGrid();                 // 先用最新排序顯示
+    injectVideoSchema(state.videos);
     await attachStats(state.videos);
     if (state.sort === "popular") renderGrid();   // 觀看數到齊後若在最熱模式再排一次
   } catch (err) {
