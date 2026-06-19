@@ -209,8 +209,37 @@ export const INUYAMA_REEL: TripReelConfig = {
   ],
 };
 
+/* ----------------------------------------------------------- 金澤·兼六園 ----- */
+export const KENROKU_REEL: TripReelConfig = {
+  title: "兼六園 日本三名園",
+  subtitle: "清晨無人 · 雪吊霞ヶ池",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "拚一個清晨",
+  outroSub: "整座兼六園,只有你",
+  accent: "#5E7A4F",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/kenroku/kenroku_01.jpg", label: "霞ヶ池", sub: "唐崎松雪吊" },
+    { image: "trips/kenroku/kenroku_02.jpg", label: "霞ヶ池", sub: "清晨無人" },
+    { image: "trips/kenroku/kenroku_03.jpg", label: "霞ヶ池雪吊" },
+    { image: "trips/kenroku/kenroku_04.jpg", label: "内橋亭" },
+    { image: "trips/kenroku/kenroku_05.jpg", label: "霞ヶ池", sub: "雪見燈籠" },
+    { image: "trips/kenroku/kenroku_06.jpg", label: "蓬莱島" },
+    { image: "trips/kenroku/kenroku_07.jpg", label: "瓢池", sub: "海石塔" },
+    { image: "trips/kenroku/kenroku_08.jpg", label: "翠滝", sub: "瓢池" },
+    { image: "trips/kenroku/kenroku_09.jpg", label: "海石塔" },
+    { image: "trips/kenroku/kenroku_10.jpg", label: "瓢池" },
+    { image: "trips/kenroku/kenroku_11.jpg", label: "梅林" },
+    { image: "trips/kenroku/kenroku_12.jpg", label: "梅林", sub: "早春" },
+    { image: "trips/kenroku/kenroku_13.jpg", label: "苔の小徑" },
+    { image: "trips/kenroku/kenroku_14.jpg", label: "時雨亭" },
+    { image: "trips/kenroku/kenroku_15.jpg", label: "時雨亭", sub: "茶室" },
+  ],
+};
+
 /** All trip reels, registered as a Folder in Root.tsx. */
 export const TRIP_REELS: { id: string; cfg: TripReelConfig }[] = [
+  { id: "KenrokuReel", cfg: KENROKU_REEL },
   { id: "KanazawaReel", cfg: KANAZAWA_REEL },
   { id: "ToyamaReel", cfg: TOYAMA_REEL },
   { id: "NiigataReel", cfg: NIIGATA_REEL },
