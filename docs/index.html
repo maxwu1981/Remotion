@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ai-Wisdom-01 · Claude AI 影片中心</title>
+  <meta name="description" content="Ai-Wisdom-01 — Claude AI 學習心得影片中心。自動彙整頻道所有影片。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 頂部列 -->
+  <nav class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__dot"></span>
+      <span id="brandName">Ai-Wisdom-01</span>
+    </div>
+    <a id="navSubscribe" class="btn btn--sub" href="#" target="_blank" rel="noopener">訂閱頻道</a>
+  </nav>
+
+  <!-- 頻道 Hero -->
+  <header class="hero">
+    <div class="hero__bg" aria-hidden="true">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+    </div>
+    <div class="hero__inner">
+      <img id="heroAvatar" class="hero__avatar" alt="" />
+      <div class="hero__text">
+        <h1 id="heroTitle" class="hero__title">Ai-Wisdom-01</h1>
+        <p id="heroTagline" class="hero__tagline">Claude AI 學習心得 · 影片中心</p>
+        <div id="heroStats" class="hero__stats"></div>
+        <a id="heroSubscribe" class="btn btn--cta" href="#" target="_blank" rel="noopener">
+          ▶ 訂閱 Subscribe
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 控制列 -->
+  <div class="controls">
+    <div class="controls__inner">
+      <div class="search">
+        <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 21l-4.3-4.3M11 19a8 8 0 110-16 8 8 0 010 16z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input id="searchInput" type="search" placeholder="搜尋影片 Search…" autocomplete="off" />
+      </div>
+      <div class="sort" role="group" aria-label="排序">
+        <button class="sort__btn is-active" data-sort="newest">最新</button>
+        <button class="sort__btn" data-sort="popular">最熱</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 影片格 -->
+  <main class="wrap">
+    <div id="status" class="status"></div>
+    <section id="grid" class="grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="footer">
+    <p id="footerText">© 2026 Ai-Wisdom-01 · Built with Claude Code</p>
+  </footer>
+
+  <!-- 播放彈窗 -->
+  <div id="modal" class="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="影片播放">
+      <button class="modal__close" data-close aria-label="關閉">✕</button>
+      <div class="modal__video"><div id="player"></div></div>
+      <h3 id="modalTitle" class="modal__title"></h3>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
