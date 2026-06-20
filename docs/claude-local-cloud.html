@@ -60,7 +60,7 @@
       {
         "@type": "Question",
         "name": "Dispatch 和 Claude Code 是什麼關係？",
-        "acceptedAnswer": { "@type": "Answer", "text": "Dispatch 就是『雲端版的 Claude Code』。它在雲端的臨時容器裡跑，讀的是雲端 CLAUDE.md、不是你本機那份。因為它在雲端，你在本地或手機任何裝置都看得到它的進度，但它碰不到你 Mac 上的檔案。結論：Claude Code 有兩種——本地 CLI（能碰本機）與雲端 Dispatch（碰不到本機、到處可見）。" }
+        "acceptedAnswer": { "@type": "Answer", "text": "Dispatch 就是『雲端版的 Claude Code』。它在雲端的臨時容器裡跑，讀的是雲端 CLAUDE.md、不是你本機那份。因為它在雲端，你在本地或手機任何裝置都看得到它的進度，但它碰不到你 Mac 上的檔案。結論：Claude Code 有兩種——本地版（CLI 或桌面版，能碰本機）與雲端 Dispatch（碰不到本機、到處可見）。" }
       },
       {
         "@type": "Question",
@@ -148,7 +148,7 @@
       一句話結論：工作<strong>「在哪裡執行」</strong>決定 3 件事——能碰哪些檔案、用哪一份 CLAUDE.md/記憶、在哪個裝置看得到。
       而本地與雲端之間是一道<strong>單向牆</strong>：本地能上傳、讀取雲端，雲端卻 100% 讀不到你的本機。
     </p>
-    <p class="entities">本文釐清的實體：本地電腦（你的 Mac）· 沙盒 Sandbox · 容器/臨時容器 Container · Chatbot（Claude.ai）· Cowork · Claude Code（本地 CLI／雲端版）· Dispatch · 橋接層（Google Drive／MCP）· 本機 CLAUDE.md vs 雲端 CLAUDE.md。</p>
+    <p class="entities">本文釐清的實體：本地電腦（你的 Mac）· 沙盒 Sandbox · 容器/臨時容器 Container · Chatbot（Claude.ai）· Cowork · Claude Code（本地：CLI 或桌面版／雲端版）· Dispatch · 橋接層（Google Drive／MCP）· 本機 CLAUDE.md vs 雲端 CLAUDE.md。</p>
 
     <figure class="fig">
       <svg viewBox="0 0 680 548" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="本地世界與雲端世界的學習地圖">
@@ -160,7 +160,7 @@
         <text x="52" y="128" class="s-ts">本地執行 → 只有本地看得到</text>
         <text x="424" y="112" class="s-th">雲端世界（伺服器）</text>
         <text x="424" y="128" class="s-ts">雲端執行 → 任何裝置都看得到</text>
-        <rect x="52" y="140" width="246" height="40" rx="6" class="b-gray"/><text x="175" y="158" text-anchor="middle" class="s-th">Claude Code（本地 CLI）</text><text x="175" y="173" text-anchor="middle" class="s-ts">讀本機 CLAUDE.md · 動真實檔</text>
+        <rect x="52" y="140" width="246" height="40" rx="6" class="b-gray"/><text x="175" y="158" text-anchor="middle" class="s-th">Claude Code（本地）</text><text x="175" y="173" text-anchor="middle" class="s-ts">CLI 或桌面版 · 讀本機 CLAUDE.md</text>
         <rect x="52" y="188" width="246" height="40" rx="6" class="b-gray"/><text x="175" y="206" text-anchor="middle" class="s-th">Cowork（只在本地）</text><text x="175" y="221" text-anchor="middle" class="s-ts">手機連不進來 · 碰不到</text>
         <rect x="52" y="236" width="246" height="26" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="5 4"/><text x="175" y="253" text-anchor="middle" class="s-ts">沙盒 · 限制本地可碰的路徑/網路</text>
         <rect x="52" y="270" width="118" height="44" rx="6" class="b-teal"/><text x="111" y="288" text-anchor="middle" class="s-th">本機檔案</text><text x="111" y="304" text-anchor="middle" class="s-ts">真實硬碟</text>
@@ -199,7 +199,7 @@
       <svg viewBox="0 0 680 470" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="從本機到雲端的分層架構圖">
         <rect x="40" y="56" width="600" height="50" rx="8" class="b-teal"/><text x="52" y="80" class="s-th">① 本機真實資源</text><text x="52" y="97" class="s-ts">本機檔案 · 本機 CLAUDE.md / 記憶</text><text x="628" y="85" text-anchor="end" class="s-ts">只有本地碰得到</text>
         <line x1="40" y1="118" x2="640" y2="118" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="5 4"/><text x="52" y="132" class="s-ts">沙盒（權限邊界）：限制本地可碰的路徑 / 網路</text>
-        <rect x="40" y="140" width="600" height="50" rx="8" class="b-gray"/><text x="52" y="164" class="s-th">② 本地執行層</text><text x="52" y="181" class="s-ts">Claude Code（本地 CLI）· Cowork</text><text x="628" y="169" text-anchor="end" class="s-ts">本地跑 → 只本地看得到</text>
+        <rect x="40" y="140" width="600" height="50" rx="8" class="b-gray"/><text x="52" y="164" class="s-th">② 本地執行層</text><text x="52" y="181" class="s-ts">Claude Code（本地）· Cowork</text><text x="628" y="169" text-anchor="end" class="s-ts">本地跑 → 只本地看得到</text>
         <rect x="40" y="204" width="600" height="46" rx="8" class="b-red"/><text x="340" y="224" text-anchor="middle" class="s-th">③ 單向牆：本地可上傳 / 讀雲端 ✓ · 雲端讀不到本機 ✗</text><text x="340" y="240" text-anchor="middle" class="s-ts">記憶可上傳；對話搬不動</text>
         <rect x="40" y="264" width="600" height="50" rx="8" class="b-coral"/><text x="52" y="288" class="s-th">④ 雲端執行層</text><text x="52" y="305" class="s-ts">伺服器 → 臨時容器 ＝ 雲端 Claude Code / Dispatch</text><text x="628" y="293" text-anchor="end" class="s-ts">雲端跑 → 任何裝置看得到</text>
         <rect x="40" y="328" width="600" height="50" rx="8" class="b-coral"/><text x="52" y="352" class="s-th">⑤ 雲端資源層</text><text x="52" y="369" class="s-ts">雲端 CLAUDE.md · Chatbot 自己的記憶</text><text x="628" y="357" text-anchor="end" class="s-ts">用完即丟 · 各自獨立</text>
@@ -240,7 +240,7 @@
 
     <section class="qa">
       <h2>Claude 的本地電腦、沙盒、容器、Chatbot、Cowork、Claude Code、Dispatch 各是什麼？</h2>
-      <p>這 7 個名詞其實分成兩個世界。<strong>本地（你的 Mac）有 4 個</strong>：本地電腦本體、沙盒（本地的權限圍欄）、Claude Code 本地 CLI、Cowork——都跑在你機器上、用本機 CLAUDE.md、只有本地看得到。<strong>雲端（伺服器）有 3 個</strong>：Chatbot（Claude.ai）、容器／臨時容器、Dispatch——跑在雲端、用雲端 CLAUDE.md、任何裝置都看得到。</p>
+      <p>這 7 個名詞其實分成兩個世界。<strong>本地（你的 Mac）有 4 個</strong>：本地電腦本體、沙盒（本地的權限圍欄）、Claude Code 本地版（CLI 或桌面版 Code 分頁）、Cowork——都跑在你機器上、用本機 CLAUDE.md、只有本地看得到。<strong>雲端（伺服器）有 3 個</strong>：Chatbot（Claude.ai）、容器／臨時容器、Dispatch——跑在雲端、用雲端 CLAUDE.md、任何裝置都看得到。</p>
       <p class="tldr">👉 一句話：先把 7 個名詞分成「本地 4 個」和「雲端 3 個」，後面全部就通了。</p>
 
       <h2>Cowork 可以在手機上執行嗎？</h2>
@@ -249,7 +249,7 @@
 
       <h2>Dispatch 和 Claude Code 是什麼關係？</h2>
       <p>Dispatch 就是<strong>「雲端版的 Claude Code」</strong>。它在雲端的臨時容器裡跑，讀的是雲端 CLAUDE.md、不是你本機那份。因為它在雲端，你在本地或手機任何裝置都看得到它的進度，但它碰不到你 Mac 上的檔案。</p>
-      <p class="tldr">👉 一句話：Claude Code 有兩種——本地 CLI（碰本機）與雲端 Dispatch（碰不到本機、到處可見）。</p>
+      <p class="tldr">👉 一句話：Claude Code 有兩種——本地版（CLI 或桌面版，碰本機）與雲端 Dispatch（碰不到本機、到處可見）。</p>
 
       <h2>為什麼雲端讀不到我本機的檔案？（單向牆）</h2>
       <p>因為雲端<strong>沒有讀你電腦的權限</strong>——這是一道單向牆：本地可以主動上傳、讀取雲端，雲端不能反向讀本地。所以雲端跑的 Dispatch 與容器，預設 100% 看不到你硬碟上的東西。</p>
@@ -277,7 +277,7 @@
       <thead><tr><th>概念</th><th>執行在哪</th><th>用哪份記憶</th><th>碰得到本機檔？</th><th>在哪看得到</th></tr></thead>
       <tbody>
         <tr><td>本地電腦</td><td>—（就是 Mac）</td><td>~/.claude</td><td>—</td><td>本地</td></tr>
-        <tr><td>Claude Code（本地 CLI）</td><td>本地</td><td>本機 CLAUDE.md</td><td>✅</td><td>只本地</td></tr>
+        <tr><td>Claude Code（本地）</td><td>本地</td><td>本機 CLAUDE.md</td><td>✅</td><td>只本地</td></tr>
         <tr><td>Cowork</td><td>本地</td><td>本機 CLAUDE.md</td><td>✅</td><td>只本地（手機連不進來）</td></tr>
         <tr><td>沙盒 Sandbox</td><td>本地（受限）</td><td>同本地</td><td>✅ 但受限</td><td>只本地</td></tr>
         <tr><td>Dispatch ＝ 雲端 Claude Code</td><td>雲端臨時容器</td><td>雲端 CLAUDE.md</td><td>❌</td><td>任何裝置</td></tr>
