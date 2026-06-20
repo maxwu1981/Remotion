@@ -15,6 +15,11 @@
 - 用 Remotion × Claude 打造全自動每日影片產線
 - AI 配音比較、AI 自動化工作流與實用技巧
 
+## 深入圖解（文章）
+- Claude 本地 vs 雲端完整圖解：容器、沙盒、Cowork、Dispatch 的記憶與檔案怎麼共存
+  https://maxwu1981.github.io/Remotion/claude-local-cloud.html
+  重點：工作「在哪執行」決定能碰哪些檔案、用哪份 CLAUDE.md、在哪裝置看得到；本地與雲端之間是單向牆（本地可上傳/讀雲端，雲端讀不到本機）；Cowork 只在本地、手機連不進來；Dispatch＝雲端版 Claude Code；記憶可單向上傳共用，對話不能共用只能手動搬。
+
 ## 影片
 影片清單即時來自 YouTube Data API；最新內容見影片中心或 https://www.youtube.com/@Ai-Wisdom-01
 
