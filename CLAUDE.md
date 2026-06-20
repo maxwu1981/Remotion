@@ -86,10 +86,10 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - **一片一資料夾**：每支新片＝獨立 `src/videos/<name>/`，從 `_template` 起、複用 `shared-skills/`；不在既有片上疊改。
 - **頭尾必備**：每支都要有 **hook 封面/poster（含標題）** ＋ **結尾 outro（感謝 + 訂閱／按讚／分享 CTA）**。
 - **收工前必過 QA gate（沒過不算 done）**：跑 `scripts/qa-video.mjs`，並確認 ① 前 3 秒有鉤子 ② 結尾有 CTA ③ 無抖動（`<Backdrop freeze/>` + lossless hold-diff ≈ 全黑）④ 字幕與旁白同步。
-- **產線順序**：橫版 Master → 9:16 Reel（render 要加 `--concurrency=2`）→ 算繪 → 交付 Google Drive（複製進本機同步夾，別用 MCP base64 傳影片）→ 上 YouTube 影片＋Short → 設縮圖。
+- **產線順序**：橫版 Master → 9:16 Reel（render 要加 `--concurrency=2`）→ 算繪（輸出留在本機 `out/`，不用交付到 Google Drive）→ 上 YouTube 影片＋Short → 設縮圖。
 - **長算繪（>10 分鐘）**：Bash 背景有 10 分鐘上限會砍掉半成品 → 用 daemonize（`start_new_session`）跑、輪詢 log、結束後才 ffprobe 驗證。
 - **標題/描述**：套上面第 5 點 GEO（problem→solution＋具體結果、開字幕、章節時間戳、實體講清楚）。
-- 完整細節見專案記憶（`MEMORY.md`）：`new-video-workflow`、`video-qa-gate`、`video-production-pipeline`、`reel-workflow`、`long-render-detach`、`deliver-to-gdrive`、`youtube-upload-account`。
+- 完整細節見專案記憶（`MEMORY.md`）：`new-video-workflow`、`video-qa-gate`、`video-production-pipeline`、`reel-workflow`、`long-render-detach`、`youtube-upload-pipeline`、`youtube-upload-account`。
 
 ---
 
