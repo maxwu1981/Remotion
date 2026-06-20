@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ai-Wisdom-01 · Claude AI 踩坑筆記 × 實戰解法</title>
-  <meta name="description" content="Ai-Wisdom-01 — Claude AI 踩坑筆記 × 實戰解法。我每天用 Claude / Claude Code 真正遇到的問題與解法，自動彙整頻道所有影片。" />
+  <title>Ai-Wisdom-01 · Claude AI 實戰經驗 × 解法筆記</title>
+  <meta name="description" content="Ai-Wisdom-01 — Claude AI 實戰經驗 × 解法筆記。我每天用 Claude / Claude Code 真正遇到的問題與解法，自動彙整頻道所有影片。" />
   <link rel="canonical" href="https://maxwu1981.github.io/Remotion/" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Ai-Wisdom-01" />
-  <meta property="og:title" content="Ai-Wisdom-01 · Claude AI 踩坑筆記 × 實戰解法" />
-  <meta property="og:description" content="我每天用 Claude / Claude Code 真正遇到的問題與解法 —— 不講大方向，只記錄實戰踩坑與排解。" />
+  <meta property="og:title" content="Ai-Wisdom-01 · Claude AI 實戰經驗 × 解法筆記" />
+  <meta property="og:description" content="我每天用 Claude / Claude Code 真正遇到的問題與解法 —— 不講大方向，只記錄第一線實戰經驗與排解。" />
   <meta property="og:url" content="https://maxwu1981.github.io/Remotion/" />
   <meta property="og:image" content="https://maxwu1981.github.io/Remotion/og.png" />
   <meta property="og:locale" content="zh_TW" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ai-Wisdom-01 · Claude AI 踩坑筆記 × 實戰解法" />
-  <meta name="twitter:description" content="我每天用 Claude / Claude Code 真正遇到的問題與解法 —— 實戰踩坑與排解。" />
+  <meta name="twitter:title" content="Ai-Wisdom-01 · Claude AI 實戰經驗 × 解法筆記" />
+  <meta name="twitter:description" content="我每天用 Claude / Claude Code 真正遇到的問題與解法 —— 第一線實戰經驗與排解。" />
   <meta name="twitter:image" content="https://maxwu1981.github.io/Remotion/og.png" />
 
   <!-- Structured data (SEO + GEO): site + creator -->
@@ -28,7 +28,7 @@
     "name": "Ai-Wisdom-01 影片中心",
     "url": "https://maxwu1981.github.io/Remotion/",
     "inLanguage": "zh-Hant",
-    "description": "Claude AI 踩坑筆記 × 實戰解法：我每天用 Claude / Claude Code 真正遇到的問題與解法。",
+    "description": "Claude AI 實戰經驗 × 解法筆記：我每天用 Claude / Claude Code 真正遇到的問題與解法。",
     "author": {
       "@type": "Person",
       "name": "Ai-Wisdom-01",
@@ -37,11 +37,11 @@
         "https://www.youtube.com/channel/UCeIUOn3e8QzITwPhLaYK4Yw",
         "https://www.youtube.com/@Ai-Wisdom-01"
       ],
-      "knowsAbout": ["Claude", "Claude Code", "MCP (Model Context Protocol)", "Remotion", "AI 自動化", "AI 踩坑與排解"]
+      "knowsAbout": ["Claude", "Claude Code", "MCP (Model Context Protocol)", "Remotion", "AI 自動化", "AI 實戰排錯"]
     }
   }
   </script>
-  <!-- Structured data (GEO): real-problem Q&A so AI engines can extract & cite -->
+  <!-- Structured data (GEO): real-question Q&A so AI engines can extract & cite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,27 +49,274 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Ai-Wisdom-01 這個頻道在分享什麼？",
-        "acceptedAnswer": { "@type": "Answer", "text": "不做大方向導覽，而是分享每天用 Claude / Claude Code 工作時真正踩到的坑與實測解法。每支影片從一個親身遇到的問題出發：先講卡在哪，再講怎麼解。" }
+        "name": "Ai-Wisdom-01 是什麼頻道？和其他 Claude 教學頻道差在哪？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ai-Wisdom-01 是專講 Claude / Claude Code 實戰經驗與解法的頻道。和多數做『大方向導覽』的頻道不同，這裡每支影片都從一個作者親身遇到的問題出發：先講卡在哪、再講怎麼一步步解出來，全部來自真實使用現場。適合已經在用 Claude、想要可直接照做的具體解法的人；不適合只想看 AI 趨勢科普、還沒動手的人。" }
       },
       {
         "@type": "Question",
-        "name": "Claude Code 的記憶與 CLAUDE.md 怎麼運作、會遇到什麼坑？",
-        "acceptedAnswer": { "@type": "Answer", "text": "Claude Code 透過 CLAUDE.md 與記憶機制保留專案脈絡。頻道有實戰影片說明記憶、CLAUDE.md、容器、沙盒、遠端與手機操作實際會遇到的坑與對應解法。" }
+        "name": "Claude Code 的 context 一直 compaction、像卡在 loop 怎麼停？",
+        "acceptedAnswer": { "@type": "Answer", "text": "對話太長時 Claude Code 會自動壓縮（compaction）脈絡；若塞了大量重複輸出或無界線的記憶，可能反覆觸發、像卡住。實測最有效的 3 招：縮小單次貼入量、用 /clear 重開、把長期規範收進 CLAUDE.md 而不是留在對話。適用於長工作階段、大量貼日誌時；不建議把它當 bug 空等修復，多半是脈絡量問題。" }
       },
       {
         "@type": "Question",
-        "name": "MCP 和 API 差在哪、何時該用哪個？",
-        "acceptedAnswer": { "@type": "Answer", "text": "MCP（Model Context Protocol）像 AI 的「萬能轉接頭」，把工具串接標準化；API 則是直接呼叫服務。頻道有一支「MCP vs API」實戰影片解析兩者差異與選擇時機。" }
+        "name": "MCP 和 API 差在哪？什麼時候該用哪一個？",
+        "acceptedAnswer": { "@type": "Answer", "text": "MCP（Model Context Protocol）像 AI 的『萬能轉接頭』，用統一協定把工具接上、Claude 自動知道怎麼呼叫；直接打 API 則要自己寫每次的請求與認證。結論：要讓 Claude『自己會用某工具』選 MCP，要在自己的程式裡精確控管流程選 API。日常在 Claude 內串工具適用 MCP；需要嚴格控管參數、批次或無人值守的後端流程則建議用 API。" }
       },
       {
         "@type": "Question",
-        "name": "如何用 Remotion 搭配 Claude 打造自動化影片產線？",
-        "acceptedAnswer": { "@type": "Answer", "text": "用程式碼（Remotion）結合 Claude 自動剪輯、配音與算圖，組成每日影片產線。頻道有完整的踩坑紀錄與實作教學。" }
+        "name": "Claude Code Hooks 怎麼用？能做到什麼？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Hooks 讓你在特定事件（例如存檔、執行指令前）自動跑自己的腳本，常見用法是存檔自動格式化、危險指令攔截。設定寫在 settings.json，1 個 hook 就能擋掉一整類失誤。適合想把重複的把關／格式化自動化的人；一次性、偶爾才做的動作直接手動更快，不必設 hook。" }
+      },
+      {
+        "@type": "Question",
+        "name": "怎麼用 Remotion × Claude 做全自動每日影片產線？",
+        "acceptedAnswer": { "@type": "Answer", "text": "用程式化影片框架 Remotion 搭配 Claude，把選題、寫稿、配音、算圖、上傳串成一條線。本頻道的產線每天 02:00 自動產 1 支影片、上傳為不公開，早上一句話就轉公開。關鍵是用『資料驅動模板』：每天只產一份 JSON、不每天寫新程式，才不會把 build 弄壞。適合固定格式、要規模化的內容；不建議用在每支都高度客製的單一作品。" }
       }
     ]
   }
   </script>
+  <!-- SNAPSHOT:SCHEMA:START -->
+  <script type="application/ld+json" id="staticVideoSchema">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Ai-Wisdom-01 影片",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）",
+        "description": "Claude Code 的 Hooks 能在特定時機自動幫你跑指令——存檔後自動格式化、執行危險指令前擋下來。這支用官方文件，帶你看懂怎麼設。\n\nQ：Hooks 是什麼、放哪？\n→ 在 Claude Code 生命週期自動執行的指令，寫在 settings.json 的 hooks 區（家目錄全域，或專案 .claude/settings.json）。結構：hooks → 事件 → matcher → command。\n\nQ：有哪些時機可掛？\n→ SessionStart（開場）、UserPromptSubmit（送出提示）、PreToolUse（工具前，可擋）、PostToolUse（工具後）、Stop（結束）等。\n\nQ：怎麼自動",
+        "thumbnailUrl": "https://i.ytimg.com/vi/Pw-spmmFEeI/mqdefault.jpg",
+        "uploadDate": "2026-06-20T06:52:07Z",
+        "url": "https://www.youtube.com/watch?v=Pw-spmmFEeI",
+        "embedUrl": "https://www.youtube.com/embed/Pw-spmmFEeI",
+        "duration": "PT2M19S"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude Code 一直自動壓縮、卡在快滿？4 招穩穩解（Autocompact thrashing）",
+        "description": "Claude Code 用到一半，context 一直自動壓縮、卡在快滿、任務做不完？這是我研究並對照官方文件後，最穩的 4 招解法。\n\nQ：為什麼會一直壓縮、原地打轉？\n→ context 快滿（約 95%）會自動壓縮；若單一超大檔/輸出壓縮完又塞爆，就反覆 thrashing，最後報錯停下。先用 /context 看誰在吃空間。\n\nQ：最有效的一招？\n→ 別讓單一檔塞爆：把「讀整個大檔」改成「讀行數範圍」（Read 第 1-100 行），這是 thrashing 最常見的解。\n\nQ：context 還是滿怎麼辦？\n→ /compact 指定保留重點（留計畫＋diff、丟 log）；把吃 context 的大工作丟給 subage",
+        "thumbnailUrl": "https://i.ytimg.com/vi/yo4F2b4bFXw/mqdefault.jpg",
+        "uploadDate": "2026-06-20T03:52:56Z",
+        "url": "https://www.youtube.com/watch?v=yo4F2b4bFXw",
+        "embedUrl": "https://www.youtube.com/embed/yo4F2b4bFXw",
+        "duration": "PT2M28S"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）、安裝與換機備份一次搞懂｜繁中教學",
+        "description": "桌面版 Claude 的 Code 分頁，其實跟終端機的 Claude Code CLI 是「同一個引擎」——差別只在介面與工作流。\n這支影片一次講清楚：桌面版三個分頁差在哪、CLI 怎麼裝、記憶與設定如何共用，以及換電腦時怎麼備份 ~/.claude/。\n\n▶ 章節\n0:00 開場：Code 分頁 ≡ 終端機 CLI（同引擎）\n0:20 1. 桌面版 vs CLI 差在哪（Chatbot／Cowork／Code）\n2:02 2. CLI 去哪拿（官方原生安裝指令）\n3:09 3. 記憶與資料怎麼轉移（同一台電腦）\n4:31 4. 換電腦：哪些保留得了、哪些保不住\n5:38 5. 換機備份／還原腳本 claude-migrate.s",
+        "thumbnailUrl": "https://i.ytimg.com/vi/ng1rMu98buY/mqdefault.jpg",
+        "uploadDate": "2026-06-20T02:00:29Z",
+        "url": "https://www.youtube.com/watch?v=ng1rMu98buY",
+        "embedUrl": "https://www.youtube.com/embed/ng1rMu98buY",
+        "duration": "PT7M49S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 1
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude Code Skills 實戰：讓 AI 穩定產出的 4 個關鍵（SKILL.md 怎麼寫）",
+        "description": "同樣用 Claude，為什麼有人輸出品質穩定一截？關鍵常是 Skills。這是我實際用過後，讓 Skills 真正發揮的 4 個關鍵經驗。\n\nSkill ＝ 一份可重用的「技能說明書」，放在 .claude/skills/技能名/SKILL.md，Claude 在需要時自動載入。\n\n━━━ 常見問題 × 解法 ━━━\nQ：Claude Code Skill 是什麼、放哪？\n→ 一份可重用的技能說明書（SKILL.md），放 .claude/skills/技能名/，Claude 需要時自動載入。適用重複流程；一次性任務用不到。\n\nQ：SKILL.md 怎麼寫？\n→ 兩部分：frontmatter（name、description）+ ",
+        "thumbnailUrl": "https://i.ytimg.com/vi/8dikZ9TurGE/mqdefault.jpg",
+        "uploadDate": "2026-06-20T00:35:05Z",
+        "url": "https://www.youtube.com/watch?v=8dikZ9TurGE",
+        "embedUrl": "https://www.youtube.com/embed/8dikZ9TurGE",
+        "duration": "PT3M25S"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude Code 安裝經驗：我終於搞懂的 4 個關鍵（含 command not found 解法）",
+        "description": "裝 Claude Code 卡住？這不是官方步驟複誦，而是我親手裝時真正搞懂的 4 個關鍵經驗與解法。\n\n最短安裝路徑：先確認 Node 18+，再 npm install -g @anthropic-ai/claude-code，然後輸入 claude 啟動、第一次登入授權。\n\n━━━ 常見問題 × 解法 ━━━\nQ：Claude Code 怎麼裝？\n→ 一行 npm install -g @anthropic-ai/claude-code（需 Node 18+），裝完輸入 claude 啟動。適用 macOS / Linux / Windows(WSL)。\n\nQ：裝到一半 EBADENGINE / 跑不起來？\n→ 多半是 Nod",
+        "thumbnailUrl": "https://i.ytimg.com/vi/gZJ0_aDc7FM/mqdefault.jpg",
+        "uploadDate": "2026-06-19T22:59:15Z",
+        "url": "https://www.youtube.com/watch?v=gZJ0_aDc7FM",
+        "embedUrl": "https://www.youtube.com/embed/gZJ0_aDc7FM",
+        "duration": "PT3M55S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 5
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude Code 手機／遠端全解析（直式手機版）｜記憶、CLAUDE.md、容器、沙盒與 Dispatch（繁中）",
+        "description": "（直式／手機版）在手機或網頁上用 Claude Code，到底是哪一台電腦在跑？對話記憶會跨裝置共享嗎？CLAUDE.md 又是從哪裡被讀到的？\n\n一次看懂遠端／手機情境下的「記憶、CLAUDE.md、容器、沙盒與 Dispatch」。\n▶ 橫式完整版：https://www.youtube.com/watch?v=xd22W-bpUMc\n\n━━━ 章節 ━━━\n00:00 封面：手機 vs 雲端\n00:12 ① 手機與遠端共享記憶嗎？\n00:54 ② Memory 就是 CLAUDE.md\n01:38 ③ 名詞白話對照表\n02:25 ④ 倉庫 vs 工作桌\n03:02 ⑤ CLAUDE.md 從哪裡讀到\n03:49 ⑥ 我的電腦上",
+        "thumbnailUrl": "https://i.ytimg.com/vi/CtipAcmfmfM/mqdefault.jpg",
+        "uploadDate": "2026-06-19T00:53:25Z",
+        "url": "https://www.youtube.com/watch?v=CtipAcmfmfM",
+        "embedUrl": "https://www.youtube.com/embed/CtipAcmfmfM",
+        "duration": "PT7M17S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 1
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Claude Code 手機／遠端全解析｜記憶、CLAUDE.md、容器、沙盒與 Dispatch 一次看懂（繁中教學）",
+        "description": "在手機或網頁上用 Claude Code，到底是哪一台電腦在跑？對話記憶會跨裝置共享嗎？CLAUDE.md 又是從哪裡被讀到的？\n\n這支影片用清楚的圖解，一次帶你看懂遠端／手機情境下的「記憶、CLAUDE.md、容器、沙盒與 Dispatch」。\n\n━━━ 章節 ━━━\n00:00 封面：手機 vs 雲端\n00:12 ① 手機與遠端共享記憶嗎？\n00:54 ② Memory 就是 CLAUDE.md\n01:38 ③ 名詞白話對照表\n02:25 ④ 倉庫 vs 工作桌\n03:02 ⑤ CLAUDE.md 從哪裡讀到\n03:49 ⑥ 我的電腦上還要放嗎？\n04:38 ⑦ 容器與沙盒\n05:24 ⑧ Chat / Cowork / Cod",
+        "thumbnailUrl": "https://i.ytimg.com/vi/xd22W-bpUMc/mqdefault.jpg",
+        "uploadDate": "2026-06-19T00:52:13Z",
+        "url": "https://www.youtube.com/watch?v=xd22W-bpUMc",
+        "embedUrl": "https://www.youtube.com/embed/xd22W-bpUMc",
+        "duration": "PT7M17S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 11
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "item": {
+        "@type": "VideoObject",
+        "name": "用 Remotion × Claude 打造全自動每日影片產線｜ai-daily-recap 完整教學（繁中）",
+        "description": "完整拆解 ai-daily-recap：用 Remotion + Claude Cowork 打造的全自動每日影片產線——錄一次螢幕，就自動轉錄、配音、算繪，輸出 16:9 與 9:16 兩種比例。\n\n00:00 開場\n00:13 ① 專案目標\n00:54 ② 技術架構（Remotion 4.0 / OBS / Whisper / GPT-4o Vision / OpenAI TTS / FFmpeg）\n01:46 ③ 每日工作流程（手動 vs 全自動 AI 配音）\n02:31 ④ episode.json 結構\n03:03 ⑤ 核心 npm 指令\n03:37 ⑥ narrate.py 七步驟邏輯\n04:25 ⑦ 疑難排解\n05:0",
+        "thumbnailUrl": "https://i.ytimg.com/vi/3JQsYoSzxG8/mqdefault.jpg",
+        "uploadDate": "2026-06-18T14:31:14Z",
+        "url": "https://www.youtube.com/watch?v=3JQsYoSzxG8",
+        "embedUrl": "https://www.youtube.com/embed/3JQsYoSzxG8",
+        "duration": "PT6M23S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 3
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "item": {
+        "@type": "VideoObject",
+        "name": "MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂 🔌 #Shorts",
+        "description": "MCP 和 API 到底差在哪？2 分鐘直式短片帶你快速看懂 👇\n\n🔌 API＝軟體之間溝通的橋樑（像各國插座，每種規格都不同）\n✨ MCP＝AI 的萬能轉接頭（學會一次，隨插即用）\n🤝 兩者不是競爭，而是相輔相成的合作關係\n\n▶ 完整版（更詳細的解說）：\nhttps://www.youtube.com/watch?v=X7ewK3TEPyQ\n\n#Shorts #MCP #API #AI #ModelContextProtocol #Claude #Anthropic #科技 #程式 #AI工具",
+        "thumbnailUrl": "https://i.ytimg.com/vi/B4B_SUTM3L8/mqdefault.jpg",
+        "uploadDate": "2026-06-11T11:54:14Z",
+        "url": "https://www.youtube.com/watch?v=B4B_SUTM3L8",
+        "embedUrl": "https://www.youtube.com/embed/B4B_SUTM3L8",
+        "duration": "PT2M30S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 34
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "item": {
+        "@type": "VideoObject",
+        "name": "MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂｜MCP vs API Explained",
+        "description": "API 是軟體之間溝通的橋樑，MCP（Model Context Protocol，模型上下文協定）則是專為 AI 設計的「萬能轉接頭」。這支影片用餐廳服務生、出國旅行的插座等比喻，帶你一次搞懂 MCP 與 API 的關係，以及主要差異。\n\n🔑 重點整理：\n• API＝應用程式介面：讓任何軟體互相交換資料，但每個 API 的規則與格式都不同\n• MCP＝模型上下文協定：Anthropic 推出的開源標準，讓 AI 用統一、標準化的方式連接外部資料與工具\n• 關係：MCP 底層常呼叫 API，是 API 的「封裝與翻譯者」——它們相輔相成，不是競爭\n• 差異：主要用途／標準化程度／主要使用者／整合複雜度\n• 比喻：API＝各國形狀不",
+        "thumbnailUrl": "https://i.ytimg.com/vi/X7ewK3TEPyQ/mqdefault.jpg",
+        "uploadDate": "2026-06-10T22:26:28Z",
+        "url": "https://www.youtube.com/watch?v=X7ewK3TEPyQ",
+        "embedUrl": "https://www.youtube.com/embed/X7ewK3TEPyQ",
+        "duration": "PT2M30S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 3
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Best AI Voice in 2025: ElevenLabs vs ChatTTS vs OpenAI vs Edge-TTS (Ranked)",
+        "description": "Which AI voice generator should you actually use? I scored 5 popular text-to-speech (TTS) tools on the data — MOS (Mean Opinion Score), naturalness, emotion, speed, value, and real pricing — so you can pick the right one for your budget and use case.\n\n⏱️ The ranking (by overall score):\n👑 #1 ElevenLabs — 95 · MOS 4.8 —",
+        "thumbnailUrl": "https://i.ytimg.com/vi/yI6PvIgfLdM/mqdefault.jpg",
+        "uploadDate": "2026-06-04T22:30:08Z",
+        "url": "https://www.youtube.com/watch?v=yI6PvIgfLdM",
+        "embedUrl": "https://www.youtube.com/embed/yI6PvIgfLdM",
+        "duration": "PT2M14S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 35
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "item": {
+        "@type": "VideoObject",
+        "name": "Fully Automated AI Video Production Line | Cut, Re-voice & Render with Code (Remotion + OpenAI)",
+        "description": "A complete masterclass on building a fully automated, zero-touch AI video production line — record once, and code does the rest: cut the dead air, re-voice with AI, and render both 16:9 and 9:16, automatically.\n\n🛠️ The 5-tool stack\n• OBS Studio — free, lossless screen recording\n• Node.js + npm — the automation engine\n",
+        "thumbnailUrl": "https://i.ytimg.com/vi/Px9vh9T-GHo/mqdefault.jpg",
+        "uploadDate": "2026-06-04T00:12:07Z",
+        "url": "https://www.youtube.com/watch?v=Px9vh9T-GHo",
+        "embedUrl": "https://www.youtube.com/embed/Px9vh9T-GHo",
+        "duration": "PT2M41S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 13
+        }
+      }
+    }
+  ]
+}
+  </script>
+      <!-- SNAPSHOT:SCHEMA:END -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -97,7 +344,7 @@
       <img id="heroAvatar" class="hero__avatar" alt="" />
       <div class="hero__text">
         <h1 id="heroTitle" class="hero__title">Ai-Wisdom-01</h1>
-        <p id="heroTagline" class="hero__tagline">Claude AI 踩坑筆記 × 實戰解法</p>
+        <p id="heroTagline" class="hero__tagline">Claude AI 實戰經驗 × 解法筆記</p>
         <div id="heroStats" class="hero__stats"></div>
         <a id="heroSubscribe" class="btn btn--cta" href="#" target="_blank" rel="noopener">
           ▶ 訂閱 Subscribe
@@ -123,38 +370,199 @@
   <!-- 影片格 -->
   <main class="wrap">
     <div id="status" class="status"></div>
-    <section id="grid" class="grid" aria-live="polite"></section>
+    <section id="grid" class="grid" aria-live="polite">
+      <!-- SNAPSHOT:GRID:START -->
+      <!-- 自動產生於 2026-06-20T09:18:53.696Z，共 12 支；勿手動編輯，改跑 npm run snapshot -->
+      <a class="card" href="https://www.youtube.com/watch?v=Pw-spmmFEeI" target="_blank" rel="noopener" data-id="Pw-spmmFEeI" data-title="Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/Pw-spmmFEeI/mqdefault.jpg" alt="Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）</h3>
+          <div class="card__meta">
+          <span>2026/06/20</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=yo4F2b4bFXw" target="_blank" rel="noopener" data-id="yo4F2b4bFXw" data-title="Claude Code 一直自動壓縮、卡在快滿？4 招穩穩解（Autocompact thrashing）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/yo4F2b4bFXw/mqdefault.jpg" alt="Claude Code 一直自動壓縮、卡在快滿？4 招穩穩解（Autocompact thrashing）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude Code 一直自動壓縮、卡在快滿？4 招穩穩解（Autocompact thrashing）</h3>
+          <div class="card__meta">
+          <span>2026/06/20</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=ng1rMu98buY" target="_blank" rel="noopener" data-id="ng1rMu98buY" data-title="Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）、安裝與換機備份一次搞懂｜繁中教學">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/ng1rMu98buY/mqdefault.jpg" alt="Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）、安裝與換機備份一次搞懂｜繁中教學" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）、安裝與換機備份一次搞懂｜繁中教學</h3>
+          <div class="card__meta">
+          <span>2026/06/20</span>
+          <span>1 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=8dikZ9TurGE" target="_blank" rel="noopener" data-id="8dikZ9TurGE" data-title="Claude Code Skills 實戰：讓 AI 穩定產出的 4 個關鍵（SKILL.md 怎麼寫）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/8dikZ9TurGE/mqdefault.jpg" alt="Claude Code Skills 實戰：讓 AI 穩定產出的 4 個關鍵（SKILL.md 怎麼寫）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude Code Skills 實戰：讓 AI 穩定產出的 4 個關鍵（SKILL.md 怎麼寫）</h3>
+          <div class="card__meta">
+          <span>2026/06/20</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=gZJ0_aDc7FM" target="_blank" rel="noopener" data-id="gZJ0_aDc7FM" data-title="Claude Code 安裝經驗：我終於搞懂的 4 個關鍵（含 command not found 解法）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/gZJ0_aDc7FM/mqdefault.jpg" alt="Claude Code 安裝經驗：我終於搞懂的 4 個關鍵（含 command not found 解法）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude Code 安裝經驗：我終於搞懂的 4 個關鍵（含 command not found 解法）</h3>
+          <div class="card__meta">
+          <span>2026/06/20</span>
+          <span>5 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=CtipAcmfmfM" target="_blank" rel="noopener" data-id="CtipAcmfmfM" data-title="Claude Code 手機／遠端全解析（直式手機版）｜記憶、CLAUDE.md、容器、沙盒與 Dispatch（繁中）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/CtipAcmfmfM/mqdefault.jpg" alt="Claude Code 手機／遠端全解析（直式手機版）｜記憶、CLAUDE.md、容器、沙盒與 Dispatch（繁中）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude Code 手機／遠端全解析（直式手機版）｜記憶、CLAUDE.md、容器、沙盒與 Dispatch（繁中）</h3>
+          <div class="card__meta">
+          <span>2026/06/19</span>
+          <span>1 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=xd22W-bpUMc" target="_blank" rel="noopener" data-id="xd22W-bpUMc" data-title="Claude Code 手機／遠端全解析｜記憶、CLAUDE.md、容器、沙盒與 Dispatch 一次看懂（繁中教學）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/xd22W-bpUMc/mqdefault.jpg" alt="Claude Code 手機／遠端全解析｜記憶、CLAUDE.md、容器、沙盒與 Dispatch 一次看懂（繁中教學）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude Code 手機／遠端全解析｜記憶、CLAUDE.md、容器、沙盒與 Dispatch 一次看懂（繁中教學）</h3>
+          <div class="card__meta">
+          <span>2026/06/19</span>
+          <span>11 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=3JQsYoSzxG8" target="_blank" rel="noopener" data-id="3JQsYoSzxG8" data-title="用 Remotion × Claude 打造全自動每日影片產線｜ai-daily-recap 完整教學（繁中）">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/3JQsYoSzxG8/mqdefault.jpg" alt="用 Remotion × Claude 打造全自動每日影片產線｜ai-daily-recap 完整教學（繁中）" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">用 Remotion × Claude 打造全自動每日影片產線｜ai-daily-recap 完整教學（繁中）</h3>
+          <div class="card__meta">
+          <span>2026/06/18</span>
+          <span>3 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=B4B_SUTM3L8" target="_blank" rel="noopener" data-id="B4B_SUTM3L8" data-title="MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂 🔌 #Shorts">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/B4B_SUTM3L8/mqdefault.jpg" alt="MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂 🔌 #Shorts" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂 🔌 #Shorts</h3>
+          <div class="card__meta">
+          <span>2026/06/11</span>
+          <span>34 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=X7ewK3TEPyQ" target="_blank" rel="noopener" data-id="X7ewK3TEPyQ" data-title="MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂｜MCP vs API Explained">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/X7ewK3TEPyQ/mqdefault.jpg" alt="MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂｜MCP vs API Explained" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂｜MCP vs API Explained</h3>
+          <div class="card__meta">
+          <span>2026/06/11</span>
+          <span>3 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=yI6PvIgfLdM" target="_blank" rel="noopener" data-id="yI6PvIgfLdM" data-title="Best AI Voice in 2025: ElevenLabs vs ChatTTS vs OpenAI vs Edge-TTS (Ranked)">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/yI6PvIgfLdM/mqdefault.jpg" alt="Best AI Voice in 2025: ElevenLabs vs ChatTTS vs OpenAI vs Edge-TTS (Ranked)" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Best AI Voice in 2025: ElevenLabs vs ChatTTS vs OpenAI vs Edge-TTS (Ranked)</h3>
+          <div class="card__meta">
+          <span>2026/06/05</span>
+          <span>35 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=Px9vh9T-GHo" target="_blank" rel="noopener" data-id="Px9vh9T-GHo" data-title="Fully Automated AI Video Production Line | Cut, Re-voice &amp; Render with Code (Remotion + OpenAI)">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/Px9vh9T-GHo/mqdefault.jpg" alt="Fully Automated AI Video Production Line | Cut, Re-voice &amp; Render with Code (Remotion + OpenAI)" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Fully Automated AI Video Production Line | Cut, Re-voice &amp; Render with Code (Remotion + OpenAI)</h3>
+          <div class="card__meta">
+          <span>2026/06/04</span>
+          <span>13 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <!-- SNAPSHOT:GRID:END -->
+    </section>
   </main>
 
   <!-- 關於 + 常見問題（人類可讀 + AI 引擎可爬：SEO/GEO） -->
   <section class="about">
     <div class="about__inner">
-      <h2 class="about__h">關於這個頻道</h2>
+      <h2 class="about__h">Ai-Wisdom-01 是什麼頻道？和其他 Claude 教學頻道差在哪？</h2>
       <p class="about__p">
-        <strong>Ai-Wisdom-01</strong> 不做大方向導覽。這裡分享的，是我每天用
-        <strong>Claude / Claude Code</strong> 工作時「真正踩到的坑」，以及我一步步試出來的解法
-        —— 全部來自實際使用現場，不是紙上談兵。每支影片都從一個我親身遇到的問題出發：
-        先講卡在哪，再講怎麼解。主題涵蓋 Claude Code 記憶與 CLAUDE.md、容器與沙盒、遠端與手機操作、
-        MCP / API 串接、以及用 Remotion × Claude 打造自動化影片產線。
+        <strong>Ai-Wisdom-01</strong> 是專講 <strong>Claude / Claude Code</strong> 實戰經驗與解法的頻道。
+        和多數做「大方向導覽」的頻道不同，這裡每支影片都從一個我親身遇到的問題出發：
+        先講卡在哪、再講我怎麼一步步解出來 —— 全部來自真實使用現場，不是紙上談兵。
+        主題涵蓋 Claude Code 記憶與 CLAUDE.md、容器與沙盒、遠端與手機操作、
+        MCP / API 串接，以及用 Remotion × Claude 打造每日自動化影片產線。
+      </p>
+      <p class="about__p about__p--scope">
+        ✅ <strong>適合</strong>：已經在用 Claude / Claude Code、想要可直接照做的具體解法的人。
+        🚫 <strong>不建議</strong>：只想看 AI 趨勢科普、還沒實際動手的人。
       </p>
 
-      <h2 class="about__h">常見踩坑 Q&amp;A</h2>
+      <h2 class="about__h">常見問題 Q&amp;A</h2>
       <div class="faq">
         <details>
-          <summary>這個頻道在分享什麼？</summary>
-          <p>不做大方向導覽，而是每天用 Claude / Claude Code 真正踩到的坑與實測解法。每支影片從一個親身遇到的問題出發：先講卡在哪，再講怎麼解。</p>
+          <summary>Claude Code 的 context 一直 compaction、像卡在 loop 怎麼停？</summary>
+          <p>對話太長時 Claude Code 會自動壓縮（compaction）脈絡；若塞了大量重複輸出或無界線的記憶，可能反覆觸發、像卡住。實測最有效的 3 招：縮小單次貼入量、用 <code>/clear</code> 重開、把長期規範收進 CLAUDE.md 而不是留在對話。✅ 適用：長工作階段、大量貼日誌時。🚫 不建議：把它當 bug 空等修復 —— 多半是脈絡量問題。</p>
         </details>
         <details>
-          <summary>Claude Code 的記憶與 CLAUDE.md 怎麼運作、會遇到什麼坑？</summary>
-          <p>Claude Code 透過 CLAUDE.md 與記憶機制保留專案脈絡。頻道有實戰影片說明記憶、CLAUDE.md、容器、沙盒、遠端與手機操作實際會遇到的坑與對應解法。</p>
+          <summary>MCP 和 API 差在哪？什麼時候該用哪一個？</summary>
+          <p>MCP（Model Context Protocol）像 AI 的「萬能轉接頭」，用統一協定把工具接上、Claude 自動知道怎麼呼叫；直接打 API 則要自己寫每次的請求與認證。結論：要讓 Claude「自己會用某工具」選 MCP，要在自己的程式裡精確控管流程選 API。✅ 適用 MCP：日常在 Claude 內串工具。🚫 不建議 MCP：需要嚴格控管參數、批次或無人值守的後端流程 —— 那用 API 更穩。</p>
         </details>
         <details>
-          <summary>MCP 和 API 差在哪、何時該用哪個？</summary>
-          <p>MCP（Model Context Protocol）像 AI 的「萬能轉接頭」，把工具串接標準化；API 則是直接呼叫服務。頻道有一支「MCP vs API」實戰影片解析兩者差異與選擇時機。</p>
+          <summary>Claude Code Hooks 怎麼用？能做到什麼？</summary>
+          <p>Hooks 讓你在特定事件（例如存檔、執行指令前）自動跑自己的腳本，常見用法是存檔自動格式化、危險指令攔截。設定寫在 <code>settings.json</code>，1 個 hook 就能擋掉一整類失誤。✅ 適用：想把重複的把關／格式化自動化。🚫 不建議：一次性、偶爾才做的動作 —— 直接手動更快。</p>
         </details>
         <details>
-          <summary>如何用 Remotion 搭配 Claude 打造自動化影片產線？</summary>
-          <p>用程式碼（Remotion）結合 Claude 自動剪輯、配音與算圖，組成每日影片產線。頻道有完整的踩坑紀錄與實作教學。</p>
+          <summary>怎麼用 Remotion × Claude 做全自動每日影片產線？</summary>
+          <p>用程式化影片框架 Remotion 搭配 Claude，把選題、寫稿、配音、算圖、上傳串成一條線；本頻道的產線每天 02:00 自動產 1 支影片並上傳為不公開，早上一句話就轉公開。關鍵是用「資料驅動模板」：每天只產一份 JSON、不每天寫新程式，才不會把 build 弄壞。✅ 適用：固定格式、要規模化的內容。🚫 不建議：每支都要高度客製的單一作品。</p>
         </details>
       </div>
     </div>
