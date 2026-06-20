@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude 本地 vs 雲端完整圖解：容器、沙盒、Cowork、Dispatch 的記憶與檔案怎麼共存？｜Ai-Wisdom-01</title>
+  <meta name="description" content="用三張圖看懂 Claude 的本地電腦、沙盒、容器、Chatbot、Cowork、Claude Code、Dispatch 怎麼共存：記憶與檔案哪些共用、哪些碰不到、為什麼雲端讀不到你本機（單向牆），以及對話為何搬不動。" />
+  <link rel="canonical" href="https://maxwu1981.github.io/Remotion/claude-local-cloud.html" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ai-Wisdom-01" />
+  <meta property="og:title" content="Claude 本地 vs 雲端完整圖解：容器、沙盒、Cowork、Dispatch 怎麼共存？" />
+  <meta property="og:description" content="三張圖看懂記憶與檔案哪些共用、哪些碰不到、為什麼雲端讀不到你本機（單向牆）、對話為何搬不動。" />
+  <meta property="og:url" content="https://maxwu1981.github.io/Remotion/claude-local-cloud.html" />
+  <meta property="og:image" content="https://maxwu1981.github.io/Remotion/og.png" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Claude 本地 vs 雲端完整圖解：容器、沙盒、Cowork、Dispatch 怎麼共存？" />
+  <meta name="twitter:description" content="三張圖看懂記憶與檔案哪些共用、哪些碰不到、為什麼雲端讀不到你本機。" />
+  <meta name="twitter:image" content="https://maxwu1981.github.io/Remotion/og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Claude 本地 vs 雲端完整圖解：容器、沙盒、Cowork、Dispatch 的記憶與檔案怎麼共存？",
+    "description": "用三張圖看懂 Claude 的本地電腦、沙盒、容器、Chatbot、Cowork、Claude Code、Dispatch 怎麼共存：記憶與檔案哪些共用、哪些碰不到、為什麼雲端讀不到你本機（單向牆），以及對話為何搬不動。",
+    "inLanguage": "zh-Hant",
+    "datePublished": "2026-06-20",
+    "dateModified": "2026-06-20",
+    "image": "https://maxwu1981.github.io/Remotion/og.png",
+    "mainEntityOfPage": "https://maxwu1981.github.io/Remotion/claude-local-cloud.html",
+    "about": ["Claude", "Claude Code", "Cowork", "Dispatch", "容器 Container", "沙盒 Sandbox", "Chatbot", "CLAUDE.md", "MCP (Model Context Protocol)"],
+    "author": {
+      "@type": "Person",
+      "name": "Ai-Wisdom-01",
+      "url": "https://www.youtube.com/@Ai-Wisdom-01",
+      "sameAs": [
+        "https://www.youtube.com/channel/UCeIUOn3e8QzITwPhLaYK4Yw",
+        "https://www.youtube.com/@Ai-Wisdom-01"
+      ]
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Ai-Wisdom-01"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Cowork 可以在手機上執行嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "不行。Cowork 是 100% 在你本機（Mac）執行的；手機在雲端側，依單向牆規則連不進你的電腦，所以開不了、也看不到本機正在跑的 Cowork。想在手機上做事，只能改用雲端的 Dispatch 或 Chatbot。常見誤解是『手機開 Cowork 會在我電腦跑』——錯，那會破壞單向牆，手機根本碰不到你的 Mac。" }
+      },
+      {
+        "@type": "Question",
+        "name": "Dispatch 和 Claude Code 是什麼關係？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dispatch 就是『雲端版的 Claude Code』。它在雲端的臨時容器裡跑，讀的是雲端 CLAUDE.md、不是你本機那份。因為它在雲端，你在本地或手機任何裝置都看得到它的進度，但它碰不到你 Mac 上的檔案。結論：Claude Code 有兩種——本地 CLI（能碰本機）與雲端 Dispatch（碰不到本機、到處可見）。" }
+      },
+      {
+        "@type": "Question",
+        "name": "為什麼雲端讀不到我本機的檔案？",
+        "acceptedAnswer": { "@type": "Answer", "text": "因為雲端沒有讀你電腦的權限——這是一道單向牆：本地可以主動上傳、讀取雲端，雲端不能反向讀本地。所以雲端跑的 Dispatch 與容器，預設 100% 看不到你硬碟上的東西。不會自動同步，要你主動把資料送上去。" }
+      },
+      {
+        "@type": "Question",
+        "name": "記憶（CLAUDE.md）和對話能不能跨本地、雲端共用？",
+        "acceptedAnswer": { "@type": "Answer", "text": "分兩種。記憶 / CLAUDE.md 可以共用，但方式是『本地單向、手動上傳』到雲端；上傳後是獨立副本，兩邊各改會漂移，建議固定以本機那份為唯一真相往上推。對話（context）不能共用：雲端每次對話都是全新的臨時容器，你只能自己把重點手動搬過去。一句話：記憶搬得動（單向上傳），對話搬不動（只能手動帶）。" }
+      },
+      {
+        "@type": "Question",
+        "name": "本機的東西想讓雲端用，有哪幾種方法？",
+        "acceptedAnswer": { "@type": "Answer", "text": "有 2 種正規路：① push 進 git / repo，雲端版 Claude Code / Dispatch 啟動時會帶你的 repo 快照當起點；② 放進橋接層（Google Drive、MCP 連接器），本機和雲端都可讀。雲端不能直接讀你硬碟，這兩條是把資料送上雲端的唯一通路。" }
+      },
+      {
+        "@type": "Question",
+        "name": "判斷『能不能讀本機檔、在哪看得到』的核心原則是什麼？",
+        "acceptedAnswer": { "@type": "Answer", "text": "看『工作在哪裡執行』，不是看你人在哪、用哪個裝置發起。執行在本地：能碰本機檔、用本機 CLAUDE.md、只有本地看得到。執行在雲端：碰不到本機檔、用雲端 CLAUDE.md、任何裝置都看得到。這一條原則同時決定了檔案存取、用哪份記憶、以及可見性 3 件事。" }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .article { max-width: 880px; margin: 0 auto; padding: clamp(1.5rem,4vw,2.75rem) clamp(1rem,4vw,2.5rem) 1rem; }
+    .article h1 { font-size: clamp(1.7rem,4.5vw,2.5rem); line-height: 1.18; margin-bottom: 0.8rem; }
+    .lede { color: var(--txt-dim); font-size: 1.05rem; line-height: 1.85; }
+    .lede strong { color: var(--txt); }
+    .entities { color: var(--txt-faint); font-size: 0.85rem; margin-top: 0.9rem; }
+    .fig { background: var(--bg-soft); border: 1px solid var(--card-brd); border-radius: var(--radius); padding: 1rem; margin: 1.6rem 0; }
+    .fig svg { width: 100%; height: auto; display: block; }
+    .fig figcaption { color: var(--txt-dim); font-size: 0.88rem; margin-top: 0.7rem; text-align: center; }
+    .qa { border-top: 1px solid var(--card-brd); padding-top: 1.6rem; margin-top: 1.6rem; }
+    .qa h2 { font-size: 1.25rem; font-weight: 700; margin: 1.8rem 0 0.7rem; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .qa h2:first-child { margin-top: 0; }
+    .qa p { color: var(--txt-dim); line-height: 1.85; font-size: 0.98rem; margin-bottom: 0.5rem; }
+    .qa p strong { color: var(--txt); }
+    .tldr { font-size: 0.92rem; color: var(--txt); background: rgba(255,255,255,.04); border-left: 3px solid var(--accent); border-radius: 0; padding: 0.55rem 0.85rem; margin: 0.4rem 0 0.2rem; }
+    .ptable { width: 100%; border-collapse: collapse; margin: 1.2rem 0; font-size: 0.86rem; }
+    .ptable th, .ptable td { border: 1px solid var(--card-brd); padding: 0.5rem 0.6rem; text-align: left; vertical-align: top; }
+    .ptable th { background: rgba(255,255,255,.05); color: var(--txt); font-weight: 700; }
+    .ptable td { color: var(--txt-dim); }
+    .s-th { font: 600 14px "Noto Sans TC", system-ui, sans-serif; fill: #f4f4f8; }
+    .s-ts { font: 400 12px "Noto Sans TC", system-ui, sans-serif; fill: #a9a9be; }
+    .b-frame { fill: rgba(255,255,255,.025); stroke: rgba(255,255,255,.12); stroke-width: 1; }
+    .b-teal { fill: rgba(45,179,138,.16); stroke: #2bb38a; stroke-width: 1; }
+    .b-gray { fill: rgba(255,255,255,.06); stroke: rgba(255,255,255,.24); stroke-width: 1; }
+    .b-coral { fill: rgba(224,115,74,.16); stroke: #e0734a; stroke-width: 1; }
+    .b-purple { fill: rgba(154,130,240,.16); stroke: #9a82f0; stroke-width: 1; }
+    .b-amber { fill: rgba(214,150,60,.18); stroke: #d6963c; stroke-width: 1; }
+    .b-green { fill: rgba(52,195,154,.16); stroke: #34c39a; stroke-width: 1; }
+    .b-red { fill: rgba(239,68,68,.14); stroke: #ef4444; stroke-width: 1; }
+    .crumb { color: var(--txt-faint); font-size: 0.85rem; margin-bottom: 1rem; }
+    .crumb a { color: var(--accent); text-decoration: underline; }
+    .related { border-top: 1px solid var(--card-brd); margin-top: 2rem; padding-top: 1.4rem; }
+    .related a { color: var(--accent); text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__dot"></span>
+      <a href="./">Ai-Wisdom-01</a>
+    </div>
+    <a class="btn btn--sub" href="https://www.youtube.com/@Ai-Wisdom-01" target="_blank" rel="noopener">訂閱頻道</a>
+  </nav>
+
+  <main class="article">
+    <p class="crumb"><a href="./">← 回影片中心</a></p>
+    <h1>Claude 本地 vs 雲端完整圖解：容器、沙盒、Cowork、Dispatch 的記憶與檔案怎麼共存？</h1>
+    <p class="lede">
+      很多人搞不清楚：在 <strong>Claude / Claude Code</strong> 裡，東西到底跑在你的電腦、還是雲端？哪些記憶和檔案會共用、哪些永遠碰不到？
+      一句話結論：工作<strong>「在哪裡執行」</strong>決定 3 件事——能碰哪些檔案、用哪一份 CLAUDE.md/記憶、在哪個裝置看得到。
+      而本地與雲端之間是一道<strong>單向牆</strong>：本地能上傳、讀取雲端，雲端卻 100% 讀不到你的本機。
+    </p>
+    <p class="entities">本文釐清的實體：本地電腦（你的 Mac）· 沙盒 Sandbox · 容器/臨時容器 Container · Chatbot（Claude.ai）· Cowork · Claude Code（本地 CLI／雲端版）· Dispatch · 橋接層（Google Drive／MCP）· 本機 CLAUDE.md vs 雲端 CLAUDE.md。</p>
+
+    <figure class="fig">
+      <svg viewBox="0 0 680 548" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="本地世界與雲端世界的學習地圖">
+        <defs><marker id="aw1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <rect x="40" y="44" width="600" height="34" rx="8" class="b-amber"/><text x="340" y="66" text-anchor="middle" class="s-th">核心原則：工作『在哪執行』就決定了 檔案 · 記憶 · 可見性</text>
+        <rect x="40" y="92" width="270" height="290" rx="8" class="b-frame"/>
+        <rect x="412" y="92" width="228" height="290" rx="8" class="b-frame"/>
+        <text x="52" y="112" class="s-th">本地世界（你的 Mac）</text>
+        <text x="52" y="128" class="s-ts">本地執行 → 只有本地看得到</text>
+        <text x="424" y="112" class="s-th">雲端世界（伺服器）</text>
+        <text x="424" y="128" class="s-ts">雲端執行 → 任何裝置都看得到</text>
+        <rect x="52" y="140" width="246" height="40" rx="6" class="b-gray"/><text x="175" y="158" text-anchor="middle" class="s-th">Claude Code（本地 CLI）</text><text x="175" y="173" text-anchor="middle" class="s-ts">讀本機 CLAUDE.md · 動真實檔</text>
+        <rect x="52" y="188" width="246" height="40" rx="6" class="b-gray"/><text x="175" y="206" text-anchor="middle" class="s-th">Cowork（只在本地）</text><text x="175" y="221" text-anchor="middle" class="s-ts">手機連不進來 · 碰不到</text>
+        <rect x="52" y="236" width="246" height="26" rx="6" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="5 4"/><text x="175" y="253" text-anchor="middle" class="s-ts">沙盒 · 限制本地可碰的路徑/網路</text>
+        <rect x="52" y="270" width="118" height="44" rx="6" class="b-teal"/><text x="111" y="288" text-anchor="middle" class="s-th">本機檔案</text><text x="111" y="304" text-anchor="middle" class="s-ts">真實硬碟</text>
+        <rect x="180" y="270" width="118" height="44" rx="6" class="b-teal"/><text x="239" y="288" text-anchor="middle" class="s-th">本機記憶</text><text x="239" y="304" text-anchor="middle" class="s-ts">本機 CLAUDE.md</text>
+        <text x="175" y="340" text-anchor="middle" class="s-ts">本地跑的東西 → 手機/雲端看不到</text>
+        <line x1="175" y1="228" x2="175" y2="236" stroke="#2bb38a" stroke-width="1.5" marker-end="url(#aw1)"/>
+        <line x1="140" y1="262" x2="110" y2="270" stroke="#2bb38a" stroke-width="1.5" marker-end="url(#aw1)"/>
+        <line x1="210" y1="262" x2="240" y2="270" stroke="#2bb38a" stroke-width="1.5" marker-end="url(#aw1)"/>
+        <rect x="424" y="140" width="204" height="38" rx="6" class="b-gray"/><text x="526" y="156" text-anchor="middle" class="s-th">伺服器 Server</text><text x="526" y="170" text-anchor="middle" class="s-ts">每次對話配一個容器</text>
+        <rect x="424" y="186" width="204" height="58" rx="6" class="b-coral"/><text x="526" y="204" text-anchor="middle" class="s-th">臨時容器（用完即丟）</text><text x="526" y="221" text-anchor="middle" class="s-ts">雲端 Claude Code ＝ Dispatch</text><text x="526" y="235" text-anchor="middle" class="s-ts">在這裡跑 · 碰不到本機</text>
+        <rect x="424" y="252" width="204" height="40" rx="6" class="b-coral"/><text x="526" y="270" text-anchor="middle" class="s-th">雲端記憶</text><text x="526" y="285" text-anchor="middle" class="s-ts">雲端 CLAUDE.md（雲端讀這份）</text>
+        <rect x="424" y="300" width="204" height="40" rx="6" class="b-coral"/><text x="526" y="318" text-anchor="middle" class="s-th">Chatbot（Claude.ai）</text><text x="526" y="333" text-anchor="middle" class="s-ts">自己的記憶 · 碰不到本機</text>
+        <text x="526" y="362" text-anchor="middle" class="s-ts">雲端跑的 → 本地、手機都看得到</text>
+        <line x1="526" y1="178" x2="526" y2="186" stroke="#e0734a" stroke-width="1.5" marker-end="url(#aw1)"/>
+        <line x1="526" y1="244" x2="526" y2="252" stroke="#e0734a" stroke-width="1.5" marker-end="url(#aw1)"/>
+        <line x1="361" y1="145" x2="361" y2="350" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4"/>
+        <text x="361" y="368" text-anchor="middle" class="s-ts">單向牆</text>
+        <text x="361" y="172" text-anchor="middle" class="s-ts">本地可讀雲端 ✓</text>
+        <line x1="310" y1="180" x2="412" y2="180" stroke="#2bb38a" stroke-width="1.6" marker-end="url(#aw1)"/>
+        <line x1="412" y1="212" x2="372" y2="212" stroke="#ef4444" stroke-width="1.6" marker-end="url(#aw1)"/>
+        <text x="361" y="232" text-anchor="middle" class="s-ts">雲端讀不到本機 ✗</text>
+        <text x="361" y="296" text-anchor="middle" class="s-ts">上傳＝共用</text>
+        <line x1="300" y1="304" x2="422" y2="304" stroke="#34c39a" stroke-width="1.6" marker-end="url(#aw1)"/>
+        <rect x="40" y="398" width="600" height="30" rx="8" class="b-green"/><text x="52" y="417" class="s-th">✓ CLAUDE.md & 記憶：本地上傳到雲端 → 共用（單向 · 手動，之後各一份）</text>
+        <rect x="40" y="434" width="600" height="30" rx="8" class="b-purple"/><text x="52" y="453" class="s-th">✓ 檔案 / 資料：放橋接層 Drive · MCP（本機 + 雲端都可讀）</text>
+        <rect x="40" y="470" width="600" height="30" rx="8" class="b-red"/><text x="52" y="489" class="s-th">✗ 對話：不能共用，只能自己搬遷過去</text>
+        <rect x="40" y="512" width="12" height="12" rx="2" class="b-teal"/><text x="58" y="522" class="s-ts">本地真實（可共存）</text>
+        <rect x="208" y="512" width="12" height="12" rx="2" class="b-gray"/><text x="226" y="522" class="s-ts">執行環境 / agent</text>
+        <rect x="360" y="512" width="12" height="12" rx="2" class="b-coral"/><text x="378" y="522" class="s-ts">雲端 · 用完即丟</text>
+        <line x1="40" y1="538" x2="64" y2="538" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4"/><text x="70" y="542" class="s-ts">單向牆：雲端讀不到本機</text>
+      </svg>
+      <figcaption>圖 1 · 世界圖：左本地、右雲端，中間是單向牆；底部三條「能共用什麼」規則。</figcaption>
+    </figure>
+
+    <figure class="fig">
+      <svg viewBox="0 0 680 470" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="從本機到雲端的分層架構圖">
+        <rect x="40" y="56" width="600" height="50" rx="8" class="b-teal"/><text x="52" y="80" class="s-th">① 本機真實資源</text><text x="52" y="97" class="s-ts">本機檔案 · 本機 CLAUDE.md / 記憶</text><text x="628" y="85" text-anchor="end" class="s-ts">只有本地碰得到</text>
+        <line x1="40" y1="118" x2="640" y2="118" stroke="rgba(255,255,255,.35)" stroke-width="1.3" stroke-dasharray="5 4"/><text x="52" y="132" class="s-ts">沙盒（權限邊界）：限制本地可碰的路徑 / 網路</text>
+        <rect x="40" y="140" width="600" height="50" rx="8" class="b-gray"/><text x="52" y="164" class="s-th">② 本地執行層</text><text x="52" y="181" class="s-ts">Claude Code（本地 CLI）· Cowork</text><text x="628" y="169" text-anchor="end" class="s-ts">本地跑 → 只本地看得到</text>
+        <rect x="40" y="204" width="600" height="46" rx="8" class="b-red"/><text x="340" y="224" text-anchor="middle" class="s-th">③ 單向牆：本地可上傳 / 讀雲端 ✓ · 雲端讀不到本機 ✗</text><text x="340" y="240" text-anchor="middle" class="s-ts">記憶可上傳；對話搬不動</text>
+        <rect x="40" y="264" width="600" height="50" rx="8" class="b-coral"/><text x="52" y="288" class="s-th">④ 雲端執行層</text><text x="52" y="305" class="s-ts">伺服器 → 臨時容器 ＝ 雲端 Claude Code / Dispatch</text><text x="628" y="293" text-anchor="end" class="s-ts">雲端跑 → 任何裝置看得到</text>
+        <rect x="40" y="328" width="600" height="50" rx="8" class="b-coral"/><text x="52" y="352" class="s-th">⑤ 雲端資源層</text><text x="52" y="369" class="s-ts">雲端 CLAUDE.md · Chatbot 自己的記憶</text><text x="628" y="357" text-anchor="end" class="s-ts">用完即丟 · 各自獨立</text>
+        <rect x="40" y="392" width="600" height="44" rx="8" class="b-purple"/><text x="340" y="411" text-anchor="middle" class="s-th">橋接層 Drive / MCP：本機 + 雲端都可讀（檔案上雲端的路）</text>
+        <text x="40" y="456" class="s-ts">① → ⑤：離你的硬碟越遠、跨越的邊界越多；③ 是過不去的硬牆。</text>
+      </svg>
+      <figcaption>圖 2 · 分層架構：從你的硬碟（①）一層層往外到雲端（⑤），③ 是過不去的硬牆。</figcaption>
+    </figure>
+
+    <figure class="fig">
+      <svg viewBox="0 0 680 444" role="img" xmlns="http://www.w3.org/2000/svg" aria-label="本地與雲端之間的資料流向圖">
+        <defs><marker id="aw3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+        <text x="340" y="74" text-anchor="middle" class="s-ts">本地 ｜ 雲端（單向牆）</text>
+        <rect x="56" y="86" width="200" height="52" rx="8" class="b-teal"/><text x="156" y="110" text-anchor="middle" class="s-th">本機檔案 / 記憶</text><text x="156" y="127" text-anchor="middle" class="s-ts">~/.claude · 真實硬碟</text>
+        <rect x="424" y="86" width="200" height="52" rx="8" class="b-coral"/><text x="524" y="110" text-anchor="middle" class="s-th">Chatbot</text><text x="524" y="127" text-anchor="middle" class="s-ts">自己的記憶 · 雲端</text>
+        <rect x="56" y="200" width="200" height="54" rx="8" class="b-gray"/><text x="156" y="223" text-anchor="middle" class="s-th">本地執行（你的 Mac）</text><text x="156" y="240" text-anchor="middle" class="s-ts">Claude Code · Cowork</text>
+        <rect x="424" y="196" width="200" height="66" rx="8" class="b-coral"/><text x="524" y="216" text-anchor="middle" class="s-th">雲端臨時容器</text><text x="524" y="232" text-anchor="middle" class="s-ts">雲端 Claude Code / Dispatch</text><text x="524" y="247" text-anchor="middle" class="s-ts">讀雲端 CLAUDE.md</text>
+        <rect x="56" y="362" width="568" height="46" rx="8" class="b-purple"/><text x="340" y="385" text-anchor="middle" class="s-th">橋接層 Drive / MCP</text><text x="340" y="401" text-anchor="middle" class="s-ts">本機 + 雲端都可讀（檔案上雲端的路）</text>
+        <line x1="156" y1="138" x2="156" y2="200" stroke="#2bb38a" stroke-width="1.6" marker-start="url(#aw3)" marker-end="url(#aw3)"/>
+        <text x="168" y="172" class="s-ts">讀寫</text>
+        <line x1="256" y1="216" x2="424" y2="216" stroke="#e0734a" stroke-width="1.6" marker-end="url(#aw3)"/>
+        <text x="340" y="209" text-anchor="middle" class="s-ts">dispatch 派工</text>
+        <line x1="424" y1="240" x2="256" y2="240" stroke="#b4b2a9" stroke-width="1.6" marker-end="url(#aw3)"/>
+        <text x="340" y="254" text-anchor="middle" class="s-ts">結果回傳（檢視 / PR）</text>
+        <line x1="256" y1="118" x2="424" y2="205" stroke="#34c39a" stroke-width="1.6" marker-end="url(#aw3)"/>
+        <text x="262" y="132" class="s-ts">上傳記憶（單向）</text>
+        <line x1="424" y1="306" x2="312" y2="306" stroke="#ef4444" stroke-width="1.6" marker-end="url(#aw3)"/>
+        <text x="368" y="298" text-anchor="middle" class="s-ts">雲端 → 本機：沒權限 ✗</text>
+        <line x1="140" y1="362" x2="140" y2="254" stroke="#9a82f0" stroke-width="1.5" marker-end="url(#aw3)"/>
+        <text x="148" y="330" class="s-ts">可讀</text>
+        <line x1="540" y1="362" x2="540" y2="262" stroke="#9a82f0" stroke-width="1.5" marker-end="url(#aw3)"/>
+        <text x="548" y="330" class="s-ts">可讀</text>
+        <text x="340" y="346" text-anchor="middle" class="s-ts">✗ 對話不同步，只能手動搬</text>
+        <text x="40" y="430" class="s-ts">實線＝資料流向 · 紅色＝被擋（雲端碰不到本機）</text>
+      </svg>
+      <figcaption>圖 3 · 資料流向：讀寫雙向、上傳單向、回傳只可檢視、對話搬不動、雲端→本機被擋。</figcaption>
+    </figure>
+
+    <section class="qa">
+      <h2>Claude 的本地電腦、沙盒、容器、Chatbot、Cowork、Claude Code、Dispatch 各是什麼？</h2>
+      <p>這 7 個名詞其實分成兩個世界。<strong>本地（你的 Mac）有 4 個</strong>：本地電腦本體、沙盒（本地的權限圍欄）、Claude Code 本地 CLI、Cowork——都跑在你機器上、用本機 CLAUDE.md、只有本地看得到。<strong>雲端（伺服器）有 3 個</strong>：Chatbot（Claude.ai）、容器／臨時容器、Dispatch——跑在雲端、用雲端 CLAUDE.md、任何裝置都看得到。</p>
+      <p class="tldr">👉 一句話：先把 7 個名詞分成「本地 4 個」和「雲端 3 個」，後面全部就通了。</p>
+
+      <h2>Cowork 可以在手機上執行嗎？</h2>
+      <p>不行。Cowork 是 <strong>100% 在你本機（Mac）執行</strong>的；手機在雲端側，依單向牆規則連不進你的電腦，所以開不了、也看不到本機正在跑的 Cowork。想在手機上做事，只能改用雲端的 Dispatch 或 Chatbot。</p>
+      <p class="tldr">🚫 常見誤解：「手機開 Cowork 會在我電腦跑」——錯，那會破壞單向牆；手機根本碰不到你的 Mac。</p>
+
+      <h2>Dispatch 和 Claude Code 是什麼關係？</h2>
+      <p>Dispatch 就是<strong>「雲端版的 Claude Code」</strong>。它在雲端的臨時容器裡跑，讀的是雲端 CLAUDE.md、不是你本機那份。因為它在雲端，你在本地或手機任何裝置都看得到它的進度，但它碰不到你 Mac 上的檔案。</p>
+      <p class="tldr">👉 一句話：Claude Code 有兩種——本地 CLI（碰本機）與雲端 Dispatch（碰不到本機、到處可見）。</p>
+
+      <h2>為什麼雲端讀不到我本機的檔案？（單向牆）</h2>
+      <p>因為雲端<strong>沒有讀你電腦的權限</strong>——這是一道單向牆：本地可以主動上傳、讀取雲端，雲端不能反向讀本地。所以雲端跑的 Dispatch 與容器，預設 100% 看不到你硬碟上的東西。</p>
+      <p class="tldr">🚫 常見誤解：以為「雲端會自動同步我的檔」——不會，要你主動把資料送上去。</p>
+
+      <h2>記憶（CLAUDE.md）和對話能不能跨本地、雲端共用？</h2>
+      <p>分兩種。<strong>記憶 / CLAUDE.md：可以共用</strong>，但方式是「本地單向、手動上傳」到雲端；上傳後是獨立副本，兩邊各改會漂移，建議固定以本機那份為唯一真相往上推。<strong>對話（context）：不能共用</strong>——雲端每次對話都是全新的臨時容器，你只能自己把重點手動搬過去。</p>
+      <p class="tldr">👉 一句話：記憶搬得動（單向上傳），對話搬不動（只能手動帶）。</p>
+
+      <h2>本機的東西想讓雲端用，有哪幾種方法？</h2>
+      <p>有 <strong>2 種</strong>正規路：① <strong>push 進 git / repo</strong>，雲端版 Claude Code／Dispatch 啟動時會帶你的 repo 快照當起點；② <strong>放進橋接層</strong>（Google Drive、MCP 連接器），本機和雲端都可讀。雲端不能直接讀你硬碟，這兩條是把資料送上雲端的唯一通路。</p>
+      <p class="tldr">👉 一句話：要嘛 push git、要嘛放 Drive/MCP，沒有第三條直通本機的路。</p>
+    </section>
+
+    <h2 class="qa" style="border-top:none;padding-top:1.6rem;">一張表看穿：7 個概念 × 4 個鏡頭</h2>
+    <table class="ptable">
+      <thead><tr><th>概念</th><th>執行在哪</th><th>用哪份記憶</th><th>碰得到本機檔？</th><th>在哪看得到</th></tr></thead>
+      <tbody>
+        <tr><td>本地電腦</td><td>—（就是 Mac）</td><td>~/.claude</td><td>—</td><td>本地</td></tr>
+        <tr><td>Claude Code（本地 CLI）</td><td>本地</td><td>本機 CLAUDE.md</td><td>✅</td><td>只本地</td></tr>
+        <tr><td>Cowork</td><td>本地</td><td>本機 CLAUDE.md</td><td>✅</td><td>只本地（手機連不進來）</td></tr>
+        <tr><td>沙盒 Sandbox</td><td>本地（受限）</td><td>同本地</td><td>✅ 但受限</td><td>只本地</td></tr>
+        <tr><td>Dispatch ＝ 雲端 Claude Code</td><td>雲端臨時容器</td><td>雲端 CLAUDE.md</td><td>❌</td><td>任何裝置</td></tr>
+        <tr><td>容器 / 臨時容器</td><td>雲端</td><td>雲端 CLAUDE.md</td><td>❌</td><td>任何裝置</td></tr>
+        <tr><td>Chatbot（Claude.ai）</td><td>雲端</td><td>自己的記憶</td><td>❌</td><td>任何裝置</td></tr>
+        <tr><td>橋接層（Drive / MCP）</td><td>雲端儲存</td><td>—（是資料不是執行）</td><td>本機/雲端都可讀</td><td>兩邊</td></tr>
+      </tbody>
+    </table>
+
+    <div class="related">
+      <p>延伸：<a href="https://www.youtube.com/watch?v=ng1rMu98buY" target="_blank" rel="noopener">Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）</a>　·　更多實戰解法在 <a href="./">影片中心</a>。</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Ai-Wisdom-01 · Built with Claude Code</p>
+  </footer>
+</body>
+</html>
