@@ -81,6 +81,16 @@
         "@type": "Question",
         "name": "判斷『能不能讀本機檔、在哪看得到』的核心原則是什麼？",
         "acceptedAnswer": { "@type": "Answer", "text": "看『工作在哪裡執行』，不是看你人在哪、用哪個裝置發起。執行在本地：能碰本機檔、用本機 CLAUDE.md、只有本地看得到。執行在雲端：碰不到本機檔、用雲端 CLAUDE.md、任何裝置都看得到。這一條原則同時決定了檔案存取、用哪份記憶、以及可見性 3 件事。" }
+      },
+      {
+        "@type": "Question",
+        "name": "把對話存成檔案，是不是就能上傳共用了？",
+        "acceptedAnswer": { "@type": "Answer", "text": "對。對話的即時 context 本身搬不動，但只要把它固化成檔案（寫進 CLAUDE.md、memory 檔或一份 notes.md），它就變成『檔案/記憶』，立刻適用可單向上傳共用那條規則。真正的界線不是『對話 vs 記憶』，而是『沒存下來的即時對話（搬不動）』vs『已存成檔案的內容（可上傳）』。代價是要手動萃取重點，存的是快照/摘要，不是 100% 還原整段對話。" }
+      },
+      {
+        "@type": "Question",
+        "name": "圖裡的雲端／伺服器就是 GitHub 嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "不是，這裡有兩朵不同的雲。Anthropic 雲端（圖裡的『伺服器』）是跑 Dispatch、臨時容器、Chatbot 的執行伺服器，你碰不到它內部；GitHub（微軟的雲）是存 code、託管網站（GitHub Pages）的地方，在本文屬於橋接層——你 push 上 GitHub，Anthropic 的雲端容器啟動時再去拉你的 repo。一句話：GitHub 是資料中轉站，不是跑 Claude 的伺服器。" }
       }
     ]
   }
@@ -249,9 +259,17 @@
       <p>分兩種。<strong>記憶 / CLAUDE.md：可以共用</strong>，但方式是「本地單向、手動上傳」到雲端；上傳後是獨立副本，兩邊各改會漂移，建議固定以本機那份為唯一真相往上推。<strong>對話（context）：不能共用</strong>——雲端每次對話都是全新的臨時容器，你只能自己把重點手動搬過去。</p>
       <p class="tldr">👉 一句話：記憶搬得動（單向上傳），對話搬不動（只能手動帶）。</p>
 
+      <h2>把對話存成檔案，是不是就能上傳共用了？</h2>
+      <p>對，這正是正解。對話的<strong>即時 context</strong> 本身搬不動；但只要把它<strong>固化成檔案</strong>（寫進 CLAUDE.md、memory 檔或一份 notes.md），它就變成「檔案／記憶」，立刻適用「可單向上傳共用」那條規則。所以真正的界線不是「對話 vs 記憶」，而是<strong>「沒存下來的即時對話（搬不動）」 vs 「已存成檔案的內容（可上傳）」</strong>。代價：要手動萃取重點，存的是快照／摘要，不是 100% 還原整段對話。</p>
+      <p class="tldr">👉 一句話：存檔這個動作，就是把搬不動的對話變成搬得動的記憶。</p>
+
       <h2>本機的東西想讓雲端用，有哪幾種方法？</h2>
       <p>有 <strong>2 種</strong>正規路：① <strong>push 進 git / repo</strong>，雲端版 Claude Code／Dispatch 啟動時會帶你的 repo 快照當起點；② <strong>放進橋接層</strong>（Google Drive、MCP 連接器），本機和雲端都可讀。雲端不能直接讀你硬碟，這兩條是把資料送上雲端的唯一通路。</p>
       <p class="tldr">👉 一句話：要嘛 push git、要嘛放 Drive/MCP，沒有第三條直通本機的路。</p>
+
+      <h2>圖裡的「雲端／伺服器」就是 GitHub 嗎？</h2>
+      <p>不是——這裡有<strong>兩朵不同的雲</strong>，別混在一起。<strong>Anthropic 雲端</strong>（圖裡的「伺服器」）是跑 Dispatch／臨時容器／Chatbot 的執行伺服器，你碰不到它內部。<strong>GitHub</strong>（微軟的雲）是存 code、託管網站（GitHub Pages）的地方，在本文屬於<strong>橋接層</strong>——你 push 上 GitHub，Anthropic 的雲端容器啟動時再去拉你的 repo。</p>
+      <p class="tldr">👉 一句話：GitHub 是資料中轉站（橋接層），不是跑 Claude 的伺服器；兩朵雲、不同公司、不同角色。</p>
     </section>
 
     <h2 class="qa" style="border-top:none;padding-top:1.6rem;">一張表看穿：7 個概念 × 4 個鏡頭</h2>
