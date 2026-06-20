@@ -60,6 +60,7 @@ async function getUploads(playlistId) {
       published: it.contentDetails?.videoPublishedAt || it.snippet?.publishedAt,
       thumb: (it.snippet?.thumbnails?.medium || it.snippet?.thumbnails?.default)?.url,
       views: 0,
+      duration: "",
     }))
     .filter((v) => v.id && v.title !== "Private video" && v.title !== "Deleted video");
 }
@@ -67,9 +68,11 @@ async function getUploads(playlistId) {
 async function attachStats(videos) {
   for (let i = 0; i < videos.length; i += 50) {
     const batch = videos.slice(i, i + 50);
-    const data = await api("/videos", { part: "statistics", id: batch.map((v) => v.id).join(",") });
-    const map = Object.fromEntries((data.items || []).map((x) => [x.id, Number(x.statistics?.viewCount || 0)]));
-    batch.forEach((v) => (v.views = map[v.id] ?? 0));
+    const data = await api("/videos", { part: "statistics,contentDetails", id: batch.map((v) => v.id).join(",") });
+    const map = Object.fromEntries(
+      (data.items || []).map((x) => [x.id, { views: Number(x.statistics?.viewCount || 0), duration: x.contentDetails?.duration || "" }])
+    );
+    batch.forEach((v) => { const m = map[v.id]; if (m) { v.views = m.views; v.duration = m.duration; } });
   }
 }
 
@@ -156,6 +159,8 @@ function injectVideoSchema(videos) {
         uploadDate: v.published,
         url: "https://www.youtube.com/watch?v=" + v.id,
         embedUrl: "https://www.youtube.com/embed/" + v.id,
+        ...(v.duration ? { duration: v.duration } : {}),
+        ...(v.views ? { interactionStatistic: { "@type": "InteractionCounter", interactionType: { "@type": "WatchAction" }, userInteractionCount: v.views } } : {}),
       },
     })),
   };
@@ -204,7 +209,9 @@ async function boot() {
     statusEl.innerHTML = "尚未設定 API 金鑰 — 請編輯 <code>config.js</code> 填入 YouTube Data API key。";
     return;
   }
-  renderSkeleton();
+  // 若 build-site-snapshot.mjs 已烤入靜態影片清單，先留著當載入狀態/降級備援，不要先清空
+  const hasSnapshot = !!gridEl.querySelector(".card");
+  if (!hasSnapshot) renderSkeleton();
   try {
     const ch = await getChannel();
     renderHero(ch);
@@ -213,15 +220,21 @@ async function boot() {
     renderGrid();                 // 先用最新排序顯示
     injectVideoSchema(state.videos);
     await attachStats(state.videos);
+    injectVideoSchema(state.videos);              // 觀看數/時長到齊後重注入更豐富的 schema
     if (state.sort === "popular") renderGrid();   // 觀看數到齊後若在最熱模式再排一次
   } catch (err) {
-    gridEl.innerHTML = "";
-    statusEl.className = "status status--error";
     const handle = (CFG.CHANNEL_HANDLE || "").replace(/^@/, "");
     const link = CFG.CHANNEL_ID
       ? `https://www.youtube.com/channel/${CFG.CHANNEL_ID}`
       : `https://www.youtube.com/@${handle}`;
-    statusEl.innerHTML = `載入失敗：${esc(err.message)}<br/>你仍可<a href="${link}" target="_blank" rel="noopener">直接前往 YouTube 頻道</a>。`;
+    statusEl.className = "status status--error";
+    if (hasSnapshot) {
+      // 即時資料載入失敗（例如 API 配額用盡）→ 保留靜態快照清單，僅提示
+      statusEl.innerHTML = `即時資料載入失敗，以下為最近彙整的影片。<a href="${link}" target="_blank" rel="noopener">前往 YouTube 頻道看最新</a>。`;
+    } else {
+      gridEl.innerHTML = "";
+      statusEl.innerHTML = `載入失敗：${esc(err.message)}<br/>你仍可<a href="${link}" target="_blank" rel="noopener">直接前往 YouTube 頻道</a>。`;
+    }
   }
 }
 

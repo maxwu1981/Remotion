@@ -20,6 +20,6 @@ window.SITE_CONFIG = {
 
   // 介面文字（中英混合）
   SITE_TITLE: "Ai-Wisdom-01",
-  TAGLINE: "Claude AI 踩坑筆記 × 實戰解法",
+  TAGLINE: "Claude AI 實戰經驗 × 解法筆記",
   FOOTER: "© 2026 Ai-Wisdom-01 · Built with Claude Code",
 };
