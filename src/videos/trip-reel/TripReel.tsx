@@ -53,9 +53,9 @@ const SlideScene: React.FC<{ slide: Slide; dir: number; accent: string; durF: nu
     <AbsoluteFill>
       <KenBurns src={slide.image} durF={durF} dir={dir} />
       <AbsoluteFill
-        style={{ background: "linear-gradient(to top, rgba(18,14,10,0.74) 0%, rgba(0,0,0,0) 40%)" }}
+        style={{ background: "linear-gradient(to bottom, rgba(18,14,10,0.74) 0%, rgba(0,0,0,0) 40%)" }}
       />
-      <div style={{ position: "absolute", left: 64, bottom: 168, ...chip }}>
+      <div style={{ position: "absolute", left: 64, top: 160, ...chip }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
           <span style={{ width: 11, height: 60, background: accent, borderRadius: 4 }} />
           <div>
