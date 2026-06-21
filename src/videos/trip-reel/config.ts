@@ -96,6 +96,443 @@ export const KENROKU_REEL: TripReelConfig = {
   ],
 };
 
+/* -------------------------------------------------------- 中部·常滑 ----- */
+export const TOKONAME_REEL: TripReelConfig = {
+  title: "常滑·烧物散步道",
+  subtitle: "招财猫产地·土管坂·登窑",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "飞走前留半天",
+  outroSub: "机场旁的陶器老镇",
+  accent: "#8C6239",
+  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
+  slides: [
+    { image: "trips/tokoname/tokoname_01.jpg", label: "土管坂", sub: "常滑地标" },
+    { image: "trips/tokoname/tokoname_02.jpg", label: "登窑·烟囱" },
+    { image: "trips/tokoname/tokoname_03.jpg", label: "登窑·夕阳" },
+    { image: "trips/tokoname/tokoname_04.jpg", label: "红砖窑厂" },
+    { image: "trips/tokoname/tokoname_05.jpg", label: "烧物散步道·老街" },
+    { image: "trips/tokoname/tokoname_06.jpg", label: "招财猫·陶器" },
+    { image: "trips/tokoname/tokoname_07.jpg", label: "招财猫店" },
+    { image: "trips/tokoname/tokoname_08.jpg", label: "常滑烧·陶器店" },
+    { image: "trips/tokoname/tokoname_09.jpg", label: "古民家·庭" },
+    { image: "trips/tokoname/tokoname_10.jpg", label: "陶艺café" },
+    { image: "trips/tokoname/tokoname_11.jpg", label: "常滑·花火" },
+  ],
+};
+
+/* -------------------------------------------------------- 中部·名古屋 ----- */
+export const NAGOYA_REEL: TripReelConfig = {
+  title: "名古屋一日",
+  subtitle: "清洲城·庭园·老街·食品样本",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "名古屋别只转车",
+  outroSub: "留一天刚好",
+  accent: "#8C6239",
+  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
+  slides: [
+    { image: "trips/nagoya/nagoya_01.jpg", label: "清洲城", sub: "织田信长居城" },
+    { image: "trips/nagoya/nagoya_02.jpg", label: "金鯱", sub: "名古屋象征" },
+    { image: "trips/nagoya/nagoya_03.jpg", label: "名古屋·庭园" },
+    { image: "trips/nagoya/nagoya_04.jpg", label: "庭园·茶室" },
+    { image: "trips/nagoya/nagoya_05.jpg", label: "日本庭园" },
+    { image: "trips/nagoya/nagoya_06.jpg", label: "名古屋·社殿" },
+    { image: "trips/nagoya/nagoya_07.jpg", label: "料亭·和室" },
+    { image: "trips/nagoya/nagoya_08.jpg", label: "灯笼·和室" },
+    { image: "trips/nagoya/nagoya_09.jpg", label: "食品样本", sub: "名古屋名产" },
+    { image: "trips/nagoya/nagoya_10.jpg", label: "古民家·縁侧" },
+    { image: "trips/nagoya/nagoya_11.jpg", label: "名古屋美食" },
+  ],
+};
+
+/* -------------------------------------------------------- 中部·郡上八幡 ----- */
+export const GUJO_REEL: TripReelConfig = {
+  title: "郡上八幡",
+  subtitle: "水之町·日本最古木造再建城",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "别只冲高山白川乡",
+  outroSub: "这座水之町太可惜",
+  accent: "#8C6239",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/gujo/gujo_01.jpg", label: "郡上八幡城", sub: "日本最古木造再建" },
+    { image: "trips/gujo/gujo_02.jpg", label: "水之小径", sub: "やなか/いがわ" },
+    { image: "trips/gujo/gujo_03.jpg", label: "吉田川·桥" },
+    { image: "trips/gujo/gujo_04.jpg", label: "城下町老街" },
+    { image: "trips/gujo/gujo_05.jpg", label: "老街与山" },
+    { image: "trips/gujo/gujo_06.jpg", label: "城下町" },
+    { image: "trips/gujo/gujo_07.jpg", label: "郡上八幡城·庭" },
+    { image: "trips/gujo/gujo_08.jpg", label: "食品样本", sub: "发祥地" },
+    { image: "trips/gujo/gujo_09.jpg", label: "旧庁舎记念馆" },
+    { image: "trips/gujo/gujo_10.jpg", label: "郡上舞", sub: "三大盆踊" },
+    { image: "trips/gujo/gujo_11.jpg", label: "清流·水景" },
+    { image: "trips/gujo/gujo_12.jpg", label: "长良川铁道" },
+    { image: "trips/gujo/gujo_13.jpg", label: "木造老屋" },
+    { image: "trips/gujo/gujo_14.jpg", label: "古民家·室内" },
+    { image: "trips/gujo/gujo_15.jpg", label: "城下町·食べ歩き" },
+  ],
+};
+
+/* -------------------------------------------------------- 中部·妻籠宿 ----- */
+export const TSUMAGO_REEL: TripReelConfig = {
+  title: "妻笼宿",
+  subtitle: "日本首个重传建·江户宿场",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "时间停在江户",
+  outroSub: "保存最完整的宿场",
+  accent: "#8C6239",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/tsumago/tsumago_01.jpg", label: "妻笼宿", sub: "木造宿场街" },
+    { image: "trips/tsumago/tsumago_02.jpg", label: "妻笼·街道" },
+    { image: "trips/tsumago/tsumago_03.jpg", label: "妻笼·枡形街" },
+    { image: "trips/tsumago/tsumago_04.jpg", label: "妻笼·街与山" },
+    { image: "trips/tsumago/tsumago_05.jpg", label: "旅籠·水车" },
+    { image: "trips/tsumago/tsumago_06.jpg", label: "木造旅籠" },
+    { image: "trips/tsumago/tsumago_07.jpg", label: "妻笼街" },
+    { image: "trips/tsumago/tsumago_08.jpg", label: "旅籠·街屋" },
+    { image: "trips/tsumago/tsumago_09.jpg", label: "妻笼街道" },
+    { image: "trips/tsumago/tsumago_10.jpg", label: "本阵·脇本阵" },
+    { image: "trips/tsumago/tsumago_11.jpg", label: "脇本阵·座敷" },
+    { image: "trips/tsumago/tsumago_12.jpg", label: "旅籠·室内" },
+    { image: "trips/tsumago/tsumago_13.jpg", label: "囲炉裏" },
+    { image: "trips/tsumago/tsumago_14.jpg", label: "妻笼·街与绿" },
+    { image: "trips/tsumago/tsumago_15.jpg", label: "妻笼·街与山" },
+  ],
+};
+
+/* -------------------------------------------------------- 中部·馬籠宿 ----- */
+export const MAGOME_REEL: TripReelConfig = {
+  title: "马笼宿·中山道",
+  subtitle: "江户古道·徒步妻笼",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "走完马笼到妻笼",
+  outroSub: "7.7公里的中山道",
+  accent: "#8C6239",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/magome/magome_01.jpg", label: "马笼宿", sub: "石叠坡" },
+    { image: "trips/magome/magome_02.jpg", label: "石叠坡·恵那山" },
+    { image: "trips/magome/magome_03.jpg", label: "马笼·街与山" },
+    { image: "trips/magome/magome_04.jpg", label: "木造旅籠" },
+    { image: "trips/magome/magome_05.jpg", label: "旅籠·街屋" },
+    { image: "trips/magome/magome_06.jpg", label: "旅籠" },
+    { image: "trips/magome/magome_07.jpg", label: "恵那山远望" },
+    { image: "trips/magome/magome_08.jpg", label: "高札场" },
+    { image: "trips/magome/magome_09.jpg", label: "中山道道标", sub: "妻笼⇔马笼" },
+    { image: "trips/magome/magome_10.jpg", label: "杉并木古道" },
+    { image: "trips/magome/magome_11.jpg", label: "中山道" },
+    { image: "trips/magome/magome_12.jpg", label: "古道·道标" },
+    { image: "trips/magome/magome_13.jpg", label: "杉并木" },
+    { image: "trips/magome/magome_14.jpg", label: "杉木古道" },
+    { image: "trips/magome/magome_15.jpg", label: "旅籠·古钟" },
+  ],
+};
+
+/* -------------------------------------------------------- 大阪·天王寺あべの ----- */
+export const ABENO_REEL: TripReelConfig = {
+  title: "天王寺·阿倍野",
+  subtitle: "あべのハルカス·真田幸村古战场",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "南大阪一区逛半天",
+  outroSub: "ハルカス+公园+新世界",
+  accent: "#E5322D",
+  coverSec: 2.6, slideSec: 2.8, outroSec: 3,
+  slides: [
+    { image: "trips/abeno/abeno_01.jpg", label: "あべのハルカス", sub: "日本最高车站楼" },
+    { image: "trips/abeno/abeno_02.jpg", label: "大阪天际线" },
+    { image: "trips/abeno/abeno_03.jpg", label: "大阪市立美术馆" },
+    { image: "trips/abeno/abeno_04.jpg", label: "天王寺公园" },
+    { image: "trips/abeno/abeno_05.jpg", label: "天王寺·神社" },
+    { image: "trips/abeno/abeno_06.jpg", label: "茶臼山", sub: "大阪之阵古战场" },
+  ],
+};
+
+/* -------------------------------------------------------- 大阪·新世界 ----- */
+export const SHINSEKAI_REEL: TripReelConfig = {
+  title: "新世界·通天阁",
+  subtitle: "大阪最有烟火气的夜",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "天黑后才是大阪",
+  outroSub: "在那盏霓虹里",
+  accent: "#E5322D",
+  coverSec: 2.6, slideSec: 2.7, outroSec: 3,
+  slides: [
+    { image: "trips/shinsekai/shinsekai_01.jpg", label: "通天阁", sub: "点灯" },
+    { image: "trips/shinsekai/shinsekai_02.jpg", label: "通天阁·夜" },
+    { image: "trips/shinsekai/shinsekai_03.jpg", label: "新世界", sub: "霓虹街" },
+    { image: "trips/shinsekai/shinsekai_04.jpg", label: "新世界·霓虹" },
+    { image: "trips/shinsekai/shinsekai_05.jpg", label: "新世界街" },
+    { image: "trips/shinsekai/shinsekai_06.jpg", label: "新世界·招牌" },
+    { image: "trips/shinsekai/shinsekai_07.jpg", label: "新世界", sub: "清晨" },
+  ],
+};
+
+/* ------------------------------------------------------ 京都·市区citywalk ----- */
+export const KYOTOCITY_REEL: TripReelConfig = {
+  title: "京都市区citywalk",
+  subtitle: "祇园·鸭川·锦市场·京都塔",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "京都不只清水寺",
+  outroSub: "市中心慢慢串起来",
+  accent: "#A07CC5",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/kyotocity/kyotocity_01.jpg", label: "八坂神社", sub: "西楼门·重文" },
+    { image: "trips/kyotocity/kyotocity_02.jpg", label: "八坂神社", sub: "南楼门·鸟居" },
+    { image: "trips/kyotocity/kyotocity_03.jpg", label: "祇园·清晨" },
+    { image: "trips/kyotocity/kyotocity_04.jpg", label: "锦市场", sub: "京都厨房" },
+    { image: "trips/kyotocity/kyotocity_05.jpg", label: "高瀬川·木屋町" },
+    { image: "trips/kyotocity/kyotocity_06.jpg", label: "京都御所" },
+    { image: "trips/kyotocity/kyotocity_07.jpg", label: "京都和牛" },
+    { image: "trips/kyotocity/kyotocity_08.jpg", label: "雛祭", sub: "季节限定" },
+    { image: "trips/kyotocity/kyotocity_09.jpg", label: "京都站" },
+    { image: "trips/kyotocity/kyotocity_10.jpg", label: "京都塔" },
+  ],
+};
+
+/* -------------------------------------------------------- 京都·二三年坂 ----- */
+export const NINENZAKA_REEL: TripReelConfig = {
+  title: "二年坂·三年坂",
+  subtitle: "百年町家星巴克·东山石叠",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "跟清水寺一起拼早上",
+  outroSub: "白天这条坡会爆",
+  accent: "#A07CC5",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/ninenzaka/ninenzaka_01.jpg", label: "二寧坂", sub: "町家星巴克" },
+    { image: "trips/ninenzaka/ninenzaka_02.jpg", label: "八坂通·町家" },
+    { image: "trips/ninenzaka/ninenzaka_03.jpg", label: "二三年坂", sub: "石叠老街" },
+    { image: "trips/ninenzaka/ninenzaka_04.jpg", label: "二年坂·坂道" },
+    { image: "trips/ninenzaka/ninenzaka_05.jpg", label: "石阶坂道" },
+    { image: "trips/ninenzaka/ninenzaka_06.jpg", label: "京町家·木格子" },
+    { image: "trips/ninenzaka/ninenzaka_07.jpg", label: "二寧坂星巴克", sub: "外观" },
+    { image: "trips/ninenzaka/ninenzaka_08.jpg", label: "星巴克·榻榻米席" },
+    { image: "trips/ninenzaka/ninenzaka_09.jpg", label: "樱花拿铁" },
+    { image: "trips/ninenzaka/ninenzaka_10.jpg", label: "町家·丸窗" },
+    { image: "trips/ninenzaka/ninenzaka_11.jpg", label: "东山·八坂塔远望" },
+    { image: "trips/ninenzaka/ninenzaka_12.jpg", label: "东山街景" },
+  ],
+};
+
+/* ---------------------------------------------------------- 京都·清水寺 ----- */
+export const KIYOMIZU_REEL: TripReelConfig = {
+  title: "清水寺",
+  subtitle: "清晨6点·世界遗产空景",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "6点开门就上去",
+  outroSub: "趁旅行团来之前",
+  accent: "#A07CC5",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/kiyomizu/kiyomizu_01.jpg", label: "三重塔" },
+    { image: "trips/kiyomizu/kiyomizu_02.jpg", label: "本堂·伽蓝" },
+    { image: "trips/kiyomizu/kiyomizu_03.jpg", label: "仁王门" },
+    { image: "trips/kiyomizu/kiyomizu_04.jpg", label: "仁王门·朱红" },
+    { image: "trips/kiyomizu/kiyomizu_05.jpg", label: "西门" },
+    { image: "trips/kiyomizu/kiyomizu_06.jpg", label: "三重塔·伽蓝" },
+    { image: "trips/kiyomizu/kiyomizu_07.jpg", label: "子安塔回望" },
+    { image: "trips/kiyomizu/kiyomizu_08.jpg", label: "子安塔" },
+    { image: "trips/kiyomizu/kiyomizu_09.jpg", label: "清水の舞台" },
+    { image: "trips/kiyomizu/kiyomizu_10.jpg", label: "清水坂·石阶" },
+    { image: "trips/kiyomizu/kiyomizu_11.jpg", label: "清水坂·清晨" },
+  ],
+};
+
+/* -------------------------------------------------------- 富山·富山城市電 ----- */
+export const TCASTLE_REEL: TripReelConfig = {
+  title: "富山城·市电",
+  subtitle: "市中心半日citywalk",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "慢富山·留个半天",
+  outroSub: "搭复古市电逛城",
+  accent: "#2E6B8F",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/tcastle/tcastle_01.jpg", label: "富山城", sub: "模拟天守" },
+    { image: "trips/tcastle/tcastle_02.jpg", label: "富山城天守" },
+    { image: "trips/tcastle/tcastle_03.jpg", label: "天守" },
+    { image: "trips/tcastle/tcastle_04.jpg", label: "城址公园" },
+    { image: "trips/tcastle/tcastle_05.jpg", label: "城门·松川" },
+    { image: "trips/tcastle/tcastle_06.jpg", label: "城址公园" },
+    { image: "trips/tcastle/tcastle_07.jpg", label: "城址公园", sub: "天守" },
+    { image: "trips/tcastle/tcastle_08.jpg", label: "富山站·市电", sub: "夜" },
+    { image: "trips/tcastle/tcastle_09.jpg", label: "富山站", sub: "复古市电" },
+    { image: "trips/tcastle/tcastle_10.jpg", label: "市电·站前" },
+    { image: "trips/tcastle/tcastle_11.jpg", label: "市电" },
+    { image: "trips/tcastle/tcastle_12.jpg", label: "富山站·市电" },
+    { image: "trips/tcastle/tcastle_13.jpg", label: "富山站" },
+    { image: "trips/tcastle/tcastle_14.jpg", label: "城址公园·松" },
+  ],
+};
+
+/* -------------------------------------------------------- 富山·雨晴海岸 ----- */
+export const AMA_REEL: TripReelConfig = {
+  title: "雨晴海岸",
+  subtitle: "海越しに立山连峰·女岩",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "冬天冷晨拼一趟",
+  outroSub: "海上的3000m雪山",
+  accent: "#2E6B8F",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/ama/ama_01.jpg", label: "海上立山连峰" },
+    { image: "trips/ama/ama_02.jpg", label: "女岩" },
+    { image: "trips/ama/ama_03.jpg", label: "女岩", sub: "清晨" },
+    { image: "trips/ama/ama_04.jpg", label: "女岩", sub: "富山湾" },
+    { image: "trips/ama/ama_05.jpg", label: "女岩·松" },
+    { image: "trips/ama/ama_06.jpg", label: "海岸", sub: "清晨" },
+    { image: "trips/ama/ama_07.jpg", label: "雨晴海岸" },
+    { image: "trips/ama/ama_08.jpg", label: "雨晴駅" },
+    { image: "trips/ama/ama_09.jpg", label: "雨晴駅", sub: "月台" },
+    { image: "trips/ama/ama_10.jpg", label: "氷见线", sub: "红列车" },
+    { image: "trips/ama/ama_11.jpg", label: "氷见线·月台" },
+    { image: "trips/ama/ama_12.jpg", label: "氷见线", sub: "贴海开" },
+    { image: "trips/ama/ama_13.jpg", label: "氷见线·雨晴駅" },
+  ],
+};
+
+/* -------------------------------------------------------- 富山·環水公園 ----- */
+export const KANSUI_REEL: TripReelConfig = {
+  title: "环水公园",
+  subtitle: "世界最美星巴克·蓝调",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "日落后20分钟",
+  outroSub: "才是环水公园封神时刻",
+  accent: "#2E6B8F",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/kansui/kansui_01.jpg", label: "环水公园", sub: "蓝调时刻" },
+    { image: "trips/kansui/kansui_02.jpg", label: "天门桥", sub: "倒影" },
+    { image: "trips/kansui/kansui_03.jpg", label: "天门桥", sub: "光束" },
+    { image: "trips/kansui/kansui_04.jpg", label: "运河·点灯" },
+    { image: "trips/kansui/kansui_05.jpg", label: "蓝调时刻" },
+    { image: "trips/kansui/kansui_06.jpg", label: "イルミ步道" },
+    { image: "trips/kansui/kansui_07.jpg", label: "黄昏" },
+    { image: "trips/kansui/kansui_08.jpg", label: "运河·天门桥" },
+    { image: "trips/kansui/kansui_09.jpg", label: "富岩运河" },
+    { image: "trips/kansui/kansui_10.jpg", label: "天门桥", sub: "双塔展望" },
+    { image: "trips/kansui/kansui_11.jpg", label: "环水公园" },
+    { image: "trips/kansui/kansui_12.jpg", label: "运河步道" },
+  ],
+};
+
+/* ------------------------------------------------------------ 金澤·尾山神社 ----- */
+export const OYAMA_REEL: TripReelConfig = {
+  title: "尾山神社",
+  subtitle: "和漢洋神门·彩绘玻璃",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "神社配彩绘玻璃",
+  outroSub: "全日本几乎只有这里",
+  accent: "#C9A227",
+  coverSec: 2.6, slideSec: 3.0, outroSec: 3,
+  slides: [
+    { image: "trips/oyama/oyama_01.jpg", label: "神门", sub: "和漢洋·彩绘玻璃" },
+    { image: "trips/oyama/oyama_02.jpg", label: "拝殿" },
+    { image: "trips/oyama/oyama_03.jpg", label: "拝殿·早梅" },
+    { image: "trips/oyama/oyama_04.jpg", label: "前田利家骑马像" },
+    { image: "trips/oyama/oyama_05.jpg", label: "神苑" },
+  ],
+};
+
+/* ---------------------------------------------------------- 金澤·鈴木大拙館 ----- */
+export const SUZUKI_REEL: TripReelConfig = {
+  title: "铃木大拙馆",
+  subtitle: "水镜の庭·金泽最静的庭",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "金泽最静的10分钟",
+  outroSub: "留给水镜の庭",
+  accent: "#C9A227",
+  coverSec: 2.6, slideSec: 3.4, outroSec: 3,
+  slides: [
+    { image: "trips/suzuki/suzuki_01.jpg", label: "水镜の庭", sub: "思索空间栋" },
+    { image: "trips/suzuki/suzuki_02.jpg", label: "水镜の庭", sub: "全景" },
+    { image: "trips/suzuki/suzuki_03.jpg", label: "思索空间栋", sub: "倒影" },
+    { image: "trips/suzuki/suzuki_04.jpg", label: "学习空间·回廊" },
+  ],
+};
+
+/* ------------------------------------------------------------ 金澤·東茶屋街 ----- */
+export const HIGASHI_REEL: TripReelConfig = {
+  title: "东茶屋街",
+  subtitle: "清晨无人的金箔老街",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "清晨没人的茶屋街",
+  outroSub: "11点后就挤满了",
+  accent: "#C9A227",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/higashi/higashi_01.jpg", label: "东茶屋街", sub: "清晨无人" },
+    { image: "trips/higashi/higashi_02.jpg", label: "主街", sub: "清晨" },
+    { image: "trips/higashi/higashi_03.jpg", label: "茶屋街", sub: "晨光" },
+    { image: "trips/higashi/higashi_04.jpg", label: "木格子小巷" },
+    { image: "trips/higashi/higashi_05.jpg", label: "御茶屋", sub: "のれん" },
+    { image: "trips/higashi/higashi_06.jpg", label: "茶屋·大树" },
+    { image: "trips/higashi/higashi_07.jpg", label: "茶屋座敷", sub: "室内" },
+    { image: "trips/higashi/higashi_08.jpg", label: "金箔店" },
+    { image: "trips/higashi/higashi_09.jpg", label: "茶屋街" },
+    { image: "trips/higashi/higashi_10.jpg", label: "坡道小巷" },
+    { image: "trips/higashi/higashi_11.jpg", label: "浅野川畔" },
+    { image: "trips/higashi/higashi_12.jpg", label: "浅野川·桥" },
+    { image: "trips/higashi/higashi_13.jpg", label: "南天·茶屋" },
+    { image: "trips/higashi/higashi_14.jpg", label: "茶屋老屋" },
+  ],
+};
+
+/* ---------------------------------------------------------- 金澤·長町武家屋敷 ----- */
+export const NAGAMACHI_REEL: TripReelConfig = {
+  title: "长町·野村家庭园",
+  subtitle: "武士老街的日本名园",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "坐在縁侧发呆",
+  outroSub: "长町最值得的20分钟",
+  accent: "#4F7942",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/nagamachi/nagamachi_01.jpg", label: "野村家庭园", sub: "米其林2星" },
+    { image: "trips/nagamachi/nagamachi_02.jpg", label: "庭园", sub: "石灯笼" },
+    { image: "trips/nagamachi/nagamachi_03.jpg", label: "縁侧·庭园" },
+    { image: "trips/nagamachi/nagamachi_04.jpg", label: "庭园·曲水" },
+    { image: "trips/nagamachi/nagamachi_05.jpg", label: "庭园·大树" },
+    { image: "trips/nagamachi/nagamachi_06.jpg", label: "庭园·早梅" },
+    { image: "trips/nagamachi/nagamachi_07.jpg", label: "武家屋敷", sub: "床の间" },
+    { image: "trips/nagamachi/nagamachi_08.jpg", label: "縁侧·水景" },
+    { image: "trips/nagamachi/nagamachi_09.jpg", label: "加贺友禅" },
+    { image: "trips/nagamachi/nagamachi_10.jpg", label: "武家屋敷" },
+    { image: "trips/nagamachi/nagamachi_11.jpg", label: "土塀老街" },
+    { image: "trips/nagamachi/nagamachi_12.jpg", label: "土塀老街", sub: "早梅" },
+    { image: "trips/nagamachi/nagamachi_13.jpg", label: "武家屋敷门" },
+    { image: "trips/nagamachi/nagamachi_14.jpg", label: "长町街景" },
+  ],
+};
+
+/* ------------------------------------------------------------- 金澤·金澤城 ----- */
+export const KANAZAWA_CASTLE_REEL: TripReelConfig = {
+  title: "金泽城公园",
+  subtitle: "兼六园隔壁·免费百万石",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "免费的百万石城",
+  outroSub: "大多人只逛兼六园,可惜了",
+  accent: "#C9A227",
+  coverSec: 2.6, slideSec: 2.5, outroSec: 3,
+  slides: [
+    { image: "trips/kanazawacastle/kanazawacastle_01.jpg", label: "五十间长屋" },
+    { image: "trips/kanazawacastle/kanazawacastle_02.jpg", label: "菱栌·五十间长屋" },
+    { image: "trips/kanazawacastle/kanazawacastle_03.jpg", label: "石川门" },
+    { image: "trips/kanazawacastle/kanazawacastle_04.jpg", label: "城郭建筑" },
+    { image: "trips/kanazawacastle/kanazawacastle_05.jpg", label: "桥爪门木桥" },
+    { image: "trips/kanazawacastle/kanazawacastle_06.jpg", label: "玉泉院丸庭园" },
+    { image: "trips/kanazawacastle/kanazawacastle_07.jpg", label: "城内·杉木道" },
+    { image: "trips/kanazawacastle/kanazawacastle_08.jpg", label: "三の丸广场" },
+    { image: "trips/kanazawacastle/kanazawacastle_09.jpg", label: "玉泉院丸", sub: "夜间点灯" },
+    { image: "trips/kanazawacastle/kanazawacastle_10.jpg", label: "鼠多门桥" },
+    { image: "trips/kanazawacastle/kanazawacastle_11.jpg", label: "鼠多门桥" },
+    { image: "trips/kanazawacastle/kanazawacastle_12.jpg", label: "鼠多门", sub: "木组" },
+    { image: "trips/kanazawacastle/kanazawacastle_13.jpg", label: "玉泉院丸", sub: "休憩馆" },
+    { image: "trips/kanazawacastle/kanazawacastle_14.jpg", label: "玉泉院丸庭园" },
+  ],
+};
+
 /* ---------------------------------------------------------------- 金澤 ----- */
 export const KANAZAWA_REEL: TripReelConfig = {
   title: "半天走完小京都",
@@ -240,6 +677,24 @@ export const INUYAMA_REEL: TripReelConfig = {
 /** All trip reels, registered as a Folder in Root.tsx. */
 export const TRIP_REELS: { id: string; cfg: TripReelConfig }[] = [
   { id: "KenrokuReel", cfg: KENROKU_REEL },
+  { id: "TokonameReel", cfg: TOKONAME_REEL },
+  { id: "NagoyaReel", cfg: NAGOYA_REEL },
+  { id: "GujoReel", cfg: GUJO_REEL },
+  { id: "TsumagoReel", cfg: TSUMAGO_REEL },
+  { id: "MagomeReel", cfg: MAGOME_REEL },
+  { id: "AbenoReel", cfg: ABENO_REEL },
+  { id: "ShinsekaiReel", cfg: SHINSEKAI_REEL },
+  { id: "KyotocityReel", cfg: KYOTOCITY_REEL },
+  { id: "NinenzakaReel", cfg: NINENZAKA_REEL },
+  { id: "KiyomizuReel", cfg: KIYOMIZU_REEL },
+  { id: "TcastleReel", cfg: TCASTLE_REEL },
+  { id: "AmaReel", cfg: AMA_REEL },
+  { id: "KansuiReel", cfg: KANSUI_REEL },
+  { id: "OyamaReel", cfg: OYAMA_REEL },
+  { id: "SuzukiReel", cfg: SUZUKI_REEL },
+  { id: "HigashiReel", cfg: HIGASHI_REEL },
+  { id: "NagamachiReel", cfg: NAGAMACHI_REEL },
+  { id: "KanazawaCastleReel", cfg: KANAZAWA_CASTLE_REEL },
   { id: "KanazawaReel", cfg: KANAZAWA_REEL },
   { id: "ToyamaReel", cfg: TOYAMA_REEL },
   { id: "NiigataReel", cfg: NIIGATA_REEL },
