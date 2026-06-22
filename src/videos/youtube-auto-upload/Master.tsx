@@ -2,8 +2,7 @@ import React from "react";
 import { AbsoluteFill } from "remotion";
 import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { COLORS, FONT, GRADIENT, RADIUS, SHADOW, TYPE } from "../../shared-skills/theme";
-import { Backdrop } from "../../shared-skills/components/Backdrop";
+import { COLORS, FONT, GRADIENT, RADIUS } from "../../shared-skills/theme";
 import { Bgm } from "../../shared-skills/audio";
 import { UPLOAD_SCENES, UPLOAD_TRANSITION_FRAMES } from "./registry";
 import { UPLOAD_BRAND } from "./brand";
@@ -41,52 +40,57 @@ export const UploadMaster: React.FC = () => {
   );
 };
 
-/** Static poster frame — reads with no entrance animations at frame 0. */
-export const UploadPoster: React.FC = () => (
-  <AbsoluteFill style={{ fontFamily: FONT.ui, color: COLORS.ink }}>
-    <Backdrop accent={COLORS.remotion} seed="upload-poster" />
-    <AbsoluteFill style={{ alignItems: "center", justifyContent: "center" }}>
-      <div style={{ textAlign: "center" }}>
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 10,
-            padding: "9px 18px",
-            borderRadius: RADIUS.pill,
-            background: COLORS.surface,
-            border: `1px solid ${COLORS.border}`,
-            boxShadow: SHADOW.sm,
-            fontFamily: FONT.mono,
-            fontWeight: 700,
-            fontSize: TYPE.tiny,
-            letterSpacing: 2,
-            color: COLORS.muted,
-          }}
-        >
-          <span style={{ width: 9, height: 9, borderRadius: "50%", background: "#FF0000" }} />
-          {UPLOAD_BRAND.course} · ZERO-TOUCH UPLOAD
+/**
+ * Static poster frame. Ports the EP00 winning formula: left = brand + giant
+ * number hook (0 手動步驟); right = colour-coded info wall of the auto pipeline.
+ */
+export const UploadPoster: React.FC = () => {
+  const rows = [
+    { c: COLORS.hi.sky, key: "Email 觸發", gloss: "來源自動進" },
+    { c: COLORS.hi.violet, key: "自動生腳本＋成片", gloss: "Remotion 算繪" },
+    { c: COLORS.error, key: "自動上 YouTube", gloss: "Data API · 直接公開" },
+  ];
+  return (
+    <AbsoluteFill style={{ fontFamily: FONT.uiCjk, color: COLORS.ink }}>
+      <AbsoluteFill style={{ background: `linear-gradient(180deg, ${COLORS.surface} 0%, ${COLORS.bg} 55%, ${COLORS.bgAlt} 100%)` }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 24%)" }} />
+
+      <div style={{ position: "absolute", top: 70, left: 100, fontWeight: 800, fontSize: 40, letterSpacing: 2, color: COLORS.muted }}>
+        AI Wisdom · @aiwisdomcc
+      </div>
+
+      <div style={{ position: "absolute", top: 140, left: 96 }}>
+        <div style={{ fontFamily: FONT.mono, fontWeight: 800, fontSize: 76, letterSpacing: -1, lineHeight: 1, color: COLORS.ink }}>
+          {UPLOAD_BRAND.pre}
+          <span style={{ color: "transparent", background: GRADIENT.claude, WebkitBackgroundClip: "text", backgroundClip: "text" }}>{UPLOAD_BRAND.post}</span>
         </div>
-        <div
-          style={{
-            marginTop: 26,
-            fontFamily: FONT.ui,
-            fontWeight: 800,
-            fontSize: 110,
-            lineHeight: 1.0,
-            letterSpacing: -3,
-            color: COLORS.ink,
-          }}
-        >
-          <div>{UPLOAD_BRAND.hero[0]}</div>
-          <div style={{ background: GRADIENT.remotion, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>
-            {UPLOAD_BRAND.hero[1]}
-          </div>
-        </div>
-        <div style={{ marginTop: 22, fontFamily: FONT.ui, fontSize: TYPE.h3, fontWeight: 500, color: COLORS.muted }}>
-          {UPLOAD_BRAND.tagline}
+        <div style={{ fontWeight: 800, fontSize: 110, letterSpacing: -2, lineHeight: 1.04, color: COLORS.ink }}>YouTube 自動上片</div>
+      </div>
+
+      <div style={{ position: "absolute", top: 488, left: 92, display: "flex", alignItems: "center", gap: 24 }}>
+        <span style={{ fontWeight: 800, fontSize: 300, lineHeight: 0.86, color: COLORS.claudeDeep, letterSpacing: -8 }}>0</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span style={{ fontWeight: 800, fontSize: 104, lineHeight: 1.05, color: COLORS.ink }}>手動步驟</span>
+          <span style={{ fontWeight: 800, fontSize: 104, lineHeight: 1.05, color: COLORS.ink, borderBottom: `10px solid ${COLORS.remotion}`, paddingBottom: 6 }}>全自動上片</span>
         </div>
       </div>
+
+      <div style={{ position: "absolute", bottom: 72, left: 96, display: "flex", gap: 18, alignItems: "center" }}>
+        <span style={{ padding: "16px 34px", borderRadius: RADIUS.pill, background: GRADIENT.claude, color: "#fff", fontWeight: 800, fontSize: 40 }}>YouTube Data API</span>
+        <span style={{ padding: "16px 32px", borderRadius: RADIUS.pill, background: COLORS.surface, border: `2px solid ${COLORS.borderStrong}`, color: COLORS.inkSoft, fontWeight: 800, fontSize: 40 }}>Email → 腳本 → 公開</span>
+      </div>
+
+      <div style={{ position: "absolute", top: 80, right: 70, width: 780, display: "flex", flexDirection: "column", gap: 18 }}>
+        {rows.map((r, i) => (
+          <div key={r.key} style={{ display: "flex", alignItems: "center", gap: 22, height: 268, padding: "0 36px", borderRadius: RADIUS.lg, background: r.c, color: "#fff", boxSizing: "border-box" }}>
+            <span style={{ fontWeight: 800, fontSize: 64, opacity: 0.5, width: 54 }}>{i + 1}</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <span style={{ fontWeight: 800, fontSize: 54, lineHeight: 1.05 }}>{r.key}</span>
+              <span style={{ fontWeight: 700, fontSize: 34, opacity: 0.92 }}>{r.gloss}</span>
+            </div>
+          </div>
+        ))}
+      </div>
     </AbsoluteFill>
-  </AbsoluteFill>
-);
+  );
+};

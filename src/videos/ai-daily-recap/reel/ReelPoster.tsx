@@ -1,61 +1,56 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { COLORS, FONT, GRADIENT, RADIUS, SHADOW, TYPE } from "../../../shared-skills/theme";
-import { Backdrop } from "../../../shared-skills/components/Backdrop";
-import { ToolTile, ToolKey } from "../mockups/nodes";
+import { COLORS, FONT, GRADIENT, RADIUS } from "../../../shared-skills/theme";
 import { BRAND } from "../brand";
 
-const RAIL: ToolKey[] = ["obs", "whisper", "gpt4o", "tts", "ffmpeg", "remotion"];
+/**
+ * Vertical (1080×1920) reel cover. Ports the EP00 winning formula to the tall
+ * canvas: brand → wordmark → giant number hook (錄一次) → auto-stage 色塊牆.
+ * Static <Still>.
+ */
+export const ReelPoster: React.FC = () => {
+  const rows = [
+    { c: COLORS.hi.sky, key: "錄一次螢幕", gloss: "OBS" },
+    { c: COLORS.hi.violet, key: "自動轉錄＋剪輯", gloss: "Whisper · Cowork" },
+    { c: COLORS.warn, key: "自動配音", gloss: "TTS" },
+    { c: COLORS.success, key: "雙格式輸出", gloss: "橫版 ＋ Reel" },
+  ];
+  return (
+    <AbsoluteFill style={{ fontFamily: FONT.uiCjk, color: COLORS.ink }}>
+      <AbsoluteFill style={{ background: `linear-gradient(180deg, ${COLORS.surface} 0%, ${COLORS.bg} 55%, ${COLORS.bgAlt} 100%)` }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 18%)" }} />
 
-/** Vertical (1080×1920) cover for the reel — export to PNG for the Short thumbnail. */
-export const ReelPoster: React.FC = () => (
-  <AbsoluteFill style={{ fontFamily: FONT.uiCjk, color: COLORS.ink }}>
-    <Backdrop accent={COLORS.remotion} seed="recap-reel-poster" />
-
-    {/* kicker */}
-    <div style={{ position: "absolute", top: 200, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-      <div style={{ display: "inline-flex", alignItems: "center", gap: 14, padding: "14px 32px", borderRadius: RADIUS.pill, background: COLORS.surface, border: `1px solid ${COLORS.border}`, boxShadow: SHADOW.md }}>
-        <span style={{ width: 12, height: 12, borderRadius: "50%", background: COLORS.remotion }} />
-        <span style={{ fontFamily: FONT.mono, fontWeight: 700, fontSize: TYPE.h3, letterSpacing: 1, color: COLORS.muted }}>REMOTION × CLAUDE</span>
+      <div style={{ position: "absolute", top: 86, left: 0, right: 0, textAlign: "center", fontWeight: 800, fontSize: 44, letterSpacing: 2, color: COLORS.muted }}>
+        AI Wisdom · @aiwisdomcc
       </div>
-    </div>
 
-    {/* wordmark — stacked for the tall canvas */}
-    <div style={{ position: "absolute", top: 360, left: 0, right: 0, display: "flex", flexDirection: "column", alignItems: "center", gap: 0 }}>
-      <span style={{ fontFamily: FONT.mono, fontWeight: 800, fontSize: 168, letterSpacing: -6, color: COLORS.ink, lineHeight: 1 }}>ai-daily</span>
-      <span style={{ fontFamily: FONT.mono, fontWeight: 800, fontSize: 168, letterSpacing: -6, background: GRADIENT.remotion, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", lineHeight: 1.05 }}>-recap</span>
-    </div>
-
-    {/* hero */}
-    <div style={{ position: "absolute", top: 820, left: 0, right: 0, textAlign: "center" }}>
-      <div style={{ fontFamily: FONT.uiCjk, fontWeight: 800, fontSize: 110, letterSpacing: -1, color: COLORS.ink, lineHeight: 1.15 }}>
-        每天一支影片
-        <div style={{ background: GRADIENT.remotion, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>全自動產線</div>
+      <div style={{ position: "absolute", top: 196, left: 0, right: 0, textAlign: "center" }}>
+        <div style={{ fontFamily: FONT.mono, fontWeight: 800, fontSize: 124, letterSpacing: -4, lineHeight: 1, color: COLORS.ink }}>
+          {BRAND.pre}
+          <span style={{ color: "transparent", background: GRADIENT.claude, WebkitBackgroundClip: "text", backgroundClip: "text" }}>{BRAND.post}</span>
+        </div>
+        <div style={{ marginTop: 10, fontWeight: 800, fontSize: 116, letterSpacing: -2, lineHeight: 1.04, color: COLORS.ink }}>每日全自動產線</div>
       </div>
-    </div>
 
-    {/* tagline */}
-    <div style={{ position: "absolute", top: 1120, left: 80, right: 80, textAlign: "center" }}>
-      <span style={{ fontFamily: FONT.uiCjk, fontWeight: 500, fontSize: TYPE.h2, color: COLORS.muted, lineHeight: 1.4 }}>
-        {BRAND.tagline}
-      </span>
-    </div>
+      <div style={{ position: "absolute", top: 640, left: 0, right: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 26 }}>
+        <span style={{ fontWeight: 800, fontSize: 320, lineHeight: 0.86, color: COLORS.claudeDeep, letterSpacing: -8 }}>1</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span style={{ fontWeight: 800, fontSize: 120, lineHeight: 1.05, color: COLORS.ink }}>次錄製</span>
+          <span style={{ fontWeight: 800, fontSize: 120, lineHeight: 1.05, color: COLORS.ink, borderBottom: `12px solid ${COLORS.remotion}`, paddingBottom: 6 }}>全自動成片</span>
+        </div>
+      </div>
 
-    {/* tool rail */}
-    <div style={{ position: "absolute", top: 1360, left: 0, right: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 26 }}>
-      {RAIL.map((t, i) => (
-        <React.Fragment key={t}>
-          {i > 0 ? <span style={{ width: 32, height: 3, borderRadius: 2, background: COLORS.borderStrong }} /> : null}
-          <ToolTile tool={t} size={92} />
-        </React.Fragment>
-      ))}
-    </div>
-
-    {/* footer */}
-    <div style={{ position: "absolute", bottom: 110, left: 0, right: 0, textAlign: "center" }}>
-      <span style={{ fontFamily: FONT.uiCjk, fontWeight: 700, fontSize: TYPE.h3, color: COLORS.muted, letterSpacing: 0.5 }}>
-        錄一次螢幕 · 自動轉錄、配音、雙格式輸出
-      </span>
-    </div>
-  </AbsoluteFill>
-);
+      <div style={{ position: "absolute", top: 1110, left: 70, right: 70, display: "flex", flexDirection: "column", gap: 20 }}>
+        {rows.map((r, i) => (
+          <div key={r.key} style={{ display: "flex", alignItems: "center", gap: 26, height: 170, padding: "0 40px", borderRadius: RADIUS.lg, background: r.c, color: "#fff", boxSizing: "border-box" }}>
+            <span style={{ fontWeight: 800, fontSize: 76, opacity: 0.5, width: 62 }}>{i + 1}</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <span style={{ fontWeight: 800, fontSize: 60, lineHeight: 1.05 }}>{r.key}</span>
+              <span style={{ fontFamily: FONT.monoCjk, fontWeight: 700, fontSize: 38, opacity: 0.92 }}>{r.gloss}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </AbsoluteFill>
+  );
+};

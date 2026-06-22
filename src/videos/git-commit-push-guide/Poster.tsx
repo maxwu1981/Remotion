@@ -1,63 +1,53 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { COLORS, FONT, GRADIENT, RADIUS, SHADOW, TYPE } from "../../shared-skills/theme";
-import { Backdrop } from "../../shared-skills/components/Backdrop";
-import { BrandGlyph } from "./components";
-import { ChangedFile, CommitBox, Laptop, GitHubCloud, PushArrow } from "./motifs";
-import { MOTIF, S2_COMMIT_NOTE } from "./data";
+import { COLORS, FONT, GRADIENT, RADIUS } from "../../shared-skills/theme";
+import { MOTIF } from "./data";
 
 /**
- * Thumbnail / cover still — the master pipeline 改檔案 → commit → push as the hero,
- * big title, one-glance takeaways. Static (renders as a <Still>), no animation.
+ * Thumbnail / cover still. Ports the EP00 winning formula: left = brand + giant
+ * number hook; right = colour-coded info wall (改檔→commit→push 三步). Static <Still>.
  */
 export const Poster: React.FC = () => {
-  const takeaways = [
-    { c: MOTIF.commit, t: "commit ＝ 本地存檔" },
-    { c: MOTIF.push, t: "push ＝ 上傳雲端" },
-    { c: COLORS.success, t: "跟 Claude 說一句就好" },
+  const rows = [
+    { c: MOTIF.file, key: "改檔案", gloss: "動到程式碼" },
+    { c: MOTIF.commit, key: "commit", gloss: "本地存檔（還原點）" },
+    { c: MOTIF.push, key: "push", gloss: "上傳雲端（有備份）" },
   ];
   return (
     <AbsoluteFill style={{ fontFamily: FONT.uiCjk, color: COLORS.ink }}>
-      <Backdrop accent={MOTIF.commit} seed="git-poster" freeze />
+      <AbsoluteFill style={{ background: `linear-gradient(180deg, ${COLORS.surface} 0%, ${COLORS.bg} 55%, ${COLORS.bgAlt} 100%)` }} />
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 24%)" }} />
 
-      {/* kicker */}
-      <div style={{ position: "absolute", top: 88, left: 0, right: 0, display: "flex", justifyContent: "center" }}>
-        <div style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "12px 28px", borderRadius: RADIUS.pill, background: COLORS.surface, border: `1px solid ${COLORS.border}`, boxShadow: SHADOW.md }}>
-          <BrandGlyph size={28} />
-          <span style={{ fontFamily: FONT.uiCjk, fontWeight: 800, fontSize: TYPE.h3, letterSpacing: 1, color: COLORS.inkSoft }}>從零搞懂 · 新手指南</span>
+      <div style={{ position: "absolute", top: 70, left: 100, fontWeight: 800, fontSize: 40, letterSpacing: 2, color: COLORS.muted }}>
+        AI Wisdom · @aiwisdomcc
+      </div>
+
+      <div style={{ position: "absolute", top: 140, left: 96 }}>
+        <div style={{ fontFamily: FONT.mono, fontWeight: 800, fontSize: 66, color: COLORS.ink, lineHeight: 1 }}>Git commit · push</div>
+        <div style={{ fontWeight: 800, fontSize: 128, letterSpacing: -2, lineHeight: 1.04, color: "transparent", background: GRADIENT.claude, WebkitBackgroundClip: "text", backgroundClip: "text" }}>新手指南</div>
+      </div>
+
+      <div style={{ position: "absolute", top: 488, left: 92, display: "flex", alignItems: "center", gap: 24 }}>
+        <span style={{ fontWeight: 800, fontSize: 300, lineHeight: 0.86, color: COLORS.claudeDeep, letterSpacing: -8 }}>{rows.length}</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span style={{ fontWeight: 800, fontSize: 104, lineHeight: 1.05, color: COLORS.ink }}>個步驟</span>
+          <span style={{ fontWeight: 800, fontSize: 104, lineHeight: 1.05, color: COLORS.ink, borderBottom: `10px solid ${COLORS.remotion}`, paddingBottom: 6 }}>一次學會</span>
         </div>
       </div>
 
-      {/* title */}
-      <div style={{ position: "absolute", top: 188, left: 0, right: 0, textAlign: "center" }}>
-        <div style={{ fontFamily: FONT.uiCjk, fontWeight: 800, fontSize: 118, letterSpacing: -2, color: COLORS.ink, lineHeight: 1.04 }}>
-          Git <span style={{ fontFamily: FONT.mono }}>commit</span> 與{" "}
-          <span style={{ background: GRADIENT.remotion, WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent", fontFamily: FONT.mono }}>push</span>
-        </div>
-        <div style={{ marginTop: 2, fontFamily: FONT.uiCjk, fontWeight: 800, fontSize: 78, letterSpacing: -1, color: COLORS.inkSoft }}>新手指南</div>
+      <div style={{ position: "absolute", bottom: 72, left: 96, display: "flex", gap: 18, alignItems: "center" }}>
+        <span style={{ padding: "16px 34px", borderRadius: RADIUS.pill, background: GRADIENT.claude, color: "#fff", fontWeight: 800, fontSize: 44 }}>從零搞懂 · 新手</span>
+        <span style={{ padding: "16px 32px", borderRadius: RADIUS.pill, background: COLORS.surface, border: `2px solid ${COLORS.borderStrong}`, color: COLORS.inkSoft, fontWeight: 800, fontSize: 40 }}>跟 Claude 說一句</span>
       </div>
 
-      {/* hero pipeline */}
-      <div style={{ position: "absolute", top: 486, left: 0, right: 0, display: "flex", alignItems: "center", justifyContent: "center", gap: 30 }}>
-        <ChangedFile name="login.tsx" w={172} label="改檔案" />
-        <div style={{ marginBottom: 40, fontSize: 56, color: COLORS.borderStrong }}>→</div>
-        <Laptop w={440} label="你的電腦（本地）">
-          <CommitBox note={S2_COMMIT_NOTE} w={300} flag={false} />
-        </Laptop>
-        <div style={{ marginBottom: 40 }}>
-          <PushArrow h={140} progress={1} color={MOTIF.push} label="push" />
-        </div>
-        <div style={{ marginBottom: 24 }}>
-          <GitHubCloud w={300} label="GitHub 雲端" sub="遠端 · 有備份" glow={0.7} ok />
-        </div>
-      </div>
-
-      {/* takeaways */}
-      <div style={{ position: "absolute", top: 916, left: 0, right: 0, display: "flex", justifyContent: "center", gap: 22 }}>
-        {takeaways.map((k) => (
-          <div key={k.t} style={{ display: "inline-flex", alignItems: "center", gap: 12, padding: "14px 28px", borderRadius: RADIUS.pill, background: COLORS.surface, border: `1.5px solid ${k.c}66`, boxShadow: SHADOW.md }}>
-            <span style={{ width: 12, height: 12, borderRadius: "50%", background: k.c }} />
-            <span style={{ fontFamily: FONT.uiCjk, fontWeight: 800, fontSize: TYPE.h3, color: COLORS.ink }}>{k.t}</span>
+      <div style={{ position: "absolute", top: 80, right: 70, width: 780, display: "flex", flexDirection: "column", gap: 18 }}>
+        {rows.map((r, i) => (
+          <div key={r.key} style={{ display: "flex", alignItems: "center", gap: 22, height: 268, padding: "0 36px", borderRadius: RADIUS.lg, background: r.c, color: "#fff", boxSizing: "border-box" }}>
+            <span style={{ fontWeight: 800, fontSize: 64, opacity: 0.5, width: 54 }}>{i + 1}</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              <span style={{ fontFamily: FONT.monoCjk, fontWeight: 800, fontSize: 56, lineHeight: 1.05 }}>{r.key}</span>
+              <span style={{ fontWeight: 700, fontSize: 34, opacity: 0.92 }}>{r.gloss}</span>
+            </div>
           </div>
         ))}
       </div>
