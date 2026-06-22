@@ -1,0 +1,865 @@
+{
+ "slug": "amano",
+ "title": "天桥立",
+ "total": 6,
+ "perEp": 18,
+ "accent": "#DE6E9C",
+ "reels": [
+  {
+   "id": "AmanoEP01Reel",
+   "cfg": {
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季 · EP01",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "天桥立·全6辑",
+    "outroSub": "EP01 / 06",
+    "accent": "#DE6E9C",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/amano/amano_2002.jpg",
+      "label": "天桥立",
+      "sub": "海の京都"
+     },
+     {
+      "image": "trips/amano/amano_2003.jpg",
+      "label": "天桥立",
+      "sub": "海の京都"
+     },
+     {
+      "image": "trips/amano/amano_2004.jpg",
+      "label": "天桥立",
+      "sub": "海の京都"
+     },
+     {
+      "image": "trips/amano/amano_2005.jpg",
+      "label": "天桥立",
+      "sub": "海の京都"
+     },
+     {
+      "image": "trips/amano/amano_2006.jpg",
+      "label": "天桥立",
+      "sub": "海の京都"
+     },
+     {
+      "image": "trips/amano/amano_2007.jpg",
+      "label": "天桥立",
+      "sub": "海の京都"
+     },
+     {
+      "image": "trips/amano/amano_2010.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2011.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2012.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2013.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2015.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2017.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2018.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2019.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2020.jpg",
+      "label": "智恩寺·廻旋桥",
+      "sub": "砂洲入口"
+     },
+     {
+      "image": "trips/amano/amano_2023.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2024.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2025.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AmanoEP02Reel",
+   "cfg": {
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季 · EP02",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "天桥立·全6辑",
+    "outroSub": "EP02 / 06",
+    "accent": "#DE6E9C",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/amano/amano_2026.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2028.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2029.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2030.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2031.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2033.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2034.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2035.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2038.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2039.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2040.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2042.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2045.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2046.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2047.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2049.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2051.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2052.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AmanoEP03Reel",
+   "cfg": {
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季 · EP03",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "天桥立·全6辑",
+    "outroSub": "EP03 / 06",
+    "accent": "#DE6E9C",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/amano/amano_2053.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2054.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2055.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2056.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2059.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2060.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2061.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2062.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2064.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2065.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2066.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2067.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2068.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2069.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2070.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2071.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2072.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2073.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AmanoEP04Reel",
+   "cfg": {
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季 · EP04",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "天桥立·全6辑",
+    "outroSub": "EP04 / 06",
+    "accent": "#DE6E9C",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/amano/amano_2074.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2075.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2076.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2077.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2078.jpg",
+      "label": "砂洲·松並木",
+      "sub": "白砂青松"
+     },
+     {
+      "image": "trips/amano/amano_2079.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2080.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2081.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2082.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2083.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2085.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2086.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2087.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2088.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2089.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2090.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2091.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2092.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AmanoEP05Reel",
+   "cfg": {
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季 · EP05",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "天桥立·全6辑",
+    "outroSub": "EP05 / 06",
+    "accent": "#DE6E9C",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/amano/amano_2093.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2094.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2095.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2096.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2097.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2098.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2099.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2100.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2101.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2102.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2103.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2104.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2105.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2106.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2107.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2108.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2109.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2110.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     }
+    ]
+   }
+  },
+  {
+   "id": "AmanoEP06Reel",
+   "cfg": {
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季 · EP06",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "天桥立·全6辑",
+    "outroSub": "EP06 / 06",
+    "accent": "#DE6E9C",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/amano/amano_2111.jpg",
+      "label": "伞松公园",
+      "sub": "飞龙观/股のぞき"
+     },
+     {
+      "image": "trips/amano/amano_2188.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2189.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2190.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2191.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2192.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2193.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2194.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2195.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2196.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2197.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     },
+     {
+      "image": "trips/amano/amano_2198.jpg",
+      "label": "飞龙观",
+      "sub": "ビューランド空拍"
+     }
+    ]
+   }
+  }
+ ],
+ "covers": [
+  {
+   "id": "AmanoEP01Cover",
+   "cfg": {
+    "image": "trips/amano/amano_2005.jpg",
+    "accent": "#DE6E9C",
+    "pillL": "一个人旅行",
+    "pillR": "日本三景",
+    "hookL": "日本三景·3.6km松林砂洲",
+    "hookR": "弯腰倒看·飞龙在天",
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP01 / 06"
+   }
+  },
+  {
+   "id": "AmanoEP02Cover",
+   "cfg": {
+    "image": "trips/amano/amano_2049.jpg",
+    "accent": "#DE6E9C",
+    "pillL": "一个人旅行",
+    "pillR": "日本三景",
+    "hookL": "日本三景·3.6km松林砂洲",
+    "hookR": "弯腰倒看·飞龙在天",
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP02 / 06"
+   }
+  },
+  {
+   "id": "AmanoEP03Cover",
+   "cfg": {
+    "image": "trips/amano/amano_2059.jpg",
+    "accent": "#DE6E9C",
+    "pillL": "一个人旅行",
+    "pillR": "日本三景",
+    "hookL": "日本三景·3.6km松林砂洲",
+    "hookR": "弯腰倒看·飞龙在天",
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP03 / 06"
+   }
+  },
+  {
+   "id": "AmanoEP04Cover",
+   "cfg": {
+    "image": "trips/amano/amano_2086.jpg",
+    "accent": "#DE6E9C",
+    "pillL": "一个人旅行",
+    "pillR": "日本三景",
+    "hookL": "日本三景·3.6km松林砂洲",
+    "hookR": "弯腰倒看·飞龙在天",
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP04 / 06"
+   }
+  },
+  {
+   "id": "AmanoEP05Cover",
+   "cfg": {
+    "image": "trips/amano/amano_2104.jpg",
+    "accent": "#DE6E9C",
+    "pillL": "一个人旅行",
+    "pillR": "日本三景",
+    "hookL": "日本三景·3.6km松林砂洲",
+    "hookR": "弯腰倒看·飞龙在天",
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP05 / 06"
+   }
+  },
+  {
+   "id": "AmanoEP06Cover",
+   "cfg": {
+    "image": "trips/amano/amano_2191.jpg",
+    "accent": "#DE6E9C",
+    "pillL": "一个人旅行",
+    "pillR": "日本三景",
+    "hookL": "日本三景·3.6km松林砂洲",
+    "hookR": "弯腰倒看·飞龙在天",
+    "title": "天桥立",
+    "subtitle": "海の京都·日本三景樱花季",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP06 / 06"
+   }
+  }
+ ],
+ "plan": [
+  {
+   "ep": 1,
+   "reelId": "AmanoEP01Reel",
+   "coverId": "AmanoEP01Cover",
+   "folder": "2025赏樱1-天桥立EP01",
+   "images": [
+    "amano_2002.jpg",
+    "amano_2003.jpg",
+    "amano_2004.jpg",
+    "amano_2005.jpg",
+    "amano_2006.jpg",
+    "amano_2007.jpg",
+    "amano_2010.jpg",
+    "amano_2011.jpg",
+    "amano_2012.jpg",
+    "amano_2013.jpg",
+    "amano_2015.jpg",
+    "amano_2017.jpg",
+    "amano_2018.jpg",
+    "amano_2019.jpg",
+    "amano_2020.jpg",
+    "amano_2023.jpg",
+    "amano_2024.jpg",
+    "amano_2025.jpg"
+   ]
+  },
+  {
+   "ep": 2,
+   "reelId": "AmanoEP02Reel",
+   "coverId": "AmanoEP02Cover",
+   "folder": "2025赏樱1-天桥立EP02",
+   "images": [
+    "amano_2026.jpg",
+    "amano_2028.jpg",
+    "amano_2029.jpg",
+    "amano_2030.jpg",
+    "amano_2031.jpg",
+    "amano_2033.jpg",
+    "amano_2034.jpg",
+    "amano_2035.jpg",
+    "amano_2038.jpg",
+    "amano_2039.jpg",
+    "amano_2040.jpg",
+    "amano_2042.jpg",
+    "amano_2045.jpg",
+    "amano_2046.jpg",
+    "amano_2047.jpg",
+    "amano_2049.jpg",
+    "amano_2051.jpg",
+    "amano_2052.jpg"
+   ]
+  },
+  {
+   "ep": 3,
+   "reelId": "AmanoEP03Reel",
+   "coverId": "AmanoEP03Cover",
+   "folder": "2025赏樱1-天桥立EP03",
+   "images": [
+    "amano_2053.jpg",
+    "amano_2054.jpg",
+    "amano_2055.jpg",
+    "amano_2056.jpg",
+    "amano_2059.jpg",
+    "amano_2060.jpg",
+    "amano_2061.jpg",
+    "amano_2062.jpg",
+    "amano_2064.jpg",
+    "amano_2065.jpg",
+    "amano_2066.jpg",
+    "amano_2067.jpg",
+    "amano_2068.jpg",
+    "amano_2069.jpg",
+    "amano_2070.jpg",
+    "amano_2071.jpg",
+    "amano_2072.jpg",
+    "amano_2073.jpg"
+   ]
+  },
+  {
+   "ep": 4,
+   "reelId": "AmanoEP04Reel",
+   "coverId": "AmanoEP04Cover",
+   "folder": "2025赏樱1-天桥立EP04",
+   "images": [
+    "amano_2074.jpg",
+    "amano_2075.jpg",
+    "amano_2076.jpg",
+    "amano_2077.jpg",
+    "amano_2078.jpg",
+    "amano_2079.jpg",
+    "amano_2080.jpg",
+    "amano_2081.jpg",
+    "amano_2082.jpg",
+    "amano_2083.jpg",
+    "amano_2085.jpg",
+    "amano_2086.jpg",
+    "amano_2087.jpg",
+    "amano_2088.jpg",
+    "amano_2089.jpg",
+    "amano_2090.jpg",
+    "amano_2091.jpg",
+    "amano_2092.jpg"
+   ]
+  },
+  {
+   "ep": 5,
+   "reelId": "AmanoEP05Reel",
+   "coverId": "AmanoEP05Cover",
+   "folder": "2025赏樱1-天桥立EP05",
+   "images": [
+    "amano_2093.jpg",
+    "amano_2094.jpg",
+    "amano_2095.jpg",
+    "amano_2096.jpg",
+    "amano_2097.jpg",
+    "amano_2098.jpg",
+    "amano_2099.jpg",
+    "amano_2100.jpg",
+    "amano_2101.jpg",
+    "amano_2102.jpg",
+    "amano_2103.jpg",
+    "amano_2104.jpg",
+    "amano_2105.jpg",
+    "amano_2106.jpg",
+    "amano_2107.jpg",
+    "amano_2108.jpg",
+    "amano_2109.jpg",
+    "amano_2110.jpg"
+   ]
+  },
+  {
+   "ep": 6,
+   "reelId": "AmanoEP06Reel",
+   "coverId": "AmanoEP06Cover",
+   "folder": "2025赏樱1-天桥立EP06",
+   "images": [
+    "amano_2111.jpg",
+    "amano_2188.jpg",
+    "amano_2189.jpg",
+    "amano_2190.jpg",
+    "amano_2191.jpg",
+    "amano_2192.jpg",
+    "amano_2193.jpg",
+    "amano_2194.jpg",
+    "amano_2195.jpg",
+    "amano_2196.jpg",
+    "amano_2197.jpg",
+    "amano_2198.jpg"
+   ]
+  }
+ ]
+}

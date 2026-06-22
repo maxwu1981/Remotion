@@ -674,52 +674,13 @@ export const INUYAMA_REEL: TripReelConfig = {
   ],
 };
 
-/* ------------------------------------------------- 関西賞櫻·天橋立(海の京都) ----- */
-export const AMANO_REEL: TripReelConfig = {
-  title: "天桥立",
-  subtitle: "日本三景·樱花季",
-  handle: "@獨自旅遊亂走",
-  outroTitle: "日本三景留一天",
-  outroSub: "走过3.6km的飞龙在天",
-  accent: "#DE6E9C",
-  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
-  slides: [
-    { image: "trips/amano/amano_01.jpg", label: "天桥立", sub: "日本三景·飞龙观" },
-    { image: "trips/amano/amano_02.jpg", label: "伞松公园", sub: "昇龙观·缆车" },
-    { image: "trips/amano/amano_03.jpg", label: "天桥立", sub: "樱花季空拍" },
-    { image: "trips/amano/amano_04.jpg", label: "智恵の輪", sub: "伞松公园打卡" },
-    { image: "trips/amano/amano_05.jpg", label: "伞松公园", sub: "展望台" },
-    { image: "trips/amano/amano_06.jpg", label: "松并木", sub: "沙洲步道" },
-    { image: "trips/amano/amano_07.jpg", label: "沙洲海滩", sub: "白砂青松" },
-    { image: "trips/amano/amano_08.jpg", label: "沙洲古松" },
-    { image: "trips/amano/amano_09.jpg", label: "智恩寺", sub: "文殊堂" },
-    { image: "trips/amano/amano_10.jpg", label: "天桥立站", sub: "海の京都" },
-  ],
-};
-
-/* ------------------------------------------------- 関西賞櫻·伊根の舟屋(海の京都) ----- */
-export const INE_REEL: TripReelConfig = {
-  title: "伊根的舟屋",
-  subtitle: "海上人家·海の京都",
-  handle: "@獨自旅遊亂走",
-  outroTitle: "日本最美渔村之一",
-  outroSub: "230间舟屋·泡在海上",
-  accent: "#2E8B8B",
-  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
-  slides: [
-    { image: "trips/ine/ine_01.jpg", label: "伊根的舟屋", sub: "海上人家" },
-    { image: "trips/ine/ine_02.jpg", label: "舟屋老街", sub: "临水而建" },
-    { image: "trips/ine/ine_03.jpg", label: "舟屋", sub: "依山傍海" },
-    { image: "trips/ine/ine_04.jpg", label: "舟屋", sub: "渔船入户" },
-    { image: "trips/ine/ine_05.jpg", label: "伊根湾", sub: "舟屋一角" },
-    { image: "trips/ine/ine_06.jpg", label: "舟屋", sub: "伊根湾" },
-    { image: "trips/ine/ine_07.jpg", label: "舟屋群", sub: "船上看" },
-    { image: "trips/ine/ine_08.jpg", label: "舟屋", sub: "海上人家" },
-    { image: "trips/ine/ine_09.jpg", label: "遊覧船", sub: "伊根湾めぐり" },
-    { image: "trips/ine/ine_10.jpg", label: "喂海鸥", sub: "遊覧船名物" },
-    { image: "trips/ine/ine_11.jpg", label: "伊根湾", sub: "全景" },
-  ],
-};
+/* --- 関西賞櫻 EP 系列(資料驅動;由 scripts/gen-sakura-eps.mjs 產生 eps/<slug>.json) --- */
+import amanoEps from "./eps/amano.json";
+import ineEps from "./eps/ine.json";
+const SAKURA_EP_JSONS = [amanoEps, ineEps];
+const SAKURA_EP_REELS: { id: string; cfg: TripReelConfig }[] = SAKURA_EP_JSONS.flatMap(
+  (e) => e.reels as { id: string; cfg: TripReelConfig }[],
+);
 
 /* ----------------------------------------------------- 関西賞櫻·姫路城(白鷺城) ----- */
 export const HIMEJI_REEL: TripReelConfig = {
@@ -768,8 +729,7 @@ export const KINOSAKI_REEL: TripReelConfig = {
 export const TRIP_REELS: { id: string; cfg: TripReelConfig }[] = [
   { id: "KinosakiReel", cfg: KINOSAKI_REEL },
   { id: "HimejiReel", cfg: HIMEJI_REEL },
-  { id: "IneReel", cfg: INE_REEL },
-  { id: "AmanoReel", cfg: AMANO_REEL },
+  ...SAKURA_EP_REELS,
   { id: "KenrokuReel", cfg: KENROKU_REEL },
   { id: "TokonameReel", cfg: TOKONAME_REEL },
   { id: "NagoyaReel", cfg: NAGOYA_REEL },
@@ -832,34 +792,5 @@ export const XHS_COVERS: { id: string; cfg: XhsCoverConfig }[] = [
       focus: "50% 60%",
     },
   },
-  {
-    id: "IneCover",
-    cfg: {
-      image: "trips/ine/_cover_src.jpg",
-      accent: "#2E8B8B",
-      pillL: "一个人旅行",
-      pillR: "海の京都",
-      hookL: "230间木屋泡在海上",
-      hookR: "渔船直接开进家",
-      title: "伊根的舟屋",
-      subtitle: "日本最美渔村·遊覧船喂海鸥",
-      handle: "@独自旅游乱走",
-      focus: "50% 42%",
-    },
-  },
-  {
-    id: "AmanoCover",
-    cfg: {
-      image: "trips/amano/_cover_src.jpg",
-      accent: "#DE6E9C",
-      pillL: "一个人旅行",
-      pillR: "日本三景",
-      hookL: "走完3.6km松林沙洲",
-      hookR: "弯腰倒看·飞龙在天",
-      title: "天桥立",
-      subtitle: "海の京都·成相寺五重塔樱花满开",
-      handle: "@独自旅游乱走",
-      focus: "50% 42%",
-    },
-  },
+  ...SAKURA_EP_JSONS.flatMap((e) => e.covers as { id: string; cfg: XhsCoverConfig }[]),
 ];

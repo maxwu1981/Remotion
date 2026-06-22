@@ -28,6 +28,8 @@ export const xhsCoverSchema = z.object({
   handle: z.string().default("@独自旅游乱走"),
   /** CSS object-position for the hero crop, e.g. "50% 35%". */
   focus: z.string().default("50% 50%"),
+  /** optional EP badge text, e.g. "EP01 / 06". Shown top-right when set. */
+  ep: z.string().default(""),
 });
 
 export type XhsCoverConfig = z.infer<typeof xhsCoverSchema>;
@@ -81,6 +83,29 @@ export const XhsCover: React.FC<XhsCoverConfig> = (raw) => {
           {c.pillR}
         </Pill>
       </div>
+
+      {/* EP badge top-right */}
+      {c.ep ? (
+        <div
+          style={{
+            position: "absolute",
+            top: 46,
+            right: 44,
+            padding: "13px 26px",
+            borderRadius: 16,
+            background: "rgba(0,0,0,0.62)",
+            border: `3px solid ${c.accent}`,
+            color: "#fff",
+            fontFamily: SANS,
+            fontWeight: 900,
+            fontSize: 38,
+            letterSpacing: 2,
+            lineHeight: 1,
+          }}
+        >
+          {c.ep}
+        </div>
+      ) : null}
 
       {/* bottom block */}
       <div style={{ position: "absolute", left: 50, right: 50, bottom: 70 }}>
