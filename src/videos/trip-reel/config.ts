@@ -674,8 +674,102 @@ export const INUYAMA_REEL: TripReelConfig = {
   ],
 };
 
+/* ------------------------------------------------- 関西賞櫻·天橋立(海の京都) ----- */
+export const AMANO_REEL: TripReelConfig = {
+  title: "天桥立",
+  subtitle: "日本三景·樱花季",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "日本三景留一天",
+  outroSub: "走过3.6km的飞龙在天",
+  accent: "#DE6E9C",
+  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
+  slides: [
+    { image: "trips/amano/amano_01.jpg", label: "天桥立", sub: "日本三景·飞龙观" },
+    { image: "trips/amano/amano_02.jpg", label: "伞松公园", sub: "昇龙观·缆车" },
+    { image: "trips/amano/amano_03.jpg", label: "天桥立", sub: "樱花季空拍" },
+    { image: "trips/amano/amano_04.jpg", label: "智恵の輪", sub: "伞松公园打卡" },
+    { image: "trips/amano/amano_05.jpg", label: "伞松公园", sub: "展望台" },
+    { image: "trips/amano/amano_06.jpg", label: "松并木", sub: "沙洲步道" },
+    { image: "trips/amano/amano_07.jpg", label: "沙洲海滩", sub: "白砂青松" },
+    { image: "trips/amano/amano_08.jpg", label: "沙洲古松" },
+    { image: "trips/amano/amano_09.jpg", label: "智恩寺", sub: "文殊堂" },
+    { image: "trips/amano/amano_10.jpg", label: "天桥立站", sub: "海の京都" },
+  ],
+};
+
+/* ------------------------------------------------- 関西賞櫻·伊根の舟屋(海の京都) ----- */
+export const INE_REEL: TripReelConfig = {
+  title: "伊根的舟屋",
+  subtitle: "海上人家·海の京都",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "日本最美渔村之一",
+  outroSub: "230间舟屋·泡在海上",
+  accent: "#2E8B8B",
+  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
+  slides: [
+    { image: "trips/ine/ine_01.jpg", label: "伊根的舟屋", sub: "海上人家" },
+    { image: "trips/ine/ine_02.jpg", label: "舟屋老街", sub: "临水而建" },
+    { image: "trips/ine/ine_03.jpg", label: "舟屋", sub: "依山傍海" },
+    { image: "trips/ine/ine_04.jpg", label: "舟屋", sub: "渔船入户" },
+    { image: "trips/ine/ine_05.jpg", label: "伊根湾", sub: "舟屋一角" },
+    { image: "trips/ine/ine_06.jpg", label: "舟屋", sub: "伊根湾" },
+    { image: "trips/ine/ine_07.jpg", label: "舟屋群", sub: "船上看" },
+    { image: "trips/ine/ine_08.jpg", label: "舟屋", sub: "海上人家" },
+    { image: "trips/ine/ine_09.jpg", label: "遊覧船", sub: "伊根湾めぐり" },
+    { image: "trips/ine/ine_10.jpg", label: "喂海鸥", sub: "遊覧船名物" },
+    { image: "trips/ine/ine_11.jpg", label: "伊根湾", sub: "全景" },
+  ],
+};
+
+/* ----------------------------------------------------- 関西賞櫻·姫路城(白鷺城) ----- */
+export const HIMEJI_REEL: TripReelConfig = {
+  title: "姫路城",
+  subtitle: "世界遗产·白鹭城樱花",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "日本第一座世界遗产",
+  outroSub: "白鹭城配1000棵樱",
+  accent: "#DE6E9C",
+  coverSec: 2.6, slideSec: 2.7, outroSec: 3,
+  slides: [
+    { image: "trips/himeji/himeji_01.jpg", label: "姫路城", sub: "世界遗产·三の丸" },
+    { image: "trips/himeji/himeji_02.jpg", label: "大天守", sub: "白鹭城" },
+    { image: "trips/himeji/himeji_03.jpg", label: "姫路城", sub: "松与樱" },
+    { image: "trips/himeji/himeji_04.jpg", label: "大天守", sub: "樱花季" },
+    { image: "trips/himeji/himeji_05.jpg", label: "姫路城", sub: "城与市景" },
+    { image: "trips/himeji/himeji_06.jpg", label: "姫路城", sub: "远望" },
+    { image: "trips/himeji/himeji_07.jpg", label: "大手前通", sub: "站前参道" },
+  ],
+};
+
+/* ----------------------------------------------------- 関西賞櫻·城崎温泉(外湯) ----- */
+export const KINOSAKI_REEL: TripReelConfig = {
+  title: "城崎温泉",
+  subtitle: "外汤めぐり·柳与樱",
+  handle: "@獨自旅遊亂走",
+  outroTitle: "穿浴衣逛七个外汤",
+  outroSub: "1300年的柳树汤町",
+  accent: "#C4607E",
+  coverSec: 2.6, slideSec: 2.6, outroSec: 3,
+  slides: [
+    { image: "trips/kinosaki/kinosaki_01.jpg", label: "大谿川", sub: "柳并木" },
+    { image: "trips/kinosaki/kinosaki_02.jpg", label: "太鼓桥", sub: "大谿川" },
+    { image: "trips/kinosaki/kinosaki_03.jpg", label: "大谿川", sub: "石桥与柳" },
+    { image: "trips/kinosaki/kinosaki_04.jpg", label: "温泉街", sub: "大谿川" },
+    { image: "trips/kinosaki/kinosaki_05.jpg", label: "温泉街", sub: "樱花" },
+    { image: "trips/kinosaki/kinosaki_06.jpg", label: "温泉街", sub: "外汤巡" },
+    { image: "trips/kinosaki/kinosaki_07.jpg", label: "城崎", sub: "街景" },
+    { image: "trips/kinosaki/kinosaki_08.jpg", label: "城崎温泉", sub: "商店街" },
+    { image: "trips/kinosaki/kinosaki_09.jpg", label: "城崎温泉站" },
+    { image: "trips/kinosaki/kinosaki_10.jpg", label: "温泉寺" },
+  ],
+};
+
 /** All trip reels, registered as a Folder in Root.tsx. */
 export const TRIP_REELS: { id: string; cfg: TripReelConfig }[] = [
+  { id: "KinosakiReel", cfg: KINOSAKI_REEL },
+  { id: "HimejiReel", cfg: HIMEJI_REEL },
+  { id: "IneReel", cfg: INE_REEL },
+  { id: "AmanoReel", cfg: AMANO_REEL },
   { id: "KenrokuReel", cfg: KENROKU_REEL },
   { id: "TokonameReel", cfg: TOKONAME_REEL },
   { id: "NagoyaReel", cfg: NAGOYA_REEL },
@@ -701,4 +795,71 @@ export const TRIP_REELS: { id: string; cfg: TripReelConfig }[] = [
   { id: "OsakaReel", cfg: OSAKA_REEL },
   { id: "KyotoReel", cfg: KYOTO_REEL },
   { id: "InuyamaReel", cfg: INUYAMA_REEL },
+];
+
+/* --------------------------------------------------- 小紅書 3:4 covers (Still) ----- */
+import type { XhsCoverConfig } from "./XhsCover";
+
+/** Per-spot XHS covers, registered as <Still> in Root.tsx (Folder Xhs-Covers). */
+export const XHS_COVERS: { id: string; cfg: XhsCoverConfig }[] = [
+  {
+    id: "KinosakiCover",
+    cfg: {
+      image: "trips/kinosaki/_cover_src.jpg",
+      accent: "#C4607E",
+      pillL: "一个人旅行",
+      pillR: "温泉古镇",
+      hookL: "穿浴衣逛7个外汤",
+      hookR: "柳树太鼓桥配满开樱",
+      title: "城崎温泉",
+      subtitle: "1300年汤町·外汤めぐり发祥地",
+      handle: "@独自旅游乱走",
+      focus: "50% 50%",
+    },
+  },
+  {
+    id: "HimejiCover",
+    cfg: {
+      image: "trips/himeji/_cover_src.jpg",
+      accent: "#DE6E9C",
+      pillL: "一个人旅行",
+      pillR: "世界遗产",
+      hookL: "日本第一座世界遗产",
+      hookR: "1000棵樱花围着白鹭城",
+      title: "姫路城",
+      subtitle: "国宝五城·白鹭城樱花满开",
+      handle: "@独自旅游乱走",
+      focus: "50% 60%",
+    },
+  },
+  {
+    id: "IneCover",
+    cfg: {
+      image: "trips/ine/_cover_src.jpg",
+      accent: "#2E8B8B",
+      pillL: "一个人旅行",
+      pillR: "海の京都",
+      hookL: "230间木屋泡在海上",
+      hookR: "渔船直接开进家",
+      title: "伊根的舟屋",
+      subtitle: "日本最美渔村·遊覧船喂海鸥",
+      handle: "@独自旅游乱走",
+      focus: "50% 42%",
+    },
+  },
+  {
+    id: "AmanoCover",
+    cfg: {
+      image: "trips/amano/_cover_src.jpg",
+      accent: "#DE6E9C",
+      pillL: "一个人旅行",
+      pillR: "日本三景",
+      hookL: "走完3.6km松林沙洲",
+      hookR: "弯腰倒看·飞龙在天",
+      title: "天桥立",
+      subtitle: "海の京都·成相寺五重塔樱花满开",
+      handle: "@独自旅游乱走",
+      focus: "50% 42%",
+    },
+  },
 ];
