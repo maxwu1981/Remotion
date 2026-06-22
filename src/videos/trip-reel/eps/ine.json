@@ -1,0 +1,533 @@
+{
+ "slug": "ine",
+ "title": "伊根的舟屋",
+ "total": 4,
+ "perEp": 18,
+ "accent": "#2E8B8B",
+ "reels": [
+  {
+   "id": "IneEP01Reel",
+   "cfg": {
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村 · EP01",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "伊根的舟屋·全4辑",
+    "outroSub": "EP01 / 04",
+    "accent": "#2E8B8B",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/ine/ine_2113.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2114.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2115.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2116.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2123.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2124.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2125.jpg",
+      "label": "伊根湾",
+      "sub": "遊覧船·村景"
+     },
+     {
+      "image": "trips/ine/ine_2126.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2127.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2128.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2129.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2130.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2131.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2132.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2133.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2134.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2135.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2136.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     }
+    ]
+   }
+  },
+  {
+   "id": "IneEP02Reel",
+   "cfg": {
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村 · EP02",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "伊根的舟屋·全4辑",
+    "outroSub": "EP02 / 04",
+    "accent": "#2E8B8B",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/ine/ine_2137.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2138.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2139.jpg",
+      "label": "喂海鸥",
+      "sub": "遊覧船名物"
+     },
+     {
+      "image": "trips/ine/ine_2141.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2142.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2143.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2144.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2145.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2146.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2147.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2148.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2150.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2152.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2154.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2155.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2156.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2157.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2158.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     }
+    ]
+   }
+  },
+  {
+   "id": "IneEP03Reel",
+   "cfg": {
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村 · EP03",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "伊根的舟屋·全4辑",
+    "outroSub": "EP03 / 04",
+    "accent": "#2E8B8B",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/ine/ine_2159.jpg",
+      "label": "舟屋",
+      "sub": "临水而建"
+     },
+     {
+      "image": "trips/ine/ine_2160.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2162.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2163.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2164.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2165.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2166.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2167.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2168.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2169.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2170.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2171.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2172.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2173.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2174.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2175.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2176.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2177.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     }
+    ]
+   }
+  },
+  {
+   "id": "IneEP04Reel",
+   "cfg": {
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村 · EP04",
+    "handle": "@獨自旅遊亂走",
+    "outroTitle": "伊根的舟屋·全4辑",
+    "outroSub": "EP04 / 04",
+    "accent": "#2E8B8B",
+    "coverSec": 2.4,
+    "slideSec": 2.2,
+    "outroSec": 3,
+    "slides": [
+     {
+      "image": "trips/ine/ine_2178.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2179.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2180.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2181.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2182.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     },
+     {
+      "image": "trips/ine/ine_2183.jpg",
+      "label": "伊根的舟屋",
+      "sub": "海上人家"
+     }
+    ]
+   }
+  }
+ ],
+ "covers": [
+  {
+   "id": "IneEP01Cover",
+   "cfg": {
+    "image": "trips/ine/ine_2124.jpg",
+    "accent": "#2E8B8B",
+    "pillL": "一个人旅行",
+    "pillR": "海の京都",
+    "hookL": "230间木屋泡在海上",
+    "hookR": "渔船直接开进家",
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP01 / 04"
+   }
+  },
+  {
+   "id": "IneEP02Cover",
+   "cfg": {
+    "image": "trips/ine/ine_2137.jpg",
+    "accent": "#2E8B8B",
+    "pillL": "一个人旅行",
+    "pillR": "海の京都",
+    "hookL": "230间木屋泡在海上",
+    "hookR": "渔船直接开进家",
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP02 / 04"
+   }
+  },
+  {
+   "id": "IneEP03Cover",
+   "cfg": {
+    "image": "trips/ine/ine_2159.jpg",
+    "accent": "#2E8B8B",
+    "pillL": "一个人旅行",
+    "pillR": "海の京都",
+    "hookL": "230间木屋泡在海上",
+    "hookR": "渔船直接开进家",
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP03 / 04"
+   }
+  },
+  {
+   "id": "IneEP04Cover",
+   "cfg": {
+    "image": "trips/ine/ine_2178.jpg",
+    "accent": "#2E8B8B",
+    "pillL": "一个人旅行",
+    "pillR": "海の京都",
+    "hookL": "230间木屋泡在海上",
+    "hookR": "渔船直接开进家",
+    "title": "伊根的舟屋",
+    "subtitle": "海の京都·日本最美渔村",
+    "handle": "@独自旅游乱走",
+    "focus": "50% 50%",
+    "ep": "EP04 / 04"
+   }
+  }
+ ],
+ "plan": [
+  {
+   "ep": 1,
+   "reelId": "IneEP01Reel",
+   "coverId": "IneEP01Cover",
+   "folder": "2025赏樱2-伊根の舟屋EP01",
+   "images": [
+    "ine_2113.jpg",
+    "ine_2114.jpg",
+    "ine_2115.jpg",
+    "ine_2116.jpg",
+    "ine_2123.jpg",
+    "ine_2124.jpg",
+    "ine_2125.jpg",
+    "ine_2126.jpg",
+    "ine_2127.jpg",
+    "ine_2128.jpg",
+    "ine_2129.jpg",
+    "ine_2130.jpg",
+    "ine_2131.jpg",
+    "ine_2132.jpg",
+    "ine_2133.jpg",
+    "ine_2134.jpg",
+    "ine_2135.jpg",
+    "ine_2136.jpg"
+   ]
+  },
+  {
+   "ep": 2,
+   "reelId": "IneEP02Reel",
+   "coverId": "IneEP02Cover",
+   "folder": "2025赏樱2-伊根の舟屋EP02",
+   "images": [
+    "ine_2137.jpg",
+    "ine_2138.jpg",
+    "ine_2139.jpg",
+    "ine_2141.jpg",
+    "ine_2142.jpg",
+    "ine_2143.jpg",
+    "ine_2144.jpg",
+    "ine_2145.jpg",
+    "ine_2146.jpg",
+    "ine_2147.jpg",
+    "ine_2148.jpg",
+    "ine_2150.jpg",
+    "ine_2152.jpg",
+    "ine_2154.jpg",
+    "ine_2155.jpg",
+    "ine_2156.jpg",
+    "ine_2157.jpg",
+    "ine_2158.jpg"
+   ]
+  },
+  {
+   "ep": 3,
+   "reelId": "IneEP03Reel",
+   "coverId": "IneEP03Cover",
+   "folder": "2025赏樱2-伊根の舟屋EP03",
+   "images": [
+    "ine_2159.jpg",
+    "ine_2160.jpg",
+    "ine_2162.jpg",
+    "ine_2163.jpg",
+    "ine_2164.jpg",
+    "ine_2165.jpg",
+    "ine_2166.jpg",
+    "ine_2167.jpg",
+    "ine_2168.jpg",
+    "ine_2169.jpg",
+    "ine_2170.jpg",
+    "ine_2171.jpg",
+    "ine_2172.jpg",
+    "ine_2173.jpg",
+    "ine_2174.jpg",
+    "ine_2175.jpg",
+    "ine_2176.jpg",
+    "ine_2177.jpg"
+   ]
+  },
+  {
+   "ep": 4,
+   "reelId": "IneEP04Reel",
+   "coverId": "IneEP04Cover",
+   "folder": "2025赏樱2-伊根の舟屋EP04",
+   "images": [
+    "ine_2178.jpg",
+    "ine_2179.jpg",
+    "ine_2180.jpg",
+    "ine_2181.jpg",
+    "ine_2182.jpg",
+    "ine_2183.jpg"
+   ]
+  }
+ ]
+}
