@@ -36,6 +36,8 @@ import { Poster as CrnPoster } from "./videos/claude-remote-notes/Poster";
 import { ReelMaster as CrnReelMaster } from "./videos/claude-remote-notes/reel/ReelMaster";
 import { ReelPoster as CrnReelPoster } from "./videos/claude-remote-notes/reel/ReelPoster";
 import { TripReel } from "./videos/trip-reel/TripReel";
+import { XhsCover, xhsCoverSchema, COVER_W, COVER_H } from "./videos/trip-reel/XhsCover";
+import { XHS_COVERS } from "./videos/trip-reel/config";
 import {
   tripReelSchema,
   calculateTripReelMetadata,
@@ -50,6 +52,52 @@ import {
   SCENES as GIT_SCENES,
   getMovieFrames as getGitFrames,
 } from "./videos/git-commit-push-guide/registry";
+import { ClaudeCodeMapPoster } from "./videos/claude-code-map/MapPoster";
+import { EP00Master, FPS as MAP_FPS, getEp00Frames } from "./videos/claude-code-map/EP00Master";
+import { ThumbEP00 } from "./videos/claude-code-map/ThumbEP00";
+import { EP01Master, getEp01Frames } from "./videos/claude-code-map/EP01Master";
+import { ThumbEP01 } from "./videos/claude-code-map/ThumbEP01";
+import { EP02Master, getEp02Frames } from "./videos/claude-code-map/EP02Master";
+import { ThumbEP02 } from "./videos/claude-code-map/ThumbEP02";
+import { EP03Master, getEp03Frames } from "./videos/claude-code-map/EP03Master";
+import { ThumbEP03 } from "./videos/claude-code-map/ThumbEP03";
+import { GENERATED_EPISODES } from "./videos/claude-code-map/generatedEpisodes";
+import { Master as InstallMaster } from "./videos/claude-code-install/Master";
+import { Poster as InstallPoster } from "./videos/claude-code-install/Poster";
+import { FPS as INSTALL_FPS, SCENES as INSTALL_SCENES, getMovieFrames as getInstallFrames } from "./videos/claude-code-install/registry";
+import { Master as SkillsMaster } from "./videos/claude-code-skills/Master";
+import { Poster as SkillsPoster } from "./videos/claude-code-skills/Poster";
+import { FPS as SKILLS_FPS, SCENES as SKILLS_SCENES, getMovieFrames as getSkillsFrames } from "./videos/claude-code-skills/registry";
+import { Master as DesktopMaster } from "./videos/claude-desktop-to-cli/Master";
+import { Poster as DesktopPoster } from "./videos/claude-desktop-to-cli/Poster";
+import { FPS as DESKTOP_FPS, SCENES as DESKTOP_SCENES, getMovieFrames as getDesktopFrames } from "./videos/claude-desktop-to-cli/registry";
+import { Explainer, explainerFrames } from "./videos/_explainer/Explainer";
+import { RoundupReel, roundupReelFrames } from "./videos/_explainer/Reel";
+import { RoundupPoster } from "./videos/_explainer/Poster";
+import { SlashCover } from "./videos/_explainer/SlashCover";
+import { SlashCoverGlass } from "./videos/_explainer/SlashCoverGlass";
+import { SlashCoverWhiteGlass } from "./videos/_explainer/SlashCoverWhiteGlass";
+import { SlashCoverNeonGlass } from "./videos/_explainer/SlashCoverNeonGlass";
+import type { VideoSpec } from "./videos/_explainer/schema";
+import localCloudSpec from "./videos/_explainer/specs/local-cloud.json";
+import localCloudVo from "./videos/_explainer/specs/local-cloud.vo.json";
+import whatsappDebugSpec from "./videos/_explainer/specs/whatsapp-debug.json";
+import whatsappDebugVo from "./videos/_explainer/specs/whatsapp-debug.vo.json";
+import currentSpec from "./videos/_explainer/specs/current.json";
+import currentVo from "./videos/_explainer/specs/current.vo.json";
+import roundupCcSpec from "./videos/_explainer/specs/roundup-cc.json";
+import roundupCcVo from "./videos/_explainer/specs/roundup-cc.vo.json";
+import subagentSpec from "./videos/claude-code-subagent/spec.json";
+import subagentVo from "./videos/claude-code-subagent/vo.json";
+import { SubagentThumbDefault } from "./videos/claude-code-subagent/Thumb";
+import { SubagentShort, SubagentWide, SUBAGENT_SHORT_FRAMES } from "./videos/claude-code-subagent/Short";
+import { SubagentTutorial, SUBAGENT_TUTORIAL_FRAMES } from "./videos/claude-code-subagent/Tutorial";
+import { Sample as LCWSample, sampleFrames } from "./videos/local-cloud-walk/Sample";
+import { LocalCloudWalk, masterFrames as lcwMasterFrames } from "./videos/local-cloud-walk/Master";
+import { LocalCloudPoster } from "./videos/local-cloud-walk/Poster";
+import { SpotSample, spotSampleFrames } from "./videos/local-cloud-walk/SpotSample";
+import { SpotMaster, spotMasterFrames } from "./videos/local-cloud-walk/SpotMaster";
+import { LocalCloudShort, shortFrames as lcShortFrames } from "./videos/local-cloud-walk/Short";
 
 /**
  * Compositions:
@@ -63,6 +111,294 @@ import {
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── Claude 本地 vs 雲端 explainer（資料驅動 _explainer + 旁白）(1920×1080, 30fps) ── */}
+      <Composition
+        id="ClaudeLocalCloud"
+        component={Explainer}
+        defaultProps={{
+          spec: localCloudSpec as unknown as VideoSpec,
+          vo: localCloudVo as Record<string, number>,
+          voDir: "vo/claude-local-cloud",
+        }}
+        durationInFrames={explainerFrames(
+          localCloudSpec as unknown as VideoSpec,
+          localCloudVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeLocalCloudPoster" component={LocalCloudPoster} width={1920} height={1080} />
+
+      {/* ── WhatsApp 排查實戰（資料驅動 _explainer + zh-TW-HsiaoChen 旁白）(1920×1080, 30fps) ── */}
+      <Composition
+        id="WhatsAppDebug"
+        component={Explainer}
+        defaultProps={{
+          spec: whatsappDebugSpec as unknown as VideoSpec,
+          vo: whatsappDebugVo as Record<string, number>,
+          voDir: "vo/whatsapp-debug",
+        }}
+        durationInFrames={explainerFrames(
+          whatsappDebugSpec as unknown as VideoSpec,
+          whatsappDebugVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 每日影片工廠（資料驅動 _explainer，每天換 current.json）(1920×1080, 30fps) ── */}
+      <Composition
+        id="VF-Daily"
+        component={Explainer}
+        defaultProps={{
+          spec: currentSpec as unknown as VideoSpec,
+          vo: currentVo as Record<string, number>,
+          voDir: "vo/current",
+        }}
+        durationInFrames={explainerFrames(
+          currentSpec as unknown as VideoSpec,
+          currentVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 工具盤點卡：Claude Code 這 6 招就夠（資料驅動 _explainer + spotlight 場景）(1920×1080, 30fps) ── */}
+      <Composition
+        id="RoundupClaudeCode"
+        component={Explainer}
+        defaultProps={{
+          spec: roundupCcSpec as unknown as VideoSpec,
+          vo: roundupCcVo as Record<string, number>,
+          voDir: "vo/roundup-cc",
+        }}
+        durationInFrames={explainerFrames(
+          roundupCcSpec as unknown as VideoSpec,
+          roundupCcVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 工具盤點卡 9:16 直幅原生 Reel（同 spec/VO，滿版卡片）(1080×1920, 30fps) ── */}
+      <Composition
+        id="RoundupClaudeCodeReel"
+        component={RoundupReel}
+        defaultProps={{
+          spec: roundupCcSpec as unknown as VideoSpec,
+          vo: roundupCcVo as Record<string, number>,
+          voDir: "vo/roundup-cc",
+        }}
+        durationInFrames={roundupReelFrames(
+          roundupCcSpec as unknown as VideoSpec,
+          roundupCcVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── 自訂指令故事片 封面（EP00 公式，靜態 Still）── */}
+      <Still id="SlashCover" component={SlashCover} width={1920} height={1080} />
+      <Still id="SlashCoverGlass" component={SlashCoverGlass} width={1920} height={1080} />
+      <Still id="SlashCoverWhiteGlass" component={SlashCoverWhiteGlass} width={1920} height={1080} />
+      <Still id="SlashCoverNeonGlass" component={SlashCoverNeonGlass} width={1920} height={1080} />
+
+      {/* ── 工具盤點卡 封面 / 縮圖（影片同款索引封面，靜態 Still）── */}
+      <Still
+        id="RoundupClaudeCodePoster"
+        component={RoundupPoster}
+        defaultProps={{ spec: roundupCcSpec as unknown as VideoSpec, variant: "wide" as const }}
+        width={1920}
+        height={1080}
+      />
+      <Still
+        id="RoundupClaudeCodePosterReel"
+        component={RoundupPoster}
+        defaultProps={{ spec: roundupCcSpec as unknown as VideoSpec, variant: "reel" as const }}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── 風格 B 打樣：Claude Code subagent（資料驅動 _explainer + 風格B封面）(1920×1080, 30fps) ── */}
+      <Composition
+        id="ClaudeCodeSubagent"
+        component={Explainer}
+        defaultProps={{
+          spec: subagentSpec as unknown as VideoSpec,
+          vo: subagentVo as Record<string, number>,
+          voDir: "vo/claude-code-subagent",
+        }}
+        durationInFrames={explainerFrames(
+          subagentSpec as unknown as VideoSpec,
+          subagentVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeSubagentThumb" component={SubagentThumbDefault} width={1280} height={720} />
+      <Composition
+        id="SubagentShort"
+        component={SubagentShort}
+        durationInFrames={SUBAGENT_SHORT_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="SubagentWide"
+        component={SubagentWide}
+        durationInFrames={SUBAGENT_SHORT_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="SubagentTutorial"
+        component={SubagentTutorial}
+        durationInFrames={SUBAGENT_TUTORIAL_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 樣板：local-cloud-walk（真圖縮放+發亮，深色，沿用 v1 旁白）── */}
+      <Composition id="LCWSample" component={LCWSample} durationInFrames={sampleFrames()} fps={30} width={1920} height={1080} />
+      {/* ── v3 樣板：淺色 + 瞬切放大 + 聚光 + 大標 ── */}
+      <Composition id="LCWSpot" component={SpotSample} durationInFrames={spotSampleFrames()} fps={30} width={1920} height={1080} />
+      <Composition id="LocalCloudWalkV4" component={SpotMaster} durationInFrames={spotMasterFrames()} fps={30} width={1920} height={1080} />
+      <Composition id="LocalCloudShort" component={LocalCloudShort} durationInFrames={lcShortFrames()} fps={30} width={1080} height={1920} />
+      {/* ── v2 完整片：真圖縮放+發亮 + 雙人對話結尾（深色，16:9）── */}
+      <Composition id="LocalCloudWalk" component={LocalCloudWalk} durationInFrames={lcwMasterFrames()} fps={30} width={1920} height={1080} />
+
+      {/* ── Claude Code 經驗系列(重建)：安裝 / Skills / 桌面版→CLI (1920×1080, 30fps) ── */}
+      <Composition
+        id="ClaudeCodeInstall"
+        component={InstallMaster}
+        durationInFrames={getInstallFrames()}
+        fps={INSTALL_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeInstallPoster" component={InstallPoster} width={1920} height={1080} />
+      <Folder name="ClaudeCodeInstall-Scenes">
+        {INSTALL_SCENES.map((s) => (
+          <Composition
+            key={s.id}
+            id={`CI-${s.id}`}
+            component={s.Component}
+            durationInFrames={s.durationInFrames}
+            fps={INSTALL_FPS}
+            width={1920}
+            height={1080}
+          />
+        ))}
+      </Folder>
+
+      <Composition
+        id="ClaudeCodeSkills"
+        component={SkillsMaster}
+        durationInFrames={getSkillsFrames()}
+        fps={SKILLS_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeSkillsPoster" component={SkillsPoster} width={1920} height={1080} />
+      <Folder name="ClaudeCodeSkills-Scenes">
+        {SKILLS_SCENES.map((s) => (
+          <Composition
+            key={s.id}
+            id={`CS-${s.id}`}
+            component={s.Component}
+            durationInFrames={s.durationInFrames}
+            fps={SKILLS_FPS}
+            width={1920}
+            height={1080}
+          />
+        ))}
+      </Folder>
+
+      <Composition
+        id="ClaudeDesktopToCli"
+        component={DesktopMaster}
+        durationInFrames={getDesktopFrames()}
+        fps={DESKTOP_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeDesktopToCliPoster" component={DesktopPoster} width={1920} height={1080} />
+      <Folder name="ClaudeDesktopToCli-Scenes">
+        {DESKTOP_SCENES.map((s) => (
+          <Composition
+            key={s.id}
+            id={`CD-${s.id}`}
+            component={s.Component}
+            durationInFrames={s.durationInFrames}
+            fps={DESKTOP_FPS}
+            width={1920}
+            height={1080}
+          />
+        ))}
+      </Folder>
+
+      {/* ── Claude Code 新手知識地圖系列 · EP00 總覽(橫式 16:9)+ 海報 ── */}
+      <Composition
+        id="ClaudeCodeMapEP00"
+        component={EP00Master}
+        durationInFrames={getEp00Frames()}
+        fps={MAP_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeMapPoster" component={ClaudeCodeMapPoster} width={2200} height={1400} />
+      <Still id="ClaudeCodeMapEP00Thumb" component={ThumbEP00} width={1280} height={720} />
+
+      {/* EP01 · Claude Code 是什麼(橫式 16:9) */}
+      <Composition
+        id="ClaudeCodeMapEP01"
+        component={EP01Master}
+        durationInFrames={getEp01Frames()}
+        fps={MAP_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeMapEP01Thumb" component={ThumbEP01} width={1280} height={720} />
+
+      {/* EP02 · 代理迴圈(橫式 16:9) */}
+      <Composition
+        id="ClaudeCodeMapEP02"
+        component={EP02Master}
+        durationInFrames={getEp02Frames()}
+        fps={MAP_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeMapEP02Thumb" component={ThumbEP02} width={1280} height={720} />
+
+      {/* EP03 · 在哪裡用(橫式 16:9) */}
+      <Composition
+        id="ClaudeCodeMapEP03"
+        component={EP03Master}
+        durationInFrames={getEp03Frames()}
+        fps={MAP_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeMapEP03Thumb" component={ThumbEP03} width={1280} height={720} />
+
+      {/* EP04–EP30 · 自動產生(NodeEpisode 引擎),橫式 16:9 + 縮圖 */}
+      {GENERATED_EPISODES.map((e) => (
+        <React.Fragment key={e.id}>
+          <Composition id={e.id} component={e.Comp} durationInFrames={e.getFrames()} fps={MAP_FPS} width={1920} height={1080} />
+          <Still id={e.thumbId} component={e.Thumb} width={1280} height={720} />
+        </React.Fragment>
+      ))}
+
       {/* ── Newest: Git commit 與 push 新手指南 — 新手向教學 (1920×1080, 30fps) ── */}
       <Composition
         id="GitCommitPushGuide"
@@ -101,6 +437,21 @@ export const RemotionRoot: React.FC = () => {
             fps={TRIP_FPS}
             width={1080}
             height={1920}
+          />
+        ))}
+      </Folder>
+
+      {/* ── 小紅書 3:4 封面(1080×1440 Still)— 一個 XhsCover 套所有景點 ── */}
+      <Folder name="Xhs-Covers">
+        {XHS_COVERS.map((c) => (
+          <Still
+            key={c.id}
+            id={c.id}
+            component={XhsCover}
+            schema={xhsCoverSchema}
+            defaultProps={c.cfg}
+            width={COVER_W}
+            height={COVER_H}
           />
         ))}
       </Folder>

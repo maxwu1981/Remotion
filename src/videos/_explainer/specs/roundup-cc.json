@@ -1,0 +1,149 @@
+{
+  "id": "roundup-cc",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "這 6 招就夠",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "想把 Claude Code 從聊天升級成自動化工作流，先練熟這 6 個原生能力",
+    "date": "整理日期 2026-06-22"
+  },
+  "script": {
+    "rc_cv1": "想用 Claude Code 自動化做事，到底該裝哪些？這支幫你濃縮成 6 個一定要會的原生能力。",
+    "rc_cv2": "全部都是 Anthropic 官方內建，不用外掛、開箱就有。",
+    "rc_cv3": "從技能、子代理到計畫模式，一個一個看。",
+
+    "rc_s1a": "第一個，Skills 技能。",
+    "rc_s1b": "一個資料夾配一份 SKILL.md，就是一個可重用技能。",
+    "rc_s1c": "Claude 判斷需要時才載入，不佔平常的 context。",
+    "rc_s1d": "寫一次，整個團隊就能共用同一套標準做法。",
+
+    "rc_s2a": "第二個，Subagents 子代理。",
+    "rc_s2b": "把大任務拆給多個子代理同時跑，速度直接翻倍。",
+    "rc_s2c": "每個子代理各自獨立 context，互不干擾。",
+    "rc_s2d": "主代理只收彙整結果，主視窗不會被塞爆。",
+
+    "rc_s3a": "第三個，MCP，外部工具連接協定。",
+    "rc_s3b": "用一套協定，把資料庫、API、檔案系統都接進來。",
+    "rc_s3c": "讓 Claude Code 不只會寫程式，還能直接動手操作。",
+    "rc_s3d": "本地或遠端的工具，都能掛上去。",
+
+    "rc_s4a": "第四個，Hooks 事件掛鉤。",
+    "rc_s4b": "在工具執行前後，綁定你自己的指令。",
+    "rc_s4c": "例如存檔前自動格式化、提交前自動測試。",
+    "rc_s4d": "把規矩變成自動執行，不再靠記性。",
+
+    "rc_s5a": "第五個，Slash Commands 斜線指令。",
+    "rc_s5b": "把常用的長提示或多步驟流程，封成一個斜線指令。",
+    "rc_s5c": "下次一行就能呼叫，還能帶參數、互相組合。",
+    "rc_s5d": "重複工作不用每次重打。",
+
+    "rc_s6a": "第六個，Plan Mode 計畫模式。",
+    "rc_s6b": "讓 Claude 先唯讀研究、提出計畫，先不動你的檔案。",
+    "rc_s6c": "你核准之後，它才開始改。",
+    "rc_s6d": "避免它埋頭亂改、踩到不該動的地方。",
+
+    "rc_o1": "六個一次收尾。",
+    "rc_o2": "Skills，把專長打包成 SKILL.md。",
+    "rc_o3": "Subagents，多代理並行拆大任務。",
+    "rc_o4": "MCP 接外部工具，Hooks 在關鍵時刻自動執行。",
+    "rc_o5": "Slash Commands 把流程縮成一鍵，Plan Mode 先規劃核准再動手。",
+    "rc_o6": "這 6 個練熟，Claude Code 就從聊天升級成自動化工作流。",
+    "rc_o7": "完整對照放在下方連結，覺得有用記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "這 6 招就夠",
+      "index": [
+        { "n": "01", "title": "Skills", "tag": "把專長打包成 SKILL.md", "accent": "claude" },
+        { "n": "02", "title": "Subagents", "tag": "多代理並行拆大任務", "accent": "violet" },
+        { "n": "03", "title": "MCP", "tag": "接外部工具與資料", "accent": "blue" },
+        { "n": "04", "title": "Hooks", "tag": "關鍵時刻自動執行", "accent": "green" },
+        { "n": "05", "title": "Slash Commands", "tag": "流程縮成一鍵", "accent": "teal" },
+        { "n": "06", "title": "Plan Mode", "tag": "先規劃核准再動手", "accent": "warn" }
+      ],
+      "cues": ["rc_cv1", "rc_cv2", "rc_cv3"]
+    },
+    {
+      "type": "spotlight",
+      "no": "01",
+      "kicker": "把專長打包",
+      "accent": "claude",
+      "titleEn": "Skills",
+      "subZh": "SKILL.md ｜ 封裝可重用專長",
+      "desc": "把一套做法寫進 SKILL.md，Claude 需要時自動載入，等於給它一身可重用的專業技能。",
+      "bullets": ["一個資料夾＝一個技能", "需要才載入、省 context", "團隊共用同一套做法"],
+      "cues": ["rc_s1a", "rc_s1b", "rc_s1c", "rc_s1d"]
+    },
+    {
+      "type": "spotlight",
+      "no": "02",
+      "kicker": "並行分工",
+      "accent": "violet",
+      "titleEn": "Subagents",
+      "subZh": "子代理 ｜ 並行拆解大任務",
+      "desc": "把大任務拆給多個子代理同時跑，各自獨立 context、互不干擾，主代理只收彙整結果。",
+      "bullets": ["多代理並行、速度翻倍", "各自獨立 context", "主代理彙整、不爆視窗"],
+      "cues": ["rc_s2a", "rc_s2b", "rc_s2c", "rc_s2d"]
+    },
+    {
+      "type": "spotlight",
+      "no": "03",
+      "kicker": "外接工具",
+      "accent": "blue",
+      "titleEn": "MCP",
+      "subZh": "Model Context Protocol ｜ 連外部工具與資料",
+      "desc": "用 MCP 把資料庫、API、檔案系統等外部能力接進來，讓 Claude Code 不只會寫程式，還能直接動手操作。",
+      "bullets": ["一套協定接所有工具", "讀寫外部資料源", "本地或遠端皆可"],
+      "cues": ["rc_s3a", "rc_s3b", "rc_s3c", "rc_s3d"]
+    },
+    {
+      "type": "spotlight",
+      "no": "04",
+      "kicker": "自動掛鉤",
+      "accent": "green",
+      "titleEn": "Hooks",
+      "subZh": "事件掛鉤 ｜ 在關鍵時刻自動執行",
+      "desc": "在工具執行前後綁定自己的指令，例如存檔前自動格式化、提交前自動測試，把規矩變成自動化。",
+      "bullets": ["PreToolUse / PostToolUse 觸發", "自動跑 lint、測試、通知", "規矩自動執行、不靠記性"],
+      "cues": ["rc_s4a", "rc_s4b", "rc_s4c", "rc_s4d"]
+    },
+    {
+      "type": "spotlight",
+      "no": "05",
+      "kicker": "一鍵流程",
+      "accent": "teal",
+      "titleEn": "Slash Commands",
+      "subZh": "斜線指令 ｜ 把流程縮成一個指令",
+      "desc": "把常用的長提示或多步驟流程封成斜線指令，下次一行就能呼叫，重複工作不用每次重打。",
+      "bullets": ["常用流程一鍵呼叫", "可帶參數、可組合", "專案／個人各一套"],
+      "cues": ["rc_s5a", "rc_s5b", "rc_s5c", "rc_s5d"]
+    },
+    {
+      "type": "spotlight",
+      "no": "06",
+      "kicker": "先想再動",
+      "accent": "warn",
+      "titleEn": "Plan Mode",
+      "subZh": "計畫模式 ｜ 先規劃、核准再動手",
+      "desc": "讓 Claude 先唯讀地研究與提計畫，你核准後才開始改檔，避免它埋頭亂改、踩到不該動的地方。",
+      "bullets": ["唯讀研究、不先亂改", "出計畫給你核准", "核准後才落地"],
+      "cues": ["rc_s6a", "rc_s6b", "rc_s6c", "rc_s6d"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "六招總整理",
+      "headingEn": "Claude Code essentials recap",
+      "cards": [
+        { "emoji": "🧩", "text": "Skills：把專長打包成 SKILL.md", "accent": "claude" },
+        { "emoji": "👥", "text": "Subagents：多代理並行拆大任務", "accent": "violet" },
+        { "emoji": "🔌", "text": "MCP：接外部工具與資料源", "accent": "blue" },
+        { "emoji": "🪝", "text": "Hooks：關鍵時刻自動執行", "accent": "green" },
+        { "emoji": "🧭", "text": "Plan Mode：先規劃、核准再動手", "accent": "warn" }
+      ],
+      "cues": ["rc_o1", "rc_o2", "rc_o3", "rc_o4", "rc_o5", "rc_o6", "rc_o7"]
+    }
+  ]
+}

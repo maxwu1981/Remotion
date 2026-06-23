@@ -1,0 +1,143 @@
+{
+  "id": "compaction-loop",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "壓縮不卡關",
+    "name": "Claude Code 解法",
+    "tagline": "context 一直自動壓縮、卡在快滿？四招穩穩解",
+    "date": "整理日期 2026-06-20"
+  },
+  "script": {
+    "cv1": "Claude Code 用到一半，context 一直自動壓縮、卡在快滿，任務做不完？",
+    "cv2": "這是我研究、並對照官方文件之後，最穩的解法。",
+    "cv3": "從為什麼會卡，到四招解決，一次講清楚。",
+
+    "r1": "先搞懂為什麼會原地打轉。",
+    "r2": "Claude Code 在 context 快滿、大約 95% 的時候，會自動壓縮對話。",
+    "r3": "但如果單一個超大檔案或輸出，壓縮完又馬上把 context 塞爆…",
+    "r4": "它就會反覆壓縮、原地打轉，最後跳出 thrashing 錯誤停下來。",
+    "r5": "想知道是誰在吃 context，先打 /context 看分佈。",
+
+    "c1": "第一招，也是最有效的：別讓單一檔案塞爆。",
+    "c2": "不要叫它一次讀整個大檔。",
+    "c3": "改成只讀你需要的那段行數範圍。",
+    "c4": "壓縮後就裝得下，打轉就解開了。",
+
+    "f1": "第二招：手動 /compact，而且指定要留什麼。",
+    "f2": "叫它只留計畫和最後的 diff，丟掉冗長的 log。",
+    "f3": "第三招：把吃 context 的大工作，丟給 subagent。",
+    "f4": "subagent 有自己獨立的 context，不會污染你的主對話。",
+    "f5": "做完只回傳摘要，主線就清爽了。",
+
+    "p1": "最後，三個預防，讓你根本不會卡。",
+    "p2": "一：CLAUDE.md 保持精簡，順手加一段 Compact Instructions，告訴它壓縮時要留什麼。",
+    "p3": "二：定期打 /context 巡檢，早一點抓出膨脹。",
+    "p4": "三：大任務拆小分次做，別把超大輸出整包灌進來。",
+
+    "o1": "四招，幫你快速總整理。",
+    "o2": "一：超大檔改讀行數範圍，這是 thrashing 最常見的解。",
+    "o3": "二：/compact 指定保留重點，丟掉冗長 log。",
+    "o4": "三：大工作丟 subagent，獨立 context 不污染主線。",
+    "o5": "四：CLAUDE.md 精簡、加 /context 巡檢、把任務拆小。",
+    "o6": "覺得有幫助，記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "壓縮不卡關",
+      "terminal": {
+        "title": "Claude Code",
+        "lines": [
+          { "k": "cmd", "t": "/context" },
+          { "k": "out", "t": "file reads 47% · conversation 38% · …" },
+          { "k": "err", "t": "Autocompact is thrashing: the context refilled to the limit…" }
+        ]
+      },
+      "chips": [
+        { "n": "1", "t": "讀行數範圍", "accent": "green" },
+        { "n": "2", "t": "/compact", "accent": "warn" },
+        { "n": "3", "t": "subagent", "accent": "violet" },
+        { "n": "4", "t": "CLAUDE.md", "accent": "claude" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "根因 · 為什麼會 loop",
+      "accent": "blue",
+      "headingZh": "為什麼會原地打轉？",
+      "headingEn": "Auto-compaction thrashing",
+      "terminal": {
+        "title": "Claude Code",
+        "lines": [
+          { "k": "cmt", "t": "context 快滿(~95%) → 自動壓縮對話" },
+          { "k": "cmd", "t": "/context" },
+          { "k": "out", "t": "file reads 47%  conversation 38%  …" },
+          { "k": "err", "t": "Autocompact is thrashing: 壓縮完又被塞爆 → 停" }
+        ]
+      },
+      "keyline": "根因：超大檔/輸出讓 context 壓縮完又爆 → thrashing；先用 /context 看誰在吃空間",
+      "keylineAtCue": 4,
+      "cues": ["r1", "r2", "r3", "r4", "r5"]
+    },
+    {
+      "type": "compare",
+      "kicker": "解法 01 · 讀檔方式",
+      "accent": "green",
+      "headingZh": "第一招：別讓單一檔塞爆",
+      "headingEn": "Read in ranges, not whole files",
+      "bad": { "badge": "讀整個大檔", "code": "Read src/huge.tsx  (整檔)", "note": "壓縮完又馬上塞爆 → 反覆 thrashing" },
+      "good": { "badge": "只讀需要的行", "code": "Read src/huge.tsx 第 1-100 行", "note": "裝得下、不再原地打轉" },
+      "keyline": "把「讀整檔」改成「讀行數範圍」—— thrashing 最常見、最有效的解法",
+      "keylineAtCue": 3,
+      "cues": ["c1", "c2", "c3", "c4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "解法 02・03 · /compact + subagent",
+      "accent": "violet",
+      "headingZh": "第二、三招：/compact 保留重點 + subagent 隔離",
+      "headingEn": "Focused /compact + offload to a subagent",
+      "terminal": {
+        "title": "Claude Code",
+        "lines": [
+          { "k": "cmd", "t": "/compact 只留計畫與 diff，丟掉 build log" },
+          { "k": "ok", "t": "compacted — 釋出大量 context" },
+          { "k": "cmd", "t": "/agents  → 指派大檔分析給 subagent" },
+          { "k": "ok", "t": "subagent 用獨立 context、只回傳摘要" }
+        ]
+      },
+      "keyline": "/compact 指定保留重點；吃 context 的大工作丟 subagent 隔離，主線保持清爽",
+      "keylineAtCue": 3,
+      "cues": ["f1", "f2", "f3", "f4", "f5"]
+    },
+    {
+      "type": "places",
+      "kicker": "解法 04 · 預防",
+      "accent": "claude",
+      "headingZh": "三個預防，根本不會卡",
+      "headingEn": "Prevent it before it happens",
+      "items": [
+        { "icon": "🧹", "title": "CLAUDE.md 精簡", "path": "+ Compact Instructions", "note": "告訴它壓縮要保留：目標/路徑/diff，丟掉 log", "accent": "green" },
+        { "icon": "🔍", "title": "/context 巡檢", "path": "/context", "note": "定期看誰在吃空間，早一點抓出膨脹", "accent": "blue" },
+        { "icon": "✂️", "title": "拆小・別 pipe 大輸出", "path": "git log --oneline", "note": "大任務分次做；避免整包大輸出灌進 context", "accent": "claude" }
+      ],
+      "keyline": "預防三招：CLAUDE.md 精簡＋/context 巡檢＋拆小任務、別 pipe 大輸出",
+      "keylineAtCue": 3,
+      "cues": ["p1", "p2", "p3", "p4"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "四招，總整理",
+      "headingEn": "The four fixes, recapped",
+      "cards": [
+        { "emoji": "📄", "text": "超大檔改讀行數範圍（thrashing 最常見解）", "accent": "green" },
+        { "emoji": "🎯", "text": "/compact 指定保留重點，丟掉冗長 log", "accent": "warn" },
+        { "emoji": "🧩", "text": "大工作丟 subagent，獨立 context 不污染主線", "accent": "violet" },
+        { "emoji": "🧹", "text": "CLAUDE.md 精簡 + /context 巡檢 + 拆小任務", "accent": "claude" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "id": "claude-local-cloud",
+  "brand": {
+    "titlePre": "Claude",
+    "titlePost": "本地 vs 雲端",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "容器·沙盒·Cowork·Dispatch 的記憶與檔案怎麼共存？",
+    "date": "整理日期 2026-06-20"
+  },
+  "script": {
+    "cv1": "在 Claude 裡，東西到底跑在你電腦、還是雲端？哪些記憶和檔案會共用、哪些永遠碰不到？",
+    "cv2": "一句話：工作在哪裡執行，就決定了它能碰哪些檔案、用哪份記憶、在哪個裝置看得到。",
+    "cv3": "而本地和雲端之間，是一道單向牆。這支影片用一張圖，把它一次講清楚。",
+
+    "p1": "先記住這支影片的總綱。",
+    "p2": "判斷任何東西，只看一件事：它實際在哪裡執行。",
+    "p3": "執行在本地，就碰得到你硬碟的檔、用本機的 CLAUDE.md，而且只有本地看得到。",
+    "p4": "執行在雲端，就碰不到你的硬碟、用雲端的 CLAUDE.md，但任何裝置都看得到。",
+    "p5": "你人在哪、用手機還是電腦按，都不是重點，重點永遠是它在哪裡跑。",
+
+    "g1": "容器、沙盒、Chatbot、Cowork、Claude Code、Dispatch，名詞很多，其實分兩堆就好。",
+    "g2": "本地這堆，在你的 Mac 上：本地電腦、沙盒、Claude Code、還有 Cowork。",
+    "g3": "它們都讀本機的 CLAUDE.md，而且只有你本地看得到。",
+    "g4": "雲端那堆，在 Anthropic 的伺服器上：Chatbot、臨時容器、還有 Dispatch。",
+    "g5": "它們讀雲端的 CLAUDE.md，任何裝置都看得到。先把這兩堆分清楚，後面就全通了。",
+
+    "w1": "那雲端能不能反過來讀你的電腦？",
+    "w2": "答案是完全不能。這就是最關鍵的一道單向牆。",
+    "w3": "雲端沒有你電腦的權限，所以雲端跑的東西，預設看不到你硬碟上任何檔案。",
+    "w4": "但反過來，本地是可以主動讀、甚至上傳到雲端的。",
+    "w5": "牆只有一個方向：本地往雲端可以，雲端回頭不行。",
+    "w6": "要讓雲端用到你的檔，只有兩條路：推進 git，或放進橋接層，例如 Google Drive、MCP。",
+
+    "c1": "很多人會問：Cowork 我可以在手機上開嗎？",
+    "c2": "不行。Cowork 百分之百在你的 Mac 上跑。",
+    "c3": "手機在雲端那一側，依照單向牆，根本連不進你的電腦。",
+    "c4": "所以手機開 Cowork、在我電腦跑這句話，本身就不成立。",
+    "c5": "想在手機上做事，只能改用雲端的 Dispatch 或 Chatbot。",
+
+    "d1": "那 Dispatch 又是什麼？",
+    "d2": "Dispatch 其實就是雲端版的 Claude Code。",
+    "d3": "它在雲端的臨時容器裡跑，讀的是雲端的 CLAUDE.md，不是你本機那一份。",
+    "d4": "因為它在雲端，所以你本地、手機，任何裝置都看得到它的進度。",
+    "d5": "但它碰不到你電腦上的檔；結果回到本地只是讓你看。要真正寫進專案，得開一個 PR，也就是 Pull Request，由你審核、合併之後才會真的落地。",
+    "d6": "所以 Claude Code 有兩種：本地版碰得到你電腦，雲端版 Dispatch 碰不到、但到處可見。",
+
+    "m1": "這裡有個常見誤會：CLAUDE.md 其實有兩份。",
+    "m2": "本機一份，在你的 Mac；雲端一份，在伺服器。",
+    "m3": "本地的 Claude Code 和 Cowork 讀本機那份；雲端的 Dispatch 和容器讀雲端那份。",
+    "m4": "兩份各自獨立。你改了本機那份，雲端不會自動知道。",
+    "m5": "想讓雲端用到，得自己把它推上去。",
+
+    "t1": "雲端那邊的東西，是不是用完就沒了？",
+    "t2": "只有臨時容器是這樣。",
+    "t3": "背後有一台伺服器，每次對話配一個臨時容器，用完即丟，下次是全新的。",
+    "t4": "但是雲端記憶，也就是雲端 CLAUDE.md，還有 Chatbot 的記憶，是持久、不會丟的。",
+    "t5": "為什麼這兩個要持久？",
+    "t6": "正因為它們不會丟，你才能把記憶上傳到雲端共用，Chatbot 才記得你上次聊什麼。",
+
+    "s1": "那本地和雲端之間，到底什麼能共用？",
+    "s2": "記憶和檔案能共用，但方式是本地單向、手動上傳。",
+    "s3": "上傳之後就變成兩份獨立副本。本地之後又學到新的記憶，如果沒再上傳，雲端那份就不知道；兩邊各改各的，內容就會慢慢漂移、愈差愈多。",
+    "s4": "對話不能共用，雲端每次都是全新的臨時容器。",
+    "s5": "但這裡有個訣竅：把對話存成檔案。",
+    "s6": "一旦寫進 CLAUDE.md、記憶檔或一份筆記，它就變成檔案，立刻能上傳。存檔，就是把搬不動的變成搬得動的。",
+
+    "o1": "好，六個重點幫你快速總整理。",
+    "o2": "第一，東西在哪執行，就決定它碰得到什麼、用哪份記憶、誰看得到。",
+    "o3": "第二，本地和雲端之間是單向牆：本地能往雲端，雲端讀不到本機。",
+    "o4": "第三，Cowork 只在本地、手機連不進來；Dispatch 就是雲端版的 Claude Code。",
+    "o5": "第四，CLAUDE.md 有兩份；雲端的臨時容器用完即丟，但雲端記憶和 Chatbot 是持久的。",
+    "o6": "第五，記憶可以上傳共用，對話搬不動，把它存成檔案就能搬。",
+    "o7": "完整圖解和這套對話腳本，都放在影片下方的文章連結。覺得有幫助，記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude",
+      "titlePost": "本地 vs 雲端",
+      "terminal": {
+        "title": "本地 ⟷ 雲端",
+        "lines": [
+          { "k": "cmt", "t": "工作在哪執行 → 決定 檔案 · 記憶 · 可見性" },
+          { "k": "out", "t": "本地：碰你的硬碟、只有本地看得到" },
+          { "k": "ok", "t": "雲端：碰不到本機、任何裝置都看得到" }
+        ]
+      },
+      "chips": [
+        { "n": "2", "t": "個世界", "accent": "blue" },
+        { "n": "1", "t": "道單向牆", "accent": "warn" },
+        { "n": "2", "t": "份 CLAUDE.md", "accent": "green" },
+        { "n": "0", "t": "對話同步", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "01 · 核心原則",
+      "accent": "blue",
+      "headingZh": "「在哪執行」決定三件事",
+      "headingEn": "Where it runs decides everything",
+      "nodes": [
+        { "icon": "📍", "label": "在哪執行", "sub": "本地 or 雲端", "accent": "blue" },
+        { "icon": "📂", "label": "能碰的檔案", "sub": "本機 or 碰不到", "accent": "green" },
+        { "icon": "🧠", "label": "用哪份記憶", "sub": "本機/雲端 CLAUDE.md", "accent": "violet" },
+        { "icon": "👁", "label": "誰看得到", "sub": "只本地 or 任何裝置", "accent": "warn" }
+      ],
+      "keyline": "工作在哪執行 → 同時決定 檔案、記憶、可見性 三件事",
+      "keylineAtCue": 4,
+      "cues": ["p1", "p2", "p3", "p4", "p5"]
+    },
+    {
+      "type": "places",
+      "kicker": "02 · 兩個世界",
+      "accent": "teal",
+      "headingZh": "七個名詞，其實分兩堆",
+      "headingEn": "Local world vs Cloud world",
+      "items": [
+        { "icon": "💻", "title": "本地世界（你的 Mac）", "path": "Claude Code · Cowork · 沙盒", "note": "用本機 CLAUDE.md · 只有本地看得到", "accent": "teal" },
+        { "icon": "☁️", "title": "雲端世界（伺服器）", "path": "Chatbot · 容器 · Dispatch", "note": "用雲端 CLAUDE.md · 任何裝置看得到", "accent": "violet" }
+      ],
+      "keyline": "本地 4 個都在你機器上；雲端 3 個都在伺服器上",
+      "keylineAtCue": 4,
+      "cues": ["g1", "g2", "g3", "g4", "g5"]
+    },
+    {
+      "type": "compare",
+      "kicker": "03 · 單向牆",
+      "accent": "warn",
+      "headingZh": "為什麼雲端讀不到你本機？",
+      "headingEn": "The one-way wall",
+      "bad": {
+        "badge": "雲端 → 本機",
+        "code": "讀取你的硬碟？  ✘ 沒有權限",
+        "note": "雲端跑的 Dispatch、容器，預設 100% 碰不到你電腦的檔。"
+      },
+      "good": {
+        "badge": "本地 → 雲端",
+        "code": "讀 / 上傳到雲端？  ✔ 可以",
+        "note": "本地可主動經 git 或橋接層，把東西送上雲端。"
+      },
+      "keyline": "單向牆：本地能往雲端讀/上傳；雲端不能回頭讀本機",
+      "keylineAtCue": 4,
+      "cues": ["w1", "w2", "w3", "w4", "w5", "w6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "04 · Cowork",
+      "accent": "teal",
+      "headingZh": "Cowork 能在手機上跑嗎？",
+      "headingEn": "Cowork is local-only",
+      "terminal": {
+        "title": "Cowork",
+        "lines": [
+          { "k": "cmt", "t": "Cowork：在你的 Mac 上執行" },
+          { "k": "err", "t": "手機開你 Mac 的 Cowork → 連不進來（雲端沒權限）" },
+          { "k": "out", "t": "本地跑的東西，手機/雲端都看不到" },
+          { "k": "ok", "t": "要手機做事 → 改用雲端的 Dispatch 或 Chatbot" }
+        ]
+      },
+      "stamps": [{ "kind": "no", "text": "✘ 手機碰不到本機 Cowork", "atCue": 2 }],
+      "keyline": "Cowork 是本地專屬；手機連不進來",
+      "keylineAtCue": 3,
+      "cues": ["c1", "c2", "c3", "c4", "c5"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "05 · Dispatch",
+      "accent": "violet",
+      "headingZh": "Dispatch ＝ 雲端版的 Claude Code",
+      "headingEn": "Dispatch is cloud Claude Code",
+      "nodes": [
+        { "icon": "📲", "label": "本地/手機 觸發", "sub": "你按下 dispatch", "accent": "blue" },
+        { "icon": "☁️", "label": "雲端臨時容器", "sub": "在這裡跑", "accent": "violet" },
+        { "icon": "📄", "label": "讀雲端 CLAUDE.md", "sub": "不是你本機那份", "accent": "green" },
+        { "icon": "👀", "label": "本地只是看得到", "sub": "結果要 PR 才落地", "accent": "warn" }
+      ],
+      "keyline": "Dispatch＝雲端版 Claude Code：到處可見，但碰不到你本機",
+      "keylineAtCue": 4,
+      "cues": ["d1", "d2", "d3", "d4", "d5", "d6"]
+    },
+    {
+      "type": "places",
+      "kicker": "06 · 兩份 CLAUDE.md",
+      "accent": "green",
+      "headingZh": "你其實有兩份 CLAUDE.md",
+      "headingEn": "Local vs Cloud CLAUDE.md",
+      "items": [
+        { "icon": "🗂", "title": "本機 CLAUDE.md", "path": "~/.claude/", "note": "本地的 Claude Code、Cowork 讀這份", "accent": "teal" },
+        { "icon": "☁️", "title": "雲端 CLAUDE.md", "path": "雲端那台伺服器", "note": "Dispatch、容器讀這份", "accent": "violet" }
+      ],
+      "keyline": "兩份各自獨立：改了本機，雲端不會自動知道",
+      "keylineAtCue": 3,
+      "cues": ["m1", "m2", "m3", "m4", "m5"]
+    },
+    {
+      "type": "places",
+      "kicker": "07 · 用完即丟 vs 持久",
+      "accent": "warn",
+      "headingZh": "雲端那邊，用完就沒了嗎？",
+      "headingEn": "Ephemeral vs persistent",
+      "items": [
+        { "icon": "♻️", "title": "臨時容器（用完即丟）", "path": "每次對話配一個", "note": "下次是全新的，改動不留", "accent": "warn" },
+        { "icon": "📌", "title": "雲端記憶 / Chatbot（持久）", "path": "雲端 CLAUDE.md · Chatbot 記憶", "note": "不會丟，所以才能上傳共用", "accent": "green" }
+      ],
+      "keyline": "只有臨時容器用完即丟；雲端記憶與 Chatbot 是持久的",
+      "keylineAtCue": 4,
+      "cues": ["t1", "t2", "t3", "t4", "t5", "t6"]
+    },
+    {
+      "type": "compare",
+      "kicker": "08 · 什麼能共用",
+      "accent": "claude",
+      "headingZh": "記憶搬得動，對話搬不動",
+      "headingEn": "Memory syncs, chat doesn't",
+      "bad": {
+        "badge": "對話 · 搬不動",
+        "code": "雲端每次都是新容器  ✘",
+        "note": "對話 context 不會自動同步，只能自己手動把重點搬過去。"
+      },
+      "good": {
+        "badge": "記憶/檔案 · 可上傳",
+        "code": "本地 → 上傳雲端  ✔",
+        "note": "單向、手動上傳；上傳後是獨立副本，各改各的會漂移。"
+      },
+      "keyline": "記憶可上傳共用；對話不能共用 —— 但存成檔，就能上傳",
+      "keylineAtCue": 4,
+      "cues": ["s1", "s2", "s3", "s4", "s5", "s6"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "六個重點，總整理",
+      "headingEn": "Local vs Cloud recap",
+      "cards": [
+        { "emoji": "📍", "text": "在哪執行，決定 檔案、記憶、可見性", "accent": "blue" },
+        { "emoji": "🧱", "text": "單向牆：本地能上雲端、雲端讀不到本機", "accent": "warn" },
+        { "emoji": "💻", "text": "Cowork 只在本地；Dispatch＝雲端版 Claude Code", "accent": "teal" },
+        { "emoji": "🗂", "text": "兩份 CLAUDE.md；臨時容器用完即丟、記憶持久", "accent": "violet" },
+        { "emoji": "🔁", "text": "記憶可上傳共用；對話搬不動，存成檔才搬得動", "accent": "green" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6", "o7"]
+    }
+  ]
+}
