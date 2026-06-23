@@ -1,0 +1,194 @@
+{
+  "id": "whatsapp-debug",
+  "brand": {
+    "titlePre": "WhatsApp",
+    "titlePost": "為什麼發不出去?",
+    "name": "Ai-Wisdom",
+    "tagline": "踩坑 → 解法 實戰筆記",
+    "date": "2026-06-21"
+  },
+  "script": {
+    "cv1": "先別急著修——這支 WhatsApp，今天一個字都沒發出去。",
+    "cv2": "畫面只丟回一行紅字：暫停，本次未發。",
+    "cv3": "我用 Claude Code 一路拆，看它到底卡在哪。",
+
+    "s1a": "每日上架管線跑完，前面 Shopify、Facebook、IG、Threads 全部打勾。",
+    "s1b": "輪到 WhatsApp，卻是紅色的暫停，本次沒發。",
+    "s1c": "重點是——它不是報錯，是被暫停掉了。",
+
+    "s2a": "第一個動作不是修，是分類：這是 bug，還是設計？",
+    "s2b": "翻開管線檔案才發現，是上週我自己留了一行暫停指示。",
+    "s2c": "所以先分類，才不會白白修錯地方。",
+
+    "s3a1": "更慘的是，我拿設定檔裡的 token 實測打了一次 API。",
+    "s3a2": "Graph API 直接回 code 190，token 沒辦法解密——它是壞的。",
+    "s3a3": "正常 token 兩百多字元，這串只有四十，根本被截斷了。",
+
+    "s3b1": "一個暫停，底下其實卡了四件事。",
+    "s3b2": "第一，測試號只能發給五個已驗證的人，+86 不在名單就被擋。",
+    "s3b3": "第二，想自動貼 Status？官方 API 根本沒有這個功能。",
+    "s3b4": "第三，一個號碼不能同時用在 App 和 Cloud API，+86 還得靠 VPN。",
+
+    "s4a": "先把目標收斂：收到通知，和貼 Status 給客人，是兩件事。",
+    "s4b": "方案 A，把 +86 加進白名單，沿用現有架構，十分鐘、免費——最推薦。",
+    "s4c": "方案 B，用 CallMeBot 免 API 直推，五分鐘搞定，當備胎。",
+    "s4d": "方案 C，另辦新號加商業驗證，要群發客人時才走。",
+
+    "s5a": "決定走 A：加驗證收件人、換有效 token、解除暫停。",
+    "s5b": "手機今天就會收到；想貼 Status，就讓它先把圖文備好，人工一鍵貼。",
+    "s5c": "土法人工查要半天，AI 協助十分鐘就收工。",
+
+    "o1": "最後幫你抓三個重點。",
+    "o2": "先分類：是 bug 還是設計，別急著修。",
+    "o3": "拆到底：一個現象，底下可能卡好幾件事。",
+    "o4": "誠實標限制：做不到的就說做不到，給務實替代。",
+    "o5": "全程 AI 只用了終端機、讀檔、上網查——沒有控制你的桌面。",
+    "o6": "你會選哪個方案？留言告訴我。"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "WhatsApp",
+      "titlePost": "為什麼一個字都發不出去?",
+      "terminal": {
+        "title": "每日上架管線 · 執行結果",
+        "lines": [
+          { "k": "ok", "t": "Shopify 上架 ✔" },
+          { "k": "ok", "t": "Facebook / Instagram / Threads ✔" },
+          { "k": "err", "t": "📲 WhatsApp：⛔ 暫停（待 Status 方案，本次未發）" }
+        ]
+      },
+      "chips": [
+        { "n": "4", "t": "個真坑", "accent": "warn" },
+        { "n": "3", "t": "個方案", "accent": "blue" },
+        { "n": "10", "t": "分鐘解", "accent": "green" },
+        { "n": "0", "t": "元成本", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "問題現場",
+      "accent": "warn",
+      "headingZh": "那行紅色的 ⛔",
+      "headingEn": "The red pause line",
+      "terminal": {
+        "title": "pipeline run · jq daily post",
+        "lines": [
+          { "k": "ok", "t": "Shopify 上架 ✔" },
+          { "k": "ok", "t": "Facebook 發文 ✔" },
+          { "k": "ok", "t": "Instagram ✔" },
+          { "k": "ok", "t": "Threads ✔" },
+          { "k": "err", "t": "📲 WhatsApp：⛔ 暫停（待 Status 方案，本次未發）" },
+          { "k": "cmt", "t": "目標：讓 +86 188-XXXX-XXXX 這支客服號收到通知" }
+        ]
+      },
+      "stamps": [
+        { "kind": "no", "text": "本次未發", "atCue": 1 }
+      ],
+      "keyline": "它不是報錯，是直接「暫停」——本次沒發。",
+      "keylineAtCue": 2,
+      "cues": ["s1a", "s1b", "s1c"]
+    },
+    {
+      "type": "compare",
+      "kicker": "第一層診斷",
+      "accent": "blue",
+      "headingZh": "是 bug，還是設計?",
+      "headingEn": "A crash, or a deliberate pause?",
+      "bad": {
+        "badge": "以為是當機",
+        "code": "Traceback ...\nError: send failed\n（其實不是這個）",
+        "note": "直覺想修報錯 — 但這裡根本沒報錯"
+      },
+      "good": {
+        "badge": "翻檔才發現",
+        "code": "STEP 4.8 WhatsApp\n⛔ 暫停（2026-06-20 指示）",
+        "note": "是上週我自己叫它暫停的"
+      },
+      "keyline": "先分類：是 bug 還是設計，別急著修。",
+      "keylineAtCue": 2,
+      "cues": ["s2a", "s2b", "s2c"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "坑 2 · token 壞了",
+      "accent": "warn",
+      "headingZh": "我實測打 API，token 直接被拒",
+      "headingEn": "The token is broken",
+      "terminal": {
+        "title": "Bash · 實測 Graph API",
+        "lines": [
+          { "k": "cmd", "t": "curl https://graph.facebook.com/v25.0/me?access_token=EAA…••••" },
+          { "k": "err", "t": "{ \"code\": 190, \"message\": \"token could not be decrypted\" }" },
+          { "k": "cmt", "t": "正常 token 200+ 字元，這串只有 40 → 被截斷、失效" }
+        ]
+      },
+      "stamps": [
+        { "kind": "no", "text": "code 190", "atCue": 1 }
+      ],
+      "keyline": "就算解除暫停，也會卡在 token 失效這關。",
+      "keylineAtCue": 2,
+      "cues": ["s3a1", "s3a2", "s3a3"]
+    },
+    {
+      "type": "places",
+      "kicker": "另外三個坑",
+      "accent": "violet",
+      "headingZh": "一個「暫停」，底下卡了四件事",
+      "headingEn": "Four blockers under one pause",
+      "items": [
+        { "icon": "🧪", "title": "測試號只能發 5 人", "path": "error 131030", "note": "+86 不在白名單就被擋", "accent": "warn" },
+        { "icon": "📣", "title": "Status 沒有 API", "path": "Cloud API ✘ Status", "note": "想自動貼 Status？官方不支援", "accent": "violet" },
+        { "icon": "📱", "title": "號碼不能兩用", "path": "App ↔ Cloud API", "note": "+86 在中國還得靠 VPN", "accent": "blue" }
+      ],
+      "keyline": "測試號 5 人 · token 壞 · 無 Status API · 號碼二選一。",
+      "keylineAtCue": 3,
+      "cues": ["s3b1", "s3b2", "s3b3", "s3b4"]
+    },
+    {
+      "type": "places",
+      "kicker": "收斂目標 · 三方案",
+      "accent": "green",
+      "headingZh": "「收到通知」和「貼 Status」是兩件事",
+      "headingEn": "Three solutions, one recommended",
+      "items": [
+        { "icon": "✅", "title": "方案 A 加白名單", "path": "約 10 分鐘 · 免費", "note": "沿用現有架構，最推薦", "accent": "green" },
+        { "icon": "⚡", "title": "方案 B CallMeBot", "path": "約 5 分鐘 · 免費", "note": "免 API 直推，當備胎", "accent": "blue" },
+        { "icon": "🏢", "title": "方案 C 新號驗證", "path": "數天 · 按量計費", "note": "要群發客人才需要", "accent": "warn" }
+      ],
+      "keyline": "先鎖定做得到的：讓 +86 收到。推薦走 A。",
+      "keylineAtCue": 3,
+      "cues": ["s4a", "s4b", "s4c", "s4d"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "推薦解法 A",
+      "accent": "green",
+      "headingZh": "十分鐘讓手機今天就收到",
+      "headingEn": "Ship it in 10 minutes",
+      "nodes": [
+        { "icon": "➕", "label": "加 +86 為驗證收件人", "accent": "green" },
+        { "icon": "🔑", "label": "換成有效 token", "accent": "blue" },
+        { "icon": "▶️", "label": "解除 STEP 4.8 暫停", "accent": "green" },
+        { "icon": "📱", "label": "手機收到通知 ✔", "accent": "green" },
+        { "icon": "👆", "label": "圖文備好 · 人工一鍵貼 Status", "accent": "violet" }
+      ],
+      "keyline": "人工土法查半天，AI 協助 10 分鐘搞定。",
+      "keylineAtCue": 2,
+      "cues": ["s5a", "s5b", "s5c"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "你能學到什麼",
+      "headingEn": "Recap",
+      "cards": [
+        { "emoji": "🔍", "text": "先分類：是 bug 還是設計，別急著修", "accent": "blue" },
+        { "emoji": "🧩", "text": "拆到底：一個現象底下卡好幾件事", "accent": "green" },
+        { "emoji": "🙅", "text": "誠實標限制：做不到就說做不到，給務實替代", "accent": "warn" },
+        { "emoji": "🛠️", "text": "AI 只用了 Bash／Read／WebSearch，沒控制桌面", "accent": "violet" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}
