@@ -1,0 +1,279 @@
+{
+  "channelId": "UCeIUOn3e8QzITwPhLaYK4Yw",
+  "series": {
+    "生活應用": {
+      "playlistId": "PLFDr5Lb7xr6Y",
+      "live": {
+        "EP01": {
+          "videoId": "IiNYpXB5izA",
+          "title": "用 Claude 自動翻新整個 LinkedIn｜技能 2→24、經歷 1→3｜生活應用 EP01",
+          "privacy": "public"
+        },
+        "EP02": {
+          "videoId": "nZRGkM4gYHQ",
+          "title": "5 分鐘設定，之後叫 Claude 一句話自動上傳 YouTube｜YouTube Data API + OAuth 完整教學（3 大坑全解）｜生活應用 EP02",
+          "privacy": "public"
+        },
+        "EP03": {
+          "videoId": "DWxa7JvhY4k",
+          "title": "我叫 Claude Code 自動發小紅書：一句指令 3 分鐘發完（手動 40 分）｜防封＋章節全自動｜生活應用 EP03",
+          "privacy": "public"
+        },
+        "EP04": {
+          "videoId": "r8DFGXc_33I",
+          "title": "我讓 Facebook 每天自動發文，40 天沒碰鍵盤｜Graph API 免月費串接全教學｜生活應用 EP04",
+          "privacy": "public"
+        },
+        "EP05": {
+          "videoId": "L4_06prHNK4",
+          "title": "我讓 Instagram 也每天自動發文，沿用發 FB 的同一把 Token｜Meta 官方 API 免月費全教學｜生活應用 EP05",
+          "privacy": "public"
+        },
+        "EP06": {
+          "videoId": "M_uB4lD4YOQ",
+          "title": "我讓 Pinterest 自動幫我賣畫：官方 API 從「申請當天被拒」到通關，33 張 Pin 鋪滿看板｜生活應用 EP06",
+          "privacy": "public"
+        },
+        "EP07": {
+          "videoId": "kp2JFQpLQjU",
+          "title": "不用剪輯軟體！教你用 Claude + Remotion 把文章自動變成解說影片（6 個 prompt 全流程）｜生活應用 EP07",
+          "privacy": "public"
+        }
+      },
+      "unnumbered": [],
+      "reserved": {}
+    },
+    "新手需要知道的事": {
+      "playlistId": "PL4hZLWNunGZ2oQROJ3r4eKHZwmffTsd3Q",
+      "live": {
+        "EP01": {
+          "videoId": "SuPzGLxZ2VU",
+          "title": "EP01｜用廚房故事讓你明白 Git & Linter & Test",
+          "privacy": "public"
+        },
+        "EP02": {
+          "videoId": "t6F9ZIPGiEE",
+          "title": "EP02｜用旅館房卡讓你明白 access token（OAuth 授權）",
+          "privacy": "public"
+        },
+        "EP03": {
+          "videoId": "JLXMPxfa0Vo",
+          "title": "EP03｜用洗衣廠後門鑰匙讓你明白 API key",
+          "privacy": "public"
+        },
+        "EP04": {
+          "videoId": "YI9Mm9Bi2JI",
+          "title": "EP04｜用門口保安讓你明白 CAPTCHA（人機驗證）",
+          "privacy": "public"
+        },
+        "EP05": {
+          "videoId": "vL2K4eyTlsM",
+          "title": "EP05｜用萬能鑰匙讓你明白密碼安全（密碼管理器＋兩步驗證）",
+          "privacy": "public"
+        },
+        "EP06": {
+          "videoId": "wjuo5k01jqs",
+          "title": "AI 讀檔案慢 100 倍?本機路徑 vs Google Drive 實測——Claude Code 親口說「本機完勝」(新手名詞 EP06)",
+          "privacy": "public"
+        }
+      },
+      "unnumbered": [],
+      "reserved": {
+        "EP07": {
+          "note": "Plan Mode 黑曜石重製版,已算繪待傳(claude-code-plan-mode-video);上架前要跟深度教學 Plan Mode(7v2DHqARNNQ)差異化",
+          "reservedAt": "2026-07-06T11:56:11"
+        }
+      }
+    },
+    "Claude Code 新手地圖": {
+      "playlistId": "PL4hZLWNunGZ0-JE9SyWad5PcwxE_nCZJt",
+      "live": {
+        "EP00": {
+          "videoId": "K3pY-kTe1NI",
+          "title": "EP00 · Claude Code 新手地圖:30 個名詞、7 大類一次看懂 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP01": {
+          "videoId": "I_QSSO_0vr0",
+          "title": "EP01 · Claude Code 是什麼? — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP02": {
+          "videoId": "gLeS3c3FKe4",
+          "title": "EP02 · Claude Code 怎麼自己把事做完?60 秒看懂代理迴圈 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP03": {
+          "videoId": "tokIfFOzjFg",
+          "title": "EP03 · 在哪裡用:CLI / IDE / Desktop / Web — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP04": {
+          "videoId": "kW6xXd4kzCk",
+          "title": "EP04 · 安裝、登入與方案 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP05": {
+          "videoId": "kbZejeLjdIA",
+          "title": "EP05 · 開一個 Project + /init — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP06": {
+          "videoId": "cGazDSMgydk",
+          "title": "EP06 · CLAUDE.md 專案記憶 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP07": {
+          "videoId": "BT1qLPHP0Xo",
+          "title": "EP07 · Auto memory 自動記憶 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP08": {
+          "videoId": "Zn9W1lrNIXc",
+          "title": "EP08 · settings.json 設定 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP09": {
+          "videoId": "m_D0D1qXm6A",
+          "title": "EP09 · 怎麼下指令(Prompt) — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP10": {
+          "videoId": "ip968EN2_y8",
+          "title": "EP10 · Plan mode 計畫模式 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP11": {
+          "videoId": "o8yZ4HYXDMc",
+          "title": "EP11 · 權限模式 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP12": {
+          "videoId": "IINXT-465qs",
+          "title": "EP12 · Context window 上下文 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP13": {
+          "videoId": "HORNY3eGpLg",
+          "title": "EP13 · Checkpoints 復原 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP14": {
+          "videoId": "ldgEMKrt_9k",
+          "title": "EP14 · Slash commands 斜線指令 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP15": {
+          "videoId": "WxFDfiY8r78",
+          "title": "EP15 · Tools 工具 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP16": {
+          "videoId": "mCZkS6zVgdg",
+          "title": "EP16 · MCP 連外部工具 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP17": {
+          "videoId": "NjjzvdrhUes",
+          "title": "EP17 · Skills(Agent Skills) — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP18": {
+          "videoId": "8d53y5Pg664",
+          "title": "EP18 · Subagents 子代理 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP19": {
+          "videoId": "QW2cc4tVNpI",
+          "title": "EP19 · Hooks 鉤子 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP20": {
+          "videoId": "ZafuRDsmI0o",
+          "title": "EP20 · Plugins 外掛 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP21": {
+          "videoId": "gM_0gTEIdSo",
+          "title": "EP21 · Headless 非互動模式 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP22": {
+          "videoId": "9bMe1u4NtCo",
+          "title": "EP22 · /loop 與排程 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP23": {
+          "videoId": "0nwsYPMgcyY",
+          "title": "EP23 · Routines 雲端自動跑 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP24": {
+          "videoId": "pnCOH51Ki0w",
+          "title": "EP24 · Claude Code on the web — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP25": {
+          "videoId": "sirwVNG6cFM",
+          "title": "EP25 · 安全與權限架構 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP26": {
+          "videoId": "D-oFl7-87No",
+          "title": "EP26 · Sandboxing 沙箱隔離 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP27": {
+          "videoId": "IzhPLF3XeIg",
+          "title": "EP27 · Security review 外掛 — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP28": {
+          "videoId": "q-lEhmXeHgc",
+          "title": "EP28 · Code review / ultrareview — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP29": {
+          "videoId": "QJze1c2psSY",
+          "title": "EP29 · 模型 Models — Claude Code 新手地圖",
+          "privacy": "public"
+        },
+        "EP30": {
+          "videoId": "VZkC1ODqPoM",
+          "title": "EP30 · 成本與 /usage — Claude Code 新手地圖",
+          "privacy": "public"
+        }
+      },
+      "unnumbered": [],
+      "reserved": {}
+    },
+    "Claude Code 深度教學": {
+      "playlistId": "PLUySMtGl-VVQ",
+      "live": {},
+      "unnumbered": [
+        {
+          "videoId": "Pw-spmmFEeI",
+          "title": "Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）",
+          "privacy": "public"
+        },
+        {
+          "videoId": "cqEgtk4rpmY",
+          "title": "Claude Code Subagent 子代理完整教學：並行省一半時間、worktree 隔離、3 種啟動方式（含本片實測幕後）",
+          "privacy": "public"
+        },
+        {
+          "videoId": "D42w6t3vF6k",
+          "title": "Claude Code 自訂指令 slash commands：別再天天重貼 prompt，一個 /指令搞定（建檔・範圍・參數・frontmatter，對照官方文件）",
+          "privacy": "public"
+        },
+        {
+          "videoId": "7v2DHqARNNQ",
+          "title": "Claude Code Plan Mode 完整教學：先看計畫、一次決定，終結核准按到手軟（對照官方文件）",
+          "privacy": "public"
+        }
+      ],
+      "reserved": {}
+    }
+  },
+  "updatedAt": "2026-07-06T11:56:11"
+}
