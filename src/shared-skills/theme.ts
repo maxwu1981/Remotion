@@ -37,6 +37,14 @@ export const FONT = {
   monoCjk: `${mono}, ${notoTC}`,
 };
 
+/**
+ * 頻道品牌字樣 — 封面/縮圖一律引用這組常數、不手打。
+ * （歷史封面曾出現 AI WISDOM / AI Wisdom / Ai-Wisdom 三種寫法，2026-07-06 統一。）
+ */
+export const BRAND = "Ai-Wisdom";
+export const BRAND_HANDLE = "@aiwisdomcc";
+export const BRAND_MARK = `${BRAND} · ${BRAND_HANDLE}`;
+
 export const COLORS = {
   // canvas — pure light-gray, minimalist (per brief: #F8F9FA)
   bg: "#F8F9FA",

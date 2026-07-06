@@ -52,6 +52,13 @@ import {
   SCENES as GIT_SCENES,
   getMovieFrames as getGitFrames,
 } from "./videos/git-commit-push-guide/registry";
+import { Master as GitV2Master } from "./videos/git-commit-push-guide-v2/Master";
+import { Poster as GitV2Poster } from "./videos/git-commit-push-guide-v2/Poster";
+import {
+  FPS as GIT_V2_FPS,
+  SCENES as GIT_V2_SCENES,
+  getMovieFrames as getGitV2Frames,
+} from "./videos/git-commit-push-guide-v2/registry";
 import { ClaudeCodeMapPoster } from "./videos/claude-code-map/MapPoster";
 import { EP00Master, FPS as MAP_FPS, getEp00Frames } from "./videos/claude-code-map/EP00Master";
 import { ThumbEP00 } from "./videos/claude-code-map/ThumbEP00";
@@ -71,6 +78,9 @@ import { FPS as SKILLS_FPS, SCENES as SKILLS_SCENES, getMovieFrames as getSkills
 import { Master as DesktopMaster } from "./videos/claude-desktop-to-cli/Master";
 import { Poster as DesktopPoster } from "./videos/claude-desktop-to-cli/Poster";
 import { FPS as DESKTOP_FPS, SCENES as DESKTOP_SCENES, getMovieFrames as getDesktopFrames } from "./videos/claude-desktop-to-cli/registry";
+import { Master as AasMaster } from "./videos/account-auth-security/Master";
+import { Poster as AasPoster } from "./videos/account-auth-security/Poster";
+import { FPS as AAS_FPS, SCENES as AAS_SCENES, ALT_SCENES as AAS_ALT_SCENES, getMovieFrames as getAasFrames } from "./videos/account-auth-security/registry";
 import { Explainer, explainerFrames } from "./videos/_explainer/Explainer";
 import { RoundupReel, roundupReelFrames } from "./videos/_explainer/Reel";
 import { RoundupPoster } from "./videos/_explainer/Poster";
@@ -87,6 +97,14 @@ import currentSpec from "./videos/_explainer/specs/current.json";
 import currentVo from "./videos/_explainer/specs/current.vo.json";
 import roundupCcSpec from "./videos/_explainer/specs/roundup-cc.json";
 import roundupCcVo from "./videos/_explainer/specs/roundup-cc.vo.json";
+import fbAutopostSpec from "./videos/_explainer/specs/fb-autopost.json";
+import fbAutopostVo from "./videos/_explainer/specs/fb-autopost.vo.json";
+import { FbAutopostObsidian, FbAutopostThumb, fbObsidianFrames } from "./videos/fb-autopost/Obsidian";
+import { FbAutopostShort, fbShortFrames } from "./videos/fb-autopost/Short";
+import { RemotionAutoVideoObsidian, ravObsidianFrames } from "./videos/remotion-autovideo/Obsidian";
+import { RemotionAutoVideoThumb } from "./videos/remotion-autovideo/Thumb";
+import { IgAutopostObsidian, IgAutopostThumb, igObsidianFrames } from "./videos/ig-autopost/Obsidian";
+import { PinterestObsidian, pinterestObsidianFrames } from "./videos/pinterest-autopost/Obsidian";
 import subagentSpec from "./videos/claude-code-subagent/spec.json";
 import subagentVo from "./videos/claude-code-subagent/vo.json";
 import { SubagentThumbDefault } from "./videos/claude-code-subagent/Thumb";
@@ -98,6 +116,30 @@ import { LocalCloudPoster } from "./videos/local-cloud-walk/Poster";
 import { SpotSample, spotSampleFrames } from "./videos/local-cloud-walk/SpotSample";
 import { SpotMaster, spotMasterFrames } from "./videos/local-cloud-walk/SpotMaster";
 import { LocalCloudShort, shortFrames as lcShortFrames } from "./videos/local-cloud-walk/Short";
+import { KitchenReel, KITCHEN_FRAMES } from "./videos/kitchen-git-linter-test/Reel";
+import { KitchenCover, KitchenCoverWide } from "./videos/kitchen-git-linter-test/Cover";
+import { ApiSdkReel, APISDK_FRAMES } from "./videos/kitchen-api-sdk-library/Reel";
+import { ApiCover } from "./videos/kitchen-api-sdk-library/Cover";
+import { GeminiPoc, GEMINI_POC_FRAMES } from "./videos/gemini-poc/GeminiPoc";
+import { AccountAuthSecurityV2, AAS_V2_FRAMES } from "./videos/account-auth-security-v2/AccountAuthSecurityV2";
+import { ApiKeyChapter, API_KEY_FRAMES } from "./videos/account-auth-security-v2/ApiKeyChapter";
+import { PasswordChapter, PASSWORD_FRAMES } from "./videos/account-auth-security-v2/PasswordChapter";
+import { CaptchaChapter, CAPTCHA_FRAMES } from "./videos/account-auth-security-v2/CaptchaChapter";
+import { MasterFilm, MASTER_FRAMES } from "./videos/account-auth-security-v2/MasterFilm";
+import { AasV2Cover, ChapterCover, CHAPTER_COVERS } from "./videos/account-auth-security-v2/Cover";
+import { EpAccessToken, EpApiKey, EpCaptcha, EpPassword, EP02_FRAMES, EP03_FRAMES, EP04_FRAMES, EP05_FRAMES } from "./videos/account-auth-security-v2/EpVideos";
+import { HeibuliVsZombies, HEIBULI_VS_ZOMBIES_FRAMES } from "./videos/heibuli-vs-zombies/HeibuliVsZombies";
+import { LocalAccessEP06, LOCAL_ACCESS_FRAMES } from "./videos/local-access-advantage/Master";
+import { LocalAccessCover } from "./videos/local-access-advantage/Cover";
+import { LinkedinAiMakeover, LINKEDIN_MAKEOVER_FRAMES } from "./videos/linkedin-ai-makeover/Master";
+import { MakeoverCover } from "./videos/linkedin-ai-makeover/Cover";
+import { XhsAutoEP01, XhsAutoPoster, XHS_AUTO_FRAMES } from "./videos/xhs-automation-tutorial/Master";
+import { XhsAutoCover } from "./videos/xhs-automation-tutorial/Cover";
+import { XhsAutoPackAStill, XhsAutoPackBStill } from "./videos/xhs-automation-tutorial/RealCase";
+import { YtUploadEP02, YtUploadPoster, YT_UPLOAD_FRAMES } from "./videos/youtube-upload-ep02/Master";
+import { YtUploadCover } from "./videos/youtube-upload-ep02/Cover";
+import { ClaudeCodePlanMode, PLAN_MODE_FRAMES } from "./videos/claude-code-plan-mode/Master";
+import { PlanModeCover } from "./videos/claude-code-plan-mode/Cover";
 
 /**
  * Compositions:
@@ -111,6 +153,168 @@ import { LocalCloudShort, shortFrames as lcShortFrames } from "./videos/local-cl
 export const RemotionRoot: React.FC = () => {
   return (
     <>
+      {/* ── 生活應用 EP03 · 小紅書發文全自動化(EP00 玻璃進化版精修, 16:9, 1920×1080, 30fps;comp id 沿用 XhsAutoEP01) ── */}
+      <Folder name="XhsAutoEP01">
+        <Composition
+          id="XhsAutoEP01"
+          component={XhsAutoEP01}
+          durationInFrames={XHS_AUTO_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Still id="XhsAutoEP01Cover" component={XhsAutoCover} width={1920} height={1080} />
+        <Still id="XhsAutoEP01Poster" component={XhsAutoPoster} width={1920} height={1080} />
+        <Still id="XhsAutoPackA" component={XhsAutoPackAStill} width={1920} height={1080} />
+        <Still id="XhsAutoPackB" component={XhsAutoPackBStill} width={1920} height={1080} />
+      </Folder>
+
+      {/* ── 實戰自動化 EP02 · YouTube 上片全自動化(黑曜石 v3+實錄截圖, 16:9, 1920×1080, 30fps) ── */}
+      <Folder name="YtUploadEP02">
+        <Composition
+          id="YtUploadEP02"
+          component={YtUploadEP02}
+          durationInFrames={YT_UPLOAD_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Still id="YtUploadEP02Cover" component={YtUploadCover} width={1920} height={1080} />
+        <Still id="YtUploadEP02Poster" component={YtUploadPoster} width={1920} height={1080} />
+      </Folder>
+
+      {/* ── EP06 本地存取優勢(新手名詞系列) · 本機路徑 vs 雲端(銀玻璃資訊面板風, 16:9, 1920×1080, 30fps) ── */}
+      <Folder name="LocalAccessEP06">
+        <Composition
+          id="LocalAccessEP06"
+          component={LocalAccessEP06}
+          durationInFrames={LOCAL_ACCESS_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Still id="LocalAccessEP06Cover" component={LocalAccessCover} width={1920} height={1080} />
+      </Folder>
+
+      {/* ── 丟一份舊履歷給 AI,LinkedIn/GitHub 全自動翻新(銀玻璃資訊面板風, 16:9, 1920×1080, 30fps) ── */}
+      <Folder name="LinkedinAiMakeover">
+        <Composition
+          id="LinkedinAiMakeover"
+          component={LinkedinAiMakeover}
+          durationInFrames={LINKEDIN_MAKEOVER_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Still id="LinkedinAiMakeoverCover" component={MakeoverCover} width={1920} height={1080} />
+      </Folder>
+
+      {/* ── 新手知道一下比較好的名詞 EP07 · Claude Code Plan Mode(黑曜石高級感精修版, 16:9, 1920×1080, 30fps) ── */}
+      <Folder name="ClaudeCodePlanMode">
+        <Composition
+          id="ClaudeCodePlanMode"
+          component={ClaudeCodePlanMode}
+          durationInFrames={PLAN_MODE_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Still id="ClaudeCodePlanModeCover" component={PlanModeCover} width={1920} height={1080} />
+      </Folder>
+
+      {/* ── 帳號授權安全 V2 故事版 · 樣板「房卡=access token」(16:9, 1920×1080, 30fps) ── */}
+      <Composition
+        id="AccountAuthSecurityV2"
+        component={AccountAuthSecurityV2}
+        durationInFrames={AAS_V2_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 帳號授權安全 V2 · 第2章「API key=洗衣廠司機」(16:9, 1920×1080, 30fps) ── */}
+      <Composition
+        id="ApiKeyChapter"
+        component={ApiKeyChapter}
+        durationInFrames={API_KEY_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 帳號授權安全 V2 · 第3章「密碼=你家的萬能鑰匙」(16:9, 1920×1080, 30fps) ── */}
+      <Composition
+        id="PasswordChapter"
+        component={PasswordChapter}
+        durationInFrames={PASSWORD_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 帳號授權安全 V2 · 第4章「CAPTCHA=門口的保安」(16:9, 1920×1080, 30fps) ── */}
+      <Composition
+        id="CaptchaChapter"
+        component={CaptchaChapter}
+        durationInFrames={CAPTCHA_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 帳號授權安全 V2 · 完整長片(曉晴頭尾+4章) (16:9, 1920×1080, 30fps) ── */}
+      <Composition
+        id="AasMasterFilm"
+        component={MasterFilm}
+        durationInFrames={MASTER_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── Google Flow(Veo 3.1) 生 clip 串接 PoC「AI 小幫手」(9:16, 1080×1920, 30fps) ── */}
+      <Composition
+        id="GeminiPoc"
+        component={GeminiPoc}
+        durationInFrames={GEMINI_POC_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── 黑布哩｜大戰僵屍王（Flow/Veo 生 11 段串接, 純配樂英雄蒙太奇, 9:16, 1080×1920, 30fps）── */}
+      <Composition
+        id="HeibuliVsZombies"
+        component={HeibuliVsZombies}
+        durationInFrames={HEIBULI_VS_ZOMBIES_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── 廚房比喻：Git / Linter / 測試 = 時光機 / 糾察隊 / 試毒官（9:16 情境幽默科普 Short, 1080×1920, 30fps）── */}
+      <Composition
+        id="KitchenGitLinterTest"
+        component={KitchenReel}
+        durationInFrames={KITCHEN_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Still id="KitchenGitLinterTestCover" component={KitchenCover} width={1080} height={1920} />
+      <Still id="KitchenGitLinterTestCoverWide" component={KitchenCoverWide} width={1920} height={1080} />
+
+      {/* ── EP02 餐廳比喻：API / SDK / 函式庫 = 隔窗口點餐 / 料理包 / 現成醬料（9:16 Short, 1080×1920, 30fps）── */}
+      <Composition
+        id="KitchenApiSdkLibrary"
+        component={ApiSdkReel}
+        durationInFrames={APISDK_FRAMES}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Still id="KitchenApiSdkLibraryCover" component={ApiCover} width={1080} height={1920} />
+
       {/* ── Claude 本地 vs 雲端 explainer（資料驅動 _explainer + 旁白）(1920×1080, 30fps) ── */}
       <Composition
         id="ClaudeLocalCloud"
@@ -147,6 +351,75 @@ export const RemotionRoot: React.FC = () => {
         width={1920}
         height={1080}
       />
+
+      {/* ── FB 每天自動發文串接教學（生活應用系列 · 資料驅動 _explainer）(1920×1080, 30fps) ── */}
+      <Composition
+        id="FbAutopost"
+        component={Explainer}
+        defaultProps={{
+          spec: fbAutopostSpec as unknown as VideoSpec,
+          vo: fbAutopostVo as Record<string, number>,
+          voDir: "vo/fb-autopost",
+        }}
+        durationInFrames={explainerFrames(
+          fbAutopostSpec as unknown as VideoSpec,
+          fbAutopostVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── FB 每天自動發文教學 · 黑曜石精修版（生活應用系列）(1920×1080, 30fps) ── */}
+      <Composition
+        id="FbAutopostObsidian"
+        component={FbAutopostObsidian}
+        durationInFrames={fbObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="FbAutopostThumb" component={FbAutopostThumb} width={1920} height={1080} />
+      <Composition
+        id="FbAutopostShort"
+        component={FbAutopostShort}
+        durationInFrames={fbShortFrames()}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── Remotion 自動生成影片教學 · 黑曜石（生活應用 EP05 · 教觀眾照做每步給 prompt）(1920×1080, 30fps) ── */}
+      <Composition
+        id="RemotionAutoVideoObsidian"
+        component={RemotionAutoVideoObsidian}
+        durationInFrames={ravObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="RemotionAutoVideoThumb" component={RemotionAutoVideoThumb} width={1920} height={1080} />
+
+      {/* ── Pinterest 自動發文引流 · 黑曜石（生活應用系列 · 故事解說片）(1920×1080, 30fps) ── */}
+      <Composition
+        id="PinterestObsidian"
+        component={PinterestObsidian}
+        durationInFrames={pinterestObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── IG 每天自動發文教學 · 黑曜石（生活應用系列 EP05）(1920×1080, 30fps) ── */}
+      <Composition
+        id="IgAutopostObsidian"
+        component={IgAutopostObsidian}
+        durationInFrames={igObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="IgAutopostThumb" component={IgAutopostThumb} width={1920} height={1080} />
 
       {/* ── 每日影片工廠（資料驅動 _explainer，每天換 current.json）(1920×1080, 30fps) ── */}
       <Composition
@@ -346,6 +619,38 @@ export const RemotionRoot: React.FC = () => {
         ))}
       </Folder>
 
+      {/* ── 帳號授權安全 · 鑰匙比喻(逐字解說, 16:9, 30fps) ── */}
+      <Composition
+        id="AccountAuthSecurity"
+        component={AasMaster}
+        durationInFrames={getAasFrames()}
+        fps={AAS_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="AccountAuthSecurityPoster" component={AasPoster} width={1920} height={1080} />
+      <Still id="AasV2Cover" component={AasV2Cover} width={1920} height={1080} />
+      <Composition id="AasChCover1" component={() => <ChapterCover {...CHAPTER_COVERS[0]} />} durationInFrames={90} fps={30} width={1920} height={1080} />
+      <Composition id="AasChCover3" component={() => <ChapterCover {...CHAPTER_COVERS[2]} />} durationInFrames={90} fps={30} width={1920} height={1080} />
+      {/* 新手名詞系列 EP02–EP05(4 章切單支;16:9) */}
+      <Composition id="AasEp02" component={EpAccessToken} durationInFrames={EP02_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="AasEp03" component={EpApiKey} durationInFrames={EP03_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="AasEp04" component={EpCaptcha} durationInFrames={EP04_FRAMES} fps={30} width={1920} height={1080} />
+      <Composition id="AasEp05" component={EpPassword} durationInFrames={EP05_FRAMES} fps={30} width={1920} height={1080} />
+      <Folder name="AccountAuthSecurity-Scenes">
+        {[...AAS_SCENES, ...AAS_ALT_SCENES].map((s) => (
+          <Composition
+            key={s.id}
+            id={`AAS-${s.id}`}
+            component={s.Component}
+            durationInFrames={s.durationInFrames}
+            fps={AAS_FPS}
+            width={1920}
+            height={1080}
+          />
+        ))}
+      </Folder>
+
       {/* ── Claude Code 新手知識地圖系列 · EP00 總覽(橫式 16:9)+ 海報 ── */}
       <Composition
         id="ClaudeCodeMapEP00"
@@ -417,6 +722,30 @@ export const RemotionRoot: React.FC = () => {
             component={s.Component}
             durationInFrames={s.durationInFrames}
             fps={GIT_FPS}
+            width={1920}
+            height={1080}
+          />
+        ))}
+      </Folder>
+
+      {/* ── v2: Git 新手指南（＋Roadmap 全集地圖 ＋ 💎PromptGem 挖寶段）— 另開一支，上面原版不動 ── */}
+      <Composition
+        id="GitCommitPushGuideV2"
+        component={GitV2Master}
+        durationInFrames={getGitV2Frames()}
+        fps={GIT_V2_FPS}
+        width={1920}
+        height={1080}
+      />
+      <Still id="GitCommitPushGuideV2Poster" component={GitV2Poster} width={1920} height={1080} />
+      <Folder name="GitGuideV2-Scenes">
+        {GIT_V2_SCENES.map((s) => (
+          <Composition
+            key={s.id}
+            id={`GG2-${s.id}`}
+            component={s.Component}
+            durationInFrames={s.durationInFrames}
+            fps={GIT_V2_FPS}
             width={1920}
             height={1080}
           />
