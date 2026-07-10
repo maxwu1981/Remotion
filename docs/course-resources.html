@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>非工程師的 Claude 自動化課：課程資源站（安裝檢查表・常見問題・完整 Prompt）｜Ai-Wisdom-01</title>
+  <meta name="description" content="不會寫程式也能學會用 Claude Code 自動化日常：Mac／Windows 安裝快速檢查表、額度與安全常見問題解法、每一步可直接複製的完整 Prompt，配合 YouTube 課程隨時查閱。" />
+  <link rel="canonical" href="https://maxwu1981.github.io/Remotion/course-resources.html" />
+  <link rel="stylesheet" href="styles.css" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ai-Wisdom-01" />
+  <meta property="og:title" content="非工程師的 Claude 自動化課：課程資源站" />
+  <meta property="og:description" content="安裝快速檢查表、常見問題解法、完整可複製 Prompt——配合《非工程師的 Claude 自動化課》隨時查閱。" />
+  <meta property="og:url" content="https://maxwu1981.github.io/Remotion/course-resources.html" />
+  <meta property="og:image" content="https://maxwu1981.github.io/Remotion/og.png" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="非工程師的 Claude 自動化課：課程資源站" />
+  <meta name="twitter:description" content="安裝檢查表、常見問題解法、完整可複製 Prompt，配合課程影片隨時查閱。" />
+  <meta name="twitter:image" content="https://maxwu1981.github.io/Remotion/og.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "非工程師的 Claude 自動化課",
+    "description": "不會寫程式也能學會用 Claude Code 自動化日常雜事。從零安裝（Mac／Windows）到完成第一個自動化任務，保姆級跟操，含常見卡點急救與可直接複製的 Prompt。",
+    "inLanguage": "zh-Hant",
+    "provider": {
+      "@type": "Person",
+      "name": "Ai-Wisdom-01",
+      "url": "https://www.youtube.com/@Ai-Wisdom-01",
+      "sameAs": ["https://www.youtube.com/channel/UCeIUOn3e8QzITwPhLaYK4Yw"]
+    },
+    "hasCourseInstance": {
+      "@type": "CourseInstance",
+      "courseMode": "online",
+      "inLanguage": "zh-Hant"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "我完全不會寫程式，真的能學會用 Claude Code 嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "能。整堂課唯一要會的技能是打字聊天——不需要懂任何程式語言。安裝只要複製貼上一行官方指令，之後每一步都是用中文跟 Claude 說你想做什麼，它會先列計畫、等你確認才動手。適合完全零基礎、想讓 AI 幫忙處理電腦雜事的人；不適合想深入學寫程式的人（那類需求建議看頻道的深度教學系列）。" }
+      },
+      {
+        "@type": "Question",
+        "name": "Claude Code 怎麼安裝？要先裝 Node.js 嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "不用裝 Node.js。官方原生安裝法一行指令搞定：macOS／Linux 在終端機貼 curl -fsSL https://claude.ai/install.sh | bash；Windows 在 PowerShell 貼 irm https://claude.ai/install.ps1 | iex。裝完打 claude 啟動、瀏覽器完成登入即可，原生安裝之後會自動在背景更新。適用於第一次接觸終端機的新手；若你已經有 Node.js 開發環境，用 npm 安裝也可以，但非工程師不必為此特地去裝。" }
+      },
+      {
+        "@type": "Question",
+        "name": "Claude Code 要花多少錢？免費版能用嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "免費版不含 Claude Code。個人日常自動化通常訂 Pro 方案即可（US$20/月，年繳約 US$17/月）；如果是重度、長時間跑任務才需要 Max（US$100/月起，提供 5 倍或 20 倍用量）。額度用完是真實存在的限制，不是故障，等系統顯示的重置時間過後就會恢復，把小任務攢成一批一次交代可以減少撞牆機率。適用於評估月費預算；不適用於「先訂最貴的方案比較保險」——非工程師的日常用途 Pro 通常夠用。" }
+      },
+      {
+        "@type": "Question",
+        "name": "Claude Code 會不會亂改我的檔案？資料安全嗎？",
+        "acceptedAnswer": { "@type": "Answer", "text": "Claude Code 官方設計是「動任何檔案前都會先徵求你的同意」，你按了才會執行，不會自己默默動手。建議搭配三條安全家規：新任務先在一個練習資料夾裡試、重要資料先備份再讓它碰、看不懂它要做什麼就先按「否」再問清楚。另外要提醒：網路上流通的第三方 skill／外掛品質不一，安裝前務必先確認來源，不確定就先不要裝。適用於任何第一次授權 AI 動手操作電腦的情境；不建議一開始就對著正式重要資料夾操作，先在練習資料夾建立信心再說。" }
+      },
+      {
+        "@type": "Question",
+        "name": "跟著課程操作，卡住了怎麼辦？",
+        "acceptedAnswer": { "@type": "Answer", "text": "四個最常見的卡點都有對應解法：①安裝指令貼了沒反應——先檢查網路、逐字重新貼一次；②打 claude 出現「找不到指令」——把終端機整個關掉重開再打一次；③Windows 貼指令報錯 'irm' is not recognized——代表開到了 CMD，要改開 PowerShell 才能執行；④額度用完——不是壞掉，等系統顯示的時間重置即可。萬用救援法：把完整錯誤訊息複製起來，貼到 claude.ai 網頁版問「我在裝 Claude Code 時遇到這個錯誤，請一步步教我修」。適用於安裝與初期跟操階段最常出現的卡關；效果比自己盲目搜尋論壇文章更快。" }
+      },
+      {
+        "@type": "Question",
+        "name": "Claude 網頁版、桌面版、Claude Code 差在哪？我該裝哪一個？",
+        "acceptedAnswer": { "@type": "Answer", "text": "三者是遞進關係。網頁版（Chatbot）只能聊天、寫文案，碰不到你電腦裡的檔案；桌面 App 多了能開啟資料夾的能力；Claude Code 是本課程主角——它會直接住在你的電腦裡，能實際動手整理檔案、跑自動化任務。如果你的需求是「讓 AI 幫我處理電腦上的雜事」，答案就是 Claude Code；如果只是想聊天問問題，網頁版就夠。" }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .article { max-width: 880px; margin: 0 auto; padding: clamp(1.5rem,4vw,2.75rem) clamp(1rem,4vw,2.5rem) 1rem; }
+    .article h1 { font-size: clamp(1.6rem,4.2vw,2.3rem); line-height: 1.2; margin-bottom: 0.8rem; }
+    .lede { color: var(--txt-dim); font-size: 1.05rem; line-height: 1.85; }
+    .lede strong { color: var(--txt); }
+    .status-badge { display: inline-block; font-size: 0.82rem; font-weight: 600; color: var(--accent); background: rgba(255,255,255,.05); border: 1px solid var(--card-brd); border-radius: 999px; padding: 0.25rem 0.75rem; margin-bottom: 1rem; }
+    .qa { border-top: 1px solid var(--card-brd); padding-top: 1.6rem; margin-top: 1.6rem; }
+    .qa h2 { font-size: 1.25rem; font-weight: 700; margin: 1.8rem 0 0.7rem; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .qa h2:first-child { margin-top: 0; }
+    .qa p { color: var(--txt-dim); line-height: 1.85; font-size: 0.98rem; margin-bottom: 0.5rem; }
+    .qa p strong { color: var(--txt); }
+    .tldr { font-size: 0.92rem; color: var(--txt); background: rgba(255,255,255,.04); border-left: 3px solid var(--accent); border-radius: 0; padding: 0.55rem 0.85rem; margin: 0.4rem 0 0.2rem; }
+    .crumb { color: var(--txt-faint); font-size: 0.85rem; margin-bottom: 1rem; }
+    .crumb a { color: var(--accent); text-decoration: underline; }
+    .chapters { list-style: none; padding: 0; margin: 1rem 0; }
+    .chapters li { display: flex; gap: 0.8rem; padding: 0.65rem 0; border-bottom: 1px solid var(--card-brd); align-items: baseline; }
+    .chapters li:last-child { border-bottom: none; }
+    .chapters .num { color: var(--accent); font-weight: 700; font-size: 0.85rem; min-width: 2.4rem; }
+    .chapters .q { color: var(--txt); font-weight: 600; font-size: 0.95rem; }
+    .chapters .sub { color: var(--txt-dim); font-size: 0.85rem; display: block; margin-top: 0.15rem; }
+    .codebox { background: rgba(255,255,255,.04); border: 1px solid var(--card-brd); border-radius: var(--radius); padding: 0.9rem 1rem; font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 0.85rem; color: var(--txt); overflow-x: auto; white-space: pre-wrap; word-break: break-word; margin: 0.6rem 0 1.1rem; position: relative; }
+    .codebox__label { display: block; font-family: system-ui, sans-serif; font-size: 0.78rem; color: var(--txt-faint); margin-bottom: 0.4rem; }
+    .copybtn { display: inline-block; margin-top: 0.5rem; font-size: 0.78rem; color: var(--accent); background: none; border: 1px solid var(--accent); border-radius: 6px; padding: 0.28rem 0.7rem; cursor: pointer; font-family: system-ui, sans-serif; }
+    .copybtn:hover { background: rgba(255,255,255,.06); }
+    .checklist { margin: 1rem 0; padding: 0; list-style: none; }
+    .checklist li { padding: 0.4rem 0 0.4rem 1.6rem; position: relative; color: var(--txt-dim); font-size: 0.95rem; }
+    .checklist li::before { content: "✅"; position: absolute; left: 0; }
+    .updatelog { border-top: 1px solid var(--card-brd); margin-top: 2rem; padding-top: 1.2rem; font-size: 0.85rem; color: var(--txt-faint); }
+    .updatelog li { margin-bottom: 0.3rem; }
+    .related { border-top: 1px solid var(--card-brd); margin-top: 2rem; padding-top: 1.4rem; }
+    .related a { color: var(--accent); text-decoration: underline; }
+    .notice { font-size: 0.88rem; color: var(--txt-dim); background: rgba(255,255,255,.03); border: 1px dashed var(--card-brd); border-radius: var(--radius); padding: 0.8rem 1rem; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+  <nav class="topbar">
+    <div class="topbar__brand">
+      <span class="topbar__dot"></span>
+      <a href="./">Ai-Wisdom-01</a>
+    </div>
+    <a class="btn btn--sub" href="https://www.youtube.com/@Ai-Wisdom-01" target="_blank" rel="noopener">訂閱頻道</a>
+  </nav>
+
+  <main class="article">
+    <p class="crumb"><a href="./">← 回影片中心</a></p>
+    <span class="status-badge">課程製作中・資源站持續更新</span>
+    <h1>非工程師的 Claude 自動化課：課程資源站</h1>
+    <p class="lede">
+      這是《<strong>非工程師的 Claude 自動化課</strong>》的配套資源站——影片只講一次，這裡的安裝檢查表、常見問題解法、完整 Prompt 可以隨時回來查。
+      整堂課唯一要會的技能是<strong>打字聊天</strong>：從零安裝到完成第一個自動化任務，Mac 與 Windows 都教，每一步都有檢核點讓你確認有跟上。
+    </p>
+
+    <div class="notice">
+      📍 目前狀態：EP01（從零安裝到第一個自動化）腳本與跟操流程已定稿，正在錄製與後製中。這個頁面的安裝指令與常見問題已對照官方文件驗證，可以先照著操作；影片上線後會補上章節連結與完整下載包。
+    </div>
+
+    <section class="qa">
+      <h2>這堂課會教什麼？8 個章節在解決什麼問題</h2>
+      <p>每一章都對應一個真實觀眾在教學影片留言區最常問的問題，不是功能目錄，是「卡在哪就教哪」。</p>
+      <ul class="chapters">
+        <li><span class="num">HOOK</span><div><span class="q">先看成品：亂糟糟的資料夾，一句話 3 分鐘分類完畢</span></div></li>
+        <li><span class="num">CH1</span><div><span class="q">我不會寫程式，真的能學會嗎？</span><span class="sub">答案：能，你只需要會打字聊天</span></div></li>
+        <li><span class="num">CH2</span><div><span class="q">網頁版、桌面版、Claude Code……到底該用哪個？</span><span class="sub">三欄對照：聊天用網頁版，動手做事用 Claude Code</span></div></li>
+        <li><span class="num">CH3</span><div><span class="q">要花多少錢？免費版能玩嗎？</span><span class="sub">Pro US$20/月起，免費版不含 Claude Code</span></div></li>
+        <li><span class="num">CH4</span><div><span class="q">怎麼安裝？我連終端機都沒開過</span><span class="sub">Mac 實錄 + Windows 對照，一行指令、不用 Node.js</span></div></li>
+        <li><span class="num">CH5</span><div><span class="q">裝好了，第一句話該跟它說什麼？</span><span class="sub">在練習資料夾裡完成第一個自動化任務</span></div></li>
+        <li><span class="num">CH6</span><div><span class="q">它會不會亂動我的檔案？</span><span class="sub">官方預設：動任何檔案前一定先問你</span></div></li>
+        <li><span class="num">CH7</span><div><span class="q">卡住了怎麼辦？</span><span class="sub">4 個真實錯誤畫面 + 解法（見下方常見問題）</span></div></li>
+        <li><span class="num">CH8</span><div><span class="q">總結：從只能自己動手，到多一個 24 小時助手</span></div></li>
+      </ul>
+    </section>
+
+    <section class="qa">
+      <h2>Claude Code 怎麼安裝？（Mac／Windows 快速檢查表）</h2>
+      <p>不需要先裝 Node.js／npm——這是舊教學留下的迷思。官方原生安裝法一行指令搞定，且會自動在背景更新。</p>
+
+      <div class="codebox">
+        <span class="codebox__label">macOS／Linux（終端機 Terminal）</span>curl -fsSL https://claude.ai/install.sh | bash</div>
+
+      <div class="codebox">
+        <span class="codebox__label">Windows（PowerShell —— 注意提示符要是 <code>PS C:\&gt;</code>，不是 <code>C:\&gt;</code>）</span>irm https://claude.ai/install.ps1 | iex</div>
+
+      <ul class="checklist">
+        <li>指令跑完後，打 <code>claude</code> 啟動，瀏覽器會自動跳出完成登入</li>
+        <li>回終端機應該看到：版本號＋模型名＋你目前所在的資料夾</li>
+        <li>Windows 使用者建議順手裝 Git for Windows（官方建議，讓工具更齊全）</li>
+      </ul>
+      <p class="tldr">👉 判斷是不是開對 PowerShell：提示符開頭有 <code>PS</code> 才是 PowerShell；只有 <code>C:\&gt;</code> 沒有 <code>PS</code> 的是 CMD，貼 <code>irm</code> 指令會報錯。</p>
+    </section>
+
+    <section class="qa">
+      <h2>常見問題與解法</h2>
+
+      <h2 style="font-size:1.05rem;margin-top:1.2rem;">安裝指令貼了沒反應／報錯</h2>
+      <p>先檢查網路連線，逐字重新貼一次指令（複製貼上時容易漏字元）；若仍失敗，依官方 troubleshoot 頁面的指引排查。</p>
+
+      <h2 style="font-size:1.05rem;">打 <code>claude</code> 出現「找不到指令」</h2>
+      <p>最常見也最簡單的解法：<strong>把終端機整個關掉、重新打開</strong>再打一次 <code>claude</code>。</p>
+
+      <h2 style="font-size:1.05rem;">Windows 貼指令報 <code>'irm' is not recognized</code></h2>
+      <p>代表你開到了 CMD，不是 PowerShell。回去用開始鍵搜尋「PowerShell」重新開啟，提示符出現 <code>PS</code> 才是對的視窗。</p>
+
+      <h2 style="font-size:1.05rem;">額度用完了怎麼辦？</h2>
+      <p>這不是故障——Claude Code 有使用額度限制，用完等 app 顯示的重置時間過後就會恢復。緩解方法：把幾個小任務攢成一批一次交代，比一件一件分開問更省額度；一開始也別急著裝一堆第三方外掛，那很吃額度。</p>
+
+      <h2 style="font-size:1.05rem;">資料安全嗎？它會不會亂刪我的檔案？</h2>
+      <p>Claude Code 官方預設「動任何檔案前都會先徵求同意」，你按了才會執行。三條安全家規：①新任務先在練習資料夾試 ②重要資料先備份再讓它碰 ③看不懂它要做什麼，先按「否」再問清楚。網路上的第三方 skill／外掛品質不一，安裝前務必先確認來源。</p>
+
+      <p class="tldr">👉 萬用救援法：把完整錯誤訊息全選複製，貼到 <a href="https://claude.ai" target="_blank" rel="noopener" style="color:var(--accent);">claude.ai 網頁版</a> 問「我在裝 Claude Code 時遇到這個錯誤，請一步步教我修」——裝到一半沒有本機助手時，網頁版就是你的救援隊。</p>
+    </section>
+
+    <section class="qa">
+      <h2>這堂課會用到的 Prompt（可直接複製）</h2>
+      <p>每一步都給你「對 Claude 說的那句話」逐字稿，跟著念、跟著貼就好。</p>
+
+      <div class="codebox">
+        <span class="codebox__label">第一句話：確認有連上（對 Claude 說）</span>這個資料夾裡有哪些檔案？幫我照類型分類概述一下。</div>
+
+      <div class="codebox">
+        <span class="codebox__label">第一個自動化任務（對 Claude 說）</span>請把這個資料夾裡的檔案照類型整理進分類資料夾（例如：圖片、文件、PDF）。
+先給我整理計畫，等我說「好」再動手。過程中要刪除任何東西都必須先問我。
+做完後列一張清單：每個檔案從哪裡搬到了哪裡。</div>
+
+      <div class="codebox">
+        <span class="codebox__label">🎁 完整通用模板（片尾禮物・可套用到任何自動化任務）</span>我完全不會寫程式，這是我第一次用 Claude Code，請把我當新手帶。
+我已經建了一個練習資料夾，等一下的任務只准在這個資料夾裡進行。
+任務：〔把你想自動化的事寫在這裡，例如：把檔案照類型整理進分類資料夾〕
+規則：
+1. 先給我步驟計畫，等我回覆「好」才開始動手
+2. 要刪除或覆蓋任何檔案，一律先問我
+3. 做完後用清單報告你動了哪些檔案
+4. 我看不懂的名詞，用生活比喻解釋給我聽</div>
+
+      <p class="notice">練習資料夾產生器＋完整 Prompt 包（GitHub 模板 repo）將於 EP01 影片上線當天一併公開，連結會補在這裡與影片描述欄。</p>
+    </section>
+
+    <ul class="updatelog">
+      <li>2026-07-09：頁面建立。安裝指令與價格已對照官方文件驗證；EP01 影片製作中。</li>
+    </ul>
+
+    <div class="related">
+      <p>更多實戰解法在 <a href="./">影片中心</a>。</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Ai-Wisdom-01 · Built with Claude Code</p>
+  </footer>
+</body>
+</html>
