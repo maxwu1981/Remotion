@@ -39,14 +39,13 @@ run("npx", ["remotion", "still", comp, a, `--frame=${hold}`]);
 run("npx", ["remotion", "still", comp, b, `--frame=${hold + gap}`]);
 
 const diff = path.join(dir, `DIFF_${comp}_${hold}.png`);
-run("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-i", a, "-i", b,
+// metadata=print:file=- writes the per-frame YMAX straight to this ffmpeg process's stdout
+const statsOut = run("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-i", a, "-i", b,
   "-filter_complex", "blend=all_mode=difference,format=gray,signalstats,metadata=print:file=-:key=lavfi.signalstats.YMAX", "-f", "null", "-"]);
-// amplified visual diff + a numeric max-delta
+const ymax = statsOut.match(/YMAX=(\d+)/)?.[1] ?? "?";
+// amplified visual diff (separate encode pass, doesn't need signalstats)
 run("ffmpeg", ["-y", "-hide_banner", "-loglevel", "error", "-i", a, "-i", b,
   "-filter_complex", "blend=all_mode=difference,format=gray,eq=contrast=16:brightness=0.06", diff]);
-const ymax = run("ffmpeg", ["-hide_banner", "-loglevel", "info", "-i", a, "-i", b,
-  "-filter_complex", "blend=all_mode=difference,format=gray,signalstats", "-f", "null", "-"])
-  .match(/YMAX:(\d+)/)?.[1] ?? "?";
 
 console.log(`\n  lossless diff  → ${diff}`);
 console.log(`  max pixel delta (lossless): ${ymax}  ${Number(ymax) <= 4 ? "✅ render is stable (any mp4 shimmer = compression → calm bg / raise bitrate)" : "⚠ REAL render jitter at this hold — fix in code"}`);
