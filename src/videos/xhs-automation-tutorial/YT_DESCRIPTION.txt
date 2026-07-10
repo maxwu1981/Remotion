@@ -1,0 +1,38 @@
+【看到最後的禮物】把下面這整段複製，貼給 Claude，它就從零幫你把整套「小紅書全自動發文」建起來：
+
+Hi Claude，我想在自己 Mac 上做一套「小紅書全自動發文」，用 Playwright 接管我自己開的真 Chrome、不靠付費工具。請一步步帶我做，要我去哪點什麼也講清楚：
+① 環境：用系統 Chrome 開 --remote-debugging-port=9222 ＋獨立 profile --user-data-dir=~/.xhs-chrome-profile，不要加 --enable-automation，讓 navigator.webdriver 維持 false；我第一次自己掃碼登入創作平台。
+② 接管：用 chromium.connectOverCDP('http://localhost:9222') 接上這顆已登入的真 Chrome，取現有 context 與分頁。
+③ 發布包：定「一個資料夾＝一篇筆記」格式——00_封面.jpg(3:4壓字)、編號圖片、文案.txt(標題/正文/標籤)、影片版加 mp4＋章节.tsv(每行 MM:SS 用 tab 接章節名)；腳本只認格式。
+④ 上傳腳本：開 creator.xiaohongshu.com 發布頁，用 CDP DOM.setFileInputFiles 把影片路徑塞進 input.upload-input（繞過瀏覽器 50MB 限制）；輪詢等標題框出現＝轉碼完成(最多180秒)；自動填標題、正文(tiptap 編輯器)、標籤(打 #標籤 等下拉、精準命中才按 Enter 選真話題)、設「仅自己可见」、封面設 00_封面.jpg、章節(先填名再填時間、讀回核對一致才存)。
+⑤ 安全防封：一律先發「仅自己可见」自檢才轉公開；一天最多 1–3 篇；發布鈕永遠留我自己按；發布前手動開原创声明、添加地点、確認合集；cookie 當密碼不外流。
+⑥ 給我一句話就能跑的指令 node xhs-post-video.mjs "〈發布包資料夾〉"，並教我怎麼確認真的接上了那顆 Chrome。
+⚠️ 小紅書官方並不鼓勵自動化發文，請幫我壓低頻率、內容真實，風險我自負。
+
+──────────
+
+小紅書發文可以全自動嗎？可以。這支片我用 Claude Code 自動完成影片上傳、標題、正文、8 個標籤、5 個章節，含防封框架與「填一項、讀回核對一項」的驗證，我只做最後 3 下手動把關。手動發一篇約 40 分鐘，這套一句指令約 3 分鐘。全程用 Playwright 的 connectOverCDP 接管一顆真 Chrome（navigator.webdriver 維持 false、不帶自動化指紋，所以平台看起來像真人）。
+
+每一站該對 Claude 說的那句話都在畫面上，看到最後有整段可直接複製的完整 prompt（就在本描述最上方）。
+
+⏱ 章節
+0:00 開場：一句指令一鍵發完整篇
+1:16 七站產線總覽
+1:44 第一站 環境建置：真 Chrome 分身（webdriver=false）
+2:43 第二站 防封三鐵則
+3:45 第三站 GEO 文案：數字 Claude 自己上網查
+4:40 第四站 圖文發布包（真實金澤案例）
+5:23 影片篇：實拍自動剪
+6:38 第五站 一鍵自動上傳（重頭戲）
+7:57 坑① 可見範圍會自己變公開
+8:33 坑② 草稿取回吃掉影片＋章節
+9:17 第六站 這三下留給人工
+10:04 第七站 發布後營運
+10:31 🎁 完整 master prompt（整段複製給 Claude）
+11:02 總結：40 分 → 3 分鐘 ＋ 訂閱按讚分享
+
+🏷 主題：Claude Code、小紅書自動發文、Playwright、connectOverCDP、防封、章節功能、GEO、AI 發文產線、AI Wisdom
+
+⚠️ 本片為技術示範。小紅書官方不鼓勵自動化發文，請壓低頻率、內容真實、風險自負。
+
+#ClaudeCode #小紅書 #自動化 #AI工具 #Playwright #AIWisdom

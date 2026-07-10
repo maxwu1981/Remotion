@@ -1,0 +1,9 @@
+{
+  "hook": "你的 routine 在雲端跑,那雲端長什麼樣?就是 Claude Code on the web。",
+  "here": "你在這:第 24 站,Claude Code on the web,自動化這章最後一站。",
+  "def": "在瀏覽器跑 Claude Code、不用本機環境;每個 session 跑在隔離的 Anthropic 雲端 VM,適合長任務與沒在本機的 repo。",
+  "def2": "適合:丟著去做別的、處理本機沒有的 repo、平行多任務。",
+  "demo": "打開 claude.ai/code、點進 routine 的執行紀錄,就能看到它今天做了什麼、抓了哪些新聞、寄了沒。",
+  "next": "自動化整章完成!下一站第 25 號,進安全:上線前怎麼把關。",
+  "outro": "這集就到這,訂閱加按讚,第 25 站見!"
+}

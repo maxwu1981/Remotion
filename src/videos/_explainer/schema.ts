@@ -123,6 +123,26 @@ const ImageBlock = z.object({
   annotations: z
     .array(z.object({ x: z.number(), y: z.number(), text: z.string(), atCue: z.number().int() }))
     .optional(),
+  /** 桌面情境註解卡（參考 2026-07-10 老闆 Gemini 樣張）：照片靠左、右側 emoji 卡片＋漸層箭頭指向 (x,y)(0–1)。 */
+  callouts: z
+    .array(z.object({ x: z.number(), y: z.number(), emoji: z.string(), title: z.string(), desc: z.string(), atCue: z.number().int() }))
+    .max(4)
+    .optional(),
+  /** 實拍大圖版（hf-voiceid ShotScene 同款，2026-07-10 老闆拍板）：截圖佔 2/3＋左步驟欄＋正紅框/聚光/放大鏡。 */
+  shot: z
+    .object({
+      w: z.number(), // src 原始像素寬
+      h: z.number(),
+      label: z.string(), // 右上徽章文字，如 "VS Code 終端機 · 實拍"
+      steps: z.array(z.object({ icon: z.string(), t: z.string(), atCue: z.number().int() })).max(5),
+      highlights: z.array(z.object({
+        atCue: z.number().int(),
+        rect: z.array(z.number()).length(4), // [x1,y1,x2,y2] src 像素
+        loupe: z.array(z.number()).length(4).optional(), // 放大鏡目標區
+        mask: z.string().optional(), // 紅框中央遮罩警語
+      })),
+    })
+    .optional(),
   keyline: z.string().optional(),
   cues: z.array(z.string()).min(1),
 });
@@ -173,6 +193,19 @@ const ComplaintsBlock = z.object({
   cues: z.array(z.string()).min(1),
 });
 
+/** 單則真實引言聚光卡：一句真人逐字發言（YouTube/GitHub/HN 留言等）置中放大，配帳號/平台/按讚數等 meta。 */
+const QuoteBlock = z.object({
+  type: z.literal("quote"),
+  kicker: z.string(),
+  accent: AccentKey,
+  handle: z.string(), // 已部分屏蔽的帳號，如 "@mgb***"
+  platform: z.string(), // 來源平台，如 "YouTube 留言"
+  quote: z.string(), // 真實逐字原文
+  meta: z.string().optional(), // 如 "788 個讚"
+  keyline: z.string().optional(),
+  cues: z.array(z.string()).min(1),
+});
+
 export const SceneBlock = z.discriminatedUnion("type", [
   CoverBlock,
   TerminalBlock,
@@ -182,6 +215,7 @@ export const SceneBlock = z.discriminatedUnion("type", [
   ImageBlock,
   SpotlightBlock,
   ComplaintsBlock,
+  QuoteBlock,
   OutroBlock,
 ]);
 

@@ -1,0 +1,9 @@
+{
+  "hook": "如果你發現自己每次都貼同一段指示給 Claude,那就是該做一個 Skill 了。",
+  "here": "你在這:第 17 站,Skills,Agent Skills。",
+  "def": "寫一個 SKILL.md 把可重複的流程或知識打包,Claude 需要時才動態載入(或用斜線名稱直接叫);省 context、提升一致性。",
+  "def2": "和 CLAUDE.md 差別:它用到才載;和 MCP 差別:它是知識不是連線。",
+  "demo": "做一個「摘要排版」skill:固定標題、emoji、字數寫進 SKILL.md,以後產摘要叫一下就排版一致。",
+  "next": "Skill 管知識。下一站第 18 號:把雜活外包的 Subagents。",
+  "outro": "這集就到這,訂閱加按讚,第 18 站見!"
+}

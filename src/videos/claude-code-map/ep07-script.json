@@ -1,0 +1,9 @@
+{
+  "hook": "CLAUDE.md 是你寫給它的。但你知道嗎,Claude 也會自己記筆記。",
+  "here": "你在這:第 7 站,Auto memory 自動記憶。",
+  "def": "Claude 自己邊做邊記的筆記,如 build 指令、除錯心得、你的偏好,存在 MEMORY.md;與你親手寫的 CLAUDE.md 互補。",
+  "def2": "預設開啟,可用 /memory 查看、編輯;它判斷以後用得到才記。",
+  "demo": "你糾正一次「以後都用 pnpm」,下次它就記得了——因為寫進了 auto memory,用 /memory 就看得到。",
+  "next": "記憶搞定。下一站第 8 號:settings.json,專案的設定開關。",
+  "outro": "這集就到這,訂閱加按讚,第 8 站見!"
+}

@@ -775,6 +775,7 @@ export const XHS_COVERS: { id: string; cfg: XhsCoverConfig }[] = [
       subtitle: "1300年汤町·外汤めぐり发祥地",
       handle: "@独自旅游乱走",
       focus: "50% 50%",
+      ep: "",
     },
   },
   {
@@ -790,6 +791,7 @@ export const XHS_COVERS: { id: string; cfg: XhsCoverConfig }[] = [
       subtitle: "国宝五城·白鹭城樱花满开",
       handle: "@独自旅游乱走",
       focus: "50% 60%",
+      ep: "",
     },
   },
   ...SAKURA_EP_JSONS.flatMap((e) => e.covers as { id: string; cfg: XhsCoverConfig }[]),

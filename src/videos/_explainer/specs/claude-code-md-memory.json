@@ -1,0 +1,199 @@
+{
+  "id": "claude-code-md-memory",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "CLAUDE.md 記憶檔",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "官方文件查證：四層位置 + 四原則，寫一次、每次自動套用",
+    "date": "Claude Code 深度教學系列 · 2026-07-07"
+  },
+  "script": {
+    "cv1": "每次開新對話，你是不是都要跟 Claude 從頭講一次專案規則？",
+    "cv2": "其實你只要跟 Claude 說一句話，它就能幫你把 CLAUDE.md 寫好、還寫對。",
+    "cv3": "但要寫對，得先搞懂官方的位置階層跟四原則，不然寫了也是白寫。",
+
+    "fa1": "一開始，我也用錯方法在寫。",
+    "fa2": "第一招，每次對話臨時交代規則，能用但不會跨 session 記住，下次開新對話又要講一次。",
+    "fa3": "第二招，把什麼都塞進 CLAUDE.md，越寫越長，官方文件證實超過兩百行反而降低遵循度。",
+    "fa4": "第三招，把它跟 Claude 自動寫的 Auto Memory 搞混，以為是同一份筆記。",
+    "fa5": "三招的共同死穴：沒搞懂 CLAUDE.md 怎麼載入、該放什麼，越補越亂。",
+
+    "pl1": "真正的解法，先搞懂官方機制：CLAUDE.md 在每次 session 啟動時自動讀進 context。",
+    "pl2": "位置分四層：Managed 公司政策優先權最高、User 全域 ~/.claude、Project 團隊共用、Local 只有你自己看得到。",
+    "pl3": "四層是疊加，不是覆蓋，從系統根目錄往下逐層讀，一份都不會漏。",
+    "pl4": "團隊規則放 Project，進版控大家都看得到；個人偏好放 Local，加進 .gitignore 只有你看得到。",
+    "pl5": "分層分工清楚，才不會把個人測試網址不小心 commit 給全隊看到。",
+
+    "sa1": "光知道分層還不夠，內容怎麼寫也有官方公式。",
+    "sa2": "我直接對 Claude 說一句話：幫我跑 /init，生成一份 CLAUDE.md。",
+    "sa3": "官方四原則：Size 兩百行內、Structure 用標題加 bullet、Specificity 具體別模糊、Consistency 不能自相矛盾。",
+    "sa4": "內容太長，我就再說一句：幫我用 @路徑 引用其他檔案，最深支援四層遞迴。",
+    "sa5": "剪枝的訣竅也很簡單：每一行問自己，拿掉它 Claude 會不會因此犯錯，不會就刪。",
+
+    "da1": "這就是官方寫法，跟「什麼都寫、能塞就塞」最大的不同。",
+    "da2": "模糊的規則，像「格式要寫好」「記得測試」，Claude 猜不出我要的標準是什麼。",
+    "da3": "具體的規則，像「用兩個空格縮排」「commit 前先跑 npm test」，才驗證得出來。",
+    "da4": "官方文件白紙黑字：具體優於模糊、兩百行內優於塞爆，遵循度差很多。",
+    "da5": "精簡又具體，這兩點，另外兩招都做不到。",
+    "da6": "官方也提醒，nested 的 CLAUDE.md 要定期檢查，別讓兩份規則互相矛盾。",
+
+    "pa1": "那怎麼知道這真的有解？",
+    "pa2": "我請 Claude 幫我核對官方文件：CLAUDE.md 完整規格記在 code.claude.com 的 memory 頁面。",
+    "pa3": "before，我每個新 session 都要重講規則，或塞爆五百行反而被忽略一半。",
+    "pa4": "after，兩百行內、四原則寫好、四層分工，跨 session 自動套用，不用再重講。",
+    "pa5": "但誠實提醒，session 進行中改 CLAUDE.md 不會馬上生效，要等下一個 session 或 /compact 才套用。",
+
+    "gp1": "最後，送給看到這裡的你一個禮物。",
+    "gp2": "把每一步合成一段完整 prompt，整段複製貼給 Claude，它就從頭幫你把 CLAUDE.md 寫好。",
+    "gp3": "逐字完整版，我放在影片下方描述欄，直接複製就能用。",
+
+    "o1": "快速總整理。",
+    "o2": "痛點：每次開新對話都要重講規則，CLAUDE.md 寫太長或塞爆，Claude 反而忽略一半。",
+    "o3": "解法：搞懂四層載入機制，打 /init 生成起點，用 @路徑 引用，內容維持兩百行內。",
+    "o4": "跟臨時交代、塞爆全部的差別，是具體、精簡、四層分工、跨 session 自動套用。",
+    "o5": "誠實提醒：mid-session 改動不會馬上生效，要等下一個 session 或 /compact。",
+    "o6": "下次開新專案，先花五分鐘打 /init 寫好 CLAUDE.md 吧。覺得有用，記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "CLAUDE.md 記憶檔",
+      "terminal": {
+        "title": "CLAUDE.md",
+        "lines": [
+          { "k": "cmd", "t": "💬 「Hi Claude，幫我生成一份寫得好的 CLAUDE.md」" },
+          { "k": "out", "t": "→ 每次 session 啟動自動讀，不用再重講規則" },
+          { "k": "cmt", "t": "位置放對、內容抓對重點，官方文件教你一次寫對" }
+        ]
+      },
+      "chips": [
+        { "n": "1", "t": "重複講規則好煩", "accent": "warn" },
+        { "n": "2", "t": "CLAUDE.md 怎麼寫", "accent": "blue" },
+        { "n": "3", "t": "四層 + /init", "accent": "green" },
+        { "n": "4", "t": "官方查證", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "places",
+      "kicker": "為何解不掉 · 三個常見誤區",
+      "accent": "warn",
+      "headingZh": "光寫了 CLAUDE.md，卻還是沒被照做",
+      "headingEn": "Why your CLAUDE.md still gets ignored",
+      "items": [
+        { "icon": "🔁", "title": "每次臨時交代", "path": "對話裡口頭講規則", "note": "沒有跨 session 記住，下次開新對話又要講一次", "accent": "warn" },
+        { "icon": "🗑️", "title": "CLAUDE.md 塞爆", "path": "什麼都寫進去，動輒 500 行", "note": "官方文件證實：超過 200 行反而降低遵循度，Claude 忽略一半", "accent": "blue" },
+        { "icon": "❓", "title": "跟 Auto Memory 搞混", "path": "以為是同一份筆記", "note": "Auto memory 是 Claude 自動寫、只讀前 200 行或 25KB，跟你手寫的 CLAUDE.md 是兩回事", "accent": "violet" }
+      ],
+      "keyline": "共同死穴：沒搞懂 CLAUDE.md 的載入機制與邊界，越補越亂",
+      "keylineAtCue": 4,
+      "cues": ["fa1", "fa2", "fa3", "fa4", "fa5"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "解法一 · 位置階層",
+      "accent": "blue",
+      "headingZh": "先搞懂位置階層，疊加不覆蓋",
+      "headingEn": "Understand the four-layer hierarchy",
+      "nodes": [
+        { "icon": "🏢", "label": "Managed", "sub": "IT 部署全公司，優先權最高", "accent": "warn" },
+        { "icon": "🏠", "label": "User", "sub": "~/.claude/CLAUDE.md，你所有專案都套用", "accent": "blue" },
+        { "icon": "👥", "label": "Project", "sub": "repo 根目錄 ./CLAUDE.md，進版控給團隊", "accent": "green" },
+        { "icon": "🔒", "label": "Local", "sub": "./CLAUDE.local.md，加進 .gitignore，只有你看得到", "accent": "violet" }
+      ],
+      "keyline": "四層疊加不覆蓋：從系統根目錄往下、逐層讀進 context",
+      "keylineAtCue": 3,
+      "cues": ["pl1", "pl2", "pl3", "pl4", "pl5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "解法二 · 官方公式",
+      "accent": "green",
+      "headingZh": "打 /init 生成，四原則寫得精準",
+      "headingEn": "Generate with /init, write with four principles",
+      "terminal": {
+        "title": "終端機",
+        "lines": [
+          { "k": "cmt", "t": "1) 新專案，先讓 Claude 掃描 codebase" },
+          { "k": "cmd", "t": "💬 對 Claude：「幫我跑 /init，生成一份 CLAUDE.md」" },
+          { "k": "out", "t": "→ 自動生成起始 CLAUDE.md：build/test 指令、程式碼風格、架構重點" },
+          { "k": "cmt", "t": "2) 內容太長就用 @路徑 引用" },
+          { "k": "cmd", "t": "💬 對 Claude：「太長了，幫我用 @README.md 引用」" },
+          { "k": "out", "t": "→ 展開該檔案內容進 context，最深支援 4 層遞迴" }
+        ]
+      },
+      "keyline": "四原則：Size 兩百行內 · Structure 標題化 · Specificity 要具體 · Consistency 不矛盾",
+      "keylineAtCue": 2,
+      "cues": ["sa1", "sa2", "sa3", "sa4", "sa5"]
+    },
+    {
+      "type": "compare",
+      "kicker": "差異化 · 好壞範例對照",
+      "accent": "violet",
+      "headingZh": "跟「什麼都寫、能塞就塞」差在哪",
+      "headingEn": "Specific and concise beats vague and bloated",
+      "bad": { "badge": "模糊、大雜燴", "code": "\"Format code properly\" · \"Test your changes\" · 塞爆 500 行", "note": "太抽象、太長，Claude 遵循度反而下降" },
+      "good": { "badge": "具體、精簡", "code": "\"Use 2-space indentation\" · \"Run npm test before commit\" · 200 行內", "note": "具體到能驗證，官方證實遵循度更高" },
+      "keyline": "差異＝具體優於模糊、精簡優於塞爆，這兩點官方文件白紙黑字寫",
+      "keylineAtCue": 5,
+      "cues": ["da1", "da2", "da3", "da4", "da5", "da6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "實證 · 怎麼知道真解了",
+      "accent": "teal",
+      "headingZh": "怎麼知道這真的有效？對照官方",
+      "headingEn": "Does it actually work?",
+      "terminal": {
+        "title": "Before / After",
+        "lines": [
+          { "k": "cmt", "t": "Before：每個新 session 都要重講規則，或塞爆 500 行反而被忽略一半" },
+          { "k": "cmd", "t": "💬 對 Claude：「幫我檢查這份 CLAUDE.md 是不是超過兩百行、有沒有互相矛盾的規則」" },
+          { "k": "ok", "t": "After：兩百行內、四層分工、四原則寫好，跨 session 自動套用" },
+          { "k": "cmt", "t": "誠實提醒：session 進行中改 CLAUDE.md 不會馬上生效，要等下一個 session 或 /compact" },
+          { "k": "cmt", "t": "官方文件：code.claude.com/docs/en/memory" }
+        ]
+      },
+      "keyline": "官方文件證實：兩百行內才 cache-friendly，多份 CLAUDE.md 疊加不覆蓋",
+      "keylineAtCue": 4,
+      "cues": ["pa1", "pa2", "pa3", "pa4", "pa5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "看到最後的禮物 🎁",
+      "accent": "claude",
+      "headingZh": "把每一步合成一段完整 prompt",
+      "headingEn": "The one prompt that builds it all",
+      "terminal": {
+        "title": "💬 整段複製，一次貼給 Claude",
+        "lines": [
+          { "k": "cmd", "t": "「Hi Claude，幫我在這個專案生成一份寫得好的 CLAUDE.md：」" },
+          { "k": "cmt", "t": "① 先掃描這個 codebase（用 /init），抓出常用指令、程式碼風格、架構重點" },
+          { "k": "cmt", "t": "② 內容控制在兩百行內，超過就拆成 @路徑 引用或 .claude/rules/ 按檔案類型載入" },
+          { "k": "cmt", "t": "③ 每一條都寫具體（例如指令、路徑），不要「格式要寫好」這種模糊說法" },
+          { "k": "cmt", "t": "④ 分清楚放哪層：團隊規則放 ./CLAUDE.md 進版控，我的個人偏好放 ./CLAUDE.local.md 並加進 .gitignore" },
+          { "k": "cmt", "t": "⑤ 幫我檢查有沒有互相矛盾的規則，若有就指出來" },
+          { "k": "err", "t": "誠實提醒：session 進行中改 CLAUDE.md 不會馬上生效，要等下一個 session 或 /compact" },
+          { "k": "ok", "t": "📄 逐字完整版 → 影片下方描述欄，可整段複製" }
+        ]
+      },
+      "keyline": "整段複製貼給 Claude，它就從頭幫你把 CLAUDE.md 寫好",
+      "keylineAtCue": 2,
+      "cues": ["gp1", "gp2", "gp3"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "總整理",
+      "headingEn": "Recap",
+      "cards": [
+        { "emoji": "😩", "text": "痛點：每次開新對話都要重講規則，CLAUDE.md 寫太長或塞爆，Claude 反而忽略一半", "accent": "warn" },
+        { "emoji": "🛠️", "text": "解法：搞懂四層載入機制，打 /init 生成起點，用 @路徑 引用，內容維持兩百行內", "accent": "green" },
+        { "emoji": "⚡", "text": "差異：具體、精簡、四層分工，跨 session 自動套用，不用再重講一次", "accent": "blue" },
+        { "emoji": "✅", "text": "誠實提醒：mid-session 改動不會馬上生效，要等下一個 session 或 /compact", "accent": "violet" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

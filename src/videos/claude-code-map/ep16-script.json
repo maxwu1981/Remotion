@@ -1,0 +1,9 @@
+{
+  "hook": "內建工具很強,但它怎麼連到你的 Gmail、Slack、資料庫?答案就一個字:MCP。",
+  "here": "你在這:第 16 站,MCP 連外部工具。",
+  "def": "Model Context Protocol,連接 AI 與外部工具和資料的開放標準;接上後 Claude 能直接讀寫 Slack、Jira、Google Drive、資料庫等。",
+  "def2": "當你一直把別的工具資料貼進對話,就該接 MCP 了。",
+  "demo": "小助手要會寄信:接上 Gmail 的 MCP,Claude 就能直接把摘要寄出去,設定一次之後自己會用。",
+  "next": "MCP 給的是連線與動作。下一站第 17 號:管知識的搭檔,Skills。",
+  "outro": "這集就到這,訂閱加按讚,第 17 站見!"
+}

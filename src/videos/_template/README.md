@@ -12,7 +12,17 @@ itself in `Root.tsx`** — it's just a skeleton (it stays type-valid but is neve
 4. **Voiceover (optional):** generate one mp3 per cue id into `public/vo/<your-video>/`,
    write measured seconds into `vo-manifest.json`, and set `voDir` in `captions.tsx`
    to `vo/<your-video>`.
-5. **Register** it in `src/Root.tsx`:
+5. **Roadmap + PromptGem come pre-wired** (`scenes/Roadmap.tsx`, `scenes/PromptGem.tsx`,
+   content in `data.ts`) — edit the placeholder text in `data.ts` (and the hand-timed
+   `CUES` in each scene file) rather than deleting them. This is the "world-class
+   skeleton": Hook/Cover → **Roadmap** (full-collection map) → your content scenes →
+   **PromptGem** (💎 today's copy-me prompt) → **your own Outro** (not templated —
+   every video's thanks/CTA card is different; every video still needs one, per
+   `new-video-workflow`). Don't want either scene? Delete its file and its entry in
+   `registry.ts`. Both are thin wrappers around `shared-skills/components/Roadmap.tsx`
+   and `PromptGem.tsx` — if you need a 3rd/4th stop or a different look, pass more
+   props rather than forking the shared component.
+6. **Register** it in `src/Root.tsx`:
    ```tsx
    import { Master as MyMaster } from "./videos/<your-video>/Master";
    import { SCENES, FPS, getMovieFrames } from "./videos/<your-video>/registry";

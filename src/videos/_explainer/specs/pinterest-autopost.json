@@ -1,0 +1,271 @@
+{
+  "id": "pinterest-autopost",
+  "brand": {
+    "titlePre": "Pinterest",
+    "titlePost": "自動發文引流",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "用 Pinterest 官方 API 自動發原創畫作、帶連結導流 Shopify，內建合規護欄",
+    "date": "生活應用系列 · 2026-07-05"
+  },
+  "script": {
+    "cv1": "我幫家裡的書畫品牌，想讓 Pinterest 自動幫我把畫作變成流量。",
+    "cv2": "結果第一次申請官方 API，當天就被打槍。",
+    "cv3": "這支影片，就是我怎麼從被拒、一路搏鬥到通關的完整過程。",
+    "wy1": "賣畫最難的不是畫，是讓對的人看到、並且點進來買。",
+    "wy2": "IG 貼文發完 24 小時就被洗下去，等於一次性曝光。",
+    "wy3": "Pinterest 不一樣，它本質是視覺搜尋引擎，一張 Pin 被搜到、被收藏，可以幫你長期帶連結導流。",
+    "wy4": "對賣視覺作品的人來說，這是最划算、也最該自動化的一條管道。",
+    "go1": "我要的自動化其實很單純：把自己的原創畫作，自動發成一張帶連結的 Pin。",
+    "go2": "每張 Pin 都放標題、說明，還有一個連結，直接指到 Shopify 上那幅畫的商品頁。",
+    "go3": "而且我堅持走 Pinterest 官方 API，不經任何第三方付費工具。",
+    "go4": "聽起來很簡單對吧？結果光是拿到用官方 API 發文的資格，我就卡了兩個禮拜。",
+    "rj1": "2026 年 6 月 11 號，我送出 API 申請，當天就被自動拒絕。",
+    "rj2": "一開始我以為是畫作內容或帳號有問題，查了老半天都不對。",
+    "rj3": "後來才知道真正原因：我那個 app 的公司名稱裡有 Auto Poster 這種字眼，跟網站上的顯示名稱對不起來。",
+    "rj4": "對 Pinterest 的審查系統來說，名稱對不上就是一面紅旗，直接判你可疑。",
+    "fx1": "我沒有跟論壇的罐頭回覆糾纏，而是直接開了一張官方 support ticket。",
+    "fx2": "團隊專員回信點出名稱問題後，我做的事很簡單：重開一個 app，名稱跟網站完全一模一樣。",
+    "fx3": "這次由專員真人複審，隔天就核准了 Trial，OAuth、access token、讀取全部打通。",
+    "fx4": "這一課最值錢：卡在機器審查時，想辦法把案子推到真人手上，而且先把最容易被誤判的地方修乾淨。",
+    "pin1": "打通之後，發一張 Pin 其實就三步。",
+    "pin2": "先用 OAuth 授權，把授權碼換成 access token；再列出我在 Pinterest 上的看板。",
+    "pin3": "最後呼叫官方接口，把標題、說明、畫作圖片，還有指回 Shopify 的連結一起送出去。",
+    "pin4": "成功的話，Pinterest 會回傳這張 Pin 的編號跟網址，整段就是一支程式幫我跑完。",
+    "gd1": "能自動發，不代表就該狂發。這也是很多人自動化之後帳號被限流的原因。",
+    "gd2": "所以我把兩道合規護欄直接寫進程式：第一，同一張圖只發一次，避免重複發被判洗版。",
+    "gd3": "第二，每天最多發一張，刻意放慢節奏。",
+    "gd4": "對平台來說，穩定、低頻、原創，才是好帳號。合規不是限制，是讓帳號活得久的資產。",
+    "st1": "這裡我必須誠實講清楚，因為這才是真實狀態。",
+    "st2": "我這個 app 目前是 Trial 等級，只能在私密環境裡建 Pin；真的要對外公開自動發，會被官方擋下。",
+    "st3": "要解鎖公開發必須升級到 Standard。我已經在 6 月 25 號送出申請，現在還在官方審查佇列裡等。",
+    "st4": "換句話說，整條技術鏈路我已經全部跑通、驗證過，就差 Pinterest 點頭這一步。",
+    "br1": "等審查的這段時間，我沒讓畫作停下來。",
+    "br2": "我改走瀏覽器半自動路線，用 Claude 駕駛 Pinterest 的發布介面，每天穩定發個三到五張。",
+    "br3": "到目前為止已經發了 33 張 Pin，鋪滿山水、花鳥、書法、神明人物四個主題看板。",
+    "br4": "所以就算 API 還沒完全開，我的畫作在 Pinterest 上的能見度，一天都沒有斷。",
+    "df1": "你可能會問，市面上一堆排程工具，為什麼要自己搞官方 API？",
+    "df2": "付費工具要月費，還把你的內容跟帳號授權押在它的伺服器上；哪天它收掉，你的資料就一起陪葬。",
+    "df3": "走官方 API、自己寫程式，授權、圖片、連結全在自己電腦，差別不只是省錢，是主導權在誰手上。",
+    "rs1": "快速收個尾。到今天，瀏覽器路線已經鋪了 33 張 Pin，四個主題看板都上滿了。",
+    "rs2": "官方 API 這條，授權、換 token、列看板、建 Pin，我在私密環境全鏈路都驗證通過。",
+    "rs3": "只剩 Standard 審查這一步，一旦通過，公開自動發就直接解鎖。",
+    "rs4": "而我學到最貴的一課只有一行字：申請 API 時，app 名稱一定要跟你的網站完全一致。",
+    "o1": "這一集，我把怎麼讓 Pinterest 自動幫我把畫作變流量，從頭到尾拆給你看。",
+    "o2": "重點回顧：Pinterest 是視覺搜尋引擎，一張 Pin 能長期帶客。",
+    "o3": "官方 API 三步：授權、換 token、發 Pin；再加同圖去重跟每天一張的合規護欄，帳號才活得久。",
+    "o4": "還有那個最貴的教訓，app 名稱一定要跟網站一致。",
+    "o5": "如果這支對你有幫助，記得訂閱、按讚、分享給也在經營帳號的朋友。",
+    "o6": "Standard 一過，我會再做一支 Pinterest 真正全自動公開發的實戰，我們下支見。"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Pinterest",
+      "titlePost": "自動發文引流",
+      "chips": [
+        { "n": "33", "t": "張 Pin 已上線", "accent": "violet" },
+        { "n": "4", "t": "個主題看板", "accent": "blue" },
+        { "n": "1", "t": "張/天 護欄", "accent": "green" },
+        { "n": "14", "t": "天 被拒到通關", "accent": "claude" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "compare",
+      "kicker": "01 · 為什麼要 Pinterest",
+      "accent": "warn",
+      "headingZh": "為什麼賣畫的人，不該跳過 Pinterest？",
+      "headingEn": "Why Pinterest for selling art",
+      "bad": {
+        "badge": "IG 貼文 · 壽命短",
+        "code": "發完 24 小時就沉",
+        "note": "動態一直洗，舊貼文沒人再看到，等於一次性曝光。"
+      },
+      "good": {
+        "badge": "Pinterest Pin · 長效",
+        "code": "被搜到、被收藏 → 長期帶連結",
+        "note": "Pinterest 本質是視覺搜尋引擎，一張 Pin 可以帶客好幾個月。"
+      },
+      "keyline": "Pinterest 不是社群，是會幫你長期帶客的視覺搜尋引擎",
+      "keylineAtCue": 3,
+      "cues": ["wy1", "wy2", "wy3", "wy4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "02 · 我想自動化什麼",
+      "accent": "blue",
+      "headingZh": "我想讓 Pinterest 自動做的一件事",
+      "headingEn": "What I want to automate",
+      "nodes": [
+        { "icon": "🖼", "label": "原創畫作", "sub": "五代水墨真跡", "accent": "teal" },
+        { "icon": "🤖", "label": "官方 API", "sub": "自動組成 Pin", "accent": "violet" },
+        { "icon": "📌", "label": "發成 Pin", "sub": "標題+說明+連結", "accent": "blue" },
+        { "icon": "🛒", "label": "Shopify", "sub": "一鍵導到商品頁", "accent": "green" }
+      ],
+      "keyline": "每張 Pin 都是第一方原創、帶連結，直接把看到的人導去買",
+      "keylineAtCue": 3,
+      "cues": ["go1", "go2", "go3", "go4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "03 · 申請當天被拒",
+      "accent": "warn",
+      "headingZh": "為什麼我第一次申請，當天就被打槍？",
+      "headingEn": "Denied on day one",
+      "terminal": {
+        "title": "developers.pinterest.com → API access 申請結果",
+        "lines": [
+          { "k": "err", "t": "❌ Trial access denied（2026-06-11 · 當天自動拒絕）" },
+          { "k": "cmt", "t": "我以為是內容或帳號問題，查了老半天都不對" },
+          { "k": "out", "t": "真正原因：app 公司名稱含「… Auto Poster」" },
+          { "k": "err", "t": "跟網站顯示名「China Painting and Calligraphy」對不上 → 判定可疑" }
+        ]
+      },
+      "keyline": "Pinterest 的自動審查，會用「名稱一致性」抓可疑 app",
+      "keylineAtCue": 3,
+      "cues": ["rj1", "rj2", "rj3", "rj4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "04 · 從被拒到翻盤",
+      "accent": "violet",
+      "headingZh": "我怎麼從「被自動拒」翻到「真人複審通過」？",
+      "headingEn": "From auto-reject to human review",
+      "nodes": [
+        { "icon": "🎫", "label": "開 support ticket", "sub": "不糾纏論壇罐頭回覆", "accent": "warn" },
+        { "icon": "🆕", "label": "開新 app", "sub": "名稱＝網站完全一致", "accent": "blue" },
+        { "icon": "👩‍💼", "label": "真人複審", "sub": "API Ops 專員接手", "accent": "violet" },
+        { "icon": "✅", "label": "Trial 核准", "sub": "OAuth+token 全通", "accent": "green" }
+      ],
+      "keyline": "卡在自動審查，就想辦法把案子推到「真人」手上",
+      "keylineAtCue": 3,
+      "cues": ["fx1", "fx2", "fx3", "fx4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "05 · 自動發一張 Pin",
+      "accent": "teal",
+      "headingZh": "打通之後，程式怎麼自動發一張 Pin？",
+      "headingEn": "How one Pin gets posted",
+      "terminal": {
+        "title": "jq_post_pinterest.py — Pinterest 官方 v5 API",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「用官方 API 幫我把這幅畫發成一張帶連結的 Pin」" },
+          { "k": "cmt", "t": "① OAuth 授權 → 把授權碼換成 access token" },
+          { "k": "cmt", "t": "② 列出我的看板（山水 / 花鳥 / 書法 / 神明人物）" },
+          { "k": "out", "t": "③ POST /pins：標題 ＋ 說明 ＋ 圖片 ＋ Shopify 連結" },
+          { "k": "ok", "t": "✅ Pin 建立成功，回傳 Pin ID 與網址" }
+        ]
+      },
+      "keyline": "一支 Python，把「授權 → 選看板 → 發 Pin」全串起來",
+      "keylineAtCue": 2,
+      "cues": ["pin1", "pin2", "pin3", "pin4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "06 · 不被判洗版",
+      "accent": "green",
+      "headingZh": "怎麼確保它「不會被判洗版、保住帳號」？",
+      "headingEn": "Guardrails that keep the account safe",
+      "terminal": {
+        "title": "合規護欄（直接寫進發文程式）",
+        "lines": [
+          { "k": "cmt", "t": "護欄一：同一張圖只發一次" },
+          { "k": "out", "t": "if 圖片 in 已發清單:  跳過（重複發 ＝ spam 訊號）" },
+          { "k": "cmt", "t": "護欄二：每天最多發 1 張" },
+          { "k": "out", "t": "if 今天已發 >= 1:  今天不再發" },
+          { "k": "ok", "t": "主動把「洗版訊號」壓到 0，帳號才活得久" }
+        ]
+      },
+      "keyline": "能自動，更要「刻意發得慢」，這是帳號能長久的關鍵",
+      "keylineAtCue": 2,
+      "cues": ["gd1", "gd2", "gd3", "gd4"]
+    },
+    {
+      "type": "compare",
+      "kicker": "07 · 誠實現況",
+      "accent": "warn",
+      "headingZh": "那現在，到底能不能「全自動公開發」？（誠實說）",
+      "headingEn": "The honest current status",
+      "bad": {
+        "badge": "Trial 等級 · 現在",
+        "code": "production 發 Pin → 403 code 29",
+        "note": "Trial 只能在 sandbox 私密環境建 Pin，對外公開發會被官方擋下。"
+      },
+      "good": {
+        "badge": "Standard 等級 · 審查中",
+        "code": "通過後 → 公開自動發解鎖",
+        "note": "2026-06-25 已送出 Standard 申請，含合規護欄與示範影片，正在審查佇列裡等。"
+      },
+      "keyline": "全鏈路已在 sandbox 驗證，只差 Pinterest 核准 Standard 這一步",
+      "keylineAtCue": 3,
+      "cues": ["st1", "st2", "st3", "st4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "08 · 畫作照樣天天上架",
+      "accent": "teal",
+      "headingZh": "那在 API 全開之前，畫作怎麼還是天天上架？",
+      "headingEn": "Keeping art live while waiting",
+      "nodes": [
+        { "icon": "🖥", "label": "瀏覽器半自動", "sub": "Claude 駕駛 pin-builder", "accent": "teal" },
+        { "icon": "📌", "label": "已發 33 張", "sub": "每天 3–5 張穩鋪", "accent": "blue" },
+        { "icon": "🗂", "label": "4 個主題看板", "sub": "山水·花鳥·書法·神明", "accent": "violet" },
+        { "icon": "🔗", "label": "每張帶連結", "sub": "全導回 Shopify", "accent": "green" }
+      ],
+      "keyline": "等審查的同時，畫作一天都沒停過上架",
+      "keylineAtCue": 3,
+      "cues": ["br1", "br2", "br3", "br4"]
+    },
+    {
+      "type": "compare",
+      "kicker": "09 · 跟付費工具差在哪",
+      "accent": "blue",
+      "headingZh": "這套跟花錢買排程工具，差在哪？",
+      "headingEn": "vs paid schedulers",
+      "bad": {
+        "badge": "第三方付費工具",
+        "code": "月費 ＋ 內容押在別人伺服器",
+        "note": "授權綁在第三方，平台一改政策或工具收掉，你的排程跟資料一起沒。"
+      },
+      "good": {
+        "badge": "官方 API · 自己的程式",
+        "code": "免月費 ＋ 合規護欄自保",
+        "note": "授權、圖片、連結全在自己電腦，護欄自己控，帳號安全自己顧。"
+      },
+      "keyline": "差別不只省錢，是「帳號跟資料的主導權在誰手上」",
+      "keylineAtCue": 2,
+      "cues": ["df1", "df2", "df3"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "10 · 成果與最貴一課",
+      "accent": "green",
+      "headingZh": "成果，還有我學到最貴的一課",
+      "headingEn": "Results & the costliest lesson",
+      "nodes": [
+        { "icon": "📌", "label": "33 張 Pin", "sub": "4 個看板已鋪滿", "accent": "blue" },
+        { "icon": "🔬", "label": "API 全鏈路", "sub": "sandbox 驗證通過", "accent": "violet" },
+        { "icon": "⏳", "label": "Standard", "sub": "審查中，通過即全自動", "accent": "warn" },
+        { "icon": "💡", "label": "最貴一課", "sub": "app 名稱要跟網站一致", "accent": "green" }
+      ],
+      "keyline": "從當天被拒到全鏈路打通，最貴的一課只花一行字：名稱對齊",
+      "keylineAtCue": 3,
+      "cues": ["rs1", "rs2", "rs3", "rs4"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "這一集的重點，總整理",
+      "headingEn": "Pinterest auto-post recap",
+      "cards": [
+        { "emoji": "📌", "text": "Pinterest ＝視覺搜尋引擎，Pin 長效帶客", "accent": "teal" },
+        { "emoji": "🔑", "text": "官方 v5 API：授權 → 換 token → 發 Pin", "accent": "violet" },
+        { "emoji": "🛡", "text": "合規護欄：同圖去重 ＋ 每天 1 張，帳號才活得久", "accent": "green" },
+        { "emoji": "🧭", "text": "卡機器審查，就把案子推到真人手上", "accent": "blue" },
+        { "emoji": "💡", "text": "最貴一課：app 名稱要跟網站完全一致", "accent": "warn" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

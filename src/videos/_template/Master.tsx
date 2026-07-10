@@ -28,7 +28,9 @@ export const Master: React.FC = () => {
   });
 
   return (
-    <AbsoluteFill style={{ background: COLORS.bg }}>
+    // textSpacingTrim：CJK 全形標點相鄰（如「」，）跨字型分片時逐 render-worker 擠壓不一致，
+    // 會整行半字寬左右跳（EP08/EP09 都踩過）；根節點關掉一次根治，全片繼承。
+    <AbsoluteFill style={{ background: COLORS.bg, textSpacingTrim: "space-all" }}>
       <Bgm src="bgm-piano.mp3" volume={0.13} />
       <TransitionSeries>{children}</TransitionSeries>
     </AbsoluteFill>

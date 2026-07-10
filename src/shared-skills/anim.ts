@@ -111,3 +111,7 @@ export const springPop = (
     transform: `translateY(${(1 - s) * dist}px) scale(${from + (1 - from) * s})`,
   };
 };
+
+/** Clamped 0→1 ramp between two frames — tidy interpolate for scenes. */
+export const ramp = (frame: number, a: number, b: number): number =>
+  interpolate(frame, [a, b], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });

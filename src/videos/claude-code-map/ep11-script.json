@@ -1,0 +1,9 @@
+{
+  "hook": "要它每一步都問你,還是放手讓它跑?這由權限模式決定。",
+  "here": "你在這:第 11 站,權限模式。",
+  "def": "用 Shift+Tab 在 Default、Auto-accept edits、Plan mode、Auto mode 之間切;bypassPermissions 則跳過所有確認,自動化才用、要小心。",
+  "def2": "新手先用 Default 看清楚,熟了再放寬。",
+  "demo": "做小助手:剛開始 Default;要它連續做切 Auto-accept;真的要排程無人值守,才考慮 bypass。",
+  "next": "控制力到位。下一站第 12 號:它的短期記憶,Context window。",
+  "outro": "這集就到這,訂閱加按讚,第 12 站見!"
+}

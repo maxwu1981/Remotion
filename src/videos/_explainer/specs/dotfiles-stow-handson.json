@@ -1,0 +1,16 @@
+{
+  "_note": "實際操作段（今天 dotfiles/Stow 片第三大段）的旁白 script。所有步驟 2026-07-09 在 /tmp/demo-home 乾淨沙盒真跑過、輸出逐字入鏡（stow 2.4.1 真衝突錯誤/LINK/commit hash/revert/新機模擬）。每步含「對 Claude 說的一句」，符合 tutorial-video-show-claude-prompts 鐵則；prompt 已對照實跑指令驗證。視覺＝src/videos/dotfiles-stow-glossary/HandsOn.tsx。",
+  "script": {
+    "h0": "名詞都懂了，最後加碼，我們真的動手做一遍。九個步驟，每一步我都給你一句話，你直接丟給 Claude 照做就行，看著就好。",
+    "h1": "第一步，裝工具。對 Claude 說：幫我確認電腦有沒有裝 GNU Stow，沒有就用 Homebrew 裝。像我這台就是現場裝的，裝完版本 2.4.1。",
+    "h2": "第二步，蓋倉庫。對 Claude 說：在我的家目錄建一個 dotfiles 資料夾，並把它初始化成 git 倉庫。",
+    "h3": "第三步，裝箱。對 Claude 說：把我的 Claude Code 設定檔，照 Stow 的目錄結構複製進 dotfiles。路徑要照家目錄的樣子擺，這是 Stow 唯一的規矩。",
+    "h4": "第四步，先故意撞一次牆。直接跑 stow，它馬上拒絕，因為原本位置已經有真檔案。Stow 很守規矩，寧可整批不做，也不會亂蓋你的檔案。",
+    "h5": "第五步，解法。對 Claude 說：把原本的設定檔先備份走，再跑一次 stow。這次你看，兩行 LINK，便利貼貼好了。",
+    "h6": "第六步，驗收。列出 .claude 資料夾，檔名後面那個小箭頭，就是 symlink 指向倉庫的證據。",
+    "h7": "第七步，拍快照。對 Claude 說：幫我把這一版設定 commit 進 git。從這一刻起，你的設定有歷史紀錄了。",
+    "h8": "第八步，反悔測試。我們故意加一條規則進去，然後一句 git revert，設定馬上回到上一版。改壞不再是災難，只是一個指令的事。",
+    "h9": "第九步，換新電腦。clone 你的 dotfiles，再跑同一行 stow，兩行 LINK，設定全部到位，整趟不用一分鐘。",
+    "h10": "最後，看到這裡的禮物。整段流程我合成一句 master prompt 放在畫面上，暫停複製、直接丟給 Claude，它就從安裝到搬家一次幫你做完。再提醒一次，家目錄的 claude.json 存著金鑰，絕對不要放進倉庫。我們下次見！"
+  }
+}

@@ -1,0 +1,40 @@
+🎁 完整 Master Prompt（複製整段、一次貼給 Claude，就能幫你寫好一份 CLAUDE.md）：
+
+Hi Claude，幫我在這個專案生成一份寫得好的 CLAUDE.md：
+
+① 先掃描這個 codebase（用 /init），抓出常用指令、程式碼風格、架構重點
+② 內容控制在兩百行內，超過就拆成 @路徑 引用或 .claude/rules/ 按檔案類型載入
+③ 每一條都寫具體（例如指令、路徑），不要「格式要寫好」這種模糊說法
+④ 分清楚放哪層：團隊規則放 ./CLAUDE.md 進版控，我的個人偏好放 ./CLAUDE.local.md 並加進 .gitignore
+⑤ 幫我檢查有沒有互相矛盾的規則，若有就指出來
+
+誠實提醒：session 進行中改 CLAUDE.md 不會馬上生效，要等下一個 session 或 /compact。
+
+────────────────────────
+
+❓為什麼每次開新對話，Claude Code 都不記得我講過的規則？
+因為規則沒寫進 CLAUDE.md——它是 Claude Code 每次 session 啟動時唯一會自動讀進 context 的檔案，官方文件明講位置分四層（Managed／User／Project／Local）疊加讀取，不寫在對的位置就等於沒寫。打一句 /init 就能自動生成起始版本。
+
+❓寫了 CLAUDE.md 為什麼 Claude 還是不照做？
+最常見的誤區是「什麼都塞進去」——官方文件證實內容超過兩百行反而會讓遵循度下降、Claude 忽略一半。四原則裡的 Specificity 也很關鍵：「用兩個空格縮排」這種具體規則比「格式要寫好」這種模糊說法有效得多。
+
+✅ 適用：已經在用 Claude Code、被「每次都要重講規則」困擾的開發者；想把 coding 規範統一進版控的團隊
+🚫 不適用：只是想要 Claude 記住聊天內容本身——那是 Auto Memory 自動寫的，只讀前 200 行或 25KB，跟本片教的手寫 CLAUDE.md 是兩回事
+
+📖 章節
+0:00 CLAUDE.md 記憶檔是什麼
+0:21 為何寫了 CLAUDE.md 還是沒照做
+0:57 CLAUDE.md 該放哪個位置：四層階層
+1:39 打 /init 生成 + 官方四原則
+2:18 具體規則 vs 模糊規則
+3:00 怎麼知道這真的有效（Before/After）
+3:36 看到最後的禮物：完整 master prompt
+3:56 總整理 + CTA
+
+⚠️ 提醒：session 進行中改 CLAUDE.md 不會馬上生效，要等下一個 session 或 /compact 才套用；內容超過兩百行建議拆成 @路徑 引用，別無限塞在同一個檔案。
+
+🔎 本片實體：Claude Code、CLAUDE.md、Auto Memory、/init、@路徑 引用、Anthropic 官方文件（code.claude.com/docs/en/memory）
+
+🔗 https://maxwu1981.github.io/Remotion/
+
+#ClaudeCode #ClaudeCode教學 #CLAUDEmd #AI編程 #AnthropicAI #codingagent

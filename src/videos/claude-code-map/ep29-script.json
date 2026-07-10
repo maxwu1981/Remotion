@@ -1,0 +1,9 @@
+{
+  "hook": "同一個 Claude Code,背後可以換不同的腦。選對模型,省力又省錢。",
+  "here": "你在這:第 29 站,模型 Models,進入最後一章。",
+  "def": "用 /model 切換:sonnet 是 Sonnet 4.6 日常編碼、opus 是 Opus 4.8 複雜推理、haiku 又快又省、fable 是 Fable 5 最難最長的任務;opusplan 規劃用 Opus、執行切 Sonnet。",
+  "def2": "新手 Pro 預設 Sonnet;複雜任務切 opus 或用 opusplan。",
+  "demo": "做小助手:規劃架構用 opus 或 opusplan;每天例行抓新聞用 sonnet 甚至 haiku 就夠,省很多。",
+  "next": "選對腦了。最後一站第 30 號:怎麼看花費、怎麼省。",
+  "outro": "這集就到這,訂閱加按讚,最後一站見!"
+}

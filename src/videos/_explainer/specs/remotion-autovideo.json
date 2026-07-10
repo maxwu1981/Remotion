@@ -1,0 +1,337 @@
+{
+  "id": "remotion-autovideo",
+  "brand": {
+    "titlePre": "Remotion",
+    "titlePost": "自動生成影片",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "把一篇文字，全自動變成有旁白、字幕、動畫的解說片——不開任何剪輯軟體",
+    "date": "生活應用系列 · 2026-07-05"
+  },
+  "script": {
+    "cv1": "我把一篇純文字文章，讓 Claude 全自動變成一支有旁白、有字幕、有動畫的解說影片，整個過程我沒有打開過任何一款剪輯軟體。",
+    "cv2": "祕密是一個叫 Remotion 的工具，用寫網頁的方式、用程式碼來做影片。畫面能用程式碼畫出來，就代表它能被自動生成。",
+    "cv3": "而你會發現，每一步其實只是對 Claude 說一句話。這支影片，就把每一句該說的 prompt，一步一步拆給你看，你照著複製，就能做出自己的第一支片。",
+
+    "wy1": "先說為什麼要這樣做。傳統做一支解說片，你要錄影、對著時間軸剪掉廢話、講錯一句就整段重錄。",
+    "wy2": "錄二十分鐘、剪兩個小時是常態；而且改一個字、換一個數字，你幾乎要重來一遍。",
+    "wy3": "程式化生成剛好相反：畫面是程式碼畫的、旁白是文字轉的。要改內容，你改的是一份文字檔，不是重錄重剪。",
+    "wy4": "所以它一致、可重複、還能批量。同一套模板，換一份文字，就是一支新片。",
+
+    "ov1": "整套系統只有四個零件，全部在你自己電腦上跑；而且你不用從零寫，每個零件都可以叫 Claude 幫你搭。",
+    "ov2": "第一，一份 JSON 腳本：用一份文字檔，描述每一句旁白、和每一景長什麼樣。",
+    "ov3": "第二，Remotion 模板：用 React 把那份 JSON 畫成畫面，封面、終端機、流程圖，都是積木。",
+    "ov4": "第三，自動配音：把每一句旁白，用 AI 語音各生一段聲音，長度自動對齊畫面。",
+    "ov5": "第四，算繪出片：一行指令，把畫面加聲音，輸出成一支 mp4。沒有第三方剪輯軟體碰你的內容。",
+
+    "bd1": "第一步，先把工具裝起來。你不用會設定，直接跟 Claude 說：幫我用 Remotion 建一個影片專案，我要用寫程式的方式做解說影片。",
+    "bd2": "它會叫你跑一行 create-video，選一個空白範本，專案資料夾就長出來了。",
+    "bd3": "再跑一次安裝把相依裝好，然後打開 Remotion Studio，那是一個能即時預覽影片的網頁工作室。",
+    "bd4": "從這裡開始，你改程式碼，預覽就即時更新，不用每次都重算繪。",
+
+    "js1": "第二步，是整套自動化的核心。你跟 Claude 說：幫我設計一個資料驅動的格式，用一份 JSON 描述旁白和每一景。",
+    "js2": "這份 JSON 只有兩塊。第一塊是旁白，每一句話配一個代號，這句話同時也是螢幕下方的字幕。",
+    "js3": "第二塊是場景，像疊積木一樣，排你要的封面、終端機、好壞對照、流程圖、結尾。",
+    "js4": "重點是，以後做新片，你不用再碰動畫程式碼，只要換一份 JSON。這就是它能自動、能量產的原因。",
+
+    "sc1": "第三步，把內容餵進去。你不用自己想分鏡，把你的文章、筆記、或一份文件貼給 Claude。",
+    "sc2": "然後說：把這篇改寫成影片故事腳本，切成封面、四到六段、結尾，每一句話當一個旁白 cue。",
+    "sc3": "關鍵是要它走故事線，為什麼有這個問題、誰會遇到、你怎麼解、怎麼證明真的有用，而不是條列一堆重點。",
+    "sc4": "它會把整份腳本，直接填進剛剛那份 JSON 的旁白區。你的文章，就變成一支片的骨架了。",
+
+    "vo1": "第四步，配音也交給程式。你跟 Claude 說：讀 JSON 裡的每一句旁白，用免費的 edge-tts 台灣女聲，各生一個 mp3。",
+    "vo2": "它會照著旁白代號，一句對一個聲音檔，全部免費、在本機跑，不用你自己念。",
+    "vo3": "更聰明的是，它會量出每一句的長度、回填進去，讓每一景的畫面自動撐到聲音講完，字幕跟旁白就對齊了。",
+    "vo4": "聲音的個性你也能挑，我固定用一個清新的台灣女聲，整個系列聽起來就是同一個人。",
+
+    "rd1": "第五步，出片。到這裡畫面和聲音都齊了，剩下把它們合成一支 mp4。",
+    "rd2": "一行 remotion render 指令就搞定。但這裡有一個很多人不知道的坑。",
+    "rd3": "如果你的畫面是這種深色玻璃卡片，大面積的深色漸層，會被影片壓縮擠出一種一閃一閃的呼吸抖動。",
+    "rd4": "解法是算繪時加兩個參數：png 影格、crf 十五，畫面就穩了。這一步不加，前面做得再好都會白費。",
+
+    "qa1": "第六步，收工前先自我檢查。你跟 Claude 說：幫我寫一個出片前的 QA。",
+    "qa2": "最重要的是抓抖動，抽同一個畫面相鄰的兩張定格幀、無損比對，差異接近全黑，就代表畫面是穩的。",
+    "qa3": "再跑一張清單：封面有沒有在第零秒出現、前三秒有沒有鉤子、結尾有沒有訂閱分享的呼籲、字幕跟旁白有沒有對齊。",
+    "qa4": "這張清單每一支片都要過，沒過就不算完成。這是把「看起來還行」變成「真的能發」的那道關卡。",
+
+    "rs1": "講了六步，來看真的差多少。",
+    "rs2": "傳統做這一支，錄影加剪輯，順的話兩個小時起跳，改一次再花大半天。",
+    "rs3": "這套流程，文章丟進去、六個 prompt 走完，改內容只是改一份 JSON 的幾行字，重算繪就是新版本。",
+    "rs4": "而且同一套模板，我已經用它產出二十幾支片。你現在看的這一支，也是這樣長出來的。",
+
+    "tp1": "最後補四個我踩過的坑，先知道，能省你好幾個晚上。",
+    "tp2": "第一，深色漸層卡片一定要用 png 影格加 crf 十五，不然畫面會呼吸抖動，前面全白做。",
+    "tp3": "第二，配音稿裡的英文縮寫，字母前要用逗號或空格隔開，別直接接全形冒號，不然 AI 語音會念出怪聲。",
+    "tp4": "第三，算繪超過十分鐘，要讓它在背景獨立跑，別讓終端機一關就砍掉半成品；還有，中文標題別讓 AI 生圖直接畫，會亂碼，用 Remotion 疊上去最準。",
+
+    "gp1": "最後，送給看到這裡的你一個禮物。",
+    "gp2": "我把前面六步，合成了一整段 prompt。你不用一段一段慢慢問，整段複製，一次貼給 Claude，它就會從頭到尾，把這套會自動生影片的專案幫你建出來。",
+    "gp3": "螢幕上這段可以直接暫停、截圖；逐字完整版我也放在影片下方的說明欄，複製就能用。這就是看到最後的好處。",
+
+    "o1": "好，六步快速總整理。",
+    "o2": "第一，用 Remotion 建專案，Studio 即時預覽。",
+    "o3": "第二，一份 JSON 就是一支片，旁白加場景積木，加新片只加一份 JSON。",
+    "o4": "第三，把文章丟給 Claude 改成故事腳本；第四，edge-tts 台灣女聲逐句自動配音、自動對齊。",
+    "o5": "第五，算繪深色卡記得加 png 加 crf 十五；第六，出片前 QA 抓抖動、過五項清單。",
+    "o6": "一句話：畫面用程式碼畫、旁白用文字轉，要改就改一份文字檔，不用重錄重剪。",
+    "o7": "剛剛那段完整 prompt，還有每一步的分解版，都放在影片下方，直接複製就能用。覺得有用，記得按讚、訂閱、分享，我們下支影片見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Remotion",
+      "titlePost": "自動生成影片",
+      "terminal": {
+        "title": "你只要對 Claude 說一句話",
+        "lines": [
+          { "k": "cmd", "t": "💬 「Hi Claude，幫我用 Remotion 把這篇文章自動變成解說影片」" },
+          { "k": "cmt", "t": "一份 JSON → Remotion 畫面 → edge-tts 配音 → render 出片" },
+          { "k": "out", "t": "程式碼畫面 · AI 配音 · 全在本機 · 免剪輯軟體" },
+          { "k": "ok", "t": "改內容＝改一份文字檔，不用重錄重剪" }
+        ]
+      },
+      "chips": [
+        { "n": "0", "t": "款剪輯軟體", "accent": "claude" },
+        { "n": "1", "t": "份 JSON＝一支片", "accent": "blue" },
+        { "n": "6", "t": "句 prompt 走完", "accent": "green" },
+        { "n": "20", "t": "支片同套模板", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "compare",
+      "kicker": "01 · 為什麼要程式化",
+      "accent": "warn",
+      "headingZh": "傳統剪輯 vs 程式化生成",
+      "headingEn": "Timeline editing vs code-driven",
+      "bad": {
+        "badge": "傳統剪輯 · 改一個字就重來",
+        "code": "錄 20 分 → 剪 2 小時   ✘ 講錯重錄",
+        "note": "對著時間軸手工剪，改字幾乎重來一遍，難一致、難批量。"
+      },
+      "good": {
+        "badge": "程式化生成 · 改文字就好",
+        "code": "改一份 JSON → 重算繪   ✔ 一致可批量",
+        "note": "畫面用程式碼畫、旁白用文字轉，可重複、可量產。"
+      },
+      "keyline": "要改的是一份文字檔，不是重錄重剪",
+      "keylineAtCue": 3,
+      "cues": ["wy1", "wy2", "wy3", "wy4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "02 · 系統總覽",
+      "accent": "blue",
+      "headingZh": "整套只有四個零件，全在你電腦",
+      "headingEn": "Four parts, all local",
+      "nodes": [
+        { "icon": "📄", "label": "JSON 腳本", "sub": "旁白 + 每一景", "accent": "teal" },
+        { "icon": "🧩", "label": "Remotion 模板", "sub": "React 畫面積木", "accent": "blue" },
+        { "icon": "🔊", "label": "AI 配音", "sub": "每句自動對齊", "accent": "violet" },
+        { "icon": "🎬", "label": "算繪出片", "sub": "一行指令出 mp4", "accent": "green" }
+      ],
+      "keyline": "四個零件全在本機，免任何剪輯軟體",
+      "keylineAtCue": 4,
+      "cues": ["ov1", "ov2", "ov3", "ov4", "ov5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "03 · 建立 Remotion 專案",
+      "accent": "teal",
+      "headingZh": "第一步：把 Remotion 專案建起來",
+      "headingEn": "Scaffold a Remotion project",
+      "terminal": {
+        "title": "npx create-video → Remotion Studio",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我用 Remotion 建一個影片專案，我要用寫程式的方式生成解說影片，並幫我打開預覽」" },
+          { "k": "cmt", "t": "① 官方鷹架建專案（選空白範本）" },
+          { "k": "cmd", "t": "npx create-video@latest" },
+          { "k": "cmd", "t": "npm install" },
+          { "k": "ok", "t": "② npx remotion studio   → 開即時預覽工作室" }
+        ]
+      },
+      "keyline": "Studio 即時預覽，改程式碼畫面馬上更新，不用每次重算繪",
+      "keylineAtCue": 3,
+      "cues": ["bd1", "bd2", "bd3", "bd4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "04 · 一份 JSON = 一支片",
+      "accent": "claude",
+      "headingZh": "第二步：讓「一份 JSON」就是一支片",
+      "headingEn": "Data-driven video spec",
+      "terminal": {
+        "title": "資料驅動 spec：script + scenes",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我設計一個資料驅動的影片格式：一份 JSON 描述旁白和每一景，Remotion 讀 JSON 就畫出整支片，我不用每支重寫動畫程式碼」" },
+          { "k": "cmt", "t": "① script：每句旁白配一個代號（同時當字幕）" },
+          { "k": "out", "t": "\"cv1\": \"開場第一句…\",  \"bd1\": \"第一步…\"" },
+          { "k": "cmt", "t": "② scenes：積木式排場景" },
+          { "k": "cmd", "t": "cover → compare → pipeline → terminal → outro" },
+          { "k": "ok", "t": "換一份 JSON＝一支新片，動畫程式碼不用重寫" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 加一支片＝加一份 JSON", "atCue": 3 }],
+      "keyline": "資料驅動：加一支片＝加一份 JSON，零新程式碼",
+      "keylineAtCue": 3,
+      "cues": ["js1", "js2", "js3", "js4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "05 · 文章 → 故事腳本",
+      "accent": "blue",
+      "headingZh": "第三步：把你的文章，變成影片腳本",
+      "headingEn": "Article to story script",
+      "terminal": {
+        "title": "把內容改寫成故事弧",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「把這篇文章改寫成影片故事腳本，切成封面、四到六段、結尾，每一句話當一個旁白 cue，直接寫進那份 JSON 的 script」（把文章貼在後面）" },
+          { "k": "cmt", "t": "要走故事弧：問題 → 誰遇到 → 怎麼解 → 怎麼證明 → CTA" },
+          { "k": "out", "t": "封面 3 句 · 每段 4–5 句 · 結尾含訂閱 CTA" },
+          { "k": "ok", "t": "產出直接填進 JSON 的 script 區，可逐句微調" }
+        ]
+      },
+      "keyline": "要故事線，不要條列速查卡",
+      "keylineAtCue": 3,
+      "cues": ["sc1", "sc2", "sc3", "sc4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "06 · 自動配音",
+      "accent": "violet",
+      "headingZh": "第四步：讓每一句旁白，自己變成聲音",
+      "headingEn": "Auto voiceover with edge-tts",
+      "terminal": {
+        "title": "edge-tts 逐句配音（免費 · 本機）",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我寫一支配音腳本：讀 JSON 裡每一句旁白，用 edge-tts 的台灣女聲各生一個 mp3，量出長度讓每一景自動對齊音檔」" },
+          { "k": "cmt", "t": "逐句配音：一句旁白 → 一個 mp3" },
+          { "k": "cmd", "t": "python3 -m edge_tts --voice zh-TW-HsiaoChenNeural --text \"這一句\" --write-media out.mp3" },
+          { "k": "out", "t": "量測每句長度 → 回填 → 每一景自動撐到聲音講完" },
+          { "k": "ok", "t": "字幕＝旁白同一份文字，天生同步" }
+        ]
+      },
+      "keyline": "一句一個 mp3，長度回填，畫面自動對齊聲音",
+      "keylineAtCue": 3,
+      "cues": ["vo1", "vo2", "vo3", "vo4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "07 · 算繪出片",
+      "accent": "green",
+      "headingZh": "第五步：一行指令，算繪成 mp4",
+      "headingEn": "Render to mp4",
+      "terminal": {
+        "title": "npx remotion render",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我把影片算繪成 mp4；畫面是深色玻璃卡片，請用 png 影格加 crf 15，避免大面積深色漸層被壓出呼吸抖動」" },
+          { "k": "cmd", "t": "npx remotion render MyVideo out/video.mp4 --image-format=png --crf=15" },
+          { "k": "err", "t": "深色漸層玻璃卡：不加 png+crf15 會被 h264 壓出呼吸抖動" },
+          { "k": "ok", "t": "輸出 out/video.mp4：畫面 + 旁白 + 字幕，一次到位" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ 深色卡必加 png+crf15", "atCue": 3 }],
+      "keyline": "深色卡風算繪鐵則：--image-format=png --crf=15",
+      "keylineAtCue": 3,
+      "cues": ["rd1", "rd2", "rd3", "rd4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "08 · 出片前 QA",
+      "accent": "warn",
+      "headingZh": "第六步：出片前，自動幫你抓抖動",
+      "headingEn": "Pre-delivery QA",
+      "terminal": {
+        "title": "node scripts/qa-video.mjs",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我寫出片前 QA：抽同一景相鄰兩張定格幀無損比對，差異接近全黑代表沒抖動；再檢查封面在第 0 秒、鉤子在前 3 秒、結尾有 CTA、字幕跟旁白同步」" },
+          { "k": "cmd", "t": "node scripts/qa-video.mjs MyVideo 1140 8 out/video.mp4" },
+          { "k": "out", "t": "無損幀差 YMAX ≈ 0 → 畫面穩（不是壓縮抖）" },
+          { "k": "cmt", "t": "清單：封面 0:00 · 鉤子 3s · 結尾 CTA · 字幕同步" },
+          { "k": "ok", "t": "五項全過，才算 done" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 沒過 QA 不算完成", "atCue": 4 }],
+      "keyline": "沒過 QA 不算 done：先抓抖動，再過五項清單",
+      "keylineAtCue": 3,
+      "cues": ["qa1", "qa2", "qa3", "qa4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "09 · 成果",
+      "accent": "claude",
+      "headingZh": "這套流程，到底省了多少",
+      "headingEn": "Before / After",
+      "terminal": {
+        "title": "Before / After",
+        "lines": [
+          { "k": "cmt", "t": "Before：錄影 + 剪輯 ≈ 2 小時起 · 改一個字幾乎重來" },
+          { "k": "cmd", "t": "六個 prompt → JSON → 配音 → render" },
+          { "k": "ok", "t": "After：改內容＝改 JSON 幾行 · 重算繪＝新版本" },
+          { "k": "cmt", "t": "同一套模板已產出 20+ 支片（含你正在看的這一支）" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 改文字就好", "atCue": 3 }],
+      "keyline": "改文字就好，不是重錄重剪——這就是可量測的差別",
+      "keylineAtCue": 3,
+      "cues": ["rs1", "rs2", "rs3", "rs4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "10 · 避坑（最重要）",
+      "accent": "warn",
+      "headingZh": "四個我踩過的坑",
+      "headingEn": "Pitfalls to avoid",
+      "terminal": {
+        "title": "避坑清單",
+        "lines": [
+          { "k": "err", "t": "① 深色漸層卡 → 一律 --image-format=png --crf=15（否則呼吸抖動）" },
+          { "k": "err", "t": "② edge-tts：字母/縮寫前用逗號或空格，別接全形冒號（會念怪音）" },
+          { "k": "ok", "t": "③ 算繪超過 10 分鐘 → 背景獨立跑，別讓終端一關就砍掉半成品" },
+          { "k": "cmt", "t": "④ 中文標題別讓 AI 生圖直接畫（易亂碼），用 Remotion 疊字最準" }
+        ]
+      },
+      "keyline": "抖動 · 怪音 · 長算繪 · 中文亂碼——四個最常見的翻車點",
+      "keylineAtCue": 3,
+      "cues": ["tp1", "tp2", "tp3", "tp4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "11 · 看到最後的禮物 🎁",
+      "accent": "claude",
+      "headingZh": "把六步合成一段完整 prompt（整段複製給 Claude）",
+      "headingEn": "The one prompt that builds it all",
+      "terminal": {
+        "title": "💬 整段複製，一次貼給 Claude",
+        "lines": [
+          { "k": "cmd", "t": "「Hi Claude，幫我用 Remotion 做一套『文字自動變解說影片』的專案：」" },
+          { "k": "cmt", "t": "① 用 create-video 建空白專案、開 Studio 即時預覽" },
+          { "k": "cmt", "t": "② 設計資料驅動格式：一份 JSON＝旁白 script＋場景積木，讀 JSON 就畫整支片" },
+          { "k": "cmt", "t": "③ 把我等下貼的文章改寫成故事腳本，每句當一個旁白 cue 填進 script" },
+          { "k": "cmt", "t": "④ 寫配音腳本：edge-tts 台灣女聲逐句生 mp3、量長度、每一景自動對齊" },
+          { "k": "cmt", "t": "⑤ 算繪：npx remotion render，深色卡加 --image-format=png --crf=15" },
+          { "k": "cmt", "t": "⑥ 出片前 QA：相鄰定格幀無損比對抓抖動 ＋ 封面0秒/鉤子3秒/CTA/字幕同步" },
+          { "k": "err", "t": "提醒：長算繪背景跑；中文用程式碼疊，別讓 AI 生圖畫" },
+          { "k": "ok", "t": "📄 逐字完整版 → 影片下方說明欄，可整段複製" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 整段可暫停複製", "atCue": 2 }],
+      "keyline": "整段複製貼給 Claude，它就把這套自動生片的專案建出來",
+      "keylineAtCue": 2,
+      "cues": ["gp1", "gp2", "gp3"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "六步，總整理",
+      "headingEn": "Remotion auto-video recap",
+      "cards": [
+        { "emoji": "🧩", "text": "一份 JSON＝一支片：旁白+場景積木，加片只加 JSON", "accent": "teal" },
+        { "emoji": "📝", "text": "文章丟給 Claude → 改成故事腳本 cue", "accent": "blue" },
+        { "emoji": "🔊", "text": "edge-tts 台灣女聲逐句配音、長度自動對齊", "accent": "violet" },
+        { "emoji": "🎬", "text": "算繪深色卡加 png+crf15，出片前 QA 抓抖動", "accent": "green" },
+        { "emoji": "♻️", "text": "改幾行 JSON 重算繪＝新版本，可批量", "accent": "warn" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6", "o7"]
+    }
+  ]
+}

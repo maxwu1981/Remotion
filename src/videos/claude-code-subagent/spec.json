@@ -1,0 +1,179 @@
+{
+  "id": "claude-code-subagent",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "subagent 並行實測",
+    "name": "Ai-Wisdom",
+    "tagline": "並行真的比較快嗎？我用真實案例量了時間",
+    "date": "整理日期 2026-06-22"
+  },
+  "script": {
+    "cv1": "subagent 並行，真的比較快嗎？我用真實案例實測了，結果跟你想的不一樣。",
+    "cv2": "我開 5 個子代理並行調查一個專案，再跟一個一個查比時間。",
+    "cv3": "結論先說：任務夠重才省時間，小任務並行反而更慢。",
+
+    "s1": "先講 subagent 是什麼：主代理臨時叫出來的分身，每個有自己獨立的 context。",
+    "s2": "你給一個大任務，主代理把它拆成幾塊，分給各自的子代理並行跑。",
+    "s3": "跑完各自回報，主代理再彙整成一份答案。",
+    "s4": "聽起來一定比較快？我們來真的測。",
+
+    "p1": "真實案例：一個有 5 個模組的專案 ShopFlow，要做安全與品質審查。",
+    "p2": "主代理把它拆成 5 塊。",
+    "p3": "一次開 5 個 subagent，每個查一個模組。",
+    "p4": "5 個同時跑，不互相等。",
+    "p5": "最後彙整成一份完整報告。",
+
+    "f1": "5 個子代理並行回報，每個都抓到真問題。",
+    "f2": "auth 寫死密鑰、payments 日誌印出完整卡號、cart 讀改寫競態。",
+    "f3": "catalog 的 N+1 查詢、notifications 同步阻塞——一輪就全揪出來。",
+
+    "cm1": "那到底有沒有比較快？我測了兩種情境，數字是真的。",
+    "cm2": "第一種，小任務：每個模組只有十來行。",
+    "cm3": "序列 41 秒、並行 51 秒——並行反而慢了 24%。",
+    "cm4": "因為開 5 個分身的固定開銷，比省下的時間還多。",
+    "cm5": "第二種，重任務：每個模組十幾個檔、上千行。",
+    "cm6": "序列 126 秒、並行只要 52 秒——省了 59%。",
+
+    "hw1": "所以開 subagent 前，先問一句：每個分支夠重嗎？",
+    "hw2": "夠重就值得並行，很輕就別開、一個一個做更快。",
+    "hw3": "要開很簡單，直接講人話。",
+    "hw4": "用 5 個 subagent 分別查這 5 個模組並行做，主代理就自動分頭跑了。",
+
+    "o1": "快速總整理。",
+    "o2": "subagent 是主代理的分身，各有獨立 context，能並行。",
+    "o3": "並行省時間有前提：每個分支要夠重。",
+    "o4": "實測：重任務省 59%，小任務反而慢 24%。",
+    "o5": "開法很簡單，講人話請它並行開幾個就好。",
+    "o6": "完整數字和示範專案都在影片下方連結。覺得有用，按讚訂閱分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "subagent 並行實測",
+      "terminal": {
+        "title": "subagent 並行 · 實測",
+        "lines": [
+          { "k": "cmt", "t": "開 5 個子代理並行調查一個 5 模組專案" },
+          { "k": "ok", "t": "重任務：序列 126s → 並行 52s（省 59%）" },
+          { "k": "err", "t": "小任務：序列 41s → 並行 51s（反而慢 24%）" }
+        ]
+      },
+      "chips": [
+        { "t": "重任務 省59%", "accent": "green" },
+        { "t": "小任務 慢24%", "accent": "warn" },
+        { "t": "5 個 subagent", "accent": "claude" },
+        { "t": "1 輪 vs 5 輪", "accent": "blue" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "01 · 它是什麼",
+      "accent": "violet",
+      "headingZh": "subagent 是什麼？",
+      "headingEn": "What is a subagent",
+      "terminal": {
+        "title": "主代理 → 子代理",
+        "lines": [
+          { "k": "cmt", "t": "主代理收到大任務" },
+          { "k": "cmd", "t": "拆任務 → spawn subagent × 5" },
+          { "k": "out", "t": "每個子代理：獨立 context，並行跑" },
+          { "k": "ok", "t": "跑完各自回報 → 主代理彙整" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 每個分身有自己的 context", "atCue": 0 }],
+      "keyline": "subagent＝主代理臨時叫出、各有獨立 context 的分身",
+      "keylineAtCue": 3,
+      "cues": ["s1", "s2", "s3", "s4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "02 · 真實案例",
+      "accent": "claude",
+      "headingZh": "5 個模組 → 開 5 個分身並行查",
+      "headingEn": "Fan out across 5 modules",
+      "nodes": [
+        { "icon": "🧠", "label": "主代理", "sub": "拆成 5 塊", "accent": "violet" },
+        { "icon": "🔱", "label": "開 5 個分身", "sub": "各查 1 模組", "accent": "claude" },
+        { "icon": "⚡", "label": "並行執行", "sub": "同時跑", "accent": "warn" },
+        { "icon": "📥", "label": "回報彙整", "sub": "一份完整報告", "accent": "green" }
+      ],
+      "keyline": "真實專案 ShopFlow：5 模組，一次並行查完",
+      "keylineAtCue": 4,
+      "cues": ["p1", "p2", "p3", "p4", "p5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "03 · 並行回報",
+      "accent": "blue",
+      "headingZh": "5 路同時揪出真問題",
+      "headingEn": "5 agents, 5 real findings",
+      "terminal": {
+        "title": "5 個 subagent 的回報",
+        "lines": [
+          { "k": "cmt", "t": "5 路並行，各查一個模組：" },
+          { "k": "err", "t": "auth：寫死 JWT 密鑰 + SHA-1 弱雜湊（auth.js:3,9）" },
+          { "k": "err", "t": "payments：日誌印完整卡號，違反 PCI（payments.js:3）" },
+          { "k": "err", "t": "cart：讀改寫競態，無鎖（cart.js:4）" },
+          { "k": "out", "t": "catalog：N+1 查詢（:3）· notifications：同步阻塞（:3）" }
+        ]
+      },
+      "keyline": "一輪並行，5 個模組的問題全攤開",
+      "keylineAtCue": 2,
+      "cues": ["f1", "f2", "f3"]
+    },
+    {
+      "type": "compare",
+      "kicker": "04 · 真的比較快嗎",
+      "accent": "warn",
+      "headingZh": "並行真的比較快嗎？實測",
+      "headingEn": "Serial vs parallel — measured",
+      "bad": {
+        "badge": "小任務 · 5檔×10行",
+        "code": "序列 41s    vs    並行 51s",
+        "note": "並行反而慢 24%：開 5 個分身的固定開銷 > 省下的時間。"
+      },
+      "good": {
+        "badge": "重任務 · 56檔×1547行",
+        "code": "序列 126s    vs    並行 52s",
+        "note": "並行省 59%：工作量夠大，省下的遠大於開銷。"
+      },
+      "keyline": "任務夠重，subagent 才划算；小任務反而拖慢",
+      "keylineAtCue": 5,
+      "cues": ["cm1", "cm2", "cm3", "cm4", "cm5", "cm6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "05 · 怎麼開 + 何時開",
+      "accent": "teal",
+      "headingZh": "夠重才開，開法就一句話",
+      "headingEn": "When and how to spawn",
+      "terminal": {
+        "title": "判斷 → 開",
+        "lines": [
+          { "k": "cmt", "t": "先問：每個分支夠重嗎？" },
+          { "k": "ok", "t": "夠重 → 值得並行" },
+          { "k": "err", "t": "很輕 → 別開，一個一個更快" },
+          { "k": "cmd", "t": "用 5 個 subagent 分別查這 5 個模組，並行做" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 不用記指令，講人話就好", "atCue": 2 }],
+      "keyline": "重任務才開；開法就一句人話",
+      "keylineAtCue": 3,
+      "cues": ["hw1", "hw2", "hw3", "hw4"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "subagent 重點整理",
+      "headingEn": "Subagent recap",
+      "cards": [
+        { "emoji": "🔱", "text": "subagent＝主代理的分身，各有獨立 context、可並行", "accent": "violet" },
+        { "emoji": "⚖️", "text": "並行省時間有前提：每個分支要夠重", "accent": "claude" },
+        { "emoji": "📊", "text": "實測：重任務省 59%，小任務反而慢 24%", "accent": "green" },
+        { "emoji": "🗣", "text": "開法：講人話「並行開 N 個 subagent」", "accent": "teal" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

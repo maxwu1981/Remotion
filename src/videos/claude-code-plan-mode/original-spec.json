@@ -1,0 +1,170 @@
+{
+  "id": "claude-code-plan-mode",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "規劃模式",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "先看完整份計畫、一次決定，不用按到手軟",
+    "date": "整理日期 2026-07-03"
+  },
+  "script": {
+    "cv1": "如果你用 Claude Code 改大範圍的程式碼，被跳出來的核准框轟炸過，這支就是要解決這件事。",
+    "cv2": "我把「先看完整份計畫、一次決定」這招找出來，取代那種一直按核准的日子。",
+    "cv3": "先說清楚：這個困擾，真的不是只有你。",
+
+    "na1": "我上網查了 GitHub 上真實回報，發現這個痛，一個接一個。",
+    "na2": "有人說，明明開了「編輯前先問」，Claude 還是直接改了檔案，設定重來、登出登入都沒用，卡了兩個多禮拜。",
+    "na3": "有人說，他只是問一句「為什麼分頁沒有頁碼」，結果被當成編輯指令，二十幾次工具呼叫直接改了好幾個檔案。",
+    "na4": "有人說，工作樹明明乾淨，還是每次都要手動按允許，很麻煩。",
+    "na5": "連 Anthropic 自己的工程部落格都承認，使用者平均核准了 93% 的權限提示——多半是按到疲乏，沒真的在看。",
+    "na6": "你看，同一個痛，一個接一個，蓋滿整個螢幕。",
+
+    "fa1": "為什麼會這樣？因為預設模式是「每一步都問」，任務一大，提示就跟著暴增。",
+    "fa2": "第一招，硬著頭皮全部按核准，改到後面根本沒在看，就是前面那 93% 的由來。",
+    "fa3": "第二招，乾脆切成自動模式全部跳過，遇到真正危險的改動也來不及攔。",
+    "fa4": "第三招，把規則寫進 CLAUDE.md 交代「先問我」，但版本一有 bug，交代照樣被忽略，照樣被改。",
+    "fa5": "三招的共同死穴：不是按到疲乏、就是風險失控，要不然就是交代了也不保證有效。",
+
+    "sa1": "真正的解法，是先切進 Plan Mode，讓 Claude 只能讀、不能動手。",
+    "sa2": "按 Shift+Tab，在 default、acceptEdits、plan 三種模式間切換，切到 plan 就對了。",
+    "sa3": "也可以開頭就加 --permission-mode plan，或打 /plan 加你要它規劃的內容。",
+    "sa4": "要它變成預設，在 .claude/settings.json 的 permissions 裡把 defaultMode 設成 plan。",
+    "sa5": "這段時間它只能讀檔、跑唯讀指令探索程式碼，寫檔、改檔、有副作用的指令全部先被擋下。",
+
+    "da1": "這就是 Plan Mode，跟「全部按核准」「全部自動跳過」最大的不同。",
+    "da2": "全部按核准，是把同一個決定拆成幾十次，按到最後根本沒在看。",
+    "da3": "全部自動跳過，省事，但真正危險的改動也一起被放過。",
+    "da4": "Plan Mode 是先把整份計畫攤開來，一次看完、一次決定，而不是拆成幾十次。",
+    "da5": "核准之後你還能選：轉自動執行、轉逐一核准、或送進瀏覽器版 Ultraplan，讓別人也一起看計畫再動手。",
+    "da6": "一次看清全貌、按需核准、還能多人共審，這三點，另外兩種都做不到。",
+
+    "pa1": "那怎麼知道這真的有解？",
+    "pa2": "同樣一個跨十幾個檔案的重構，default 模式要按幾十次核准；plan 模式看完整份計畫，只要決定一次。",
+    "pa3": "Anthropic 自己都說，使用者平均核准 93% 的提示——這正是 Plan Mode 想解決的疲乏問題，不是我瞎講。",
+    "pa4": "而且這是官方文件寫在 permission-modes 頁面裡的正式機制，不是偏方，也沒被標記過時。",
+    "pa5": "覺得計畫還要調整，Ctrl+G 直接編輯計畫文字，或送進 Ultraplan 讓別人留言，再回來執行。",
+
+    "o1": "快速總整理。",
+    "o2": "痛點：預設模式逐步核准按到疲乏，bug 甚至讓「先問我」照樣被略過，而且不是只有你。",
+    "o3": "解法：Shift+Tab 或 --permission-mode plan 切進 Plan Mode，唯讀先出計畫，看完整份再決定。",
+    "o4": "跟全部按核准、全部自動跳過的差別，是一次看全貌、按需核准、可送 Ultraplan 多人共審。",
+    "o5": "官方內建機制：docs 裡 permission-modes 的正式功能，不是過時、也不是偏方。",
+    "o6": "下次大改動前，先切 Plan Mode 看一次計畫吧。覺得有用，記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "規劃模式",
+      "terminal": {
+        "title": "Claude Code",
+        "lines": [
+          { "k": "cmd", "t": "claude --permission-mode plan" },
+          { "k": "out", "t": "→ 先出一份完整計畫，看完再決定，不用一路按核准" },
+          { "k": "cmt", "t": "把「按到手軟」換成「一次決定」" }
+        ]
+      },
+      "chips": [
+        { "n": "1", "t": "大家都這樣", "accent": "warn" },
+        { "n": "2", "t": "為何解不掉", "accent": "blue" },
+        { "n": "3", "t": "一次看全貌", "accent": "green" },
+        { "n": "4", "t": "實測有效", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "complaints",
+      "kicker": "真實心聲 · 不是只有你",
+      "accent": "warn",
+      "headingZh": "這不是只有你，大家都在抱怨",
+      "headingEn": "Real developers, the same pain",
+      "items": [
+        { "handle": "queen****juul", "platform": "GitHub", "textEn": "Claude edits files without asking, despite \"Ask Before Edits\" being enabled. I've reset all settings, logged out and back in, uninstalled and reinstalled.", "textZh": "明明開了「編輯前先問」，還是直接改檔案，設定重來也沒用。", "accent": "warn", "x": 0.04, "y": 0.22, "rot": -2, "atCue": 1 },
+        { "handle": "r2h****0714", "platform": "GitHub", "textEn": "I asked a diagnostic question, and Claude interpreted it as an edit request — multiple files were edited across 20+ tool calls with no confirmation.", "textZh": "只是問一句原因，就被當成編輯指令，二十幾次呼叫直接改檔案。", "accent": "blue", "x": 0.53, "y": 0.205, "rot": 3, "atCue": 2 },
+        { "handle": "emsch****rtz", "platform": "GitHub", "textEn": "It's a little tedious to hit allow every time, even when the git working tree is clean.", "textZh": "工作樹明明乾淨，還是每次都要手動按允許，很麻煩。", "accent": "violet", "x": 0.655, "y": 0.46, "rot": 4, "atCue": 3 },
+        { "handle": "Anthropic Eng", "platform": "官方部落格", "textEn": "Users approve 93% of permission prompts — that's a lot of clicking approve, and over time it becomes fatigue.", "textZh": "使用者平均核准 93% 的提示——按到疲乏，沒真的在看。", "accent": "green", "x": 0.17, "y": 0.5, "rot": -3, "atCue": 4 }
+      ],
+      "cues": ["na1", "na2", "na3", "na4", "na5", "na6"]
+    },
+    {
+      "type": "places",
+      "kicker": "為何解不掉 · 三個常見因應",
+      "accent": "blue",
+      "headingZh": "大家想了三招，都沒真的解",
+      "headingEn": "Three common fixes that fall short",
+      "items": [
+        { "icon": "😵‍💫", "title": "全部按核准", "path": "default 逐步核准", "note": "任務一大，按到疲乏、不再真的看", "accent": "warn" },
+        { "icon": "🚀", "title": "切自動模式全跳過", "path": "auto / bypassPermissions", "note": "省事，但危險改動也來不及攔", "accent": "blue" },
+        { "icon": "📄", "title": "CLAUDE.md 交代規則", "path": "先問我再動手", "note": "版本一有 bug，交代照樣被忽略", "accent": "violet" }
+      ],
+      "keyline": "共同死穴：按到疲乏 / 風險失控 / 交代不保證有效",
+      "keylineAtCue": 4,
+      "cues": ["fa1", "fa2", "fa3", "fa4", "fa5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "解法 · 先看計畫再動手",
+      "accent": "green",
+      "headingZh": "切進 Plan Mode，先出計畫再動手",
+      "headingEn": "Switch to Plan Mode",
+      "terminal": {
+        "title": "終端機",
+        "lines": [
+          { "k": "cmt", "t": "1) 切進 Plan Mode（三選一）" },
+          { "k": "cmd", "t": "claude --permission-mode plan" },
+          { "k": "cmd", "t": "/plan 重構 API 路由從 Express 換成 Hono" },
+          { "k": "out", "t": "→ Claude 只讀檔、跑唯讀指令，不寫檔、不執行有副作用的指令" },
+          { "k": "cmt", "t": "2) 設成預設：.claude/settings.json → permissions.defaultMode = \"plan\"" }
+        ]
+      },
+      "keyline": "Plan Mode = 唯讀 + 先出計畫，寫入類動作全部先擋下",
+      "keylineAtCue": 3,
+      "cues": ["sa1", "sa2", "sa3", "sa4", "sa5"]
+    },
+    {
+      "type": "compare",
+      "kicker": "差異化 · 跟另外兩種比",
+      "accent": "violet",
+      "headingZh": "跟全部按核准、全部跳過差在哪",
+      "headingEn": "Why Plan Mode wins",
+      "bad": { "badge": "全部按核准 / 全部自動跳過", "code": "default: 逐步核准 · auto/bypass: 全部跳過", "note": "逐步核准按到疲乏、不再真的看；全部跳過連危險改動都放過" },
+      "good": { "badge": "Plan Mode", "code": "claude --permission-mode plan", "note": "唯讀先出計畫、一次看完全貌，核准後才選自動/逐一/送 Ultraplan 共審" },
+      "keyline": "差異＝一次看全貌＋按需核准＋可送瀏覽器多人共審，另外兩種都做不到",
+      "keylineAtCue": 5,
+      "cues": ["da1", "da2", "da3", "da4", "da5", "da6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "實證 · 怎麼知道真解了",
+      "accent": "teal",
+      "headingZh": "怎麼知道真的有解？實測",
+      "headingEn": "Does it actually work?",
+      "terminal": {
+        "title": "Before / After",
+        "lines": [
+          { "k": "cmt", "t": "Before：跨檔重構，default 模式 → 幾十次逐步核准" },
+          { "k": "cmd", "t": "claude --permission-mode plan" },
+          { "k": "ok", "t": "After：先出一份完整計畫 → 一次決定，再選自動/逐一/送 Ultraplan" },
+          { "k": "cmd", "t": "Ctrl+G" },
+          { "k": "out", "t": "直接編輯計畫文字 → 再讓 Claude 照改完的計畫執行" }
+        ]
+      },
+      "keyline": "幾十次核准 → 一次決定；官方文件內建機制，非過時功能",
+      "keylineAtCue": 4,
+      "cues": ["pa1", "pa2", "pa3", "pa4", "pa5"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "總整理",
+      "headingEn": "Recap",
+      "cards": [
+        { "emoji": "😵‍💫", "text": "痛點：逐步核准按到疲乏，bug 甚至讓「先問我」照樣被略過", "accent": "warn" },
+        { "emoji": "🛠️", "text": "解法：Shift+Tab / --permission-mode plan → Plan Mode 唯讀先出計畫", "accent": "green" },
+        { "emoji": "⚡", "text": "差異：一次看全貌 + 按需核准 + 可送 Ultraplan 多人共審", "accent": "blue" },
+        { "emoji": "✅", "text": "實證：官方 permission-modes 內建機制，非過時、非偏方", "accent": "violet" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

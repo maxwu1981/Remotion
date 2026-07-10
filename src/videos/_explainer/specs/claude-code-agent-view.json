@@ -1,0 +1,153 @@
+{
+  "id": "claude-code-agent-view",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "背景代理 Agent View",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "同時開好幾個任務，一個畫面全看見",
+    "date": "整理日期 2026-07-07"
+  },
+  "script": {
+    "cv1": "你是不是每次叫 Claude Code 做事，都得盯著它跑完，才敢開下一個任務？",
+    "cv2": "其實有個背景代理功能，可以同時丟好幾個任務出去，不用一直盯著螢幕。",
+    "cv3": "一個畫面就看到全部任務的進度，哪個需要你、哪個做完了，一目了然。",
+    "fa1": "先說說原本的痛點。一次只能跑一個任務，做完才敢開下一個，效率很差。",
+    "fa2": "螢幕沒動靜就懷疑當機，得一直切視窗確認，注意力被切得很碎。",
+    "fa3": "每個任務開一個新終端機分頁，做到第五個、第六個，哪個是哪個都搞混了。",
+    "fa4": "共同死穴：Claude Code 原本是一對一互動，任務一多，人自己變成瓶頸。",
+    "pl1": "解法是打開 Agent View，一個畫面同時派工、同時看進度。",
+    "pl2": "第一步，終端機打 claude agents，打開背景任務總覽畫面。",
+    "pl3": "第二步，在下面輸入框打一句任務描述，按 Enter，馬上派出一個背景 session。",
+    "pl4": "第三步，繼續打字再按 Enter，第二個、第三個任務並行派出去，互不干擾。",
+    "pl5": "畫面會自動分組：需要你回答的、還在跑的、已經做完的，一眼看出誰要你處理。",
+    "pl6": "官方驗證：每一列都是一個完整的 Claude Code session，離開畫面它照樣繼續跑。",
+    "te1": "背景任務會不會互相把檔案改到打架？",
+    "te2": "不會，Claude 自動幫每個任務開一個獨立 git worktree，各做各的、互不干擾。",
+    "te3": "claude --bg 後面接你要的任務，直接派到背景，不用先開總覽畫面。",
+    "te4": "claude attach 接 session 短 ID，接管它的完整對話，回去繼續講。",
+    "te5": "claude logs 接短 ID，不接管，先偷看它最近做了什麼。",
+    "te6": "claude stop 接短 ID，任務做完或不要了，直接收工。",
+    "te7": "睡眠沒關係，任務照跑；真的關機重開，任務會顯示失敗，重新點開才會復活。",
+    "te8": "誠實提醒：這是研究預覽功能，需要 Claude Code v2.1.139 以上版本，指令細節可能持續調整。",
+    "te9": "還有一點，同時開幾個背景任務，就等於同時吃掉幾倍訂閱額度，不是無限開好玩的。",
+    "o1": "快速總整理。",
+    "o2": "痛點：一次只能盯一個任務，做完才敢開下一個，切視窗切到分心。",
+    "o3": "解法：claude agents 打開總覽畫面，同時派工、自動分組看進度。",
+    "o4": "指令：claude --bg 派工、claude attach 接管、claude logs 偷看、claude stop 收工。",
+    "o5": "誠實提醒：研究預覽功能、需要新版本，開幾個就吃幾倍額度，別無限開。",
+    "o6": "下次要同時處理好幾件事，打開 claude agents 試試看吧。覺得有用，記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "背景代理 Agent View",
+      "terminal": {
+        "title": "claude agents",
+        "lines": [
+          { "k": "cmd", "t": "claude agents" },
+          { "k": "out", "t": "→ 一個畫面看全部背景任務進度" },
+          { "k": "cmt", "t": "同時派工、不用一直盯著" }
+        ]
+      },
+      "chips": [
+        { "n": "1", "t": "一次只能跑一個的痛點", "accent": "warn" },
+        { "n": "2", "t": "claude agents 開總覽", "accent": "blue" },
+        { "n": "3", "t": "背景派工三步驟", "accent": "green" },
+        { "n": "4", "t": "官方查證 + 誠實提醒", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "places",
+      "kicker": "為何需要 · 三個常見痛點",
+      "accent": "warn",
+      "headingZh": "一次只能盯一個任務，效率被自己卡住",
+      "headingEn": "Stuck watching one task at a time",
+      "items": [
+        {
+          "icon": "⏳",
+          "title": "一次一個任務",
+          "path": "做完才敢開下一個",
+          "note": "任務排隊等你盯完，時間都花在等待上",
+          "accent": "warn"
+        },
+        {
+          "icon": "👀",
+          "title": "一直切視窗確認",
+          "path": "螢幕沒動靜就怕當機",
+          "note": "注意力被切得很碎，沒辦法專心做別的事",
+          "accent": "blue"
+        },
+        {
+          "icon": "🗂️",
+          "title": "分頁越開越多",
+          "path": "每個任務一個新終端機",
+          "note": "開到第五、六個，哪個是哪個全搞混",
+          "accent": "violet"
+        }
+      ],
+      "keyline": "共同死穴：Claude Code 原本一對一互動，任務一多，人自己變瓶頸",
+      "keylineAtCue": 3,
+      "cues": ["fa1", "fa2", "fa3", "fa4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "解法 · 打開 Agent View 三步驟",
+      "accent": "blue",
+      "headingZh": "一個畫面同時派工、同時看進度",
+      "headingEn": "Dispatch and monitor from one screen",
+      "nodes": [
+        { "icon": "⌨️", "label": "claude agents", "sub": "打開背景任務總覽畫面", "accent": "blue" },
+        { "icon": "📝", "label": "輸入任務 + Enter", "sub": "派出第一個背景 session", "accent": "green" },
+        { "icon": "🔁", "label": "再打一句 + Enter", "sub": "第二、第三個任務並行派出", "accent": "green" },
+        { "icon": "📊", "label": "自動分組顯示", "sub": "需要你 / 還在跑 / 已完成", "accent": "warn" },
+        { "icon": "👋", "label": "離開也照跑", "sub": "關掉畫面，任務繼續在背景執行", "accent": "violet" }
+      ],
+      "keyline": "官方驗證：每一列都是完整 session，離開畫面它照跑，不會中斷",
+      "keylineAtCue": 5,
+      "cues": ["pl1", "pl2", "pl3", "pl4", "pl5", "pl6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "實戰指令 · 從終端機直接管理",
+      "accent": "teal",
+      "headingZh": "派工、接管、偷看、收工，一行指令搞定",
+      "headingEn": "Dispatch, attach, peek, and stop",
+      "terminal": {
+        "title": "Terminal",
+        "lines": [
+          { "k": "cmd", "t": "claude --bg \"investigate the flaky checkout test\"" },
+          { "k": "out", "t": "→ backgrounded · 7c5dcf5d · flaky-test-fix" },
+          { "k": "cmd", "t": "claude attach 7c5dcf5d" },
+          { "k": "cmt", "t": "→ 接管完整對話" },
+          { "k": "cmd", "t": "claude logs 7c5dcf5d" },
+          { "k": "cmt", "t": "→ 不接管，先偷看" },
+          { "k": "cmd", "t": "claude stop 7c5dcf5d" },
+          { "k": "err", "t": "→ 收工，停掉任務" },
+          { "k": "cmt", "t": "每個任務自動開獨立 git worktree，互不干擾" }
+        ]
+      },
+      "stamps": [
+        { "kind": "warn", "text": "研究預覽版 · 需 v2.1.139+", "atCue": 7 },
+        { "kind": "warn", "text": "開幾個＝吃幾倍訂閱額度", "atCue": 8 }
+      ],
+      "keyline": "官方文件：code.claude.com/docs/en/agent-view",
+      "keylineAtCue": 8,
+      "cues": ["te1", "te2", "te3", "te4", "te5", "te6", "te7", "te8", "te9"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "總整理",
+      "headingEn": "Recap",
+      "cards": [
+        { "emoji": "😩", "text": "痛點：一次只能盯一個任務，做完才敢開下一個，切視窗切到分心", "accent": "warn" },
+        { "emoji": "🛠️", "text": "解法：claude agents 打開總覽畫面，同時派工、自動分組看進度", "accent": "green" },
+        { "emoji": "⚡", "text": "指令：claude --bg 派工、attach 接管、logs 偷看、stop 收工", "accent": "blue" },
+        { "emoji": "✅", "text": "誠實提醒：研究預覽功能、需新版本，開幾個就吃幾倍額度，別無限開", "accent": "violet" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

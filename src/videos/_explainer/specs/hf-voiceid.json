@@ -1,0 +1,316 @@
+{
+  "id": "hf-voiceid",
+  "brand": {
+    "titlePre": "Hugging Face 實戰",
+    "titlePost": "AI 聽出誰在說話",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "41 分鐘會議 → 700 段發言自動標好名字 · 免費 pyannote 模型 · 全程 Claude 帶路",
+    "date": "生活應用系列 · 2026-07-10"
+  },
+  "script": {
+    "cv1": "上禮拜我開了一場 41 分鐘的視訊會議，裡面有 9 個人輪流發言。",
+    "cv2": "會後要整理會議記錄，我把音檔重播了三遍，還是分不清哪一句到底是誰講的。",
+    "cv3": "後來我讓 AI 來聽——它把 41 分鐘拆成 700 段發言，每一段都標好是誰說的，連名字都對得出來。",
+    "in1": "用的工具完全免費，來自一個你一定聽過、但可能沒真的用過的網站——Hugging Face。",
+    "in2": "這支影片帶你從註冊、同意授權、到實際跑出結果，照著做就會，不用寫半行程式。",
+    "gl1": "動手之前，先花九十秒搞懂四個詞，等一下每一步你都知道自己在做什麼。",
+    "gl2": "第一個詞，Hugging Face。你可以把它想成「AI 模型界的 App Store」。",
+    "gl3": "全世界的研究團隊把訓練好的 AI 模型上架到這裡，超過一百萬個，大部分免費。",
+    "gl4": "差別在於：App Store 下載的是 App，這裡下載的是「已經學會某個技能的 AI 大腦」。",
+    "gl5": "第二個詞，模型。模型就是那顆訓練完成的大腦。",
+    "gl6": "今天要用的 pyannote，就是一顆專門「聽聲音、分辨說話人」的大腦——光上個月就被全球下載超過 800 萬次。",
+    "gl7": "第三個詞，gated model，門控模型。有些模型像「要登記才能進場的展覽」。",
+    "gl8": "作者要求你留下基本資料、同意使用條款，才開放下載。等一下註冊完就會遇到，不用怕，就是填兩個欄位。",
+    "gl9": "第四個詞，Access Token。Token 就像你的「借書證」。",
+    "gl10": "程式要從 Hugging Face 下載模型時，出示這張證，網站才知道你是誰、你同意過條款。",
+    "gl11": "好，四個詞講完：去 App Store、借一顆會認聲音的大腦、簽個名進場、辦張借書證。開工。",
+    "wh1": "你可能會問：語音轉文字的工具滿街都是，為什麼還要這麼麻煩？",
+    "wh2": "因為多數工具只給你「一大坨文字」——誰講的、什麼時候講的，全部糊在一起。",
+    "wh3": "「分辨說話人」在行話裡叫 speaker diarization，公認最能打的開源模型 pyannote，就放在 Hugging Face 上。",
+    "wh4": "很多人卡在門口：滿版英文、又要同意條款、又要 token，看起來很工程師。",
+    "wh5": "其實整套流程五分鐘搞定，而且有 Claude 帶路，你連英文都不用自己讀。",
+    "rg1": "打開 huggingface.co/join，填 Email 和密碼，按 Next。",
+    "rg2": "到信箱點驗證信，帳號就開好了，完全免費，不用綁信用卡。",
+    "rg3": "你也可以直接對 Claude 說：「幫我開 Hugging Face 的註冊頁，一步一步教我完成註冊。」",
+    "gt1": "搜尋 pyannote/speaker-diarization-3.1，會看到一個提示：「你需要同意分享聯絡資訊才能使用這個模型」。",
+    "gt2": "往下捲，填兩個必填欄位——公司或學校、網站。個人使用的話，網站填你的部落格或 email 都可以。",
+    "gt3": "按下「Agree and access repository」，畫面出現「You have been granted access」，第一顆模型到手。",
+    "gt4": "注意，pyannote 其實是兩顆模型搭著用的——另一顆叫 segmentation-3.0，同樣的條款要再同意一次，別漏了。",
+    "gt5": "對 Claude 說：「帶我完成兩個模型的條款同意。」同意條款這種要本人確認的動作，Claude 會停下來讓你自己按。",
+    "tk1": "右上角頭像進 Settings，左邊選 Access Tokens，按「Create new token」。",
+    "tk2": "權限選 Read 就夠——我們只是要「讀取」模型，給越少權限越安全。",
+    "tk3": "Token 只會顯示這一次，先複製收好；弄丟了就重建一顆，不用緊張。",
+    "tk4": "一個安全提醒：這串 token 等於你的借書證，不要貼給別人、不要拍進截圖。我第一次就差點把它拍進畫面。",
+    "tk5": "對 Claude 說：「教我在 Hugging Face 建一個 Read 權限的 Access Token，並告訴我要收在哪裡。」",
+    "rn1": "接下來就是見證的時刻。我請 Claude 寫了一支小程式，把音檔丟進 pyannote。",
+    "rn2": "這裡用一段三個人的示範對話來跑給你看。",
+    "rn3": "跑完的輸出長這樣：從第幾秒到第幾秒、是幾號說話人，一段一段全部列出來。",
+    "rn4": "提醒一下速度：在我這台 8GB 記憶體的老 Mac 上，41 分鐘的音檔大約要跑 40 分鐘——丟給它跑，你去做別的事就好。",
+    "rn5": "但這時候它只認得「幾號說話人」，還不知道名字。重頭戲在下一步。",
+    "vp1": "我多做了一件大部分教學不會教的事：聲紋註冊。",
+    "vp2": "每個人取兩小段他自己說話的聲音，存成一張「聲紋卡」——就像幫每個聲音辦身分證。",
+    "vp3": "之後程式一比對，SPEAKER_03 自動變成「小美」、SPEAKER_07 變成「阿明」。",
+    "vp4": "最後合併起來，就是一份帶名字、帶時間戳的會議全文：幾分幾秒、誰、說了什麼，一行一行清清楚楚。",
+    "vp5": "對 Claude 說：「用我的 Hugging Face token，用 pyannote 分析這個音檔，列出每一段是誰在說話；再幫我做聲紋註冊，把編號換成真名。」",
+    "df1": "整理一下這套跟別人哪裡不一樣。",
+    "df2": "一般教學做到「說話人A、說話人B」就停了；加上聲紋註冊，輸出直接是名字，會議記錄拿到手不用再猜。",
+    "df3": "Before：41 分鐘音檔重播三遍，還原不出誰說了什麼。After：一句指令，700 段發言自動標好名字。",
+    "df4": "成本是零元——模型免費、MIT 授權，你付出的只有註冊那五分鐘。",
+    "gp1": "Hugging Face 上還有一百多萬顆模型：會看圖的、會翻譯的、會生音樂的，這支影片只是幫你把門推開。",
+    "gp2": "完整的操作 prompt 我逐字放在影片描述欄，複製貼給 Claude 就能開跑。",
+    "ot1": "如果這支影片有幫到你，訂閱、按讚、分享給那個每次都要整理會議記錄的同事。",
+    "ot2": "我們下支影片見。"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Hugging Face 實戰",
+      "titlePost": "AI 聽出誰在說話",
+      "chips": [
+        { "n": "41", "t": "分鐘會議實測", "accent": "blue" },
+        { "n": "700", "t": "段發言標好", "accent": "green" },
+        { "n": "9", "t": "位發言人", "accent": "violet" },
+        { "n": "0", "t": "元 · 模型免費", "accent": "claude" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "01 · 這支片帶你做到",
+      "accent": "claude",
+      "headingZh": "從零到會議全文，五步",
+      "headingEn": "Zero to who-said-what",
+      "nodes": [
+        { "icon": "📝", "label": "註冊帳號", "sub": "免費 · 2 分鐘", "accent": "blue" },
+        { "icon": "✍️", "label": "同意條款", "sub": "gated 模型 ×2", "accent": "violet" },
+        { "icon": "🔑", "label": "建 Token", "sub": "Read 權限", "accent": "claude" },
+        { "icon": "🧠", "label": "跑 pyannote", "sub": "Claude 代寫程式", "accent": "teal" },
+        { "icon": "📄", "label": "會議全文", "sub": "名字＋時間戳", "accent": "green" }
+      ],
+      "keyline": "照著做就會，不用寫半行程式",
+      "keylineAtCue": 1,
+      "cues": ["in1", "in2"]
+    },
+    {
+      "type": "glossary",
+      "kicker": "02 · 名詞小教室 ①",
+      "accent": "blue",
+      "headingZh": "四個詞先搞懂——第 1、2 個",
+      "headingEn": "4 terms, in plain words (1-2)",
+      "terms": [
+        { "n": "①", "icon": "🤗", "label": "Hugging Face", "sub": "AI 模型界的 App Store", "accent": "blue", "cues": ["gl2", "gl3", "gl4", "gl11"] },
+        { "n": "②", "icon": "🧠", "label": "模型", "sub": "訓練好的「AI 大腦」", "accent": "teal", "cues": ["gl5", "gl6", "gl11"] },
+        { "n": "③", "icon": "✍️", "label": "gated model", "sub": "要登記才能進場", "accent": "violet", "cues": ["gl7", "gl8", "gl11"] },
+        { "n": "④", "icon": "🔑", "label": "Access Token", "sub": "你的借書證", "accent": "claude", "cues": ["gl9", "gl10", "gl11"] }
+      ],
+      "sideShot": {
+        "src": "hf-voiceid/shot-model.png",
+        "w": 2784,
+        "h": 1764,
+        "view": [1580, 880, 2740, 1400],
+        "rect": [1655, 960, 1845, 1055],
+        "loupe": [1650, 955, 1850, 1060],
+        "atCue": "gl6",
+        "label": "pyannote 模型頁 · 實拍"
+      },
+      "cues": ["gl1", "gl2", "gl3", "gl4", "gl5", "gl6"]
+    },
+    {
+      "type": "glossary",
+      "kicker": "03 · 名詞小教室 ②",
+      "accent": "violet",
+      "headingZh": "四個詞先搞懂——第 3、4 個",
+      "headingEn": "4 terms, in plain words (3-4)",
+      "terms": [
+        { "n": "①", "icon": "🤗", "label": "Hugging Face", "sub": "AI 模型界的 App Store", "accent": "blue", "cues": ["gl2", "gl3", "gl4", "gl11"] },
+        { "n": "②", "icon": "🧠", "label": "模型", "sub": "訓練好的「AI 大腦」", "accent": "teal", "cues": ["gl5", "gl6", "gl11"] },
+        { "n": "③", "icon": "✍️", "label": "gated model", "sub": "要登記才能進場", "accent": "violet", "cues": ["gl7", "gl8", "gl11"] },
+        { "n": "④", "icon": "🔑", "label": "Access Token", "sub": "你的借書證", "accent": "claude", "cues": ["gl9", "gl10", "gl11"] }
+      ],
+      "cues": ["gl7", "gl8", "gl9", "gl10", "gl11"]
+    },
+    {
+      "type": "compare",
+      "kicker": "04 · 為什麼一般工具不夠",
+      "accent": "warn",
+      "headingZh": "轉出文字 ≠ 知道誰說的",
+      "headingEn": "Text alone doesn't name the speaker",
+      "bad": {
+        "badge": "一般語音工具",
+        "code": "輸出＝一大坨文字  ✘ 誰講的不知道",
+        "note": "時間、人名全糊在一起，會議記錄還是要人工重聽去猜。"
+      },
+      "good": {
+        "badge": "pyannote 分辨說話人",
+        "code": "每段發言  ✔ 幾分幾秒＋誰說的",
+        "note": "公認最能打的開源 speaker diarization 模型，就放在 Hugging Face 上，免費。"
+      },
+      "keyline": "門檻不是技術，是不知道從哪一步開始",
+      "keylineAtCue": 3,
+      "cues": ["wh1", "wh2", "wh3", "wh4", "wh5"]
+    },
+    {
+      "type": "shot",
+      "kicker": "05 · 第一步：註冊帳號",
+      "accent": "blue",
+      "headingZh": "兩分鐘開好 Hugging Face 帳號",
+      "headingEn": "huggingface.co/join",
+      "images": [
+        { "id": "join", "src": "hf-voiceid/shot-join.png", "w": 2784, "h": 1764, "label": "huggingface.co/join · 實拍" }
+      ],
+      "steps": [
+        { "cue": "rg1", "icon": "①", "t": "打開 join 頁，填 Email＋密碼" },
+        { "cue": "rg2", "icon": "②", "t": "到信箱點驗證信 → 開通" },
+        { "cue": "rg3", "icon": "💬", "t": "「幫我開註冊頁，一步一步教我」" }
+      ],
+      "highlights": {
+        "rg1": { "img": "join", "rect": [1035, 795, 1750, 1195], "loupe": [1040, 825, 1745, 940] },
+        "rg2": { "img": "join", "rect": [1035, 1240, 1750, 1335] },
+        "rg3": { "img": "join", "rect": [1000, 630, 1780, 1355] }
+      },
+      "cues": ["rg1", "rg2", "rg3"]
+    },
+    {
+      "type": "shot",
+      "kicker": "06 · 第二步：同意 gated 條款",
+      "accent": "violet",
+      "headingZh": "兩顆模型，各同意一次",
+      "headingEn": "Agree & access repository",
+      "images": [
+        { "id": "model", "src": "hf-voiceid/shot-model.png", "w": 2784, "h": 1764, "label": "speaker-diarization-3.1 · 實拍" },
+        { "id": "agree", "src": "hf-voiceid/shot-agree.png", "w": 2784, "h": 1764, "label": "條款同意表單 · 實拍" },
+        { "id": "seg", "src": "hf-voiceid/shot-seg.png", "w": 2784, "h": 1764, "label": "segmentation-3.0 · 實拍" },
+        { "id": "claude", "src": "hf-voiceid/shot-claude.png", "w": 2560, "h": 1600, "label": "Claude 帶路實錄 · 實拍" }
+      ],
+      "steps": [
+        { "cue": "gt1", "icon": "①", "t": "模型頁跳「需要同意才能用」" },
+        { "cue": "gt2", "icon": "②", "t": "填 公司/學校＋網站 兩欄" },
+        { "cue": "gt3", "icon": "③", "t": "按 Agree and access repository" },
+        { "cue": "gt4", "icon": "④", "t": "segmentation-3.0 再同意一次" },
+        { "cue": "gt5", "icon": "🤝", "t": "要本人按的，Claude 停下來等你" }
+      ],
+      "highlights": {
+        "gt1": { "img": "model", "rect": [165, 985, 1600, 1080] },
+        "gt2": { "img": "agree", "rect": [175, 625, 1545, 960], "loupe": [185, 850, 880, 955] },
+        "gt3": { "img": "agree", "rect": [175, 990, 1545, 1085] },
+        "gt4": { "img": "seg", "rect": [130, 440, 770, 525], "loupe": [140, 450, 760, 515] },
+        "gt5": { "img": "claude", "rect": [550, 1015, 1630, 1205], "loupe": [565, 1018, 1075, 1095] }
+      },
+      "cues": ["gt1", "gt2", "gt3", "gt4", "gt5"]
+    },
+    {
+      "type": "shot",
+      "kicker": "07 · 第三步：建 Access Token",
+      "accent": "claude",
+      "headingZh": "辦一張你的「借書證」",
+      "headingEn": "Settings → Access Tokens",
+      "images": [
+        { "id": "list", "src": "hf-voiceid/shot-tokens.png", "w": 2784, "h": 1764, "label": "Access Tokens 設定頁 · 實拍" },
+        { "id": "new", "src": "hf-voiceid/shot-token-new.png", "w": 2784, "h": 1764, "label": "Create new Access Token · 實拍" },
+        { "id": "save", "src": "hf-voiceid/shot-token-save.png", "w": 2784, "h": 1764, "label": "Save your Access Token · 實拍" }
+      ],
+      "steps": [
+        { "cue": "tk1", "icon": "①", "t": "Settings → Access Tokens → Create" },
+        { "cue": "tk2", "icon": "②", "t": "權限選 Read 就夠" },
+        { "cue": "tk3", "icon": "③", "t": "只顯示一次，當場複製收好" },
+        { "cue": "tk4", "icon": "⚠", "t": "不外流、不入鏡（畫面這串已遮蔽）" },
+        { "cue": "tk5", "icon": "💬", "t": "「教我建 Read token 並收好它」" }
+      ],
+      "highlights": {
+        "tk1": { "img": "list", "rect": [2270, 565, 2625, 660], "loupe": [2280, 575, 2615, 650] },
+        "tk2": { "img": "new", "rect": [790, 635, 1260, 730], "loupe": [800, 645, 1250, 720] },
+        "tk3": { "img": "save", "rect": [850, 765, 1930, 870] },
+        "tk4": { "img": "save", "rect": [850, 765, 1930, 870], "mask": "token 已遮蔽" },
+        "tk5": { "img": "save", "rect": [850, 630, 1930, 1010] }
+      },
+      "cues": ["tk1", "tk2", "tk3", "tk4", "tk5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "08 · 實測：把音檔丟進去",
+      "accent": "teal",
+      "headingZh": "三人示範對話，跑給你看",
+      "headingEn": "Run the pipeline",
+      "terminal": {
+        "title": "diarize.py — pyannote/speaker-diarization-3.1",
+        "lines": [
+          { "k": "cmd", "t": "python3 diarize.py demo.wav out.json" },
+          { "k": "out", "t": "loading pipeline... diarizing demo.wav ..." },
+          { "k": "out", "t": "{ \"start\": 0.05, \"end\": 7.91, \"speaker\": \"SPEAKER_02\" }" },
+          { "k": "out", "t": "{ \"start\": 9.75, \"end\": 14.95, \"speaker\": \"SPEAKER_01\" }" },
+          { "k": "ok", "t": "done in 50s ✔ 13 segments（41 分鐘會議實測＝700 segments）" }
+        ]
+      },
+      "keyline": "丟給它跑，你去做別的事就好",
+      "keylineAtCue": 3,
+      "cues": ["rn1", "rn2", "rn3", "rn4", "rn5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "09 · 聲紋註冊：編號變名字",
+      "accent": "green",
+      "headingZh": "幫每個聲音辦「身分證」",
+      "headingEn": "Voice enrollment",
+      "terminal": {
+        "title": "enroll.py → identify.py",
+        "lines": [
+          { "k": "cmd", "t": "python3 enroll.py 小美 demo.wav 0.2 8.5 24.0 29.6" },
+          { "k": "out", "t": "saved voiceprint → 小美.npy" },
+          { "k": "cmd", "t": "python3 identify.py demo.wav out.json named.json" },
+          { "k": "out", "t": "SPEAKER_02 → 小美(0.84) ・ SPEAKER_01 → 阿明(0.99) ・ SPEAKER_00 → 大衛(1.00)" },
+          { "k": "ok", "t": "[00:24] 小美：好，那預算的部分呢？這次我們抓多少？ ✔" }
+        ]
+      },
+      "keyline": "聲紋註冊＝編號自動換成真名",
+      "keylineAtCue": 2,
+      "cues": ["vp1", "vp2", "vp3", "vp4", "vp5"]
+    },
+    {
+      "type": "compare",
+      "kicker": "10 · 跟別人哪裡不同",
+      "accent": "claude",
+      "headingZh": "別人到編號就停，我們到名字",
+      "headingEn": "IDs vs real names",
+      "bad": {
+        "badge": "一般教學 · 到編號就停",
+        "code": "SPEAKER_A 說了…  ✘ 還是要猜",
+        "note": "拿到編號還原不出會議記錄，等於只做半套。"
+      },
+      "good": {
+        "badge": "聲紋註冊 · 直接出名字",
+        "code": "[12:05] 小美：…  ✔ 不用猜",
+        "note": "每人兩小段聲音辦「聲紋身分證」，編號自動換真名。"
+      },
+      "keyline": "重播三遍還原不出 → 一句指令 700 段標好名字",
+      "keylineAtCue": 2,
+      "cues": ["df1", "df2", "df3", "df4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "11 · 看到最後的禮物 🎁",
+      "accent": "claude",
+      "headingZh": "整套流程，一句 prompt 帶走",
+      "headingEn": "Master prompt",
+      "terminal": {
+        "title": "master prompt · 影片描述欄逐字複製",
+        "lines": [
+          { "k": "cmd", "t": "💬 我要用 Hugging Face 的 pyannote 模型分析多人對話音檔" },
+          { "k": "cmt", "t": "① 註冊帳號 ② 同意兩顆模型條款 ③ 建 Read 權限 token" },
+          { "k": "cmt", "t": "④ 裝 pyannote.audio ＋ 寫程式：輸入音檔 → 輸出每段誰在說話" },
+          { "k": "cmt", "t": "⑤ 聲紋註冊 → 編號自動換真名 → 帶時間戳的會議全文" },
+          { "k": "ok", "t": "完整 prompt 在影片描述欄 ✔ 複製貼給 Claude 就能開跑" }
+        ]
+      },
+      "keyline": "描述欄整段複製，貼上就開跑",
+      "keylineAtCue": 1,
+      "cues": ["gp1", "gp2"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "感謝觀看",
+      "headingEn": "Thanks for watching",
+      "cues": ["ot1", "ot2"]
+    }
+  ]
+}
