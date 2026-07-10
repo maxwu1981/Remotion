@@ -1,105 +1,59 @@
-# Remotion Video Studio — modular, multi-video
+# Remotion Video Studio — Ai-Wisdom 影片工廠
 
-A single Remotion project that holds **several videos** without re-scaffolding a
-new project each time. Reusable building blocks live once in `src/shared-skills/`;
-every video gets its own folder under `src/videos/`. Dependencies only ever flow
-one way — `videos/* → shared-skills/*`, never the reverse.
+單一 Remotion 專案養**全部頻道影片**（40+ 支），不用每支重新 scaffold。共用積木只放一份在 `src/shared-skills/`，每支影片一個 `src/videos/<name>/` 資料夾；依賴單向 `videos/* → shared-skills/*`，絕不反向。
 
-Minimalist UI/UX throughout: a `#F8F9FA` canvas, glassmorphism, **Inter** +
-**JetBrains Mono**, and physics-based motion driven by Remotion `spring()` /
-`interpolate()` — **no CSS transitions anywhere**.
+**完整製作流程（選題→腳本→VO→BGM→算繪→QA→上傳）見 [VIDEO-PRODUCTION.md](VIDEO-PRODUCTION.md)；硬規則見 [CLAUDE.md](CLAUDE.md) §6。**
 
-## Videos
-
-| Video | Composition id | Render | What it is |
-|-------|----------------|--------|------------|
-| **Auto-Upload** (primary) | `AutoUpload` (+ `U1…U9`) | `npm run render` → `out/auto-upload.mp4` | 9-scene tutorial: automate YouTube uploads via the YouTube Data API (GCP project → OAuth + test users → credentials → terminal → browser auth → success → recap → CTA). ~1:47, soft-piano bed. |
-| **AutoLine** | `ProductionLine` (+ `Seq1…6`) | `npm run render:autoline` → `out/production-line.mp4` | Older 6-scene explainer on a zero-touch AI video-*editing* pipeline (cut silence, re-voice, render 16:9 + 9:16). |
-
-Each video also exposes its scenes as standalone compositions (`U1…U9`,
-`Seq1…6`) and a `Poster` still, for fast iteration in Studio.
-
-## Project layout
+## 專案結構
 
 ```
 src/
-  Root.tsx                      # registers every composition (both videos)
-  index.ts                      # registerRoot(RemotionRoot)
-
-  shared-skills/                # reusable, video-agnostic — write once, reuse everywhere
-    theme.ts                    # design tokens (colors, type, shadows, gradients)
-    anim.ts                     # spring / easing helpers
-    audio.tsx                   # <Bgm> + <Sfx> (frame-aligned one-shots)
-    captions.tsx                # <CaptionTrack> — timed subtitle cues (manifest-agnostic)
-    types.ts                    # SceneDef
-    components/                 # Backdrop, CaptionBar, Narration, logos, lux (glass cards,
-                                #   light streams, arrow links, 3D windows, holo module)
-
+  Root.tsx                 # 註冊所有 composition
+  shared-skills/           # 共用積木：theme(design tokens+BRAND_MARK)、anim、
+                           #   audio(<Bgm>/<Sfx>)、captions(CaptionTrack)、components/
   videos/
-    youtube-auto-upload/        # the Auto-Upload video
-      Master.tsx registry.ts brand.ts ui.tsx UploadShell.tsx
-      captions.tsx              # thin wrapper → CaptionTrack bound to this video's VO
-      vo-manifest.json  scenes/Scene1…9.tsx
-    autoline/                   # the AutoLine video
-      Master.tsx registry.ts brand.ts SceneShell.tsx Tooltip.tsx Stage.tsx
-      screenshots.ts captions.tsx vo-manifest.json
-      data/episode.ts  mockups/*  scenes/Scene1…6.tsx
+    _template/             # 新片起手式（複製這個開始，見其 README）
+    _explainer/            # 資料驅動解說片引擎：吃 specs/*.json 出片、不寫 scene 程式碼
+                           #   Explainer(白底) / ExplainerObsidian(黑曜石玻璃卡，現行預設)
+                           #   VF-Daily comp = 每日工廠入口（讀 specs/current.json）
+    <每支影片一夾>/         # Master/registry/scenes/SCRIPT.md/vo-manifest.json
 
-scripts/                        # make-vo, make-vo-upload, make-sfx, make-bgm, make-bgm-piano, render-all, stills-upload
-public/                         # bgm*.mp3, sfx one-shots, vo/ (autoline) + vo/upload/ (auto-upload)
+scripts/                   # make-vo-<片名>.mjs(edge-tts 配音)、qa-video.mjs(QA gate)、
+                           #   gen-ep-*.mjs(資料驅動 EP 工具鏈)、stills/render 雜項
+automation/                # 每日影片工廠：ORCHESTRATOR.md(runbook)、scout.py(選題)、
+                           #   make-vo-spec.py(通用 VO)、render_daily.py、state/(ledger)
+public/                    # 素材：bgm-<片名>.mp3、vo/<片名>/、各片截圖/圖庫子資料夾
+out/                       # 算繪輸出（gitignored；按主題子資料夾分類）
+docs/                      # GitHub Pages 影片中心站（自動抓頻道上傳影片）
+series-registry.json       # 系列/EP 編號單一事實來源（開拍前 check/reserve，上傳自動 sync）
 ```
 
-## Run it
+## 常用指令
 
 ```bash
-npm install
-npm run dev               # Remotion Studio — pick a composition in the sidebar
-npm run render            # Auto-Upload  → out/auto-upload.mp4
-npm run render:autoline   # AutoLine     → out/production-line.mp4
-npm run render:all        # Auto-Upload + each U-scene  (add -- --autoline for AutoLine too)
+npm run dev        # Remotion Studio（長跑要 daemonize，見記憶 long-render-detach）
+npm run tsc        # 型別檢查
+npm run lint       # ESLint
+
+# 算繪（黑曜石/深色卡風必帶防抖旗標；長片先查系統負載）
+npx remotion render <CompId> out/<主題>/<片名>-v<N>.mp4 \
+  --image-format=png --crf=15 --timeout=300000
+
+# QA gate（收工前必過）
+node scripts/qa-video.mjs out/<...>.mp4
 ```
 
-## Adding a new video
+## 新增一支影片
 
-No new Remotion project needed:
+1. `cp -R src/videos/_template src/videos/<name>`（或資料驅動片直接寫 `_explainer/specs/<name>.json`）。
+2. 開拍前：`series-registry.json` 鎖 EP 編號；片型＋主題用可點選選項跟老闆確認。
+3. 建 scenes、`scripts/make-vo-<name>.mjs` 生曉晴配音、Gemini 生專屬 BGM（`public/bgm-<name>.mp3`）。
+4. 在 `src/Root.tsx` 註冊 `<Composition>` → 算繪 → QA gate → 上傳。
 
-1. **Copy the starter:** `cp -R src/videos/_template src/videos/<name>` — a ready,
-   type-valid skeleton (Master, registry, brand, example scene, captions wrapper).
-2. Edit `brand.ts`, build `scenes/`, and import shared pieces from `../../shared-skills/…`.
-3. Register a `<Composition>` for it in `src/Root.tsx`.
+細節與每步的鐵則、常見坑，一律以 `VIDEO-PRODUCTION.md` 與 `CLAUDE.md` §6 為準。
 
-See `src/videos/_template/README.md` for the full checklist.
+## 設計原則
 
-`shared-skills/` grows over time, so each new video starts faster than the last.
-
-## Voiceover
-
-`CaptionTrack` is manifest-agnostic; each video injects its own measured VO via a
-thin `captions.tsx` wrapper (`vo` map + `voDir`). `Narration` takes an optional `dir`.
-
-```bash
-npm run vo:upload         # Auto-Upload — edge-tts neural voice → public/vo/upload/
-npm run vo                # AutoLine — macOS `say` → public/vo/
-# pick a voice:  VO_VOICE="en-US-AndrewMultilingualNeural" npm run vo:upload
-```
-
-edge-tts is free (uses Edge's online neural voices, no API key) and needs network.
-
-## Sound design
-
-One-shots + a music bed live at the root of `public/` (`ui-pop`, `soft-whoosh`,
-`clean-ding`, `typing`, `digital-processing`, `cash-register`, `bgm.mp3`,
-`bgm-piano.mp3`). Each cue is delayed with a `<Sequence>` so it lands
-frame-perfectly on its animation (see `src/shared-skills/audio.tsx`).
-
-```bash
-npm run sfx               # synthesize placeholder one-shots (ffmpeg)
-npm run bgm               # lo-fi bed → public/bgm.mp3 (AutoLine)
-npm run bgm:piano         # soft piano bed → public/bgm-piano.mp3 (Auto-Upload)
-```
-
-## Notes
-
-- All motion is frame-based (`useCurrentFrame` + `interpolate`/`spring`, Bézier easing). No CSS transitions.
-- All "randomness" uses Remotion's deterministic `random(seed)`.
-- Type-check: `npm run tsc` · Lint: `npm run lint`.
+- 動畫全部 frame-based（`useCurrentFrame` + `interpolate`/`spring`），**禁 CSS transitions**；隨機一律 Remotion 確定性 `random(seed)`。
+- 中英雙語字型堆疊 `FONT.uiCjk`（Inter + Noto Sans TC）；封面品牌字樣一律用 `BRAND_MARK` 常數，不手打。
+- 配音 edge-tts 曉晴（`zh-TW-HsiaoChenNeural`）；BGM 一律 Gemini Lyria 3 生水晶鋼琴調性、每支新生一首。

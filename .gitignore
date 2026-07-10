@@ -20,3 +20,23 @@ public/vo
 
 # 小紅書登入憑證,勿提交
 cookies.json
+
+# Reddit API 憑證,勿提交（範本見 automation/reddit.env.example）
+automation/reddit.env
+
+# ⚠️ repo 是 public——私密營運狀態勿提交（config.json 含電話號碼+YouTube server API key）
+automation/state/
+
+# 原始截圖/錄影素材（可能含未遮蔽的 email/token/個資），勿進公開 repo；本機+雲端另行備份
+public/footage/
+public/facecam/
+public/handson/
+public/yt-upload-ep02/
+public/hf-voiceid/
+public/local-access/
+public/docreport/
+
+# 大型 AI 生成素材（>50MB 級，git 會永久肥大；成片已含這些畫面）
+public/gemini/
+public/gemini-clips/
+public/aas-v2/
