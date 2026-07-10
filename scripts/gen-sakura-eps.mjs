@@ -91,9 +91,16 @@ const label = (num) => {
   return { label: spec.title };
 };
 
-// chunk
+// chunk — balanced: ceil(n/18) EPs, sizes as even as possible (avoids tiny trailing EP)
+const numEps = Math.max(1, Math.ceil(usable.length / PER_EP));
+const baseSz = Math.floor(usable.length / numEps);
+const extra = usable.length % numEps;
 const eps = [];
-for (let i = 0; i < usable.length; i += PER_EP) eps.push(usable.slice(i, i + PER_EP));
+for (let e = 0, i = 0; e < numEps; e++) {
+  const sz = baseSz + (e < extra ? 1 : 0);
+  eps.push(usable.slice(i, i + sz));
+  i += sz;
+}
 const total = eps.length;
 const pad = (n) => String(n).padStart(2, "0");
 
