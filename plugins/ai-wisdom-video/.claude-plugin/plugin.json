@@ -1,0 +1,8 @@
+{
+  "name": "ai-wisdom-video",
+  "description": "Ai-Wisdom YouTube 頻道影片產線技能包（Remotion 教學片/解說片/AI 畫面片、收尾與繁中 commit）。流程總覽見 repo 根目錄 VIDEO-PRODUCTION.md。",
+  "version": "0.1.0",
+  "author": {
+    "name": "maxwu1981"
+  }
+}
