@@ -1,0 +1,365 @@
+{
+  "id": "fb-autopost",
+  "brand": {
+    "titlePre": "Facebook",
+    "titlePost": "每天自動發文",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "用 Meta 官方 Graph API 串接、免月費、Token 留在自己電腦",
+    "date": "生活應用系列 · 2026-07-04"
+  },
+  "script": {
+    "cv1": "我讓家裡書畫品牌的 Facebook 粉專，連續四十天每天自動發文，中間我一次都沒打開過 FB 後台。",
+    "cv2": "不靠任何付費排程工具、不綁月費，全部用 Meta 官方的 Graph API，Token 和素材都留在我自己電腦。",
+    "cv3": "而且你會發現，每一步其實只是對 Claude 說一句話。這支影片，就把每一句該說的 prompt，跟每個該去 FB 點的地方，一步一步拆給你看。",
+
+    "b1": "先講為什麼要做這件事。經營粉專最累的，從來不是想不出內容，是每天記得在對的時間發出去。",
+    "b2": "人肉發文，撐兩個禮拜就會累垮；只要斷更兩三天，觸及就雪崩，演算法把你當不活躍冷處理。",
+    "b3": "市面工具要嘛月費，要嘛把你的內容和授權押在別人伺服器上，帳號被綁架的風險很高。",
+    "b4": "所以我改用官方 API，自己寫一支排程，把每天發文這件事，交給系統。",
+
+    "a1": "整套系統只有四個零件，全部在你自己電腦上跑；而且你不用自己從零寫，每個零件都可以叫 Claude 幫你搭。",
+    "a2": "第一，素材夾：每天一個資料夾，放好圖片和文案。",
+    "a3": "第二，排程：每天早上七點十一分，自動觸發。",
+    "a4": "第三，Graph API：程式把圖和文，打到 Facebook 官方接口。",
+    "a5": "第四，你的粉絲專頁：貼文就這樣上線了。沒有任何第三方平台碰到你的帳號。",
+
+    "app1": "第一步，先在 Meta 拿到發文權。你不確定怎麼做沒關係，直接跟 Claude 說：教我在 developers.facebook.com 建一個 Meta App，並告訴我去哪裡複製 App ID 和密鑰。它就會一步一步帶你點。",
+    "app2": "到 developers.facebook.com，右上角我的應用程式，點建立應用程式。",
+    "app3": "用途選其他，類型選商業，填個名字，例如 Autopost，就建好了。",
+    "app4": "進去之後，左邊設定、基本資料這一頁，記下兩個等一下要用的東西：應用程式編號，和應用程式密鑰。",
+    "app5": "密鑰是密碼等級的東西，等一下畫面上我會全部打碼，你自己的也絕對不要外流。",
+
+    "tk1": "第二步，最多人卡關的一步：拿 Token。一樣先問 Claude：教我用 Graph API Explorer 拿到粉專發文的 Token，要勾哪些權限、點哪個鈕。它會把每一步講清楚，你照著點。",
+    "tk2": "打開 Graph API Explorer 這個工具，右上角先選到你剛剛建的那個應用程式。",
+    "tk3": "接著在權限欄，加入兩個權限：一個是幫我的粉專發文，一個是讀我的粉專互動。",
+    "tk4": "然後點生成存取權杖，跳出授權視窗，選你的粉絲專頁，允許。",
+    "tk5": "上面就會出現一長串英數字組成的存取權杖，也就是 Token，複製起來。這串就是發文的鑰匙，畫面上我一樣打碼。",
+
+    "lt1": "第三步開始，就是叫 Claude 幫你寫程式了。你跟它說：幫我寫一支程式，把短效 Token 換成六十天長效、再換出粉專專用的 Page Token、存進設定檔。它就把整段程式碼給你。",
+    "lt2": "剛剛那串直接拿去用，一兩個小時就過期了。要做兩件事。",
+    "lt3": "第一件，用你的應用程式編號和密鑰，換一張六十天的長效權杖。",
+    "lt4": "第二件，再用長效權杖，去換出粉專專用的 Page Token。這一張，才是真正拿去發文、而且幾乎不會過期的鑰匙。",
+    "lt5": "換好之後，存進設定檔，記下到期日。這一整段，我用一支指令 refresh 就全包了。",
+
+    "pub1": "第四步，真的發出貼文。跟 Claude 說：幫我寫發文腳本，先把每張圖以不公開上傳拿編號，再組成一則多圖貼文。多圖貼文要分兩步，它會一次幫你寫好。",
+    "pub2": "第一步，把每張圖先上傳、但設成不公開，Facebook 會回給你一個圖片編號。",
+    "pub3": "第二步，把這些圖片編號，連同文案，一起送到粉專的動態接口，貼文就正式上線。",
+    "pub4": "打一行指令，切到粉專，貼文啪一下就出現了。",
+
+    "run1": "重點來了。前面教的都是「怎麼發一次」；而真正的自動，是讓程式每天自己發，你完全不用碰。",
+    "run2": "做法一句話就搞定：跟 Claude 說，幫我把這支發文腳本掛上排程，每天早上七點十一分自動執行。它會用作業系統內建的 cron，macOS 也可以用 launchd。",
+    "run3": "寫一行設定，意思就是：每天早上七點十一分，自動執行我的發文腳本，存檔就生效。",
+    "run4": "從這一刻起，你的手不用再碰，作業系統每天替你按下執行。這，就是「自動發文」真正發生的地方。",
+
+    "sch1": "接著再跟 Claude 說：幫我加上去重，發過的不再發；沒有新圖時，自動回收最久沒發的舊資料夾輪播。程式怎麼決定今天發哪一篇，它就幫你顧好。",
+    "sch2": "它會先去今天的資料夾，抓好圖片和文案。",
+    "sch3": "發過的資料夾，會記在一份去重清單裡，不會重複發。",
+    "sch4": "萬一今天沒有新圖呢？系統會抽最久沒重發的舊資料夾，回收輪播。這就是它能連續四十天不斷更的關鍵。",
+
+    "mt1": "Token 會過期，這是自動化最容易死掉的地方。最後一句 prompt：跟 Claude 說，幫我寫一個檢查 Token 到期的指令，剩十四天就提醒我，並排進每週自動檢查。",
+    "mt2": "Page Token 大約六十天壽命，程式在剩十四天的時候就會自動預警。",
+    "mt3": "檢查一行指令 check，換新一行指令 refresh，重跑前面的取 Token 流程就好。",
+    "mt4": "我的建議：把檢查 Token 也排進每週排程，就不會某天突然全停還不知道。",
+
+    "rs1": "講了這麼多，來看真的成果。",
+    "rs2": "從五月二十五號到七月四號，連續四十天，累積三十四篇全自動發文的紀錄，全部有時間戳。",
+    "rs3": "其中好幾天標著 recycle，就是沒新圖時的回收輪播，系統自己判斷、自己補上。",
+    "rs4": "這四十天，我完全沒有打開過 FB 後台。這就是把發文交給系統，和靠意志力硬撐，最大的差別。",
+
+    "tp1": "最後補幾個最重要的坑，都是我踩過的。",
+    "tp2": "第一，Token 等於密碼，影片、截圖、教學文一律打碼，外洩等於有人能用你的名義發文。",
+    "tp3": "第二，一定要用 Page Token 發文，不是 User Token；而且權限只勾需要的兩個就好。",
+    "tp4": "第三，Facebook 有每日發文上限，別排每小時洗版，會被判垃圾訊息。個人動態牆也發不了，只能發粉專。",
+
+    "gp1": "最後，送給看到這裡的你一個禮物。",
+    "gp2": "我把前面每一步，合成了一整段完整的 prompt。你不用一段一段慢慢問——整段複製，一次貼給 Claude，它就會從頭到尾，把這套系統幫你建出來。",
+    "gp3": "螢幕上這段可以直接暫停、截圖；逐字完整版我也放在影片下方，複製就能用。這就是看到最後的好處。",
+
+    "o1": "好，六個重點快速總整理。",
+    "o2": "第一，整套系統四個零件，全在你自己電腦，不碰第三方。",
+    "o3": "第二，Token 分兩段：換六十天長效，再換出粉專專用的 Page Token。",
+    "o4": "第三，發文兩步：先傳不公開的圖拿編號，再組成貼文。",
+    "o5": "第四，排程加去重加回收輪播，才能天天不斷更。",
+    "o6": "第五，Token 會過期，剩十四天預警，記得排每週檢查。",
+    "o7": "剛剛那段完整 prompt，還有每一步的分解版，都放在影片下方，直接複製就能用。覺得有用，記得按讚、訂閱、分享，我們下支影片見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Facebook",
+      "titlePost": "每天自動發文",
+      "terminal": {
+        "title": "你只要對 Claude 說一句話",
+        "lines": [
+          { "k": "cmd", "t": "💬 「Hi Claude，幫我做一套 FB 粉專每天自動發文的系統」" },
+          { "k": "cmt", "t": "素材夾 → 排程 07:11 → Graph API → 粉專貼文" },
+          { "k": "out", "t": "Meta 官方 API · 免月費 · Token 留在本機" },
+          { "k": "ok", "t": "連續 40 天 · 34 篇 · 全自動零介入" }
+        ]
+      },
+      "chips": [
+        { "n": "40", "t": "天沒碰鍵盤", "accent": "claude" },
+        { "n": "0", "t": "元月費", "accent": "green" },
+        { "n": "2", "t": "步 API 發文", "accent": "blue" },
+        { "n": "34", "t": "篇自動貼文", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "compare",
+      "kicker": "01 · 為什麼要自動化",
+      "accent": "warn",
+      "headingZh": "人肉發文 vs 交給系統",
+      "headingEn": "Manual vs automated posting",
+      "bad": {
+        "badge": "人肉日更 · 撐不住",
+        "code": "每天記得發？  ✘ 兩週必累垮",
+        "note": "斷更兩三天，觸及雪崩；付費工具還把內容押在別人伺服器上。"
+      },
+      "good": {
+        "badge": "交給系統 · 穩定",
+        "code": "排程 07:11 自動發  ✔ 官方 API",
+        "note": "Token 與素材都在本機，不綁月費、不被第三方綁架。"
+      },
+      "keyline": "日更不是靠意志力，是靠系統",
+      "keylineAtCue": 3,
+      "cues": ["b1", "b2", "b3", "b4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "02 · 系統總覽",
+      "accent": "blue",
+      "headingZh": "整套只有四個零件，全在你電腦",
+      "headingEn": "Four parts, all local",
+      "nodes": [
+        { "icon": "🗂", "label": "素材夾", "sub": "每天一夾 · 圖+文案", "accent": "teal" },
+        { "icon": "⏰", "label": "排程", "sub": "每天 07:11 觸發", "accent": "blue" },
+        { "icon": "🔌", "label": "Graph API", "sub": "打 FB 官方接口", "accent": "violet" },
+        { "icon": "📣", "label": "粉絲專頁", "sub": "貼文上線", "accent": "green" }
+      ],
+      "keyline": "四個零件全在本機跑，沒有第三方平台碰你的帳號",
+      "keylineAtCue": 4,
+      "cues": ["a1", "a2", "a3", "a4", "a5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "03 · 建立 Meta App",
+      "accent": "teal",
+      "headingZh": "第一步：在 Meta 拿到「發文權」",
+      "headingEn": "Create a Meta App",
+      "terminal": {
+        "title": "developers.facebook.com → 建立應用程式",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「教我建一個 Meta App，並告訴我 App ID / App Secret 在哪複製」" },
+          { "k": "cmt", "t": "① 右上「我的應用程式」→ 建立應用程式" },
+          { "k": "cmt", "t": "② 用途：其他 → 類型：商業 → 命名（例：Autopost）" },
+          { "k": "out", "t": "③ 設定 → 基本資料：記下 App ID + App Secret" },
+          { "k": "err", "t": "App Secret＝密碼等級 · 畫面一律打碼、絕不外流" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ App Secret 打碼", "atCue": 4 }],
+      "keyline": "建 App 只發自己的 Page，免送審、5 分鐘搞定",
+      "keylineAtCue": 3,
+      "cues": ["app1", "app2", "app3", "app4", "app5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "04 · 取得 Token",
+      "accent": "claude",
+      "headingZh": "第二步：Token 要去哪裡點？",
+      "headingEn": "Graph API Explorer",
+      "terminal": {
+        "title": "Graph API Explorer",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「教我用 Graph API Explorer 拿粉專發文 Token，要勾哪些權限」" },
+          { "k": "cmt", "t": "① 右上「Meta App」下拉 → 選你的 App" },
+          { "k": "cmt", "t": "② 權限加 pages_manage_posts + pages_read_engagement" },
+          { "k": "cmt", "t": "③ Generate Access Token → 授權視窗選你的粉專 → 允許" },
+          { "k": "ok", "t": "④ 出現 EAAxxxx… Token → 複製（畫面打碼）" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ Token 打碼", "atCue": 5 }],
+      "keyline": "缺任一權限就發不出去；Token = 發文的鑰匙",
+      "keylineAtCue": 4,
+      "cues": ["tk1", "tk2", "tk3", "tk4", "tk5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "05 · 換長效 Token",
+      "accent": "violet",
+      "headingZh": "第三步：短命 Token → 60 天耐用版",
+      "headingEn": "Long-lived + Page token",
+      "terminal": {
+        "title": "graph.facebook.com/v19.0",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我寫程式：短效 Token → 60 天長效 → 換出 Page Token → 存檔」" },
+          { "k": "cmt", "t": "① 換 60 天長效 User Token" },
+          { "k": "cmd", "t": "GET /oauth/access_token?grant_type=fb_exchange_token&client_id=APP_ID&client_secret=***&fb_exchange_token=短效Token" },
+          { "k": "cmt", "t": "② 用長效 User Token 取 Page Token" },
+          { "k": "cmd", "t": "GET /<page_id>?fields=access_token&access_token=長效UserToken" },
+          { "k": "ok", "t": "回傳的 access_token＝粉專專用、幾乎不過期 → 存進設定檔" }
+        ]
+      },
+      "keyline": "用長效 User Token 換出的 Page Token 才是真正發文的鑰匙",
+      "keylineAtCue": 4,
+      "cues": ["lt1", "lt2", "lt3", "lt4", "lt5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "06 · 發出貼文",
+      "accent": "green",
+      "headingZh": "第四步：一行指令發出一則貼文",
+      "headingEn": "Publish in two API calls",
+      "terminal": {
+        "title": "兩步發多圖貼文",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我寫發文腳本：先傳不公開的圖拿編號，再組成多圖貼文」" },
+          { "k": "cmt", "t": "① 每張圖先上傳、設 published=false，拿 media 編號" },
+          { "k": "cmd", "t": "POST /<page_id>/photos   source=<圖>  published=false" },
+          { "k": "cmt", "t": "② 把 media 編號 + 文案組成一則貼文" },
+          { "k": "cmd", "t": "POST /<page_id>/feed   message=<文案>  attached_media=[{media_fbid}…]" },
+          { "k": "ok", "t": "回傳 post_id → 貼文上線 facebook.com/<page_id>/posts/<id>" }
+        ]
+      },
+      "keyline": "多圖貼文＝先傳不公開的圖拿編號，再組成貼文",
+      "keylineAtCue": 4,
+      "cues": ["pub1", "pub2", "pub3", "pub4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "07 · 讓它自己跑（自動的核心）",
+      "accent": "blue",
+      "headingZh": "第五步：怎麼讓程式每天自己發？",
+      "headingEn": "Schedule it to run itself",
+      "terminal": {
+        "title": "把發文腳本掛上排程（cron / launchd）",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我把發文腳本掛上排程，每天早上 7:11 自動執行」" },
+          { "k": "cmt", "t": "自動的關鍵：讓作業系統每天固定時間、自己執行發文腳本" },
+          { "k": "cmd", "t": "crontab -e            # macOS / Linux 內建，免裝任何工具" },
+          { "k": "out", "t": "11 7 * * *  /usr/bin/python3 ~/fb/publish.py   # 每天 07:11 自動發" },
+          { "k": "ok", "t": "存檔即生效 → 手不用再碰，作業系統每天替你按下執行" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 這裡才是「自動」發生的地方", "atCue": 4 }],
+      "keyline": "「自動發文」的心臟：把腳本交給排程器，作業系統每天替你執行",
+      "keylineAtCue": 3,
+      "cues": ["run1", "run2", "run3", "run4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "08 · 每天發什麼、不重複",
+      "accent": "teal",
+      "headingZh": "自己跑起來後：每天發什麼？不重複？",
+      "headingEn": "Pick today's post · never repeat",
+      "nodes": [
+        { "icon": "🗂", "label": "抓今日資料夾", "sub": "圖 + 文案", "accent": "blue" },
+        { "icon": "🧾", "label": "去重清單", "sub": "發過的不再發", "accent": "teal" },
+        { "icon": "♻️", "label": "回收輪播", "sub": "沒新圖抽最舊的重發", "accent": "green" }
+      ],
+      "keyline": "沒新圖就回收輪播——連續 40 天不斷更的關鍵",
+      "keylineAtCue": 3,
+      "cues": ["sch1", "sch2", "sch3", "sch4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "09 · Token 維運",
+      "accent": "warn",
+      "headingZh": "Token 會過期，怎麼顧？",
+      "headingEn": "Keep the token alive",
+      "terminal": {
+        "title": "jq_token_manager.py",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我寫檢查 Token 到期的指令，剩 14 天提醒我、排每週檢查」" },
+          { "k": "cmt", "t": "Page Token 約 60 天壽命 · 剩 14 天自動預警" },
+          { "k": "cmd", "t": "python3 jq_token_manager.py check" },
+          { "k": "ok", "t": "✅ 有效（剩 N 天）／⚠️ 即將到期" },
+          { "k": "cmd", "t": "python3 jq_token_manager.py refresh   # 重跑取 Token 流程" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ 排每週檢查", "atCue": 4 }],
+      "keyline": "把「檢查 Token」也排進每週排程，就不會某天突然全停",
+      "keylineAtCue": 3,
+      "cues": ["mt1", "mt2", "mt3", "mt4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "10 · 成果",
+      "accent": "claude",
+      "headingZh": "連續 40 天自動發文的真實紀錄",
+      "headingEn": "40 days, fully automated",
+      "terminal": {
+        "title": ".jq_published_log.json — 發文紀錄",
+        "lines": [
+          { "k": "cmt", "t": "區間 2026-05-25 → 07-04 · 34 篇 · 全部有時間戳" },
+          { "k": "out", "t": "2026-06-21T00:37 · 2026-06-20T02:08 · 2026-06-19T10:27 …" },
+          { "k": "ok", "t": "2026-06-25 recycle:true · 2026-06-26 recycle:true …（沒新圖自動輪播）" },
+          { "k": "cmt", "t": "這 40 天，我完全沒有打開過 FB 後台。" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 零介入 40 天", "atCue": 4 }],
+      "keyline": "交給系統 vs 靠意志力硬撐，差別就在這 40 天",
+      "keylineAtCue": 3,
+      "cues": ["rs1", "rs2", "rs3", "rs4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "11 · 避坑（最重要）",
+      "accent": "warn",
+      "headingZh": "四個我踩過的坑",
+      "headingEn": "Pitfalls to avoid",
+      "terminal": {
+        "title": "安全 · 合規 · 避坑",
+        "lines": [
+          { "k": "err", "t": "① Token=密碼，影片/截圖/教學一律打碼，外洩＝被人冒名發文" },
+          { "k": "ok", "t": "② 用 Page Token 發文（非 User Token）· 權限只勾需要的兩個" },
+          { "k": "err", "t": "③ FB 有每日發文上限，別排每小時洗版（判垃圾訊息）" },
+          { "k": "cmt", "t": "④ 個人動態牆發不了，只能發粉專（Page）" }
+        ]
+      },
+      "keyline": "自動化最容易死在 Token 過期與洗版被判違規",
+      "keylineAtCue": 3,
+      "cues": ["tp1", "tp2", "tp3", "tp4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "12 · 看到最後的禮物 🎁",
+      "accent": "claude",
+      "headingZh": "把每一步合成一段完整 prompt（整段複製給 Claude）",
+      "headingEn": "The one prompt that builds it all",
+      "terminal": {
+        "title": "💬 整段複製，一次貼給 Claude",
+        "lines": [
+          { "k": "cmd", "t": "「Hi Claude，幫我做一套 FB 粉專每天自動發文系統，用 Meta 官方 Graph API、免付費：」" },
+          { "k": "cmt", "t": "① 教我建 Meta App，指出 App ID / App Secret 在哪複製" },
+          { "k": "cmt", "t": "② 權限加 pages_manage_posts + pages_read_engagement、取 Token" },
+          { "k": "cmt", "t": "③ 寫程式：fb_exchange_token 換 60 天長效 → 再換 Page Token → 存設定檔" },
+          { "k": "cmt", "t": "④ 發文腳本：先 /photos（published=false）拿 id → 再 /feed 組成貼文" },
+          { "k": "cmt", "t": "⑤ 每天抓日期資料夾；發過不重發；沒新圖回收最舊的輪播" },
+          { "k": "cmt", "t": "⑥ 掛排程每天 07:11 自動跑（cron：11 7 * * * python3 publish.py）" },
+          { "k": "cmt", "t": "⑦ 寫 Token 到期檢查，剩 14 天提醒、排每週檢查" },
+          { "k": "err", "t": "安全：Token／Secret 當密碼；只勾必要 2 權限；只能發粉專、有每日上限" },
+          { "k": "ok", "t": "📄 逐字完整版 → 影片下方描述欄，可整段複製" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 整段可暫停複製", "atCue": 2 }],
+      "keyline": "整段複製貼給 Claude，它就從頭幫你把這套系統建出來",
+      "keylineAtCue": 2,
+      "cues": ["gp1", "gp2", "gp3"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "六個重點，總整理",
+      "headingEn": "FB auto-post recap",
+      "cards": [
+        { "emoji": "🖥", "text": "四個零件全在本機，不碰第三方", "accent": "teal" },
+        { "emoji": "🔑", "text": "Token 兩段：換 60 天長效 → 取 Page Token", "accent": "violet" },
+        { "emoji": "📤", "text": "發文兩步：先傳不公開的圖 → 組成貼文", "accent": "green" },
+        { "emoji": "♻️", "text": "排程＋去重＋回收輪播，天天不斷更", "accent": "blue" },
+        { "emoji": "⏳", "text": "Token 會過期，剩 14 天預警，排每週檢查", "accent": "warn" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6", "o7"]
+    }
+  ]
+}

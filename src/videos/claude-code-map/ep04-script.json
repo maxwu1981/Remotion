@@ -1,0 +1,9 @@
+{
+  "hook": "最現實的問題先解決:Claude Code 怎麼裝、要不要花錢?",
+  "here": "你在這:第 4 站,安裝、登入與方案。",
+  "def": "一行指令安裝、首次使用登入 Anthropic 帳號;需付費方案:Pro(年付約一個月 17 美金)起即含 Claude Code,Max 用量更多,Free 不含。",
+  "def2": "新手從 Pro 開始就夠;裝完在資料夾輸入 claude 就能用。",
+  "demo": "macOS、Linux 用 curl 那行,Windows 用 PowerShell;輸入 claude,瀏覽器登入,看到 Welcome 就緒。",
+  "next": "帳號就緒,工具就緒。下一站第 5 號:開一個 Project,用 /init 起步。",
+  "outro": "這集就到這,訂閱加按讚,第 5 站見!"
+}

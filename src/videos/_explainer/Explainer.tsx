@@ -6,7 +6,7 @@ import { COLORS, FONT, GRADIENT, RADIUS, SHADOW, TYPE } from "../../shared-skill
 import { appearUp, leave, springPop } from "../../shared-skills/anim";
 import { Bgm, Sfx } from "../../shared-skills/audio";
 import { CaptionTrack, Cue, ReelCaptionContext } from "../../shared-skills/captions";
-import { Shell, Heading, KeyLine, Chip, Stamp, Terminal, Pipeline, BrandGlyph, ramp } from "./components";
+import { Shell, Heading, KeyLine, Stamp, Terminal, Pipeline, BrandGlyph, ramp } from "./components";
 import { accent as accentColor, PAL } from "./palette";
 import type { SceneBlock, VideoSpec } from "./schema";
 
@@ -105,11 +105,12 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
   const acc = (k?: string) => accentColor(k);
 
   if (block.type === "cover") {
-    const title = appearUp(frame, 6, 20, 26);
-    const termIn = appearUp(frame, 40, 18, 26);
-    const chipsIn = ramp(frame, 150, 174);
-    const sub = appearUp(frame, 196, 18, 20);
-    const date = appearUp(frame, 220, 16, 16);
+    // 封面卡第 0 幀即完整亮相（門面＝縮圖同款），符合「封面 0 秒亮相」鐵則；
+    // 靠字幕＋旁白提供動態，不再讓元素逐個延遲組裝（否則開場約 8 秒都在長封面）。
+    const title = appearUp(frame, -30, 20, 26);
+    const termIn = appearUp(frame, -30, 18, 26);
+    const chipsIn = ramp(frame, -30, -1);
+    const sub = appearUp(frame, -30, 18, 20);
     return (
       <Shell name={spec.brand.name} durationInFrames={dur} showChrome={false} accent={acc("blue")} seed="cover">
         <div style={{ position: "absolute", left: 0, right: 0, top: 116, textAlign: "center", ...title }}>
@@ -120,7 +121,7 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
         </div>
         {block.terminal ? (
           <div style={{ position: "absolute", left: 0, right: 0, top: 300, display: "flex", justifyContent: "center", ...termIn }}>
-            <Terminal title={block.terminal.title} lines={block.terminal.lines} width={1120} start={48} step={18} />
+            <Terminal title={block.terminal.title} lines={block.terminal.lines} width={1120} start={-200} step={18} />
           </div>
         ) : null}
         {block.chips?.length ? (
@@ -151,10 +152,7 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
         <div style={{ position: "absolute", left: 0, right: 0, top: 836, textAlign: "center", ...sub }}>
           <span style={{ fontFamily: FONT.uiCjk, fontWeight: 600, fontSize: TYPE.h3, color: COLORS.muted }}>{spec.brand.tagline}</span>
         </div>
-        <div style={{ position: "absolute", left: 0, right: 0, top: 916, display: "flex", justifyContent: "center", ...date }}>
-          <Chip text={spec.brand.date} color={acc("blue")} />
-        </div>
-        <Sfx src="pop" at={40} volume={0.4} />
+        <Sfx src="pop" at={2} volume={0.4} />
         {caps}
       </Shell>
     );
@@ -174,7 +172,7 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
             {block.stamps.map((s, i) => <Stamp key={i} kind={s.kind} text={s.text} at={at(s.atCue)} rotate={i % 2 ? 2 : -2} />)}
           </div>
         ) : null}
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 118 }}>
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 180 }}>
           <KeyLine text={block.keyline} tone={acc(block.accent)} delay={at(block.keylineAtCue)} />
         </div>
         <Sfx src="ding" at={at(block.keylineAtCue)} volume={0.3} />
@@ -193,7 +191,7 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
           <CompareCard good={false} badge={block.bad.badge} code={block.bad.code} note={block.bad.note} delay={at(1)} />
           <CompareCard good badge={block.good.badge} code={block.good.code} note={block.good.note} delay={at(1) + 26} />
         </div>
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 118 }}>
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 180 }}>
           <KeyLine text={block.keyline} tone={acc(block.accent)} delay={at(block.keylineAtCue)} />
         </div>
         <Sfx src="pop" at={at(1)} volume={0.32} />
@@ -211,7 +209,7 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
         <div style={{ position: "absolute", left: 0, right: 0, top: 320, display: "flex", justifyContent: "center", gap: 28 }}>
           {block.items.map((it, i) => <PlaceCard key={i} icon={it.icon} title={it.title} path={it.path} note={it.note} color={acc(it.accent)} delay={at(Math.min(i + 1, block.cues.length - 1))} />)}
         </div>
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 118 }}>
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 180 }}>
           <KeyLine text={block.keyline} tone={acc(block.accent)} delay={at(block.keylineAtCue)} />
         </div>
         <Sfx src="pop" at={at(1)} volume={0.3} />
@@ -230,7 +228,7 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
         <div style={{ position: "absolute", left: 0, right: 0, top: 420, display: "flex", justifyContent: "center" }}>
           <Pipeline nodes={nodes} start={at(0) + 20} step={20} />
         </div>
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 118 }}>
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 180 }}>
           <KeyLine text={block.keyline} tone={acc(block.accent)} delay={at(block.keylineAtCue)} />
         </div>
         <Sfx src="whoosh" at={at(0) + 20} volume={0.3} />
@@ -366,14 +364,14 @@ const BlockScene: React.FC<{ block: SceneBlock; cues: Cue[]; dur: number; spec: 
           );
         })}
       </div>
-      <OutroEnd frame={frame} at={at(block.cues.length - 1)} name={spec.brand.name} date={spec.brand.date} cuesLen={block.cues.length} />
+      <OutroEnd frame={frame} at={at(block.cues.length - 1)} name={spec.brand.name} cuesLen={block.cues.length} />
       <Sfx src="pop" at={at(block.cues.length - 1) + 10} volume={0.34} />
       {caps}
     </Shell>
   );
 };
 
-const OutroEnd: React.FC<{ frame: number; at: number; name: string; date: string; cuesLen: number }> = ({ frame, at, name, date }) => {
+const OutroEnd: React.FC<{ frame: number; at: number; name: string; cuesLen: number }> = ({ frame, at, name }) => {
   if (frame < at - 16) return null;
   const a = appearUp(frame, at, 18, 26);
   const ctas = [{ icon: "👍", t: "按讚", c: PAL.yes }, { icon: "🔔", t: "訂閱", c: COLORS.error }, { icon: "🔗", t: "分享", c: COLORS.remotion }];
@@ -393,8 +391,6 @@ const OutroEnd: React.FC<{ frame: number; at: number; name: string; date: string
         <div style={{ marginTop: 14, display: "inline-flex", alignItems: "center", gap: 16, padding: "14px 30px", borderRadius: RADIUS.pill, background: COLORS.surface, border: `1px solid ${COLORS.border}`, boxShadow: SHADOW.sm }}>
           <BrandGlyph size={28} />
           <span style={{ fontFamily: FONT.uiCjk, fontWeight: 800, fontSize: TYPE.h3, color: COLORS.ink }}>{name}</span>
-          <span style={{ width: 6, height: 6, borderRadius: "50%", background: COLORS.faint }} />
-          <span style={{ fontFamily: FONT.monoCjk, fontWeight: 600, fontSize: TYPE.small, color: COLORS.muted }}>{date}</span>
         </div>
       </div>
     </div>

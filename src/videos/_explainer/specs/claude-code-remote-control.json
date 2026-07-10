@@ -1,0 +1,151 @@
+{
+  "id": "claude-code-remote-control",
+  "brand": {
+    "titlePre": "Claude Code",
+    "titlePost": "手機遙控 Remote Control",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "出門在外，也能接著操作電腦上的 Claude",
+    "date": "整理日期 2026-07-08"
+  },
+  "script": {
+    "cv1": "你是不是也遇過，叫 Claude 做一件大工程，結果得出門，只能眼睜睜看著任務卡在那？",
+    "cv2": "其實有個手機遙控功能，能接著操作電腦上正在跑的 Claude，連桌面版都不用另外裝。",
+    "cv3": "終端機、瀏覽器、手機三邊同步，隨便一台回話都算數。",
+    "fa1": "先說原本的痛點。長任務跑到一半要出門，只能中斷或乾等，回來才能接著做。",
+    "fa2": "在外面想確認進度，只能用猜的，沒帶電腦在身邊什麼都做不了。",
+    "fa3": "Claude 卡在等你回答一句話，你卻剛好不在電腦前，錯過就是白等。",
+    "fa4": "共同死穴：Claude Code 原本綁死在你的終端機，離開座位工作就停擺。",
+    "pl1": "解法叫 Remote Control，一個指令就能讓手機接手正在跑的 session。",
+    "pl2": "第一步，終端機打 claude remote-control，畫面顯示連線網址。",
+    "pl3": "第二步，按空白鍵秀出 QR code，手機一掃直接打開。",
+    "pl4": "第三步，對話會同步，電腦、瀏覽器、手機隨便哪一台回，大家都看得到。",
+    "pl5": "第四步，網路斷線也不用擔心，機器醒著就會自動重新連上。",
+    "pl6": "官方驗證：本機不開任何對外連接的埠，只發出去的連線，安全模型跟平常一樣。",
+    "te1": "claude remote-control 是伺服器模式，一次能開好幾個 session 同時被遙控。",
+    "te2": "已經在對話裡，打斜線指令 /remote-control 直接沿用現有對話，不用重開。",
+    "te3": "claude --remote-control 是一般互動模式，電腦手機同時打字都算數。",
+    "te4": "手機還沒裝 App？在 Claude Code 裡打 /mobile，直接秀下載 QR code。",
+    "te5": "跟另一個常搞混的功能 Dispatch 不一樣：Remote Control 接續本機正在跑的 session，Dispatch 是手機下新任務、另外生一個桌面 session。",
+    "te6": "誠實提醒：這是研究預覽功能，需要 Claude Code v2.1.51 以上版本。",
+    "te7": "本機的 process 要一直開著，關掉終端機或跳出 VS Code，連線就跟著斷了。",
+    "te8": "還有，如果開了 ultraplan，會把 Remote Control 斷線，兩個功能搶同一個介面位置。",
+    "o1": "快速總整理。",
+    "o2": "痛點：長任務出門只能中斷，想看進度只能用猜的，錯過該回覆的時機。",
+    "o3": "解法：claude remote-control 或 /remote-control，手機掃 QR code 就能接手。",
+    "o4": "指令：claude remote-control 開伺服器模式、/mobile 裝 App、跟 Dispatch 是不同東西。",
+    "o5": "誠實提醒：研究預覽版、需要 v2.1.51 以上、本機 process 要一直開著、開 ultraplan 會斷線。",
+    "o6": "下次出門前先打個 claude remote-control，人不在電腦前也能繼續跟 Claude 合作。覺得有用記得按讚、訂閱、分享，我們下次見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Claude Code",
+      "titlePost": "手機遙控 Remote Control",
+      "terminal": {
+        "title": "remote-control",
+        "lines": [
+          { "k": "cmd", "t": "claude remote-control" },
+          { "k": "out", "t": "→ 顯示連線網址，按空白鍵秀 QR code" },
+          { "k": "cmt", "t": "手機掃碼直接接手正在跑的 session" }
+        ]
+      },
+      "chips": [
+        { "n": "1", "t": "出門任務只能中斷", "accent": "warn" },
+        { "n": "2", "t": "claude remote-control", "accent": "blue" },
+        { "n": "3", "t": "QR code 手機連線", "accent": "green" },
+        { "n": "4", "t": "官方安全模型+誠實提醒", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "places",
+      "kicker": "為何需要 · 三個常見痛點",
+      "accent": "warn",
+      "headingZh": "工作綁死在終端機，一離開座位就停擺",
+      "headingEn": "Stuck at your desk to keep working",
+      "items": [
+        {
+          "icon": "⏳",
+          "title": "長任務要出門",
+          "path": "只能中斷或乾等",
+          "note": "回來才能接著做，時間都浪費在等待上",
+          "accent": "warn"
+        },
+        {
+          "icon": "📵",
+          "title": "確認進度靠猜",
+          "path": "沒帶電腦在身邊",
+          "note": "人在外面，螢幕上發生什麼完全不知道",
+          "accent": "blue"
+        },
+        {
+          "icon": "⏰",
+          "title": "錯過該回答的時機",
+          "path": "Claude 卡著等你一句話",
+          "note": "剛好不在電腦前，等到回來早就過了",
+          "accent": "violet"
+        }
+      ],
+      "keyline": "共同死穴：Claude Code 原本綁死在終端機，離開座位工作就停擺",
+      "keylineAtCue": 3,
+      "cues": ["fa1", "fa2", "fa3", "fa4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "解法 · Remote Control 四步驟",
+      "accent": "blue",
+      "headingZh": "手機掃碼就能接手正在跑的 session",
+      "headingEn": "Scan a QR code, keep working from your phone",
+      "nodes": [
+        { "icon": "🖥️", "label": "claude remote-control", "sub": "顯示連線網址", "accent": "blue" },
+        { "icon": "📱", "label": "空白鍵秀 QR code", "sub": "手機一掃直接打開", "accent": "green" },
+        { "icon": "🔄", "label": "電腦手機同步", "sub": "隨便一台回都算數", "accent": "green" },
+        { "icon": "📶", "label": "斷線自動重連", "sub": "機器醒著就接回來", "accent": "warn" }
+      ],
+      "keyline": "官方驗證：本機不開任何對外的埠，只發出去的連線，安全模型跟平常一樣",
+      "keylineAtCue": 5,
+      "cues": ["pl1", "pl2", "pl3", "pl4", "pl5", "pl6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "實戰指令 · 三種啟動方式",
+      "accent": "teal",
+      "headingZh": "伺服器模式、互動模式、對話內開啟",
+      "headingEn": "Server mode, interactive mode, in-session",
+      "terminal": {
+        "title": "Terminal",
+        "lines": [
+          { "k": "cmd", "t": "claude remote-control" },
+          { "k": "out", "t": "→ 伺服器模式，可同時開多個 session" },
+          { "k": "cmd", "t": "/remote-control" },
+          { "k": "cmt", "t": "→ 對話內開啟，沿用現有對話" },
+          { "k": "cmd", "t": "claude --remote-control \"My Project\"" },
+          { "k": "cmt", "t": "→ 一般互動模式，電腦手機同時打字都算" },
+          { "k": "cmd", "t": "/mobile" },
+          { "k": "out", "t": "→ 秀 App 下載 QR code" },
+          { "k": "err", "t": "跟 Dispatch 不同：這是接續現有 session，不是生新的" }
+        ]
+      },
+      "stamps": [
+        { "kind": "warn", "text": "研究預覽版 · 需 v2.1.51+", "atCue": 5 },
+        { "kind": "warn", "text": "開 ultraplan 會斷線", "atCue": 7 }
+      ],
+      "keyline": "官方文件：code.claude.com/docs/en/remote-control",
+      "keylineAtCue": 7,
+      "cues": ["te1", "te2", "te3", "te4", "te5", "te6", "te7", "te8"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "總整理",
+      "headingEn": "Recap",
+      "cards": [
+        { "emoji": "😩", "text": "痛點：長任務出門只能中斷，想看進度只能用猜的，錯過該回覆的時機", "accent": "warn" },
+        { "emoji": "🛠️", "text": "解法：claude remote-control 或 /remote-control，手機掃 QR code 就能接手", "accent": "green" },
+        { "emoji": "⚡", "text": "指令：伺服器模式、互動模式、對話內開啟，跟 Dispatch 是不同東西", "accent": "blue" },
+        { "emoji": "✅", "text": "誠實提醒：研究預覽版、本機 process 要一直開著、開 ultraplan 會斷線", "accent": "violet" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+    }
+  ]
+}

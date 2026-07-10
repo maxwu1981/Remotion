@@ -38,9 +38,25 @@
           "videoId": "kp2JFQpLQjU",
           "title": "不用剪輯軟體！教你用 Claude + Remotion 把文章自動變成解說影片（6 個 prompt 全流程）｜生活應用 EP07",
           "privacy": "public"
+        },
+        "EP08": {
+          "videoId": "AZfrvHTHhak",
+          "title": "我讓 Claude 幫我上架 Shopify 商品：一句話 3 分鐘搞定（手動要 30 分）｜防超賣＋GEO 結構全教學｜生活應用 EP08",
+          "privacy": "public"
+        },
+        "EP09": {
+          "videoId": "AJrNsDKkqLE",
+          "title": "我讓 AI 聽出會議裡「誰在說話」：Hugging Face 從註冊到實測完整教學（免費 pyannote 模型）｜生活應用 EP09",
+          "privacy": "private"
         }
       },
-      "unnumbered": [],
+      "unnumbered": [
+        {
+          "videoId": "FvziBsw4JPI",
+          "title": "上架一件商品，一句話 3 分鐘搞定 #Shorts｜Shopify × Claude AI（生活應用系列）",
+          "privacy": "public"
+        }
+      ],
       "reserved": {}
     },
     "新手需要知道的事": {
@@ -247,6 +263,17 @@
       "unnumbered": [],
       "reserved": {}
     },
+    "非工程師的 Claude 自動化課": {
+      "playlistId": null,
+      "live": {},
+      "unnumbered": [],
+      "reserved": {
+        "EP01": {
+          "note": "旗艦跟操片:不會寫程式,用 Claude 自動化你的日常(30-45min保姆級,Max1 C起點,Mac實錄+Win重建段);EP01發布時一起建公開播放清單",
+          "reservedAt": "2026-07-08T21:30:00"
+        }
+      }
+    },
     "Claude Code 深度教學": {
       "playlistId": "PLUySMtGl-VVQ",
       "live": {},
@@ -270,10 +297,15 @@
           "videoId": "7v2DHqARNNQ",
           "title": "Claude Code Plan Mode 完整教學：先看計畫、一次決定，終結核准按到手軟（對照官方文件）",
           "privacy": "public"
+        },
+        {
+          "videoId": "_0o7Bb3WSPE",
+          "title": "Claude Code CLAUDE.md 怎麼寫最有效？官方四層位置 + 四原則全解析（含 /init 實測）",
+          "privacy": "public"
         }
       ],
       "reserved": {}
     }
   },
-  "updatedAt": "2026-07-06T11:56:11"
+  "updatedAt": "2026-07-10T23:37:04"
 }

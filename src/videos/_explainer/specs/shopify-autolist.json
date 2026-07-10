@@ -1,0 +1,347 @@
+{
+  "id": "shopify-autolist",
+  "brand": {
+    "titlePre": "Shopify",
+    "titlePost": "一句話自動上架",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "接上 Claude 之後，查重、建商品、防超賣、驗收全自動，0 行程式碼",
+    "date": "生活應用系列 EP08 · 2026-07-06"
+  },
+  "script": {
+    "cv1": "我幫家人的原創小店顧 Shopify。現在上架一件商品，只要對 Claude 說一句話，三分鐘搞定，以前手動要三十分鐘。",
+    "cv2": "不用寫任何程式，用官方的 Shopify 連接器把商店接上 Claude，查重、建商品、防超賣、圖片網址，全部它來。",
+    "cv3": "這支影片把每一步該說的 prompt，跟兩個最會翻車的坑，一步一步拆給你看。",
+
+    "b1": "先講為什麼上架值得自動化。在 Shopify 上架一件商品，要填的欄位比你想的多，標題、描述、SEO、標籤、圖片替代文字、價格、庫存，十幾個欄位。",
+    "b2": "手動填一件大概三十分鐘，而且累的時候一定會漏。",
+    "b3": "我們就真的翻過車，全店三十二件商品沒開庫存追蹤，前台不是顯示缺貨，就是可以被超賣。獨一件的原作要是被買走兩次，就是客訴加退款。",
+    "b4": "所以我把整個上架流程交給系統。上架不是填表，是結構。結構交給 Claude，你只出內容。",
+
+    "a1": "整套流程只有五站，而且你一行程式都不用寫。",
+    "a2": "第一站，把商店接上 Claude，這是一次性設定。",
+    "a3": "第二站，上架前先查重，避免重複商品。",
+    "a4": "第三站，照 GEO 結構建商品，讓 AI 搜尋引擎也找得到你。",
+    "a5": "第四站，庫存防呆三件套，防止超賣。",
+    "a6": "第五站，等圖片的正式網址，然後逐項驗收。五站走完，商品就乾乾淨淨上線了。",
+
+    "cn1": "第一步，把你的 Shopify 商店接上 Claude。不確定怎麼弄，直接跟 Claude 說，教我在連接器設定裡加入 Shopify 並授權我的商店。",
+    "cn2": "打開 Claude 的設定，找到連接器，在清單裡加入 Shopify。",
+    "cn3": "接著會跳出 Shopify 的登入視窗，登入你自己的商店、按下授權，就接好了。",
+    "cn4": "從這一刻起，Claude 就能幫你查商品、建商品、改庫存、跑報表。授權是帳號等級的動作，只授權自己的店，之後隨時可以在設定裡撤銷。",
+
+    "dp1": "第二步，上架前先查重。跟 Claude 說，我要上架山霧晨光這幅畫，先查商店裡有沒有同名或同一件的商品。",
+    "dp2": "為什麼要先查？因為重複上架會生出一堆零元草稿商品，汙染整個商店。我們踩過這個坑，後來清掉十筆死資料。",
+    "dp3": "查到已經有了，就直接沿用既有商品，絕對不要重建。",
+    "dp4": "查不到，才是真正的新商品，繼續往下走。",
+
+    "ge1": "第三步，一句話建商品。這句 prompt 比較長，因為它把 GEO 結構整個講給 Claude 聽，照著唸就好。",
+    "ge2": "什麼是 GEO 結構？就是讓 AI 搜尋引擎，像 ChatGPT 或 Perplexity，能看懂並且引用你商品頁的寫法。",
+    "ge3": "標題，英文關鍵字放前面，再接中文名。買你東西的人用什麼語言搜尋，標題就先講什麼語言。",
+    "ge4": "網址代稱 handle 用英文描述式。SEO 標題和描述寫進具體賣點，手繪、獨一件、尺寸。",
+    "ge5": "標籤放三層，中文品類、英文品類、主題關鍵字。每張圖片都加上描述畫面的替代文字。",
+    "ge6": "最關鍵的是商品描述，用買家會問的問題當小標，逐題回答。這種問答式寫法，就是 AI 引擎最愛引用的格式。",
+
+    "iv1": "第四步，全片最重要的坑來了。Shopify 新建商品，預設是不追蹤庫存的。不是被誰改掉，是建好的當下就沒開。",
+    "iv2": "我們全店三十二件商品全部中招，前台庫存全是零，最早的十二件甚至設成可以無限賣。",
+    "iv3": "解法是三件套。第一，打開庫存追蹤。第二，超賣政策設成賣完即止。第三，庫存數設一，因為原作只有一件。",
+    "iv4": "跟 Claude 說，這是獨一無二的原作，幫我開庫存追蹤、超賣政策設 DENY、庫存設一，設完回報實際值給我核對。",
+    "iv5": "這三件套，是所有賣獨一件商品的人的生命線。一句話就設好，但你要知道得說這句話。",
+
+    "im1": "第五步，圖片的坑。你把圖傳上去，當下去要圖片網址，常常拿到的是空的。",
+    "im2": "因為 Shopify 的圖片是非同步處理的，它在背景幫你壓縮、轉檔、發到 CDN。",
+    "im3": "正解是輪詢，每五秒查一次，最多查三次，直到拿到 cdn.shopify.com 開頭的正式網址。",
+    "im4": "跟 Claude 說清楚這個規則，它就會自己等、自己重查，不會拿一個空網址跟你交差。",
+    "im5": "加碼一個好處，這條 CDN 網址是公開、永久的圖床。之後發社群貼文可以直接沿用同一條網址，一圖多用。",
+
+    "vf1": "商品上完了，別急著關視窗，驗收清單跑一次。",
+    "vf2": "第一項，看 variant 的庫存數量是不是一。注意，要看 variant 的數字，不要看整體庫存 totalInventory，那是聚合值、會延遲，我們就見過明明設好了它還顯示零。",
+    "vf3": "第二項，超賣政策是 DENY。第三項，圖片網址是 cdn.shopify.com 開頭。",
+    "vf4": "最後一項，前台商品頁自己開一次，價格、圖片、購買按鈕都正常，才算真的上好了。",
+
+    "rs1": "來看真實成果。",
+    "rs2": "我們店裡三十二件在線商品，全部用這條線上架。庫存那次翻車，也是一句話請 Claude 掃全店，一次修正三十二件。",
+    "rs3": "後來我把整套流程掛上每天早上的排程，新商品的照片放進資料夾，隔天它就自己上架，只有定價會停下來問我。",
+    "rs4": "手動三十分鐘的事，變成一句話三分鐘，而且欄位不會漏。這就是把結構交給系統的差別。",
+
+    "tp1": "最後補四個安全提醒，都很重要。",
+    "tp2": "第一，prompt 裡把改動範圍圈死，明講只動這一件商品，別讓 AI 批量改到既有商品。",
+    "tp3": "第二，價格是生意決策，一定留人工確認這一站。第三，獨一件商品必設庫存一加賣完即止。",
+    "tp4": "第四，連接器授權是帳號等級權限，只授權自己的店，用完可以隨時撤銷。",
+
+    "gp1": "最後，送給看到這裡的你一個禮物。",
+    "gp2": "我把查重、GEO 結構、庫存三件套、圖片輪詢、驗收清單，合成了一整段完整的 prompt。整段複製，一次貼給 Claude，它就把一件商品從頭到尾上好。",
+    "gp3": "螢幕上這段可以暫停截圖，逐字完整版我放在影片下方描述欄，複製就能用。這就是看到最後的好處。",
+
+    "o1": "好，六個重點快速總整理。",
+    "o2": "第一，商店接上 Claude 之後，上架只要一句話，零行程式碼。",
+    "o3": "第二，上架前先查重，避免重複商品和零元草稿。",
+    "o4": "第三，商品頁照 GEO 結構寫，AI 搜尋引擎才會引用你。",
+    "o5": "第四，Shopify 預設不追蹤庫存，三件套一定要補設。",
+    "o6": "第五，圖片是非同步的，輪詢等正式網址，驗收看 variant 的數字。",
+    "o7": "完整 prompt 和每一步的分解版，都在影片下方描述欄，直接複製就能用。覺得有用，記得按讚、訂閱、分享，我們下支影片見！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Shopify",
+      "titlePost": "一句話自動上架",
+      "terminal": {
+        "title": "你只要對 Claude 說一句話",
+        "lines": [
+          { "k": "cmd", "t": "💬 「Claude，幫我把這件商品上架到 Shopify」" },
+          { "k": "cmt", "t": "查重 → GEO 建商品 → 庫存防呆 → 圖片 CDN → 驗收" },
+          { "k": "out", "t": "官方 Shopify 連接器 · 0 行程式碼" },
+          { "k": "ok", "t": "32 件商品實測 · 30 分鐘 → 3 分鐘" }
+        ]
+      },
+      "chips": [
+        { "n": "1", "t": "句話上架", "accent": "claude" },
+        { "n": "3", "t": "分鐘一件", "accent": "green" },
+        { "n": "0", "t": "行程式碼", "accent": "blue" },
+        { "n": "32", "t": "件商品實測", "accent": "violet" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "compare",
+      "kicker": "01 · 為什麼要自動化",
+      "accent": "warn",
+      "headingZh": "手動填表 vs 交給結構",
+      "headingEn": "Manual listing vs structured automation",
+      "bad": {
+        "badge": "手動上架 · 會漏",
+        "code": "十幾個欄位  ✘ 一件 30 分鐘",
+        "note": "全店 32 件沒開庫存追蹤：前台缺貨或可超賣，獨一件原作被買兩次＝客訴＋退款。"
+      },
+      "good": {
+        "badge": "交給 Claude · 不漏",
+        "code": "一句話  ✔ 3 分鐘上好一件",
+        "note": "查重、GEO 欄位、庫存防呆、圖片網址、驗收，一次到位。"
+      },
+      "keyline": "上架不是「填表」，是「結構」——結構交給系統，你只出內容",
+      "keylineAtCue": 4,
+      "cues": ["b1", "b2", "b3", "b4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "02 · 系統總覽",
+      "accent": "blue",
+      "headingZh": "整套只有五站，0 行程式碼",
+      "headingEn": "Five stops, zero code",
+      "nodes": [
+        { "icon": "🔌", "label": "接上 Claude", "sub": "連接器 · 一次性", "accent": "teal" },
+        { "icon": "🔍", "label": "查重", "sub": "同名商品先查", "accent": "blue" },
+        { "icon": "🏗", "label": "GEO 建商品", "sub": "AI 引擎讀得懂", "accent": "violet" },
+        { "icon": "🔒", "label": "庫存防呆", "sub": "tracked·DENY·qty=1", "accent": "warn" },
+        { "icon": "🖼", "label": "CDN＋驗收", "sub": "正式圖片網址", "accent": "green" }
+      ],
+      "keyline": "五站走完，商品乾乾淨淨上線——每一站都是一句話",
+      "keylineAtCue": 5,
+      "cues": ["a1", "a2", "a3", "a4", "a5", "a6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "03 · 接上 Claude",
+      "accent": "teal",
+      "headingZh": "第一步：把商店接上 Claude（一次性）",
+      "headingEn": "Connect Shopify to Claude",
+      "terminal": {
+        "title": "claude.ai → 設定 → 連接器",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「教我在連接器設定裡加入 Shopify 並授權我的商店」" },
+          { "k": "cmt", "t": "① 設定 → 連接器（Connectors）→ 加入 Shopify" },
+          { "k": "cmt", "t": "② 跳出 Shopify 登入 → 登入自己的商店 → 授權" },
+          { "k": "ok", "t": "③ 完成：查商品／建商品／改庫存／跑報表，Claude 都能做" },
+          { "k": "err", "t": "授權＝帳號等級權限 · 只授權自己的店 · 隨時可撤銷" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ 帳號授權自己點", "atCue": 4 }],
+      "keyline": "官方連接器，0 行程式碼，一次設定終身受用",
+      "keylineAtCue": 3,
+      "cues": ["cn1", "cn2", "cn3", "cn4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "04 · 上架前先查重",
+      "accent": "blue",
+      "headingZh": "第二步：先查有沒有上過（防重複）",
+      "headingEn": "Dedup before you create",
+      "terminal": {
+        "title": "查重規則",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「我要上架《山霧晨光》，先查有沒有同名或同一件的商品」" },
+          { "k": "cmt", "t": "中文名＋英文名都查一次" },
+          { "k": "ok", "t": "找到既有商品 → 直接沿用，絕不重建" },
+          { "k": "cmt", "t": "找不到 → 才是真正新商品，往下走" },
+          { "k": "err", "t": "跳過查重的代價：$0 草稿商品汙染商店（實際清過 10 筆死資料）" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ 防 $0 重複草稿", "atCue": 2 }],
+      "keyline": "有就沿用、沒有才建——一句話幫商店把關",
+      "keylineAtCue": 3,
+      "cues": ["dp1", "dp2", "dp3", "dp4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "05 · GEO 結構建商品",
+      "accent": "violet",
+      "headingZh": "第三步：一句話建商品（GEO 逐欄）",
+      "headingEn": "Create the product, GEO-structured",
+      "terminal": {
+        "title": "GEO 結構 — 讓 AI 搜尋引擎引用你的商品頁",
+        "lines": [
+          { "k": "cmd", "t": "💬 「幫我上架《山霧晨光》：標題英文關鍵字前置、handle 英文描述式、SEO 標題描述、中英 tags、圖片 alt、描述用買家問句逐題回答。價格 6,800，先建草稿」" },
+          { "k": "cmt", "t": "標題  Original Chinese Ink Landscape Painting | 山霧晨光" },
+          { "k": "cmt", "t": "handle  original-chinese-ink-landscape-misty-dawn" },
+          { "k": "cmt", "t": "tags  山水 · Landscape · Ink Painting · Wall Art（中英三層）" },
+          { "k": "out", "t": "描述＝「適合掛哪裡？」「尺寸多大？」買家問句逐題回答" },
+          { "k": "ok", "t": "問答式商品頁 → ChatGPT / Perplexity 最愛引用的格式" }
+        ]
+      },
+      "keyline": "買家用什麼語言搜尋，標題就先講什麼語言",
+      "keylineAtCue": 3,
+      "cues": ["ge1", "ge2", "ge3", "ge4", "ge5", "ge6"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "06 · 庫存防呆三件套 ★",
+      "accent": "warn",
+      "headingZh": "第四步：最大的坑——預設不追蹤庫存",
+      "headingEn": "The inventory trap",
+      "terminal": {
+        "title": "Shopify 新建商品的預設值（真實翻車：全店 32 件中招）",
+        "lines": [
+          { "k": "err", "t": "預設 tracked=false · qty=0 → 前台缺貨或可超賣" },
+          { "k": "cmt", "t": "獨一件原作被買兩次＝客訴＋退款" },
+          { "k": "cmd", "t": "💬 「這是獨一無二的原作：開庫存追蹤、超賣政策設 DENY、庫存設 1，設完回報實際值」" },
+          { "k": "ok", "t": "① tracked=true  ② inventoryPolicy=DENY  ③ qty=1" },
+          { "k": "ok", "t": "賣完自動顯示 Sold Out，不能再下單" }
+        ]
+      },
+      "stamps": [{ "kind": "no", "text": "✘ 預設全是關的", "atCue": 1 }, { "kind": "yes", "text": "✔ 三件套補上", "atCue": 4 }],
+      "keyline": "tracked＋DENY＋qty=1——賣獨一件商品的生命線",
+      "keylineAtCue": 5,
+      "cues": ["iv1", "iv2", "iv3", "iv4", "iv5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "07 · 圖片是非同步的",
+      "accent": "teal",
+      "headingZh": "第五步：圖片傳了怎麼是空的？",
+      "headingEn": "Async images, poll the CDN",
+      "terminal": {
+        "title": "featuredImage 輪詢（每 5 秒 × 最多 3 次）",
+        "lines": [
+          { "k": "cmd", "t": "💬 「等 Shopify 回傳 cdn.shopify.com 的正式圖片網址再給我；拿不到就每 5 秒再查、最多 3 次」" },
+          { "k": "out", "t": "第 1 次查 → featuredImageUrl = null（背景處理中）" },
+          { "k": "out", "t": "第 2 次查 → featuredImageUrl = null" },
+          { "k": "ok", "t": "第 3 次查 → https://cdn.shopify.com/s/files/…/misty-dawn.jpg ✓" },
+          { "k": "cmt", "t": "加碼：這條 CDN 網址＝公開永久圖床，發社群貼文可直接沿用" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 一圖多用", "atCue": 5 }],
+      "keyline": "圖片在背景處理——輪詢等正式網址，別拿空網址交差",
+      "keylineAtCue": 3,
+      "cues": ["im1", "im2", "im3", "im4", "im5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "08 · 驗收清單",
+      "accent": "green",
+      "headingZh": "上完怎麼驗收？四項逐一核對",
+      "headingEn": "The acceptance checklist",
+      "terminal": {
+        "title": "💬 「列出庫存數量、超賣政策、圖片網址、前台網址，我要逐項核對」",
+        "lines": [
+          { "k": "ok", "t": "① variant inventoryQuantity = 1" },
+          { "k": "err", "t": "　 ⚠ 別看 totalInventory——聚合值會延遲（見過 variant=1 它還是 0）" },
+          { "k": "ok", "t": "② inventoryPolicy = DENY" },
+          { "k": "ok", "t": "③ 圖片網址 cdn.shopify.com 開頭" },
+          { "k": "ok", "t": "④ 前台商品頁：價格／圖片／Add to cart 正常" }
+        ]
+      },
+      "keyline": "驗收看 variant 的數字，不是「看起來有上就好」",
+      "keylineAtCue": 2,
+      "cues": ["vf1", "vf2", "vf3", "vf4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "09 · 成果",
+      "accent": "claude",
+      "headingZh": "32 件商品實測＋每天自動上架",
+      "headingEn": "32 products, fully automated",
+      "terminal": {
+        "title": "可量測 before / after",
+        "lines": [
+          { "k": "cmt", "t": "before：手動 30 分鐘一件 · 全店 32 件庫存設定全錯" },
+          { "k": "ok", "t": "after：32 件在線商品全用這條線上架" },
+          { "k": "ok", "t": "庫存翻車 → 一句話掃全店，一次修正 32 件" },
+          { "k": "ok", "t": "掛上每日排程：新商品照片放資料夾，隔天自動上架" },
+          { "k": "cmt", "t": "唯一停下來問我的事：定價（生意決策留給人）" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 30 分 → 3 分", "atCue": 4 }],
+      "keyline": "把結構交給系統，欄位不會漏、庫存不會錯",
+      "keylineAtCue": 3,
+      "cues": ["rs1", "rs2", "rs3", "rs4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "10 · 安全與避坑",
+      "accent": "warn",
+      "headingZh": "四個安全提醒",
+      "headingEn": "Guardrails",
+      "terminal": {
+        "title": "安全 · 合規 · 避坑",
+        "lines": [
+          { "k": "err", "t": "① 改動範圍圈死：prompt 明講「只動這一件」，防批量誤改既有商品" },
+          { "k": "cmt", "t": "② 價格＝生意決策，一定留人工確認這一站" },
+          { "k": "ok", "t": "③ 獨一件商品必設 qty=1＋DENY" },
+          { "k": "cmt", "t": "④ 連接器授權＝帳號等級：只授權自己的店，隨時可撤銷" }
+        ]
+      },
+      "keyline": "自動化要圈好邊界：範圍、價格、庫存、授權",
+      "keylineAtCue": 3,
+      "cues": ["tp1", "tp2", "tp3", "tp4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "11 · 看到最後的禮物 🎁",
+      "accent": "claude",
+      "headingZh": "把每一步合成一段完整 prompt（整段複製給 Claude）",
+      "headingEn": "The one prompt that lists it all",
+      "terminal": {
+        "title": "💬 整段複製，一次貼給 Claude",
+        "lines": [
+          { "k": "cmd", "t": "「Hi Claude，我的 Shopify 已接上你，幫我上架這件商品，照以下流程一次完成：」" },
+          { "k": "cmt", "t": "① 查重：同名／同件商品先查（中英文都查），有就沿用絕不重建" },
+          { "k": "cmt", "t": "② GEO 建商品：英文關鍵字標題＋描述式 handle＋SEO＋中英 tags＋圖片 alt＋買家問句式描述" },
+          { "k": "cmt", "t": "③ 價格：建好後停下來讓我確認一次" },
+          { "k": "cmt", "t": "④ 庫存三件套：tracked=true＋DENY＋qty=1（預設是關的，一定要補）" },
+          { "k": "cmt", "t": "⑤ 圖片：輪詢等 cdn.shopify.com 正式網址（5 秒 × 3 次）" },
+          { "k": "cmt", "t": "⑥ 驗收：variant 庫存數／超賣政策／圖片網址／前台網址逐項回報" },
+          { "k": "err", "t": "安全：只動這一件商品 · 花錢或改價先問我" },
+          { "k": "ok", "t": "📄 逐字完整版 → 影片下方描述欄，可整段複製" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 整段可暫停複製", "atCue": 2 }],
+      "keyline": "整段複製貼給 Claude，一件商品從頭到尾上好",
+      "keylineAtCue": 2,
+      "cues": ["gp1", "gp2", "gp3"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "六個重點，總整理",
+      "headingEn": "Shopify autolist recap",
+      "cards": [
+        { "emoji": "🔌", "text": "接上 Claude：一句話上架，0 行程式碼", "accent": "teal" },
+        { "emoji": "🔍", "text": "先查重：防重複商品與 $0 草稿", "accent": "blue" },
+        { "emoji": "🏗", "text": "GEO 結構：AI 搜尋引擎才會引用你", "accent": "violet" },
+        { "emoji": "🔒", "text": "庫存三件套：tracked＋DENY＋qty=1", "accent": "warn" },
+        { "emoji": "🖼", "text": "圖片非同步：輪詢等 CDN，驗收看 variant", "accent": "green" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6", "o7"]
+    }
+  ]
+}

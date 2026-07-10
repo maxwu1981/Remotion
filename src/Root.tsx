@@ -100,14 +100,37 @@ import roundupCcVo from "./videos/_explainer/specs/roundup-cc.vo.json";
 import fbAutopostSpec from "./videos/_explainer/specs/fb-autopost.json";
 import fbAutopostVo from "./videos/_explainer/specs/fb-autopost.vo.json";
 import { FbAutopostObsidian, FbAutopostThumb, fbObsidianFrames } from "./videos/fb-autopost/Obsidian";
+import { ClaudeCodeMdMemoryObsidian, ClaudeCodeMdMemoryThumb, claudeMdMemoryObsidianFrames } from "./videos/claude-code-md-memory/Obsidian";
+import { ClaudeCodeAgentViewObsidian, ClaudeCodeAgentViewThumb, claudeCodeAgentViewObsidianFrames } from "./videos/claude-code-agent-view/Obsidian";
+import { ClaudeCodeRemoteControlObsidian, ClaudeCodeRemoteControlThumb, claudeCodeRemoteControlObsidianFrames } from "./videos/claude-code-remote-control/Obsidian";
+import { AutoCourseEp01Obsidian, AutoCourseEp01Thumb, autoCourseEp01ObsidianFrames } from "./videos/auto-course-ep01/Obsidian";
+import { AutoCourseEp01Ch4Test, autoCourseEp01Ch4TestFrames } from "./videos/auto-course-ep01/Ch4Test";
+import { AutoCourseEp01Ch5Test, autoCourseEp01Ch5TestFrames } from "./videos/auto-course-ep01/Ch5Test";
+import { ExplainerObsidian, explainerObsidianFrames } from "./videos/_explainer/ExplainerObsidian";
+import { ExplainerWithGlossary, GlossaryShort, explainerWithGlossaryFrames, glossarySegmentFrames } from "./videos/_explainer/GlossarySegment";
+import type { GlossarySpec } from "./videos/_explainer/GlossarySegment";
+import currentGlossary from "./videos/_explainer/specs/current.glossary.json";
+import currentGlossaryVo from "./videos/_explainer/specs/current.glossary.vo.json";
+import { DotfilesStowFull, DotfilesStowGlossaryShort, dotfilesStowFullFrames, glossaryFrames } from "./videos/dotfiles-stow-glossary/Glossary";
 import { FbAutopostShort, fbShortFrames } from "./videos/fb-autopost/Short";
 import { RemotionAutoVideoObsidian, ravObsidianFrames } from "./videos/remotion-autovideo/Obsidian";
 import { RemotionAutoVideoThumb } from "./videos/remotion-autovideo/Thumb";
 import { IgAutopostObsidian, IgAutopostThumb, igObsidianFrames } from "./videos/ig-autopost/Obsidian";
 import { PinterestObsidian, pinterestObsidianFrames } from "./videos/pinterest-autopost/Obsidian";
+import { ShopifyAutolistObsidian, ShopifyAutolistThumb, shopifyObsidianFrames } from "./videos/shopify-autolist/Obsidian";
+import { HfVoiceidObsidian, HfVoiceidThumb, hfVoiceidObsidianFrames } from "./videos/hf-voiceid/Obsidian";
+import { ShopifyAutolistShort, shopifyShortFrames } from "./videos/shopify-autolist/Short";
 import subagentSpec from "./videos/claude-code-subagent/spec.json";
 import subagentVo from "./videos/claude-code-subagent/vo.json";
 import { SubagentThumbDefault } from "./videos/claude-code-subagent/Thumb";
+import {
+  ChannelBannerA,
+  ChannelBannerB,
+  ChannelBannerC,
+  ChannelAvatarA,
+  ChannelAvatarB,
+  ChannelAvatarC,
+} from "./videos/channel-branding/Branding";
 import { SubagentShort, SubagentWide, SUBAGENT_SHORT_FRAMES } from "./videos/claude-code-subagent/Short";
 import { SubagentTutorial, SUBAGENT_TUTORIAL_FRAMES } from "./videos/claude-code-subagent/Tutorial";
 import { Sample as LCWSample, sampleFrames } from "./videos/local-cloud-walk/Sample";
@@ -140,6 +163,7 @@ import { YtUploadEP02, YtUploadPoster, YT_UPLOAD_FRAMES } from "./videos/youtube
 import { YtUploadCover } from "./videos/youtube-upload-ep02/Cover";
 import { ClaudeCodePlanMode, PLAN_MODE_FRAMES } from "./videos/claude-code-plan-mode/Master";
 import { PlanModeCover } from "./videos/claude-code-plan-mode/Cover";
+import { FaceCamCornerDemo, FaceIntroReelDemo, FACECAM_CORNER_FRAMES, FACE_REEL_FRAMES } from "./videos/facecam-demo/FaceCamDemo";
 
 /**
  * Compositions:
@@ -220,6 +244,26 @@ export const RemotionRoot: React.FC = () => {
           height={1080}
         />
         <Still id="ClaudeCodePlanModeCover" component={PlanModeCover} width={1920} height={1080} />
+      </Folder>
+
+      {/* ── 老闆露臉合成 demo（2026-07-09 評估用，未定版）：A=教學片角落小窗 B=獨立露臉短片 ── */}
+      <Folder name="FaceCamDemo">
+        <Composition
+          id="FaceCamCornerDemo"
+          component={FaceCamCornerDemo}
+          durationInFrames={FACECAM_CORNER_FRAMES}
+          fps={30}
+          width={1920}
+          height={1080}
+        />
+        <Composition
+          id="FaceIntroReelDemo"
+          component={FaceIntroReelDemo}
+          durationInFrames={FACE_REEL_FRAMES}
+          fps={30}
+          width={1080}
+          height={1920}
+        />
       </Folder>
 
       {/* ── 帳號授權安全 V2 故事版 · 樣板「房卡=access token」(16:9, 1920×1080, 30fps) ── */}
@@ -380,6 +424,69 @@ export const RemotionRoot: React.FC = () => {
         height={1080}
       />
       <Still id="FbAutopostThumb" component={FbAutopostThumb} width={1920} height={1080} />
+
+      {/* ── Claude Code CLAUDE.md 記憶檔教學 · 黑曜石精修版（深度教學系列）(1920×1080, 30fps) ── */}
+      <Composition
+        id="ClaudeCodeMdMemoryObsidian"
+        component={ClaudeCodeMdMemoryObsidian}
+        durationInFrames={claudeMdMemoryObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeMdMemoryThumb" component={ClaudeCodeMdMemoryThumb} width={1920} height={1080} />
+
+      {/* ── Claude Code Agent View 背景代理教學 · 黑曜石深度教學版（每日工廠 2026-07-07 選題升級）(1920×1080, 30fps) ── */}
+      <Composition
+        id="ClaudeCodeAgentViewObsidian"
+        component={ClaudeCodeAgentViewObsidian}
+        durationInFrames={claudeCodeAgentViewObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeAgentViewThumb" component={ClaudeCodeAgentViewThumb} width={1920} height={1080} />
+
+      {/* ── Claude Code Remote Control 手機遙控教學 · 黑曜石深度教學版（2026-07-08 老闆指定主題）(1920×1080, 30fps) ── */}
+      <Composition
+        id="ClaudeCodeRemoteControlObsidian"
+        component={ClaudeCodeRemoteControlObsidian}
+        durationInFrames={claudeCodeRemoteControlObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ClaudeCodeRemoteControlThumb" component={ClaudeCodeRemoteControlThumb} width={1920} height={1080} />
+
+      {/* ── 非工程師的 Claude 自動化課 EP01 · 黑曜石旗艦跟操片（2026-07-09 WIP，只有 3/N 場景）(1920×1080, 30fps) ── */}
+      <Composition
+        id="AutoCourseEp01Obsidian"
+        component={AutoCourseEp01Obsidian}
+        durationInFrames={autoCourseEp01ObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="AutoCourseEp01Thumb" component={AutoCourseEp01Thumb} width={1920} height={1080} />
+
+      {/* ⚠️ 暫時測試 comp：驗證真人錄影 playbackRate 貼合旁白節奏，老闆確認後可刪 */}
+      <Composition
+        id="AutoCourseEp01Ch4Test"
+        component={AutoCourseEp01Ch4Test}
+        durationInFrames={autoCourseEp01Ch4TestFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="AutoCourseEp01Ch5Test"
+        component={AutoCourseEp01Ch5Test}
+        durationInFrames={autoCourseEp01Ch5TestFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
       <Composition
         id="FbAutopostShort"
         component={FbAutopostShort}
@@ -421,22 +528,129 @@ export const RemotionRoot: React.FC = () => {
       />
       <Still id="IgAutopostThumb" component={IgAutopostThumb} width={1920} height={1080} />
 
-      {/* ── 每日影片工廠（資料驅動 _explainer，每天換 current.json）(1920×1080, 30fps) ── */}
+      {/* ── Hugging Face 聽聲音辨識發言人 · 黑曜石（生活應用系列 EP09）(1920×1080, 30fps) ── */}
+      <Composition
+        id="HfVoiceidObsidian"
+        component={HfVoiceidObsidian}
+        durationInFrames={hfVoiceidObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="HfVoiceidThumb" component={HfVoiceidThumb} width={1920} height={1080} />
+
+      {/* ── Shopify 一句話自動上架 · 黑曜石（生活應用系列 EP08）(1920×1080, 30fps) ── */}
+      <Composition
+        id="ShopifyAutolistObsidian"
+        component={ShopifyAutolistObsidian}
+        durationInFrames={shopifyObsidianFrames()}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Still id="ShopifyAutolistThumb" component={ShopifyAutolistThumb} width={1920} height={1080} />
+      <Composition
+        id="ShopifyAutolistShort"
+        component={ShopifyAutolistShort}
+        durationInFrames={shopifyShortFrames()}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── 每日影片工廠（資料驅動 ExplainerObsidian 黑曜石皮，每天換 current.json）(1920×1080, 30fps) ──
+          2026-07-08 起預設改黑曜石風（原淺色 Explainer 皮仍在，供其他 comp 沿用，未刪）。 */}
       <Composition
         id="VF-Daily"
-        component={Explainer}
+        component={ExplainerObsidian}
         defaultProps={{
           spec: currentSpec as unknown as VideoSpec,
           vo: currentVo as Record<string, number>,
           voDir: "vo/current",
+          bgmSrc: "bgm-piano.mp3",
         }}
-        durationInFrames={explainerFrames(
+        durationInFrames={explainerObsidianFrames(
           currentSpec as unknown as VideoSpec,
           currentVo as Record<string, number>,
         )}
         fps={30}
         width={1920}
         height={1080}
+      />
+
+      {/* ── 每日影片工廠（可選）：主片 + 片尾「名詞小教室」一次算成 (1920×1080, 30fps) ──
+          資料驅動通用版（_explainer/GlossarySegment.tsx）；名詞段讀 current.glossary.json/.vo，
+          terms 為空＝自動退化成純主片。名詞密度高的題目才用（ORCHESTRATOR.md runbook A 步驟 3b）。 */}
+      <Composition
+        id="VF-DailyFull"
+        component={ExplainerWithGlossary}
+        defaultProps={{
+          spec: currentSpec as unknown as VideoSpec,
+          vo: currentVo as Record<string, number>,
+          voDir: "vo/current",
+          glossary: currentGlossary as unknown as GlossarySpec,
+          glossaryVo: currentGlossaryVo as Record<string, number>,
+          glossaryVoDir: "vo/current-glossary",
+          bgmSrc: "bgm-piano.mp3",
+        }}
+        durationInFrames={explainerWithGlossaryFrames(
+          currentSpec as unknown as VideoSpec,
+          currentVo as Record<string, number>,
+          currentGlossary as unknown as GlossarySpec,
+          currentGlossaryVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 名詞小教室 9:16 Short（純片尾段，讀 current.glossary.json）(1080×1920, 30fps) ── */}
+      <Composition
+        id="VF-DailyGlossaryShort"
+        component={GlossaryShort}
+        defaultProps={{
+          spec: currentGlossary as unknown as GlossarySpec,
+          vo: currentGlossaryVo as Record<string, number>,
+          voDir: "vo/current-glossary",
+          bgmSrc: "bgm-piano.mp3",
+        }}
+        durationInFrames={glossarySegmentFrames(
+          currentGlossary as unknown as GlossarySpec,
+          currentGlossaryVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+
+      {/* ── 今日 dotfiles/GNU Stow 片：主片 + 片尾「名詞小教室」一次算成 (1920×1080, 30fps) ──
+          內建重算、不動每日工廠共用模板；主片讀 current.json/current.vo，片尾為手刻 GlossarySegment。 */}
+      <Composition
+        id="DotfilesStowFull"
+        component={DotfilesStowFull}
+        defaultProps={{
+          spec: currentSpec as unknown as VideoSpec,
+          vo: currentVo as Record<string, number>,
+          bgmSrc: "bgm-piano.mp3",
+        }}
+        durationInFrames={dotfilesStowFullFrames(
+          currentSpec as unknown as VideoSpec,
+          currentVo as Record<string, number>,
+        )}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+
+      {/* ── 名詞小教室 9:16 Short（純片尾段）(1080×1920, 30fps) ── */}
+      <Composition
+        id="DotfilesStowGlossaryShort"
+        component={DotfilesStowGlossaryShort}
+        defaultProps={{ bgmSrc: "bgm-piano.mp3" }}
+        durationInFrames={glossaryFrames()}
+        fps={30}
+        width={1080}
+        height={1920}
       />
 
       {/* ── 工具盤點卡：Claude Code 這 6 招就夠（資料驅動 _explainer + spotlight 場景）(1920×1080, 30fps) ── */}
@@ -480,6 +694,16 @@ export const RemotionRoot: React.FC = () => {
       <Still id="SlashCoverGlass" component={SlashCoverGlass} width={1920} height={1080} />
       <Still id="SlashCoverWhiteGlass" component={SlashCoverWhiteGlass} width={1920} height={1080} />
       <Still id="SlashCoverNeonGlass" component={SlashCoverNeonGlass} width={1920} height={1080} />
+
+      {/* ── 頻道識別重設計 2026-07：三版 banner + avatar（靜態 Still）── */}
+      <Folder name="channel-branding">
+        <Still id="ChannelBannerA" component={ChannelBannerA} width={2560} height={1440} />
+        <Still id="ChannelBannerB" component={ChannelBannerB} width={2560} height={1440} />
+        <Still id="ChannelBannerC" component={ChannelBannerC} width={2560} height={1440} />
+        <Still id="ChannelAvatarA" component={ChannelAvatarA} width={800} height={800} />
+        <Still id="ChannelAvatarB" component={ChannelAvatarB} width={800} height={800} />
+        <Still id="ChannelAvatarC" component={ChannelAvatarC} width={800} height={800} />
+      </Folder>
 
       {/* ── 工具盤點卡 封面 / 縮圖（影片同款索引封面，靜態 Still）── */}
       <Still

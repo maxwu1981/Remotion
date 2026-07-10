@@ -171,7 +171,7 @@ const CoverScene: React.FC<{ s: Scene; f: number }> = ({ s, f }) => {
       </div>
 
       {/* 右：master prompt 獨石碑 */}
-      <div style={{ position: "absolute", top: 150, right: 92, width: 620, ...darkCard(ACC.ember, { r: 40, glow: 1.2 }), position: "absolute", overflow: "hidden", padding: "40px 42px", transform: `rotate(-2.5deg)`, opacity: o }}>
+      <div style={{ position: "absolute", top: 150, right: 92, width: 620, ...darkCard(ACC.ember, { r: 40, glow: 1.2 }), overflow: "hidden", padding: "40px 42px", transform: `rotate(-2.5deg)`, opacity: o }}>
         <div style={{ position: "absolute", inset: 0, background: `radial-gradient(54% 30% at 50% 20%, ${rgba(ACC.ember, 0.36)} 0%, transparent 72%)` }} />
         <Glare />
         <div style={{ position: "relative", display: "flex", alignItems: "center", gap: 10, marginBottom: 20 }}>

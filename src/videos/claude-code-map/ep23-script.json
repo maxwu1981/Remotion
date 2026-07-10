@@ -1,0 +1,9 @@
+{
+  "hook": "小助手最後一塊拼圖:讓它每天早上自己跑,你完全不用開電腦。靠的就是 Routines。",
+  "here": "你在這:第 23 站,Routines 雲端自動跑,本章核心。",
+  "def": "把提示、儲存庫、連接器存成一份設定,跑在 Anthropic 雲端(電腦關機也會跑);可用排程、API、GitHub 事件觸發,CLI 用 /schedule 建。",
+  "def2": "在 Pro、Max、Team、Enterprise 且開啟 Claude Code on the web 時可用。",
+  "demo": "把小助手設成 routine:每天早上 7 點抓新聞、摘要、寄到 Gmail;設定一次,從此每天信箱就有摘要。",
+  "next": "自動化完成!下一站第 24 號:這些任務跑在哪,Claude Code on the web。",
+  "outro": "這集就到這,訂閱加按讚,第 24 站見!"
+}

@@ -1,0 +1,9 @@
+{
+  "hook": "前面一直冒出 /init、/compact,這些斜線指令到底是什麼?一次收齊。",
+  "here": "你在這:第 14 站,Slash commands,規劃與控制這章最後一站。",
+  "def": "用 / 開頭的指令操控 session,如 /init、/model、/clear、/compact、/agents;自訂指令現已併入 skills。",
+  "def2": "打一個斜線,清單就跳出來給你選。",
+  "demo": "日常:卡住 /clear、想省錢 /model 換便宜的、看花多少 /usage。",
+  "next": "基本操控學完了!下一站第 15 號,進超能力:Tools。",
+  "outro": "這集就到這,訂閱加按讚,第 15 站見!"
+}

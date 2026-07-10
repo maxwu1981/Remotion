@@ -1,0 +1,24 @@
+{
+  "motifEmoji": "🧳",
+  "introHook": "剛剛那堆 token、context，\n用一咖行李箱，一次講到你懂",
+  "terms": [
+    { "big": "token", "sub": "AI 的計量單位", "emoji": "🧩", "metaphor": "行李箱裡一格一格的空間", "def": "Claude 讀寫文字時的基本計量單位", "where": "/context 顯示的百分比數的就是它", "accent": "claude" },
+    { "big": "context window", "sub": "上下文窗口", "emoji": "🧳", "metaphor": "Claude 隨身帶的那咖行李箱", "def": "一次對話能裝下的資訊總量上限", "where": "塞滿就會變慢、開始忘記細節", "accent": "blue" },
+    { "big": "系統提示詞", "sub": "system prompt", "emoji": "🎒", "metaphor": "出門前先塞好的隨身包", "def": "每次對話開始前自動載入的基本說明", "where": "/context 網格的第一塊就是它", "accent": "violet" },
+    { "big": "settings.json", "sub": "總設定檔", "emoji": "📋", "metaphor": "出發前的行前檢查清單", "def": "Claude Code 所有開關的設定檔案", "where": "家目錄的 ~/.claude/ 資料夾裡", "accent": "green" },
+    { "big": "permissions.deny", "sub": "拒絕清單", "emoji": "🚫", "metaphor": "這件裝備連說明書都不帶", "def": "禁止 Claude 使用某些工具的規則", "where": "settings.json 的 permissions 區塊", "accent": "warn" },
+    { "big": "MCP", "sub": "Model Context Protocol", "emoji": "🔌", "metaphor": "行李箱外掛的裝備袋", "def": "讓 Claude 接上外部工具的通用接頭", "where": "掛越多，說明書佔越多格空間", "accent": "blue" },
+    { "big": "/compact · /clear", "sub": "壓縮 · 換新箱", "emoji": "🗜️", "metaphor": "真空壓縮袋 vs 全新空箱", "def": "濃縮對話騰空間，或直接開新對話", "where": "覺得對話變慢時輸入它們", "accent": "green" }
+  ],
+  "script": {
+    "g0": "欸等等，剛剛影片裡一直講 token、context，是不是有聽沒有懂？沒關係，名詞小教室開課，這次用一咖行李箱來比喻，一個一個講到你懂。",
+    "g1": "第一個，token。你可以把它想成行李箱裡一格一格的空間。Claude 讀進來的每一段文字、每一份工具說明書，都要佔掉幾格。/context 顯示的那些百分比，數的就是這些格子被用掉多少。",
+    "g2": "第二個，context window，上下文窗口。這就是那咖行李箱本人，Claude 一次能帶在身上的資訊就這麼大。你的對話、工具說明、記憶檔，全部都要塞進這一咖，塞滿了就會變慢、開始忘記細節。",
+    "g3": "第三個，系統提示詞，system prompt。這是出門前就先塞進行李箱的隨身包，每次對話開始前自動載入的基本說明。你還沒開口，它就已經先佔掉一塊空間了。",
+    "g4": "第四個，settings.json。它是 Claude Code 的行前檢查清單，總設定檔。要帶哪些裝備、哪些功能要開要關，全寫在這份檔案裡，就放在你家目錄的 .claude 資料夾。",
+    "g5": "第五個，permissions.deny，拒絕清單，寫在 settings.json 裡。今天的重點神技就是它：寫裸工具名，等於連那件裝備的說明書都不帶出門，行李箱直接輕一大截。",
+    "g6": "第六個，MCP。它是讓 Claude 接上外部工具的通用接頭，像行李箱外掛的裝備袋。很方便，但每掛一個，它的說明書就要多佔幾格空間，掛越多，箱子就越重。",
+    "g7": "第七個，/compact 跟 /clear。/compact 像真空壓縮袋，把聊過的對話濃縮成摘要，騰出空間；/clear 更乾脆，直接換一咖全新的空箱子，輕輕鬆鬆上路。",
+    "g8": "好，這七個名詞就講到這。下次看到 /context 的網格，你就知道每一格在算什麼了。名詞小教室，我們下次見！"
+  }
+}

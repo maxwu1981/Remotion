@@ -1,0 +1,10 @@
+{
+  "t_hook": 6.72,
+  "t_setup": 13.344,
+  "t_prompt": 15.072,
+  "t_parallel": 13.536,
+  "t_report": 16.656,
+  "t_merge": 10.056,
+  "t_yourturn": 16.992,
+  "t_outro": 9.144
+}

@@ -1,0 +1,128 @@
+import React from "react";
+import { AbsoluteFill } from "remotion";
+import { COLORS } from "../../shared-skills/theme";
+
+/**
+ * 「生活應用」黑曜石視覺系統 — shopify-autolist（Shopify 一句話自動上架 · EP08）。
+ * 沿用系列黑曜石（EP01/EP02/EP04）：
+ *   淺底畫布 + 黑曜石玻璃深卡（hairline 邊 + 收斂雙層光暈 + 接地陰影）+ 橙漸層鉤子字。
+ * 本片背景=中性高級冷調 + 極淡「商品卡」水印（呼應電商上架，不搶前景）。
+ * 高級感三紀律：①光暈收斂 ②字重三層(800鉤子/700標題/500正文) ③深卡白字、白底 ink 大字。
+ */
+export const rgba = (hex: string, a: number) => {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16), g = parseInt(h.slice(2, 4), 16), b = parseInt(h.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${a})`;
+};
+
+export const ACC = {
+  ink: COLORS.ink,
+  inkSoft: COLORS.inkSoft,
+  muted: COLORS.muted,
+  white: "#F7F9FC",
+  ember: COLORS.claude, // 主敘事橙：數字鉤子/術語/膠囊（系列簽名色）
+  emberSoft: "#ECA988", // ember 漸層亮端
+  signal: COLORS.remotion, // 流程/結構（青）
+  mint: "#10B981", // 成功/庫存設好
+  violet: COLORS.hi.violet, // 判斷/人工
+  rose: "#F43F5E", // 坑/警示
+  gold: "#F5B942", // 深卡上的高亮黃（數字）
+  blue: "#3E7BFA", // 一般藍（查重/資訊）
+  shop: "#00A47C", // Shopify 綠（背景點綴 + 品牌）
+  shopSoft: "#4FC79F",
+};
+
+/** 語意 accent key → 色（對映 spec 的 AccentKey）。 */
+export const accOf = (k?: string): string =>
+  ({ blue: ACC.blue, green: ACC.mint, warn: ACC.rose, violet: ACC.violet, claude: ACC.ember, teal: ACC.signal }[k ?? "claude"] ?? ACC.ember);
+
+/** 極淡「商品卡」水印（商品圖 + 標題線 + 價格線 + 購買鈕，低對比，呼應電商上架）。 */
+const ProductBackdrop: React.FC = () => {
+  const cards: [number, number, number][] = [
+    [50, 82, 220], [40, 470, 208], [64, 800, 214],
+    [1666, 70, 214], [1652, 420, 226], [1676, 780, 208],
+    [346, 878, 202], [1366, 872, 208],
+  ];
+  return (
+    <AbsoluteFill style={{ opacity: 0.75 }}>
+      {cards.map(([x, y, w], i) => {
+        const th = w; // 商品主圖近方形
+        return (
+          <div key={i} style={{ position: "absolute", left: x, top: y, width: w }}>
+            <div style={{ width: w, height: th * 0.72, borderRadius: 14, background: `linear-gradient(150deg, ${rgba(ACC.shop, 0.09)}, ${rgba(ACC.ember, 0.06)})`, border: `1px solid ${rgba(ACC.ink, 0.055)}`, boxShadow: `0 10px 24px ${rgba(ACC.ink, 0.05)}` }} />
+            <div style={{ marginTop: 9 }}>
+              <div style={{ height: 8, borderRadius: 4, background: rgba(ACC.ink, 0.08), marginBottom: 7 }} />
+              <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                <div style={{ height: 7, width: "34%", borderRadius: 4, background: rgba(ACC.shop, 0.14) }} />
+                <div style={{ height: 14, width: 42, borderRadius: 7, background: rgba(ACC.ink, 0.06) }} />
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </AbsoluteFill>
+  );
+};
+
+/** 中性高級冷調畫布 + 商品卡水印 + 多顆低調收斂光暈（靜態防抖）。全片墊底。 */
+export const WhiteBg: React.FC = () => (
+  <AbsoluteFill style={{ background: "linear-gradient(180deg, #FAFCFF 0%, #EEF3FB 52%, #E4EAF4 100%)" }}>
+    <ProductBackdrop />
+    <div style={{ position: "absolute", left: -160, top: -200, width: 960, height: 760, borderRadius: "50%", background: rgba(ACC.ember, 0.07), filter: "blur(140px)" }} />
+    <div style={{ position: "absolute", left: 1200, top: 60, width: 600, height: 600, borderRadius: "50%", background: rgba(ACC.shop, 0.06), filter: "blur(150px)" }} />
+    <div style={{ position: "absolute", left: 60, top: 540, width: 600, height: 600, borderRadius: "50%", background: rgba(ACC.signal, 0.05), filter: "blur(150px)" }} />
+    <div style={{ position: "absolute", left: 900, top: 620, width: 480, height: 480, borderRadius: "50%", background: rgba(ACC.gold, 0.05), filter: "blur(140px)" }} />
+    <AbsoluteFill style={{ background: "radial-gradient(120% 80% at 50% 45%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 60%)" }} />
+  </AbsoluteFill>
+);
+
+/** 黑曜石玻璃卡：深底白字 + 彩色 hairline 邊 + 收斂光暈 + 接地陰影。 */
+export const darkCard = (c: string, opts?: { r?: number; glow?: number }): React.CSSProperties => {
+  const g = opts?.glow ?? 1;
+  return {
+    background: `linear-gradient(160deg, ${rgba(c, 0.22)} 0%, #0D1322 46%, #090E1B 100%)`,
+    border: `1px solid ${rgba(c, 0.55)}`,
+    borderRadius: opts?.r ?? 22,
+    boxShadow: [
+      `0 0 ${18 * g}px ${rgba(c, 0.32)}`,
+      `0 0 ${52 * g}px ${rgba(c, 0.12)}`,
+      `0 24px 46px ${rgba("#0b1020", 0.28)}`,
+      `0 3px 8px ${rgba("#0b1020", 0.2)}`,
+      `inset 0 0 22px ${rgba(c, 0.15)}`,
+      `inset 0 1px 0 ${rgba("#ffffff", 0.24)}`,
+    ].join(", "),
+    backdropFilter: "blur(8px)",
+    WebkitBackdropFilter: "blur(8px)",
+    color: ACC.white,
+  };
+};
+
+/** 斜向 glare 光帶（深卡表面玻璃反光）。父層需 overflow hidden + position relative。 */
+export const Glare: React.FC = () => (
+  <div style={{ position: "absolute", top: "-30%", left: "-8%", width: "34%", height: "170%", background: "linear-gradient(104deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.13) 48%, rgba(255,255,255,0) 60%)", transform: "rotate(9deg)", pointerEvents: "none" }} />
+);
+
+/** 深卡內 hairline 分隔線。 */
+export const hairline: React.CSSProperties = {
+  height: 1,
+  background: `linear-gradient(90deg, ${rgba("#ffffff", 0)} 0%, ${rgba("#ffffff", 0.16)} 18%, ${rgba("#ffffff", 0.16)} 82%, ${rgba("#ffffff", 0)} 100%)`,
+};
+
+/** 橙漸層 clip 大字（封面/景標鉤子詞）。 */
+export const emberClip: React.CSSProperties = {
+  color: "transparent",
+  background: `linear-gradient(135deg, ${COLORS.claude} 0%, #ECA988 100%)`,
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  filter: `drop-shadow(0 6px 16px ${rgba(COLORS.claude, 0.28)})`,
+};
+
+/** 發光膠囊（橙底白字，光收斂）。 */
+export const emberPill: React.CSSProperties = {
+  display: "inline-block",
+  padding: "14px 36px",
+  borderRadius: 999,
+  background: `linear-gradient(135deg, ${COLORS.claude} 0%, #ECA988 100%)`,
+  color: "#fff",
+  boxShadow: `0 0 18px ${rgba(COLORS.claude, 0.32)}, 0 12px 26px ${rgba(COLORS.claude, 0.22)}, inset 0 1px 0 ${rgba("#ffffff", 0.4)}`,
+};

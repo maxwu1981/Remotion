@@ -1,173 +1,670 @@
 {
-  "id": "slash-commands-story",
+  "id": "claude-code-context-bloat",
   "brand": {
     "titlePre": "Claude Code",
-    "titlePost": "自訂指令",
+    "titlePost": "系統提示詞瘦身術",
     "name": "Ai-Wisdom",
     "handle": "@aiwisdomcc",
-    "tagline": "別再重貼同一段規則：把它變成你自己的 / 指令",
-    "date": "整理日期 2026-06-23"
+    "tagline": "先看清楚 token 都去哪，再精準瘦身",
+    "date": "整理日期 2026-07-10"
   },
   "script": {
-    "cv1": "如果你用 AI 寫程式，每天都在重貼同一段規則、同一套交代，這支就是要解決這件事。",
-    "cv2": "我把那段一直重打的話，變成打一個斜線就跑的指令。",
-    "cv3": "但先說清楚：這個困擾，真的不是只有你。",
-
-    "na1": "我上網查了一圈，發現大家講的，幾乎一模一樣。",
-    "na2": "有人說，他一直往 prompt 加規則，最後發現根本沒用。",
-    "na3": "有人說，對話一長，模型就慢慢偏離你定好的專案規範。",
-    "na4": "有人說，你講一次還好，講三十次，就太沒效率了。",
-    "na5": "還有人說，它不會自己邊做邊學，除非你每次都把規則再講一遍。",
-    "na6": "你看，同一個痛，一個接一個，蓋滿整個螢幕。",
-
-    "fa1": "為什麼會這樣？因為每開一個新對話，Claude 就像來了個全新的人，你昨天講的它不記得。",
-    "fa2": "所以大家想了三招。第一，把規則貼進每個 prompt，還是手動，對話一長就被洗掉。",
-    "fa3": "第二，整段塞進 CLAUDE.md，它一直佔著 context 吃 token，而且每次都自動套。",
-    "fa4": "第三，乾脆口頭交代或記在腦袋，結果隊友、新人根本不知道。",
-    "fa5": "三招的共同死穴：不是太手動，就是塞爆 context，要不然就沒法團隊共用。",
-
-    "sa1": "真正的解法，是把那段話存成一個檔案。",
-    "sa2": "在專案裡建 .claude 斜線 commands，檔名就是指令的名字。",
-    "sa3": "比如把你的 commit 規則存成 commit，以後打斜線 commit，它就照著跑、不用再貼。",
-    "sa4": "要它吃參數，內容寫 ARGUMENTS；要看當下改動，開頭加驚嘆號反引號跑 git diff。",
-    "sa5": "要團隊共用，把這個檔 commit 進 repo 就好。",
-
-    "da1": "這就是自訂指令，跟貼 prompt、塞 CLAUDE.md 最大的不同。",
-    "da2": "貼 prompt 每次手動、容易出錯，也沒法讓隊友共用。",
-    "da3": "塞 CLAUDE.md 雖然自動，但它整段一直佔 context，連你不想自動跑的也會自動跑。",
-    "da4": "自訂指令的完整內容，只在你打斜線叫它時才進 context，平常不常駐。",
-    "da5": "像部署這種危險動作，加一行 disable-model-invocation，就只有你能手動觸發。",
-    "da6": "按需載入、團隊一致、受控觸發，這三點，另外兩種都做不到。",
-
-    "pa1": "那怎麼知道這真的有解？",
-    "pa2": "以前那段規則貼一次大概六行、一天十幾次，等於上百行重打；現在打一個斜線就好。",
-    "pa3": "因為規則移出 CLAUDE.md、改成按需載入，我打 context 巡檢，常駐 token 真的降了。",
-    "pa4": "隊友 git pull 之後零設定，直接打同一個指令，就跑出一模一樣的規範。",
-    "pa5": "而且這正是官方文件寫的做法，不是偏方，是內建機制。",
-
+    "cv1": "你有沒有發現，Claude Code 對話越聊越久，回答速度變慢，甚至開始忘記前面交代的細節？",
+    "cv2": "很多人以為裝越多 skills、MCP 工具越厲害，卻不知道每一個都在偷偷吃掉你的 context 額度。",
+    "cv3": "其實官方藏了一組瘦身工具：一個指令看清 token 都去哪，幾個開關就能關掉整塊功能。",
+    "cv4": "今天不只講理論，每一步都真的打開 VS Code 跑給你看、截圖給你對，片尾再加碼名詞小教室。",
+    "fa1": "先看第一個徵兆：對話越聊越久，Claude 的回答速度變慢，甚至開始忘記你前面交代的細節。",
+    "fa2": "第二個原因很多人想不到：裝的 skills、MCP 工具、Workflows 越多，每一個的說明書都要佔一份 token，光是待命就先吃掉一截。",
+    "fa3": "第三，多數人根本不知道 Claude Code 內建看 token 明細的工具，想瘦身也不知道從哪裡下手。",
+    "fa4": "共同死穴：系統提示詞、工具說明、記憶檔悄悄把 context 塞滿，你卻連這筆帳都沒看過。",
+    "pl1": "第一步，先看帳單。官方指令 /context 會秀出一張彩色網格，清楚列出系統提示詞、工具、記憶檔各吃掉多少 token。",
+    "pl2": "第二步，從網格裡找出最大宗的貢獻者，通常是 bundled skills、workflows，或是裝了一堆的 MCP 工具。",
+    "pl3": "第三步，官方在 settings.json 裡藏了好幾個一次關掉整塊功能的開關，像 disableBundledSkills、disableWorkflows。",
+    "pl4": "第四步，還有一招更精準：permissions.deny 規則，效果比想像中更徹底，等一下實際操作給你看。",
+    "pl5": "第五步，改完設定，把 Claude Code 關掉再打開，再跑一次 /context，親眼確認 token 真的降下來了。",
+    "cx1": "先看基準值。全新開一個 Claude Code，直接跑 /context，這是完全沒動過手腳的真實數字。",
+    "cx2": "三萬五千七，用掉整個一百萬額度的百分之四。拆開來看，工具說明就佔了一萬四千三，記憶檔案一萬三千四，這些都是還沒開口就先付的錢。",
+    "sj1": "接著寫 settings.json。這次五個 disable 開關全開：Skills、Workflows、Remote Control、claude.ai 連接器、Artifact，通通關掉。",
+    "sj2": "再加一條 deny 規則，把用不到的工具也請出去。這就是實際存在硬碟裡的檔案，內容就這幾行，你可以直接照抄。",
+    "ca1": "把 Claude Code 關掉重開，再跑一次 /context，親眼驗收。",
+    "ca2": "兩萬五千六，降到百分之三。System tools 從一萬四千三砍到六千八，MCP 工具從一百九十個掉到三十個。同一個專案，實測降了百分之二十八。",
+    "pd1": "剛剛設的 deny 規則到底生效了沒？跑一次 /permissions，切到 Deny 分頁，四條規則清清楚楚列在那——Bash rm dash rf、NotebookEdit、WebFetch、WebSearch。",
+    "db1": "來真的測一次：叫 Claude 用 rm -rf 砍掉一個測試資料夾。",
+    "db2": "畫面上 Claude 自己回報：rm -rf 被拒絕了兩次，一次都沒放行。",
+    "cp1": "官方還有一招：/compact，把落落長的對話濃縮起來，騰出空間。",
+    "cp2": "真實畫面：跑完顯示 Compacted，按 ctrl+o 能看完整摘要，對話沒有不見，只是變精簡。",
+    "cl1": "手上這把更乾脆：/clear，直接開一支全新對話，不留任何包袱。",
+    "cl2": "左邊是清空前的畫面，右邊是清空後——直接回到 Claude Code 剛啟動的歡迎畫面，一乾二淨。",
+    "cm1": "最後回頭處理最大宗：CLAUDE.md。左邊是原本兩百七十四行的完整版，四十條歷史決策全部塞在裡面。",
+    "cm2": "右邊瘦到十四行，只留每天真的會用到的規則，其他搬進 docs 資料夾，要查再查，不用天天背著。",
     "o1": "快速總整理。",
-    "o2": "痛點：你每天把同一段規則重貼十幾次，而且不是只有你，一堆人都這樣。",
-    "o3": "解法：把它存成一個自訂指令，打一個斜線就跑，檔案進 repo 全隊共用。",
-    "o4": "跟貼 prompt、塞 CLAUDE.md 的差別，是按需載入、團隊一致、受控觸發。",
-    "o5": "實測有效：從一天上百行變成一個詞，而且是官方內建的做法。",
-    "o6": "把你最常重貼的那段話，變成你的第一個指令吧。覺得有用，記得按讚、訂閱、分享，我們下次見！"
+    "o2": "痛點：Context 被系統提示詞、工具說明、記憶檔悄悄塞滿，你卻看不到帳單。",
+    "o3": "解法：先用 /context 看明細，再用 disable 開關關掉整塊功能。",
+    "o4": "實測成果：同一個專案，真實跑一遍，三萬五千七降到兩萬五千六，砍掉百分之二十八。",
+    "o5": "誠實提醒：關掉的功能就真的不能用，先看清楚用量再動手，不要無腦全關。",
+    "o6": "下次覺得 Claude Code 反應變慢，先跑一次 /context 看看吧。覺得有用，記得按讚、訂閱、分享，我們下次見！"
   },
   "scenes": [
     {
       "type": "cover",
       "titlePre": "Claude Code",
-      "titlePost": "自訂指令",
+      "titlePost": "系統提示詞瘦身術",
       "terminal": {
-        "title": "Claude Code",
+        "title": "~/.claude/settings.json",
         "lines": [
-          { "k": "cmd", "t": "/commit" },
-          { "k": "out", "t": "→ 照你存好的規則跑，不用再貼一次" },
-          { "k": "cmt", "t": "把一直重打的那段話，變成一個 / 指令" }
+          {
+            "k": "cmd",
+            "t": "/context"
+          },
+          {
+            "k": "out",
+            "t": "→ 系統提示詞 8% · 工具定義 22% · 記憶檔 5%"
+          },
+          {
+            "k": "cmt",
+            "t": "先看清楚 token 都花在哪"
+          }
         ]
       },
       "chips": [
-        { "n": "1", "t": "大家都這樣", "accent": "warn" },
-        { "n": "2", "t": "為何解不掉", "accent": "blue" },
-        { "n": "3", "t": "一個 / 指令", "accent": "green" },
-        { "n": "4", "t": "實測有效", "accent": "violet" }
+        {
+          "n": "1",
+          "t": "Context 越用越滿的三個徵兆",
+          "accent": "warn"
+        },
+        {
+          "n": "2",
+          "t": "/context 一秒看清 token 去哪",
+          "accent": "blue"
+        },
+        {
+          "n": "3",
+          "t": "5 個開關關掉整塊功能",
+          "accent": "green"
+        },
+        {
+          "n": "4",
+          "t": "真人真機實測 28% 瘦身",
+          "accent": "violet"
+        }
       ],
-      "cues": ["cv1", "cv2", "cv3"]
-    },
-    {
-      "type": "complaints",
-      "kicker": "真實心聲 · 不是只有你",
-      "accent": "warn",
-      "headingZh": "這不是只有你，大家都在抱怨",
-      "headingEn": "Real developers, the same pain",
-      "items": [
-        { "handle": "prashant****465", "platform": "GitHub", "textEn": "I kept adding more instructions to prompts, but eventually realized it doesn't work.", "textZh": "我一直往 prompt 加規則，最後發現根本沒用。", "accent": "warn", "x": 0.04, "y": 0.22, "rot": -2, "atCue": 1 },
-        { "handle": "stream****emium", "platform": "GitHub", "textEn": "the assistant gradually starts suggesting code that deviates from those conventions as conversations get longer.", "textZh": "對話一長，它就慢慢偏離專案規範。", "accent": "blue", "x": 0.53, "y": 0.205, "rot": 3, "atCue": 2 },
-        { "handle": "Ruben H****", "platform": "Substack", "textEn": "You say it once, fine. You say it 30 times, that's not so efficient.", "textZh": "講一次還好，講三十次就太沒效率。", "accent": "violet", "x": 0.655, "y": 0.46, "rot": 4, "atCue": 3 },
-        { "handle": "Pete H****", "platform": "Blog", "textEn": "the agent will not learn as it goes, unless you explicitly ask it to add it to its rules/memories.", "textZh": "它不會邊做邊學，除非你明講把規則寫進記憶。", "accent": "green", "x": 0.045, "y": 0.5, "rot": 2, "atCue": 4 },
-        { "handle": "prashant****465", "platform": "GitHub", "textEn": "the model will always lose context or prioritize recent information over older project rules.", "textZh": "模型總會弄丟舊規則、只顧最近的訊息。", "accent": "teal", "x": 0.345, "y": 0.35, "rot": -3, "atCue": 5 },
-        { "handle": "Ruben H****", "platform": "Substack", "textEn": "re-upload roughly the same stuff, re-explain the same rules.", "textZh": "每次都重傳同樣的東西、重講同樣的規則。", "accent": "warn", "x": 0.6, "y": 0.665, "rot": -2, "atCue": 5 },
-        { "handle": "Pete H****", "platform": "Blog", "textEn": "It won't know there's already a shared utility for whatever it is trying to achieve.", "textZh": "它不知道你早就有現成的共用工具。", "accent": "claude", "x": 0.17, "y": 0.675, "rot": 3, "atCue": 5 }
-      ],
-      "cues": ["na1", "na2", "na3", "na4", "na5", "na6"]
+      "cues": [
+        "cv1",
+        "cv2",
+        "cv3",
+        "cv4"
+      ]
     },
     {
       "type": "places",
-      "kicker": "為何解不掉 · 三個失敗解法",
-      "accent": "blue",
-      "headingZh": "大家想了三招，都沒真的解",
-      "headingEn": "Three common fixes that fall short",
+      "kicker": "為何需要 · 三個常見痛點",
+      "accent": "warn",
+      "headingZh": "Context 塞滿了，Claude 卻不會主動告訴你",
+      "headingEn": "Context fills up silently",
       "items": [
-        { "icon": "📋", "title": "貼進每個 prompt", "path": "每次手動貼", "note": "對話一長就被洗掉、容易漏", "accent": "warn" },
-        { "icon": "📄", "title": "塞進 CLAUDE.md", "path": "整段常駐 context", "note": "一直吃 token、每次都自動套", "accent": "blue" },
-        { "icon": "🧠", "title": "口頭交代 / 記腦袋", "path": "沒寫下來", "note": "隊友、新人不知道，各走各的", "accent": "violet" }
+        {
+          "icon": "🐌",
+          "title": "對話越聊越久",
+          "path": "回答變慢、細節被忘記",
+          "note": "Context window 快滿了，模型要在有限空間裡塞進更多東西",
+          "accent": "warn"
+        },
+        {
+          "icon": "🧩",
+          "title": "裝越多工具",
+          "path": "Skills、MCP、Workflows 全部預設開啟",
+          "note": "每個工具的說明書都要佔一份 token，裝越多，基礎消耗越高",
+          "accent": "blue"
+        },
+        {
+          "icon": "❓",
+          "title": "想關又不知道關哪",
+          "path": "沒印象 Claude Code 有『用量儀表板』",
+          "note": "多數人根本不知道有指令能看 token 明細，瘦身無從下手",
+          "accent": "violet"
+        }
       ],
-      "keyline": "共同死穴：太手動 / 塞爆 context / 無法團隊共用",
-      "keylineAtCue": 4,
-      "cues": ["fa1", "fa2", "fa3", "fa4", "fa5"]
-    },
-    {
-      "type": "terminal",
-      "kicker": "解法 · 一個 / 指令",
-      "accent": "green",
-      "headingZh": "把那段話變成一個 / 指令",
-      "headingEn": "Turn it into a slash command",
-      "terminal": {
-        "title": "專案根目錄",
-        "lines": [
-          { "k": "cmt", "t": "1) 建資料夾，檔名就是指令名" },
-          { "k": "cmd", "t": "mkdir -p .claude/commands" },
-          { "k": "cmd", "t": "echo \"用 conventional commits 寫、先跑 git diff、給我看再 commit\" > .claude/commands/commit.md" },
-          { "k": "ok", "t": "2) 打 /commit → 照檔案內容跑，不用再貼那段" },
-          { "k": "cmt", "t": "要吃參數：$ARGUMENTS  ·  要看即時改動：!`git diff`" }
-        ]
-      },
-      "keyline": ".claude/commands/你的指令.md → 打 /你的指令 就跑；commit 進 repo 全隊共用",
+      "keyline": "context 被悄悄塞滿，帳單卻從來沒人給你看",
       "keylineAtCue": 3,
-      "cues": ["sa1", "sa2", "sa3", "sa4", "sa5"]
+      "cues": [
+        "fa1",
+        "fa2",
+        "fa3",
+        "fa4"
+      ]
     },
     {
-      "type": "compare",
-      "kicker": "差異化 · 跟另外兩種比",
-      "accent": "violet",
-      "headingZh": "跟貼 prompt、塞 CLAUDE.md 差在哪",
-      "headingEn": "Why a slash command wins",
-      "bad": { "badge": "貼 prompt / 塞 CLAUDE.md", "code": "每次手動貼 · 或整段常駐 CLAUDE.md", "note": "手動易錯、一直佔 context、危險動作也自動跑、難共用" },
-      "good": { "badge": "自訂 / 指令", "code": "/commit", "note": "打 / 才載入(平時不佔 context)、進 repo 全隊一致、disable-model-invocation 只准你手動觸發" },
-      "keyline": "差異＝按需載入＋團隊一致＋受控觸發，另外兩種都做不到",
-      "keylineAtCue": 5,
-      "cues": ["da1", "da2", "da3", "da4", "da5", "da6"]
-    },
-    {
-      "type": "terminal",
-      "kicker": "實證 · 怎麼知道真解了",
-      "accent": "teal",
-      "headingZh": "怎麼知道真的有解？實測",
-      "headingEn": "Does it actually work?",
-      "terminal": {
-        "title": "Before / After",
-        "lines": [
-          { "k": "cmt", "t": "Before：那段規則 ~6 行 × 一天十幾次 = 上百行重打" },
-          { "k": "cmd", "t": "/commit" },
-          { "k": "ok", "t": "After：一個詞 → 照規則產出，零重貼" },
-          { "k": "cmd", "t": "/context" },
-          { "k": "out", "t": "規則移出 CLAUDE.md → 常駐 token 下降；隊友 git pull 後零設定同款" }
-        ]
-      },
-      "keyline": "上百行/天 → 一個詞；/context token 降；隊友零設定同款；官方內建機制",
+      "type": "pipeline",
+      "kicker": "解法 · 官方瘦身四步驟",
+      "accent": "blue",
+      "headingZh": "先看帳單，再精準關閉不需要的功能",
+      "headingEn": "See the bill, then cut precisely",
+      "nodes": [
+        {
+          "icon": "🔍",
+          "label": "/context",
+          "sub": "官方指令：彩色網格看 token 明細",
+          "accent": "blue"
+        },
+        {
+          "icon": "📊",
+          "label": "找出最大宗",
+          "sub": "bundled skills / workflows / MCP 工具排行",
+          "accent": "green"
+        },
+        {
+          "icon": "🔌",
+          "label": "5 個 disable 開關",
+          "sub": "settings.json 整塊功能一次關閉",
+          "accent": "green"
+        },
+        {
+          "icon": "🗑️",
+          "label": "permissions.deny",
+          "sub": "裸工具名徹底移除定義，不只是禁止呼叫",
+          "accent": "warn"
+        },
+        {
+          "icon": "✅",
+          "label": "重開驗證",
+          "sub": "再跑一次 /context 確認 token 真的降了",
+          "accent": "violet"
+        }
+      ],
+      "keyline": "官方文件證實：deny 規則寫裸工具名（如 Bash），會把整個工具定義從 context 移除，Claude 根本看不到它",
       "keylineAtCue": 4,
-      "cues": ["pa1", "pa2", "pa3", "pa4", "pa5"]
+      "cues": [
+        "pl1",
+        "pl2",
+        "pl3",
+        "pl4",
+        "pl5"
+      ]
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ① · 真實基準值",
+      "accent": "blue",
+      "headingZh": "全新 Claude Code，跑一次 /context",
+      "headingEn": "Real baseline, no tricks",
+      "src": "handson/shot-01-context-before.png",
+      "cues": [
+        "cx1",
+        "cx2"
+      ],
+      "shot": {
+        "w": 1440,
+        "h": 860,
+        "label": "VS Code 終端機 · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "全新專案開 Claude Code",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "輸入 /context 看帳單",
+            "atCue": 0
+          },
+          {
+            "icon": "③",
+            "t": "基準值：35.7k / 1M（4%）",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              100,
+              120,
+              665,
+              400
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              688,
+              105,
+              1205,
+              430
+            ],
+            "loupe": [
+              693,
+              168,
+              990,
+              210
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ② · 動手瘦身",
+      "accent": "green",
+      "headingZh": "真實的 settings.json，照抄就能用",
+      "headingEn": "The actual settings.json",
+      "src": "handson/shot-02-settings.png",
+      "cues": [
+        "sj1",
+        "sj2"
+      ],
+      "shot": {
+        "w": 1440,
+        "h": 640,
+        "label": ".claude/settings.json · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "5 個 disable 開關全開",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "deny 拒絕清單",
+            "atCue": 1
+          },
+          {
+            "icon": "💬",
+            "t": "「幫我在 settings.json 加上這五個開關和 deny 規則」",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              140,
+              250,
+              720,
+              445
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              140,
+              458,
+              1160,
+              515
+            ],
+            "loupe": [
+              175,
+              452,
+              820,
+              516
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ③ · 真實驗收",
+      "accent": "violet",
+      "headingZh": "重開 Claude Code，再跑一次 /context",
+      "headingEn": "Restart, verify, real numbers",
+      "src": "handson/shot-03-context-after.png",
+      "cues": [
+        "ca1",
+        "ca2"
+      ],
+      "shot": {
+        "w": 1440,
+        "h": 860,
+        "label": "VS Code 終端機 · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "關掉重開 Claude Code",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "再跑一次 /context 驗收",
+            "atCue": 0
+          },
+          {
+            "icon": "③",
+            "t": "25.6k（3%）· 實測 −28%",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              100,
+              130,
+              668,
+              395
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              688,
+              128,
+              1200,
+              428
+            ],
+            "loupe": [
+              690,
+              158,
+              985,
+              206
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ④ · deny 真的生效了嗎",
+      "accent": "teal",
+      "headingZh": "/permissions 開 Deny 分頁，白紙黑字",
+      "headingEn": "Verify with /permissions",
+      "src": "handson/shot-04-permissions.png",
+      "cues": [
+        "pd1"
+      ],
+      "shot": {
+        "w": 1440,
+        "h": 860,
+        "label": "/permissions · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "跑 /permissions 開權限面板",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "Deny 分頁：四條規則白紙黑字",
+            "atCue": 0
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              15,
+              148,
+              745,
+              345
+            ],
+            "loupe": [
+              25,
+              225,
+              610,
+              335
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ⑤ · 真的擋下來了",
+      "accent": "warn",
+      "headingZh": "叫 Claude 跑 rm -rf，看它被擋",
+      "headingEn": "A real blocked command",
+      "src": "handson/shot-05-deny-blocked.png",
+      "cues": [
+        "db1",
+        "db2"
+      ],
+      "shot": {
+        "w": 1440,
+        "h": 860,
+        "label": "Claude Code 對話 · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "叫 Claude 用 rm -rf 砍資料夾",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "被拒絕兩次，一次都沒放行",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              8,
+              2,
+              1090,
+              42
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              8,
+              112,
+              1105,
+              225
+            ],
+            "loupe": [
+              10,
+              115,
+              810,
+              158
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ⑥ · /compact 真的跑一遍",
+      "accent": "blue",
+      "headingZh": "對話濃縮，空間騰出來",
+      "headingEn": "/compact in action",
+      "src": "handson/shot-06-compact.png",
+      "cues": [
+        "cp1",
+        "cp2"
+      ],
+      "shot": {
+        "w": 1440,
+        "h": 710,
+        "label": "Claude Code 對話 · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "輸入 /compact 濃縮對話",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "顯示 Compacted，摘要保留",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              8,
+              52,
+              1090,
+              100
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              8,
+              495,
+              920,
+              560
+            ],
+            "loupe": [
+              10,
+              496,
+              770,
+              558
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ⑦ · /clear 前後對照",
+      "accent": "green",
+      "headingZh": "左邊清空前，右邊清空後",
+      "headingEn": "/clear before vs after",
+      "src": "handson/shot-07-clear.png",
+      "cues": [
+        "cl1",
+        "cl2"
+      ],
+      "shot": {
+        "w": 2904,
+        "h": 910,
+        "label": "/clear 前後 · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "左：清空前，對話還在",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "右：/clear 後回到歡迎畫面",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              8,
+              8,
+              1432,
+              895
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              1472,
+              8,
+              2896,
+              895
+            ],
+            "loupe": [
+              1520,
+              130,
+              2180,
+              225
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "image",
+      "kicker": "實測 ⑧ · CLAUDE.md 前後對照",
+      "accent": "violet",
+      "headingZh": "左邊 274 行完整版，右邊 14 行精簡版",
+      "headingEn": "CLAUDE.md before vs after",
+      "src": "handson/shot-08-claudemd.png",
+      "cues": [
+        "cm1",
+        "cm2"
+      ],
+      "shot": {
+        "w": 2024,
+        "h": 640,
+        "label": "CLAUDE.md 前後 · 實拍",
+        "steps": [
+          {
+            "icon": "①",
+            "t": "左：274 行完整版",
+            "atCue": 0
+          },
+          {
+            "icon": "②",
+            "t": "右：14 行精簡版",
+            "atCue": 1
+          },
+          {
+            "icon": "💬",
+            "t": "「幫我把 CLAUDE.md 瘦到 200 行內」",
+            "atCue": 1
+          }
+        ],
+        "highlights": [
+          {
+            "atCue": 0,
+            "rect": [
+              6,
+              6,
+              994,
+              632
+            ]
+          },
+          {
+            "atCue": 1,
+            "rect": [
+              1030,
+              6,
+              2018,
+              632
+            ],
+            "loupe": [
+              1080,
+              75,
+              1905,
+              400
+            ]
+          }
+        ]
+      }
     },
     {
       "type": "outro",
       "headingZh": "總整理",
       "headingEn": "Recap",
       "cards": [
-        { "emoji": "😩", "text": "痛點：每天重貼同一段規則，而且一堆人都這樣", "accent": "warn" },
-        { "emoji": "🛠️", "text": "解法：存成 .claude/commands/你的指令.md → 打 /指令，commit 進 repo 全隊共用", "accent": "green" },
-        { "emoji": "⚡", "text": "差異：按需載入(不佔 context) + 團隊一致 + disable-model-invocation 受控觸發", "accent": "blue" },
-        { "emoji": "✅", "text": "實測：上百行/天 → 一個詞；/context token 降；官方內建做法", "accent": "violet" }
+        {
+          "emoji": "😩",
+          "text": "痛點：Context 被系統提示詞、工具說明悄悄塞滿",
+          "accent": "warn"
+        },
+        {
+          "emoji": "🔍",
+          "text": "解法：/context 一秒看清 token 都去哪",
+          "accent": "blue"
+        },
+        {
+          "emoji": "📉",
+          "text": "實測成果：真人真機跑一遍，35.7k 砍到 25.6k，降 28%",
+          "accent": "green"
+        },
+        {
+          "emoji": "🔒",
+          "text": "誠實提醒：關掉的功能就真的不能用，先看用量再動手",
+          "accent": "violet"
+        }
       ],
-      "cues": ["o1", "o2", "o3", "o4", "o5", "o6"]
+      "cues": [
+        "o1",
+        "o2",
+        "o3",
+        "o4",
+        "o5",
+        "o6"
+      ]
     }
   ]
 }

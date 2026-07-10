@@ -1,0 +1,9 @@
+{
+  "hook": "聊久了,Claude 好像忘記前面講的?那是 context window 滿了。",
+  "here": "你在這:第 12 站,Context window 上下文。",
+  "def": "Claude 一次能記住的內容,如對話、檔案、CLAUDE.md;快滿時會自動壓縮,用 /context 看用量、/compact 或 /clear 整理。",
+  "def2": "持久規則要寫進 CLAUDE.md,別只靠對話。",
+  "demo": "做到一半 context 80%、它開始忘格式?用 /compact focus on 摘要格式 壓住重點;真的卡死就 /clear 重開。",
+  "next": "管好記憶體很關鍵。下一站第 13 號:改錯了怎麼一鍵還原,Checkpoints。",
+  "outro": "這集就到這,訂閱加按讚,第 13 站見!"
+}

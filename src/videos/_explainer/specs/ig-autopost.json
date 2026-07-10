@@ -1,0 +1,352 @@
+{
+  "id": "ig-autopost",
+  "brand": {
+    "titlePre": "Instagram",
+    "titlePost": "每天自動發文",
+    "name": "Ai-Wisdom",
+    "handle": "@aiwisdomcc",
+    "tagline": "沿用發 FB 的同一把 Token · 官方 Instagram API · 免月費 · 一支排程發兩平台",
+    "date": "生活應用系列 · 2026-07-05"
+  },
+  "script": {
+    "cv1": "上一集，我讓家裡書畫品牌的 Facebook 粉專，連續四十天每天自動發文。這一集，換 Instagram。",
+    "cv2": "好消息是：不用重拿 Token，沿用發 FB 的同一把鑰匙，一樣走 Meta 官方 API、一樣免月費。",
+    "cv3": "而且每一步，還是只要對 Claude 說一句話。這支影片，就把 IG 專屬的兩個坑，一步一步幫你踩平。",
+
+    "b1": "先講為什麼要特別做這一集。FB 那邊已經全自動了，可是我的 IG 還在手動貼；同樣的內容，等於每天多做一次。",
+    "b2": "很多人以為 IG 跟 FB 一樣發，結果一頭撞上兩個坑：IG 只認商業帳號，而且，圖片不能傳本機檔。",
+    "b3": "這一集，我用同一把 Page Token，把這兩個坑幫你踩平，讓 FB 和 IG 用同一支排程，一起自動發。",
+    "b4": "記住一句話：會發 FB，不代表會發 IG，IG 的規矩，不一樣。",
+
+    "a1": "整套系統，跟上一集幾乎一樣，全部在你自己電腦上跑；差別只在多一個零件。你也不用自己寫，每個零件都能叫 Claude 幫你搭。",
+    "a2": "第一，素材夾：每天一個資料夾，放好圖片和文案。",
+    "a3": "第二，排程：每天固定時間自動觸發，而且一次發 FB 加 IG。",
+    "a4": "第三，也是 IG 多出來的：先把圖上傳到一個公開網址，拿到連結。這一步 FB 沒有。",
+    "a5": "第四和第五，用 IG 官方接口把圖和文發出去，你的 Instagram 商業帳號，貼文就上線了。",
+
+    "rq1": "第一步，先讓你的 IG 有被程式發文的資格。不確定怎麼弄？直接跟 Claude 說：教我把 IG 轉成商業帳號、連到我的 FB 粉專。",
+    "rq2": "打開 Instagram App，設定裡把帳號切換成專業帳號，選商業或創作者。",
+    "rq3": "再到你的 FB 粉專設定，把這個 IG 帳號綁定到同一個粉專。",
+    "rq4": "Meta App 沿用發 FB 那個就好，不用另外建；因為你是這個 App 的管理員，發自己的帳號，開發模式就行，不用送審核。",
+
+    "pm1": "第二步，拿發 IG 的權限。好消息剛剛說了，Token 不用重拿。跟 Claude 說：我發 FB 的 Token 想沿用發 IG，要多勾哪些權限。",
+    "pm2": "在 Graph API Explorer，除了發 FB 那兩個權限，再多加兩個 IG 的，instagram basic，和 instagram content publish。",
+    "pm3": "一樣點生成、選你的粉專，拿到 Token，畫面上我一樣打碼。",
+    "pm4": "最後用一個指令，問出你的 IG 帳號編號：對粉專查 instagram business account，回傳的那個 id，就是後面所有發文都要用到的 IG 帳號 ID。",
+
+    "url1": "第三步，是 IG 跟 FB 最大的不同，也是最多人卡死的地方：IG 貼圖，不能傳本機檔。",
+    "url2": "FB 是直接把圖檔傳上去；IG 不是，Meta 的伺服器，會拿你給的網址，自己去把圖抓下來。",
+    "url3": "所以發文前要多一步：把當天的圖，先上傳到一個公開網址，例如你的雲端儲存或圖床，拿到連結，再餵給 IG。",
+    "url4": "想通這件事，IG 的 API 就通了一半：IG 不是傳一個檔案，是傳一個網址。",
+
+    "pb1": "第四步，真的發出貼文。跟 Claude 說：幫我寫 IG 發文腳本，先建容器、再發布，多圖就用輪播。",
+    "pb2": "第一步，建容器：把公開圖片網址和文案，送到 media 接口，IG 會回你一個容器編號。",
+    "pb3": "第二步，發布：把這個容器編號，送到 media publish 接口，貼文就正式上線。",
+    "pb4": "多張圖就做輪播：每張先各自建容器、標成輪播項目，再組成一個父容器發布，最多十張。",
+
+    "rn1": "重點來了。前面都是怎麼發一次；真正的自動，是讓它每天自己發，而且一次發兩個平台。",
+    "rn2": "跟 Claude 說：把發 FB 和發 IG 合併成同一支腳本，掛上排程，每天早上七點十一分自動執行。",
+    "rn3": "用作業系統內建的排程，寫一行設定：每天七點十一分，自動跑那支一次發兩平台的腳本，存檔就生效。",
+    "rn4": "從這一刻起，你的手不用再碰。一支排程，同時顧好 FB 和 IG。這，就是自動發文真正發生的地方。",
+
+    "dr1": "系統怎麼決定今天發哪一篇？沿用上一集那套，IG 直接共用，不用重寫。",
+    "dr2": "先去今天的資料夾，抓好圖片和文案。",
+    "dr3": "發過的資料夾，記在一份去重清單裡，不會重複發。",
+    "dr4": "萬一今天沒有新圖？就抽最久沒發的舊資料夾，回收輪播，這就是它能天天不斷更的關鍵。",
+
+    "mn1": "維運的部分也沿用。最後一句 prompt：幫我加上 Token 到期檢查，剩十四天提醒我，並檢查 IG 當天的發文用量。",
+    "mn2": "Token 就是發 FB 那把 Page Token，大約六十天壽命，IG 和 FB 共用一把，不用分開顧。",
+    "mn3": "IG 有發文上限：同一個帳號，每二十四小時最多一百篇；查一個指令 content publishing limit，就知道今天用了幾篇。",
+    "mn4": "正常日更一天一兩篇，離一百篇很遠；但別寫成每分鐘發一篇洗版。",
+
+    "rs1": "講了這麼多，這套 IG 自動發文，到底能不能真的跑起來？",
+    "rs2": "答案是：整套已經照 Meta 官方接口建好、也一步步驗證過，建容器、發布、輪播、排程，每一步都通。",
+    "rs3": "接上你的 IG、掛上排程，它就會像上一集的 FB 一樣，每天固定時間自己把貼文發出去，你完全不用再碰。",
+
+    "tp1": "最後補幾個 IG 專屬的坑，都是我踩過的。",
+    "tp2": "第一，也是最重要：圖一定要公開網址，本機檔傳不了，這一點忘了就一直失敗。",
+    "tp3": "第二，只認商業或創作者帳號、還要連 FB 粉專；個人帳號官方沒有發布接口。",
+    "tp4": "第三，IG 貼文內文裡的連結不能點，導購連結要放在個人檔案的 bio，別放內文。",
+
+    "gp1": "最後，送給看到這裡的你一個禮物。",
+    "gp2": "我把 IG 這一整套，合成了一段完整的 prompt。你不用一段一段慢慢問，整段複製，一次貼給 Claude，它就會沿用你發 FB 的設定，把 IG 自動發文也幫你建出來。",
+    "gp3": "螢幕上這段可以直接暫停、截圖；逐字完整版我也放在影片下方，複製就能用。這就是看到最後的好處。",
+
+    "o1": "好，五個重點快速總整理。",
+    "o2": "第一，沿用發 FB 的同一把 Page Token，只多勾兩個 IG 權限。",
+    "o3": "第二，IG 最大的坑：圖要先上傳公開網址，不能傳本機檔。",
+    "o4": "第三，發文兩步：建容器，再發布；多圖用輪播。",
+    "o5": "第四，一支排程，FB 和 IG 一起自動發，還有去重和回收輪播。",
+    "o6": "第五，IG 每天上限一百篇，Token 兩平台共用一把，記得顧到期。",
+    "o7": "完整 prompt 和每一步的分解版，都放在影片下方，直接複製就能用。覺得有用，記得按讚、訂閱、分享，我們下支影片，來講怎麼連 Threads 也一起發！"
+  },
+  "scenes": [
+    {
+      "type": "cover",
+      "titlePre": "Instagram",
+      "titlePost": "每天自動發文",
+      "chips": [
+        { "n": "2", "t": "步 API 發文", "accent": "blue" },
+        { "n": "1", "t": "支排程發兩平台", "accent": "green" },
+        { "n": "0", "t": "元月費", "accent": "violet" },
+        { "n": "60", "t": "天 Token 沿用", "accent": "claude" }
+      ],
+      "cues": ["cv1", "cv2", "cv3"]
+    },
+    {
+      "type": "compare",
+      "kicker": "01 · 為什麼 IG 要另外教",
+      "accent": "warn",
+      "headingZh": "會發 FB，不代表會發 IG",
+      "headingEn": "FB done ≠ IG done",
+      "bad": {
+        "badge": "以為跟 FB 一樣 · 撞坑",
+        "code": "IG 也照 FB 發？  ✘ 兩個坑等你",
+        "note": "IG 只認商業帳號，而且圖片不能傳本機檔，照搬 FB 的做法一定失敗。"
+      },
+      "good": {
+        "badge": "同一把鑰匙 · 一起發",
+        "code": "同一支排程  ✔ FB + IG 一起自動發",
+        "note": "沿用發 FB 的 Page Token，把 IG 兩個坑踩平，兩平台一起日更。"
+      },
+      "keyline": "會發 FB ≠ 會發 IG，規矩不一樣",
+      "keylineAtCue": 3,
+      "cues": ["b1", "b2", "b3", "b4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "02 · 系統總覽",
+      "accent": "blue",
+      "headingZh": "跟上一集幾乎一樣，只多一個零件",
+      "headingEn": "Same system, one extra part",
+      "nodes": [
+        { "icon": "🗂", "label": "素材夾", "sub": "每天一夾 · 圖+文案", "accent": "teal" },
+        { "icon": "⏰", "label": "排程", "sub": "每天觸發 · FB+IG", "accent": "blue" },
+        { "icon": "🌐", "label": "圖上公開網址", "sub": "★ IG 多出來的一步", "accent": "claude" },
+        { "icon": "🔌", "label": "IG API", "sub": "建容器→發布", "accent": "violet" },
+        { "icon": "📸", "label": "IG 商業帳號", "sub": "貼文上線", "accent": "green" }
+      ],
+      "keyline": "跟 FB 版唯一的新東西：第③步「圖上公開網址」",
+      "keylineAtCue": 4,
+      "cues": ["a1", "a2", "a3", "a4", "a5"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "03 · IG 發文資格",
+      "accent": "teal",
+      "headingZh": "第一步：讓 IG 有「被程式發文」的資格",
+      "headingEn": "Make IG publishable",
+      "terminal": {
+        "title": "IG 轉商業帳號 + 連 FB 粉專",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「教我把 IG 轉商業帳號並連到我的 FB 粉專，為什麼發自己免送審」" },
+          { "k": "cmt", "t": "① IG App → 設定 → 切換為專業帳號（商業／創作者）" },
+          { "k": "cmt", "t": "② FB 粉專 → 設定 → 已連結帳號 → 綁定這個 IG" },
+          { "k": "cmt", "t": "③ 沿用發 FB 的同一個 Meta App（你是管理員）" },
+          { "k": "ok", "t": "你是 App 管理員 → 開發模式即可發自己帳號，免送 App Review" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 發自己免送審", "atCue": 3 }],
+      "keyline": "IG 官方只讓「商業帳號 + 連粉專」被程式發文",
+      "keylineAtCue": 3,
+      "cues": ["rq1", "rq2", "rq3", "rq4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "04 · 沿用 Token + 拿 IG ID",
+      "accent": "claude",
+      "headingZh": "第二步：Token 沿用，多勾 2 個 IG 權限",
+      "headingEn": "Reuse token · get IG id",
+      "terminal": {
+        "title": "Graph API Explorer（沿用發 FB 的 App）",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「我發 FB 的 Page Token 想沿用發 IG，要多勾哪些權限？幫我取得 IG 帳號 ID」" },
+          { "k": "cmt", "t": "① 在 FB 那兩個權限外，多加 instagram_basic + instagram_content_publish" },
+          { "k": "cmt", "t": "② Generate → 選你的粉專 → 拿到（沿用的）Token（畫面打碼）" },
+          { "k": "cmd", "t": "GET /<page_id>?fields=instagram_business_account&access_token=***" },
+          { "k": "ok", "t": "回傳 instagram_business_account.id ＝ 你的 ig-user-id（後面端點都用它）" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ Token 打碼", "atCue": 2 }],
+      "keyline": "不用重拿 Token——同一把 Page Token 就能發它連結的 IG",
+      "keylineAtCue": 3,
+      "cues": ["pm1", "pm2", "pm3", "pm4"]
+    },
+    {
+      "type": "compare",
+      "kicker": "05 · IG 最大的坑",
+      "accent": "warn",
+      "headingZh": "第三步：為什麼 IG 貼圖不能傳本機檔？",
+      "headingEn": "IG needs a public URL",
+      "bad": {
+        "badge": "傳本機檔給 IG",
+        "code": "POST /media  source=本機圖  ✘ 失敗",
+        "note": "IG 的發文接口不接受本機檔案上傳，直接傳一定失敗。"
+      },
+      "good": {
+        "badge": "先上傳公開網址",
+        "code": "上傳圖床 → image_url=https://…  ✔",
+        "note": "Meta 會去 cURL 你給的網址抓圖，所以圖必須是公開、任何人都連得到的 URL。"
+      },
+      "keyline": "IG 不是傳檔案，是傳一個網址",
+      "keylineAtCue": 3,
+      "cues": ["url1", "url2", "url3", "url4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "06 · 發出貼文",
+      "accent": "green",
+      "headingZh": "第四步：一則 IG 貼文，兩步發出去",
+      "headingEn": "Container → publish",
+      "terminal": {
+        "title": "建容器 → 發布（單圖＋輪播）",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「幫我寫 IG 發文腳本：建容器→發布；多圖用 carousel」" },
+          { "k": "cmt", "t": "① 建容器（帶公開圖片網址 + 文案）" },
+          { "k": "cmd", "t": "POST /<ig-user-id>/media   image_url=公開URL  caption=文案  → creation_id" },
+          { "k": "cmt", "t": "② 發布（帶容器編號）" },
+          { "k": "cmd", "t": "POST /<ig-user-id>/media_publish   creation_id=<上一步的 id>" },
+          { "k": "ok", "t": "多圖：每張 is_carousel_item → 父容器 media_type=CAROUSEL children=…（最多 10 張）" }
+        ]
+      },
+      "keyline": "IG 發文＝先建容器拿編號，再發布這個容器",
+      "keylineAtCue": 4,
+      "cues": ["pb1", "pb2", "pb3", "pb4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "07 · 讓它自己跑（自動的核心）",
+      "accent": "blue",
+      "headingZh": "第五步：一支排程，FB + IG 一起自動發",
+      "headingEn": "One cron, two platforms",
+      "terminal": {
+        "title": "把「發 FB + 發 IG」掛上同一支排程",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「把發 FB 和發 IG 合併成一支腳本，掛排程每天 7:11 自動跑」" },
+          { "k": "cmt", "t": "自動的關鍵：作業系統每天固定時間自己執行——而且一次發兩平台" },
+          { "k": "cmd", "t": "crontab -e            # macOS / Linux 內建，免裝任何工具" },
+          { "k": "out", "t": "11 7 * * *  python3 ~/social/publish_all.py   # 每天 07:11 FB+IG 一起發" },
+          { "k": "ok", "t": "存檔即生效 → 手不用再碰，一支排程顧兩個平台" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 一支排程，兩個平台", "atCue": 4 }],
+      "keyline": "「自動」的心臟：一支排程，FB + IG 一起發",
+      "keylineAtCue": 3,
+      "cues": ["rn1", "rn2", "rn3", "rn4"]
+    },
+    {
+      "type": "pipeline",
+      "kicker": "08 · 每天發什麼、不重複",
+      "accent": "teal",
+      "headingZh": "每天發什麼？不重複？（沿用 FB 那套）",
+      "headingEn": "Pick today · never repeat",
+      "nodes": [
+        { "icon": "🗂", "label": "抓今日資料夾", "sub": "圖 + 文案", "accent": "blue" },
+        { "icon": "🧾", "label": "去重清單", "sub": "發過的不再發", "accent": "teal" },
+        { "icon": "♻️", "label": "回收輪播", "sub": "沒新圖抽最舊的重發", "accent": "green" }
+      ],
+      "keyline": "沒新圖就回收輪播——天天不斷更的關鍵",
+      "keylineAtCue": 3,
+      "cues": ["dr1", "dr2", "dr3", "dr4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "09 · Token 維運 + IG 限速",
+      "accent": "warn",
+      "headingZh": "Token 會過期？IG 有發文上限？",
+      "headingEn": "Token upkeep · rate limit",
+      "terminal": {
+        "title": "維運：Token 沿用 · IG 限速",
+        "lines": [
+          { "k": "cmd", "t": "💬 對 Claude：「加 Token 到期檢查（剩 14 天提醒），並查 IG 當天發文用量」" },
+          { "k": "cmt", "t": "Token 就是發 FB 那把 Page Token（約 60 天）· IG、FB 共用一把" },
+          { "k": "cmd", "t": "GET /<ig-user-id>/content_publishing_limit   # 查今天發了幾篇" },
+          { "k": "ok", "t": "IG 每 24 小時上限 100 篇（輪播算 1 篇）· 正常日更離上限很遠" },
+          { "k": "cmt", "t": "剩 14 天自動預警 · 一支 refresh 換新，兩平台一起更新" }
+        ]
+      },
+      "stamps": [{ "kind": "warn", "text": "⚠ 24h ≤ 100 篇", "atCue": 3 }],
+      "keyline": "IG 每天上限 100 篇，Token 兩平台共用一把",
+      "keylineAtCue": 3,
+      "cues": ["mn1", "mn2", "mn3", "mn4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "10 · 成果",
+      "accent": "claude",
+      "headingZh": "真的能自己跑起來嗎？",
+      "headingEn": "Verified · ready to run",
+      "terminal": {
+        "title": "IG 自動發文 · 架構已驗證",
+        "lines": [
+          { "k": "cmt", "t": "照 Meta 官方 Content Publishing API 建好、逐步驗證" },
+          { "k": "ok", "t": "✔ 建容器 /media　✔ 發布 /media_publish　✔ 輪播 CAROUSEL　✔ 排程" },
+          { "k": "cmt", "t": "接上 IG + 掛排程 → 每天固定時間自動發（跟 FB 同一支排程）" },
+          { "k": "out", "t": "之後每天的真實發文紀錄，會像上一集 FB 那樣天天累積" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 每步都驗證過", "atCue": 1 }],
+      "keyline": "交給系統，IG 也能天天自己發",
+      "keylineAtCue": 2,
+      "cues": ["rs1", "rs2", "rs3"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "11 · 避坑（IG 專屬·最重要）",
+      "accent": "warn",
+      "headingZh": "三個 IG 專屬的坑",
+      "headingEn": "IG-only pitfalls",
+      "terminal": {
+        "title": "IG 專屬避坑",
+        "lines": [
+          { "k": "err", "t": "① 圖一定要公開網址，本機檔傳不了（IG 最大的坑）" },
+          { "k": "cmt", "t": "② 只認商業／創作者帳號 + 連 FB 粉專（個人帳號不行）" },
+          { "k": "ok", "t": "③ 發自己免送審；幫別人發才要 App Review（每權限錄影 · 約 2–4 週）" },
+          { "k": "err", "t": "④ caption 裡的連結不可點——導購連結放個人檔案 bio，別放內文" }
+        ]
+      },
+      "keyline": "公開 URL、商業帳號、連結不可點——IG 三大坑",
+      "keylineAtCue": 3,
+      "cues": ["tp1", "tp2", "tp3", "tp4"]
+    },
+    {
+      "type": "terminal",
+      "kicker": "12 · 看到最後的禮物 🎁",
+      "accent": "claude",
+      "headingZh": "把 IG 這套合成一段完整 prompt（整段複製給 Claude）",
+      "headingEn": "The one prompt for IG",
+      "terminal": {
+        "title": "💬 整段複製，一次貼給 Claude",
+        "lines": [
+          { "k": "cmd", "t": "「Hi Claude，沿用我發 FB 的同一把 Token，讓我的 IG 商業帳號也每天自動發文：」" },
+          { "k": "cmt", "t": "① 教我 IG 轉商業帳號、連 FB 粉專（發自己免送審）" },
+          { "k": "cmt", "t": "② 權限多加 instagram_basic + instagram_content_publish；取 ig-user-id" },
+          { "k": "cmt", "t": "③ 發文前先把圖上傳公開網址拿 image_url（IG 不吃本機檔）" },
+          { "k": "cmt", "t": "④ 建容器 /media(image_url,caption) → 發布 /media_publish(creation_id)；多圖用 CAROUSEL" },
+          { "k": "cmt", "t": "⑤ 每天抓日期資料夾；發過不重發；沒新圖回收最舊的輪播" },
+          { "k": "cmt", "t": "⑥ 把發 FB+IG 合併成同一支腳本，掛排程每天 07:11（cron）" },
+          { "k": "cmt", "t": "⑦ Token 到期檢查剩 14 天提醒；查 content_publishing_limit 避免超 100 篇/日" },
+          { "k": "err", "t": "安全：Token/Secret 當密碼、打碼；只勾必要權限；IG 只支援商業帳號、圖須公開網址、caption 連結不可點" },
+          { "k": "ok", "t": "📄 逐字完整版 → 影片下方描述欄，可整段複製" }
+        ]
+      },
+      "stamps": [{ "kind": "yes", "text": "✔ 整段可暫停複製", "atCue": 2 }],
+      "keyline": "整段複製貼給 Claude，IG 自動發文一次到位",
+      "keylineAtCue": 2,
+      "cues": ["gp1", "gp2", "gp3"]
+    },
+    {
+      "type": "outro",
+      "headingZh": "五個重點，總整理",
+      "headingEn": "IG auto-post recap",
+      "cards": [
+        { "emoji": "🔑", "text": "沿用 FB 的 Page Token，只多勾 2 個 IG 權限", "accent": "claude" },
+        { "emoji": "🌐", "text": "IG 最大的坑：圖要先上傳公開網址", "accent": "violet" },
+        { "emoji": "📤", "text": "發文兩步：建容器 → 發布；多圖用輪播", "accent": "green" },
+        { "emoji": "♻️", "text": "一支排程 FB+IG 一起發，含去重＋回收輪播", "accent": "blue" },
+        { "emoji": "⏳", "text": "IG 每天上限 100 篇；Token 兩平台共用、記得顧到期", "accent": "warn" }
+      ],
+      "cues": ["o1", "o2", "o3", "o4", "o5", "o6", "o7"]
+    }
+  ]
+}
