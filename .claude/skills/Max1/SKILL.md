@@ -77,10 +77,10 @@ A/B/C 之後，③起完全共用同一條管線；C 額外疊加「跟操模式
 2. **雙 agent 合議**：並行 spawn 兩個 `claude-code-guide` 各自研究＋**對照官方文件查證**（docs.claude.com / code.claude.com）→ 合議「最穩」共識 brief（每點標 verified/unverified；查不到附網路他人解法當建議並註明）。
 3. **寫 spec**：共識 → `src/videos/_explainer/specs/current.json`（schema＝`_explainer/schema.ts`；cover＋outro 必有、正面語氣**不用「坑」**、標題/說明**不可含 `< >`**）。旁白冒出 ≥4 個新手術語 → 順手產 `current.glossary.json` 名詞小教室片尾（欄位規則見 [[video-glossary-handson-segments]]；**不做的日子把 terms/script 重設為空，兩檔必須存在**，否則會接到昨天的名詞段）。
 4. **VO**：`python3 automation/make-vo-spec.py src/videos/_explainer/specs/current.json current src/videos/_explainer/specs/current.vo.json`（有名詞段再對 `current.glossary.json` 生 `current-glossary`）。
-5. **算繪**：`python3 automation/render_daily.py`（做了名詞段改傳 `VF-DailyFull`）→ `out/vf-daily.mp4`＋`out/vf-daily-thumb.png`（自動抽幀縮圖），並自動歸檔 spec/vo/縮圖/**mp4** 到 `out/youtube-videos/<topic id>/`（防隔天覆蓋）。
+5. **算繪**：`python3 automation/render_daily.py`（做了名詞段改傳 `VF-DailyFull`）→ `out/vf-daily.mp4`＋`out/vf-daily-thumb.png`（工作副本，隔天會被覆蓋），並自動歸檔 spec/vo/縮圖/**mp4** 到 `out/youtube-videos/<topic id>/`——歸檔檔名一律 **`<topic>-<YYYY-MM-DD>-v<N>`**（STANDING RULE 2026-07-11 老闆拍板：所有生成檔＝主題-日期-版本號、絕不覆蓋，同日重算 v2 起跳；[[video-output-versioning]] 全產線適用，工廠不例外）。
 6. **QA（必跑，2026-07-11 起不再是可選）**：挑一個畫面靜止的 frame 跑 `node scripts/qa-video.mjs <comp> <frame> 8 out/vf-daily.mp4`，hold-diff 應接近全黑（YMAX≤4）；未過 → 診斷修復重算；修不了 → ledger 標 `qa_failed` 並照下面失敗通知回報。
 7. **GEO metadata 草稿（不上傳）**：title／description／tags 照 [[geo-first-publishing]]；description 含問答體＋官方文件出處＋`🔗 https://maxwu1981.github.io/Remotion/`＋#tags。做了名詞段的日子再加：章節時間戳多一行「名詞小教室」（起點秒數＝主片長度）＋ N 個名詞的「詞＋比喻＋白話定義」逐字列進描述。
-8. **記 ledger**：`automation/state/daily-runs.json` append `{date, topic, source_url, title, description, tags, video_path:"out/vf-daily.mp4", thumb_path:"out/vf-daily-thumb.png", status:"rendered_pending_review"}`；題目關鍵字加進 `covered-topics.json`。
+8. **記 ledger**：`automation/state/daily-runs.json` append `{date, topic, source_url, title, description, tags, video_path, thumb_path, status:"rendered_pending_review"}`——**video_path/thumb_path 記步驟 5 印出的「版本化歸檔路徑」**（`out/youtube-videos/<topic>/<topic>-<日期>-v<N>.mp4`），絕不記會被覆蓋的 `out/vf-daily.mp4`；題目關鍵字加進 `covered-topics.json`。
 
 **到這裡停（2026-07-04 拍板「算繪完就停」）**——不上傳 YouTube、不主動通知；**只有失敗才** `python3 automation/notify_imessage.py "今日影片工廠失敗於步驟 X：<簡述>"` 並停止當天。老闆看過 `out/vf-daily.mp4` 親口說「**發今天的**」→ 走 `automation/ORCHESTRATOR.md` **runbook B**（上傳→轉公開→`npm run snapshot` 刷影片中心）。需要網路的指令原生執行（必要時停用沙盒）。維運速查（Mac 喚醒/預授權/疑難排解）見 `automation/CHEATSHEET.md`。
 

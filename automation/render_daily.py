@@ -10,6 +10,7 @@ orchestrator/cron 原生執行，不受 Bash 工具 10 分鐘上限。
 輸出：out/vf-daily.mp4 、 out/vf-daily-thumb.png 、 out/youtube-videos/<topic id>/{spec,vo,thumb}
 """
 import json, shutil, subprocess, sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,16 +30,23 @@ def archive():
     topic_id = json.loads(SPEC.read_text())["id"]
     dest = ROOT / "out" / "youtube-videos" / topic_id
     dest.mkdir(parents=True, exist_ok=True)
-    shutil.copy2(SPEC, dest / "spec.json")
-    shutil.copy2(VO, dest / "spec.vo.json")
-    shutil.copy2(THUMB, dest / "thumb.png")
-    # mp4 也歸檔：out/vf-daily.mp4 每天被覆寫，老闆隔幾天才說「發」時要從這裡取
-    shutil.copy2(MP4, dest / f"{topic_id}.mp4")
+    # STANDING RULE（2026-07-11 老闆拍板）：所有生成檔一律「主題-日期-v版本號」命名、絕不覆蓋。
+    # 同一天重算同主題 → v2、v3…；隔天重算 → 新日期從 v1 起。
+    today = date.today().isoformat()
+    n = 1
+    while (dest / f"{topic_id}-{today}-v{n}.mp4").exists():
+        n += 1
+    tag = f"{today}-v{n}"
+    shutil.copy2(MP4, dest / f"{topic_id}-{tag}.mp4")
+    shutil.copy2(THUMB, dest / f"thumb-{tag}.png")
+    shutil.copy2(SPEC, dest / f"spec-{tag}.json")
+    shutil.copy2(VO, dest / f"spec-{tag}.vo.json")
     # 有做名詞小教室片尾（terms 非空）就一併歸檔，明天 reset current.glossary.json 後才回得去
     if GLOSSARY.exists() and json.loads(GLOSSARY.read_text()).get("terms"):
-        shutil.copy2(GLOSSARY, dest / "spec.glossary.json")
-        shutil.copy2(GLOSSARY_VO, dest / "spec.glossary.vo.json")
-    print(f"   歸檔：out/youtube-videos/{topic_id}/{{spec.json,spec.vo.json,thumb.png,{topic_id}.mp4}}")
+        shutil.copy2(GLOSSARY, dest / f"spec.glossary-{tag}.json")
+        shutil.copy2(GLOSSARY_VO, dest / f"spec.glossary-{tag}.vo.json")
+    print(f"   歸檔：out/youtube-videos/{topic_id}/{topic_id}-{tag}.mp4（+thumb/spec/vo 同 tag）")
+    print(f"   ledger 的 video_path 請記這個版本化路徑，不要記 out/vf-daily.mp4")
 
 def warn_glossary_state():
     # 只警告不擋：名詞段 spec 比主片 spec 舊＝疑似昨天殘留（會接到昨天的卡+旁白）；terms 空＝會算成純主片
