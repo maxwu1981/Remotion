@@ -1,11 +1,10 @@
 # ai-wisdom-video plugin
 
-Ai-Wisdom 影片產線的 6 個 skills 打包版（與 `.claude/skills/` 內容同源）：
+Ai-Wisdom 影片產線的 5 個 skills 打包版（與 `.claude/skills/` 內容同源；`makevideo` 已於 2026-07-11 移除、功能全併入 Max1）：
 
 | Skill | 用途 |
 |---|---|
-| `Max1` | 旗艦黑曜石教學片一條龍（/ai-wisdom-video:Max1） |
-| `makevideo` | 解說片完整流程 |
+| `Max1` | 影片產線唯一入口，4 種起點：A 全新／B 工廠草稿／C 跟操長片／D 每日自動草稿（/ai-wisdom-video:Max1） |
 | `veo-reel` | Flow(Veo) 生 clip → Remotion 串片 |
 | `visual-skills` | AI 影片分鏡/提示詞方法論 |
 | `ship` | lint/型別/測試 → 草擬繁中 commit |

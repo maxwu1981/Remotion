@@ -2,12 +2,13 @@
 name: Max1
 description: |
   把一個「真實在跑的流程/工具」或「每日工廠已選好的題目」做成一支完整、可公開發布的黑曜石教學影片。
-  兩種起點：①全新題材——查文檔→寫故事腳本，從零開始；②沿用每日工廠草稿——直接拿現成的
-  spec/vo/script，只補內容缺口，不重寫故事弧。兩者之後共用同一套發布尾段：黑曜石視覺（預設共用
-  ExplainerObsidian 積木渲染，只有要重建真實網站/App UI 時才手刻）→ Gemini 生 BGM → 算繪 QA →
-  公開發布（長片＋Short＋乾淨縮圖＋播放清單）→ 置頂留言＋GEO 外部訊號。
+  四種起點：A 全新題材——查文檔→寫故事腳本；B 沿用每日工廠草稿——只補缺口不重寫故事弧；
+  C 旗艦跟操長片——真實錄屏 30–45 分；D 每日自動草稿——06:00 排程無人值守跑的模式（原
+  ORCHESTRATOR runbook A，2026-07-11 併入本 skill 當單一事實來源）。A/B/C 共用發布尾段：黑曜石視覺
+  → Gemini 生 BGM → 算繪 QA → 公開發布（長片＋Short＋乾淨縮圖＋播放清單）→ 置頂留言＋GEO 外部訊號；
+  D 算繪+QA 完就停等老闆說「發今天的」。
   只在我輸入 /Max1 時執行（可帶主題，如 /Max1 用 Graph API 讓 FB 自動發文；或帶 <name> 沿用某天
-  每日工廠草稿，如 /Max1 claude-code-agent-view）。
+  每日工廠草稿，如 /Max1 claude-code-agent-view）；D 例外＝排程 task 或「跑今天的影片工廠」觸發。
   範本：全新題材＝src/videos/fb-autopost/（youtube.com/watch?v=r8DFGXc_33I）；
   沿用每日工廠草稿＝src/videos/claude-code-agent-view/（youtube.com/watch?v=CaMHeWSo4mU）。
 disable-model-invocation: true
@@ -18,12 +19,13 @@ allowed-tools: Bash(python3 automation/make-vo-spec.py*) Bash(npx remotion*) Bas
 
 工作目錄 `/Users/maxwu/Remotion`。**全程繁中＋技術詞英文、第一人稱、正面語氣、套 GEO。** `<name>`＝這支的 kebab-case 片名。
 
-**開拍前先問（別默默選）**：用 AskUserQuestion 問**這支的起點是哪一種**：
+**開拍前先問（別默默選；D 例外——無人值守不問）**：用 AskUserQuestion 問**這支的起點是哪一種**：
 - **A. 全新題材**：老闆給一個流程/工具主題，從零查文檔＋寫故事腳本（走下面①②）。
 - **B. 沿用每日工廠草稿**：老闆給 `<name>`（或不給，預設當天 `current.json`），直接拿每日工廠已經選好題、寫好的 spec/vo，只做內容缺口補強，不重寫故事弧（跳過①②，從③開始）。
 - **C. 旗艦跟操片（保姆級長片）**：30–45 分鐘 follow-along 教學。走 A 起點的①②，但操作段落改**真實錄屏**、加檢核點與常見卡點（見下方「跟操模式」節），黑曜石只做骨架。
+- **D. 每日自動草稿（無人值守）**：排程 task `daily-video-factory`（每天 06:00）走的模式，或老闆明說「跑今天的影片工廠」。**不問任何問題直接跑**，見下方「D 起點」節——它產出的草稿就是 B 起點的輸入。
 
-兩種起點之後，③起完全共用同一條管線；C 額外疊加「跟操模式」規則。
+A/B/C 之後，③起完全共用同一條管線；C 額外疊加「跟操模式」規則；D 自成一節（算繪完就停，不進入共用管線後段）。
 
 **貫穿全程的閘門（gate）**：`過稿再算繪`（B 起點沿用既有 VO 通常不用重過稿，除非有改字）· `駛瀏覽器/碰帳號先握手`（[[screen-capture-handshake]]；互動 session 內若老闆已在場明說，「有沒有登入」這句可省略，見 [[gemini-driving-skip-login-ask]]，OAuth/選帳號仍要先問）· `每句 prompt 過驗證 GATE`（[[tutorial-video-show-claude-prompts]]，A 起點才通常需要）· `算繪前查資源`（[[render-resource-check]]）· `長算 daemonize`（[[long-render-detach]]）· `版本遞增檔名`（[[video-output-versioning]]）· `輸出分子目錄`（[[out-folder-taxonomy]]）。**上傳預設停在發布前問老闆；老闆說「發」才上，且要對「這一支片」明確首肯——排程節奏的通用指示（[[youtube-publish-queue-sequential]]）不能當成單支片的上傳授權**（2026-07-08 教訓：曾把這兩者搞混，被權限層擋下）。
 
@@ -42,7 +44,7 @@ allowed-tools: Bash(python3 automation/make-vo-spec.py*) Bash(npx remotion*) Bas
 ## B 起點：沿用每日工廠草稿
 
 ### ① 找題目
-給了 `<name>` → 找 `src/videos/_explainer/specs/<name>.json`（若不存在，問老闆是不是要從當天 `current.json` 複製、或先跑 `/makevideo` 生新草稿）。沒給 → 預設抓 `src/videos/_explainer/specs/current.json` + `current.vo.json`（今天的每日工廠草稿；那份草稿的題目來源可能是 `automation/scout.py` 自動搜 Reddit/HN，也可能是老闆直接指定主題後由 `/makevideo` 研究生成——兩種來源產出的 spec 格式一樣，這裡不分別處理）。
+給了 `<name>` → 找 `src/videos/_explainer/specs/<name>.json`（若不存在，問老闆是不是要從當天 `current.json` 複製、或先照下方 **D 起點**流程研究產一份新草稿）。沒給 → 預設抓 `src/videos/_explainer/specs/current.json` + `current.vo.json`（今天的每日工廠草稿；那份草稿的題目來源可能是 `automation/scout.py` 自動搜 Reddit/HN，也可能是老闆直接指定主題後照 D 起點研究生成——兩種來源產出的 spec 格式一樣，這裡不分別處理）。
 
 ### ② 內容夠不夠格升級成正式片
 草稿已經是資料驅動 explainer（cover/places/pipeline/terminal/compare/outro 積木），內容通常已經是「問題→解法→誠實提醒」結構。快速檢查：cover 4 chip 精不精準、keyline/官方文件出處在不在、有沒有明顯內容缺口——**只補缺口，不重寫成 A 起點那種完整故事弧**。若老闆想要更深的故事包裝，改走 A 起點。
@@ -65,7 +67,26 @@ allowed-tools: Bash(python3 automation/make-vo-spec.py*) Bash(npx remotion*) Bas
 - **課程化三件套（得到品控手冊）**：開場 15 秒先亮成品（目標感）；每章結尾一句「這章你帶走的是…」（交付感）；片尾回收開頭的問題＋before/after 數字（總分總）。
 - 其餘（VO/BGM/QA/發布/Short/置頂留言）照共用管線；master prompt 與每步 prompt 的驗證 GATE 照 [[tutorial-video-show-claude-prompts]] 不變。
 
-## 兩種起點共用（從這裡開始一樣）
+---
+
+## D 起點：每日自動草稿（無人值守，06:00 排程 task `daily-video-factory` 走這條；2026-07-11 自 ORCHESTRATOR runbook A 併入，此節＝單一事實來源）
+
+**唯一全自動模式**：不問老闆（AskUserQuestion 全跳過）、不碰瀏覽器（**不生專屬 BGM**，共用 `bgm-piano.mp3`）、不上傳。**明確省略、升級成正式片時走 B 起點補**：專屬 BGM、每步 💬 prompt 卡、片尾 master prompt、系列編號/播放清單、置頂留言與 GEO 外部訊號。
+
+1. **選題**：`python3 automation/scout.py`（Reddit 4 社群＋HN Algolia；寫 `automation/state/scout-<date>.json`）。picked 只是關鍵字粗篩——**親自讀 candidates 判斷**「真的可教學的技術問題」（排除發布戲劇/迷因/情緒抒發/政策時事）；無合格題 → fallback 選一個常被問、未涵蓋的 Claude 功能做詳細介紹（查 `automation/state/covered-topics.json` 去重）。
+2. **雙 agent 合議**：並行 spawn 兩個 `claude-code-guide` 各自研究＋**對照官方文件查證**（docs.claude.com / code.claude.com）→ 合議「最穩」共識 brief（每點標 verified/unverified；查不到附網路他人解法當建議並註明）。
+3. **寫 spec**：共識 → `src/videos/_explainer/specs/current.json`（schema＝`_explainer/schema.ts`；cover＋outro 必有、正面語氣**不用「坑」**、標題/說明**不可含 `< >`**）。旁白冒出 ≥4 個新手術語 → 順手產 `current.glossary.json` 名詞小教室片尾（欄位規則見 [[video-glossary-handson-segments]]；**不做的日子把 terms/script 重設為空，兩檔必須存在**，否則會接到昨天的名詞段）。
+4. **VO**：`python3 automation/make-vo-spec.py src/videos/_explainer/specs/current.json current src/videos/_explainer/specs/current.vo.json`（有名詞段再對 `current.glossary.json` 生 `current-glossary`）。
+5. **算繪**：`python3 automation/render_daily.py`（做了名詞段改傳 `VF-DailyFull`）→ `out/vf-daily.mp4`＋`out/vf-daily-thumb.png`（自動抽幀縮圖），並自動歸檔 spec/vo/縮圖/**mp4** 到 `out/youtube-videos/<topic id>/`（防隔天覆蓋）。
+6. **QA（必跑，2026-07-11 起不再是可選）**：挑一個畫面靜止的 frame 跑 `node scripts/qa-video.mjs <comp> <frame> 8 out/vf-daily.mp4`，hold-diff 應接近全黑（YMAX≤4）；未過 → 診斷修復重算；修不了 → ledger 標 `qa_failed` 並照下面失敗通知回報。
+7. **GEO metadata 草稿（不上傳）**：title／description／tags 照 [[geo-first-publishing]]；description 含問答體＋官方文件出處＋`🔗 https://maxwu1981.github.io/Remotion/`＋#tags。做了名詞段的日子再加：章節時間戳多一行「名詞小教室」（起點秒數＝主片長度）＋ N 個名詞的「詞＋比喻＋白話定義」逐字列進描述。
+8. **記 ledger**：`automation/state/daily-runs.json` append `{date, topic, source_url, title, description, tags, video_path:"out/vf-daily.mp4", thumb_path:"out/vf-daily-thumb.png", status:"rendered_pending_review"}`；題目關鍵字加進 `covered-topics.json`。
+
+**到這裡停（2026-07-04 拍板「算繪完就停」）**——不上傳 YouTube、不主動通知；**只有失敗才** `python3 automation/notify_imessage.py "今日影片工廠失敗於步驟 X：<簡述>"` 並停止當天。老闆看過 `out/vf-daily.mp4` 親口說「**發今天的**」→ 走 `automation/ORCHESTRATOR.md` **runbook B**（上傳→轉公開→`npm run snapshot` 刷影片中心）。需要網路的指令原生執行（必要時停用沙盒）。維運速查（Mac 喚醒/預授權/疑難排解）見 `automation/CHEATSHEET.md`。
+
+---
+
+## A/B/C 起點共用（從這裡開始一樣；D 不進入本段）
 
 ### ③ 落永久檔（脫離每日輪替，B 起點適用；A 起點從零建檔）
 ```
