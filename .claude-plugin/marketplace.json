@@ -7,7 +7,7 @@
     {
       "name": "ai-wisdom-video",
       "source": "./plugins/ai-wisdom-video",
-      "description": "Ai-Wisdom 影片工廠技能包：/Max1 旗艦教學片、/makevideo 解說片、veo-reel AI 畫面片、visual-skills 分鏡方法論、/ship 收尾、commit-zh 繁中 commit。"
+      "description": "Ai-Wisdom 影片工廠技能包：/Max1 影片產線唯一入口（A 全新／B 工廠草稿／C 跟操長片／D 每日自動草稿）、veo-reel AI 畫面片、visual-skills 分鏡方法論、/ship 收尾、commit-zh 繁中 commit。"
     }
   ]
 }

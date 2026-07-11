@@ -7,8 +7,8 @@
 
 | 產線 | 觸發 | 畫面來源 | 對應 skill / runbook |
 |---|---|---|---|
-| **A. 每日影片工廠**（自動草稿） | 每天 06:00 排程 | `_explainer` 資料驅動模板（寫 JSON 不寫 code） | `automation/ORCHESTRATOR.md` runbook A；發布＝「發今天的」runbook B |
-| **B. 旗艦教學片**（人工精修） | 老闆點題或挑每日草稿升級 | 黑曜石模板 `ExplainerObsidian` 為主；要重建真實 UI 才手刻 | `/Max1`（兩種起點：全新題材／沿用工廠草稿）；`/makevideo`（舊版完整流程） |
+| **A. 每日影片工廠**（自動草稿） | 每天 06:00 排程 | `_explainer` 資料驅動模板（寫 JSON 不寫 code） | `/Max1` **D 起點**（無人值守；2026-07-11 併入，單一事實來源）；發布＝`automation/ORCHESTRATOR.md` runbook B |
+| **B. 旗艦教學片**（人工精修） | 老闆點題或挑每日草稿升級 | 黑曜石模板 `ExplainerObsidian` 為主；要重建真實 UI 才手刻 | `/Max1`（A 全新題材／B 沿用工廠草稿／C 跟操長片） |
 | **C. AI 生成畫面片** | 要 3D/實拍風角色場景（code 畫不出來） | Google Flow(Veo 3.1) 生 clip，Remotion 只串接 | `veo-reel` skill；分鏡寫法配 `visual-skills` |
 
 ## 標準流程（產線 B 為例，A/C 是它的子集/變體）
@@ -62,8 +62,7 @@
 
 | Skill | 用途 |
 |---|---|
-| `/Max1` | 旗艦黑曜石教學片一條龍（3 種起點：全新／工廠草稿／跟操長片） |
-| `/makevideo` | 解說片完整流程（搜題→查證→腳本→spec→配音→算繪→QA→封面→上傳） |
+| `/Max1` | 影片產線唯一入口（4 種起點：A 全新／B 工廠草稿／C 跟操長片／D 每日自動草稿）；舊 `/makevideo` 已於 2026-07-11 移除、功能全併入此 |
 | `veo-reel` | Flow(Veo) 生 clip → Remotion 串片 |
 | `visual-skills` | AI 影片提示詞/分鏡/運鏡方法論（寫 Veo prompt 前必讀） |
 | `/ship` | 收尾：lint/型別/測試 → 草擬繁中 commit |

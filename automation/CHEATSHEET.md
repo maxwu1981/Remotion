@@ -1,7 +1,8 @@
 # 每日影片工廠 — 維運速查卡
 
 > 自動：每天 06:00 從 Reddit+HN 找 Claude 痛點 → 雙 agent 合議解法 → 生成影片 → **算繪+QA 完就停**（不自動上傳、不主動通知；2026-07-04 拍板）。
-> 你本機看過 `out/vf-daily.mp4` 後說「**發今天的**」才上傳＋轉公開。完整規格：[`daily-video-factory-SPEC.md`](daily-video-factory-SPEC.md)；執行手冊：[`ORCHESTRATOR.md`](ORCHESTRATOR.md)。
+> 你本機看過 `out/vf-daily.mp4` 後說「**發今天的**」才上傳＋轉公開。
+> 建片流程單一事實來源：`.claude/skills/Max1/SKILL.md` 的「**D 起點**」；發布 runbook B：[`ORCHESTRATOR.md`](ORCHESTRATOR.md)。
 
 ---
 

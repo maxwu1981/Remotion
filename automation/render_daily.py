@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
 算繪今日影片：render VF-Daily（讀 current.json/current.vo.json）→ 出縮圖 → ffprobe 驗證
-→ 歸檔 spec/縮圖到 out/youtube-videos/<topic id>/（避免明天算繪覆寫 current.json 後，
-今天的縮圖/spec 就再也回不去；2026-07-06 教訓見記憶 claude-code-deep-dive-playlist）。
+→ 歸檔 spec/縮圖/mp4 到 out/youtube-videos/<topic id>/（避免明天算繪覆寫 current.json 與
+vf-daily.mp4 後，今天的成品就再也回不去；2026-07-06 教訓見記憶 claude-code-deep-dive-playlist，
+mp4 歸檔 2026-07-11 補）。
 orchestrator/cron 原生執行，不受 Bash 工具 10 分鐘上限。
 
 用法：python3 automation/render_daily.py [comp id，預設 VF-Daily；做了名詞小教室片尾就傳 VF-DailyFull]
@@ -31,11 +32,13 @@ def archive():
     shutil.copy2(SPEC, dest / "spec.json")
     shutil.copy2(VO, dest / "spec.vo.json")
     shutil.copy2(THUMB, dest / "thumb.png")
+    # mp4 也歸檔：out/vf-daily.mp4 每天被覆寫，老闆隔幾天才說「發」時要從這裡取
+    shutil.copy2(MP4, dest / f"{topic_id}.mp4")
     # 有做名詞小教室片尾（terms 非空）就一併歸檔，明天 reset current.glossary.json 後才回得去
     if GLOSSARY.exists() and json.loads(GLOSSARY.read_text()).get("terms"):
         shutil.copy2(GLOSSARY, dest / "spec.glossary.json")
         shutil.copy2(GLOSSARY_VO, dest / "spec.glossary.vo.json")
-    print(f"   歸檔：out/youtube-videos/{topic_id}/{{spec.json,spec.vo.json,thumb.png}}")
+    print(f"   歸檔：out/youtube-videos/{topic_id}/{{spec.json,spec.vo.json,thumb.png,{topic_id}.mp4}}")
 
 def warn_glossary_state():
     # 只警告不擋：名詞段 spec 比主片 spec 舊＝疑似昨天殘留（會接到昨天的卡+旁白）；terms 空＝會算成純主片
@@ -49,7 +52,8 @@ def warn_glossary_state():
 
 def main():
     warn_glossary_state()
-    run(["npx", "remotion", "render", COMP, str(MP4), "--concurrency=3", "--timeout=300000"])
+    run(["npx", "remotion", "render", COMP, str(MP4), "--concurrency=3", "--timeout=300000",
+         "--image-format=png", "--crf=15"])
     run(["npx", "remotion", "still", COMP, str(THUMB), "--frame=250"])
     dur = subprocess.check_output(
         ["ffprobe", "-v", "error", "-show_entries", "format=duration",
