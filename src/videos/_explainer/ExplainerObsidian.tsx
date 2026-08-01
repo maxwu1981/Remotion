@@ -535,6 +535,7 @@ const OutroScene: React.FC<{ block: Extract<SceneBlock, { type: "outro" }>; spec
         <div style={{ fontWeight: 800, fontSize: 96, color: ACC.ink }}>感謝 <span style={emberClip}>觀看</span>！</div>
         <div style={{ fontWeight: 600, fontSize: 40, color: ACC.inkSoft, marginTop: 14 }}>覺得有幫助，就用一個動作支持 👇</div>
         <div style={{ display: "flex", gap: 26, justifyContent: "center", marginTop: 44 }}>
+          {/* 三個動作並列呈現是刻意設計：鼓勵觀眾讚/訂閱/分享都做，不是暗示只能三選一 */}
           {([["👍", "按讚", ACC.mint], ["🔔", "訂閱", ACC.rose], ["🔗", "分享", ACC.signal]] as const).map(([e, t, c], i) => (
             <div key={i} style={{ ...darkCard(c, { r: 999, glow: 0.8 }), position: "relative", overflow: "hidden", padding: "18px 48px", display: "flex", alignItems: "center", gap: 14, opacity: fadeIn(f, 16 + i * 6, 12) }}>
               <Glare />
