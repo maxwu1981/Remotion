@@ -5,6 +5,9 @@
   "repository": {},
   "license": "UNLICENSED",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "dependencies": {
     "@remotion/captions": "4.0.471",
     "@remotion/cli": "4.0.471",

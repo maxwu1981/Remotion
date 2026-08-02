@@ -1,0 +1,12 @@
+# Remotion 影片產線的 Python 依賴。用法：
+#   python3 -m pip install -r requirements.txt --break-system-packages
+#   playwright install chromium
+#
+# 不要裝 torch / torchaudio / numpy / ChatTTS —— 只有 scripts/chattts-*.py
+# （廢棄的語音實驗）用得到，正式產線的配音走 edge-tts，這幾支腳本沒有被
+# package.json 任何 script 引用，是死程式碼。
+
+edge-tts>=7.2.8          # 配音（曉晴 zh-TW-HsiaoChenNeural），scripts/make-vo-*.mjs 用 subprocess 呼叫
+Pillow>=11.3.0            # 圖片處理：scripts/prep-hf-shots.py、scripts/verify-highlights-ocr.py
+playwright>=1.60.0        # 網頁截圖/自動化：scripts/capture-mattpocock-skills-shots.py
+opencc-python-reimplemented>=0.1.7   # 簡繁轉換：src/videos/resume-ai-apply/tools/gen-edl.py
