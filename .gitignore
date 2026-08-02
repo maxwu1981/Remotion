@@ -40,3 +40,15 @@ public/docreport/
 public/gemini/
 public/gemini-clips/
 public/aas-v2/
+public/resume-ai-apply/
+
+# 旅遊照片（跟影片產線無關，公開repo不該放）；改走 Google Drive + assets-manifest.json
+public/trips/
+
+# 未經隱私複核的原始截圖/錄影素材庫、第三方工具原始匯出備份；改走 Google Drive + assets-manifest.json
+# （這幾行跟 claude/design-taste-teaching-channel-fp52yh 分支重複，是刻意的：
+#  那個分支還沒合併進 main，這裡先擋著避免這個 branch 不小心把素材 commit 進去）
+public/claude-desktop-shots/
+public/flow-ss-shots/
+public/shot-library/
+src/videos/heibuli-vs-skull-king/ss-story-backup-*.json
