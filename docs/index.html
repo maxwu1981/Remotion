@@ -87,18 +87,67 @@
       "position": 1,
       "item": {
         "@type": "VideoObject",
+        "name": "Claude 長對話後半段規則突然失靈？真正原因是這個你擋不住的開關",
+        "description": "長對話跑到一半，你早就交代過的規則突然失效——不是 Claude 不聽話，是那張規則在中途被壓縮掉了，而且沒有人會自動把它撿回來。\n\n你按下 Enter 之後，Claude 背著你做的每一步，其實是固定的四段：\n① 開場就全讀，不比對任何條件——所以 CLAUDE.md 官方建議 200 行以內\n② rules 跟 skills 要對上條件才醒來——一個認你開的檔案、一個認你說的話，你一個路徑都不用講\n③ 每動一次手（開檔、改檔、跑指令）前後都過閘門，不是收尾才抽查一次\n④ 工作記憶滿了會自動壓縮——這個開關你擋不住，而壓完只有根目錄的 CLAUDE.md 會自己回來\n\n還有一個坑：hook 要回傳代號 2 才真的擋得住。網路上寫「",
+        "thumbnailUrl": "https://i.ytimg.com/vi/11cvVyyIGGw/mqdefault.jpg",
+        "uploadDate": "2026-08-18T06:19:10Z",
+        "url": "https://www.youtube.com/watch?v=11cvVyyIGGw",
+        "embedUrl": "https://www.youtube.com/embed/11cvVyyIGGw",
+        "duration": "PT1M17S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 5
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@type": "VideoObject",
+        "name": "你按下 Enter 之後，Claude 背著你做的每一步：3 道閘門、9 個位置、1 個擋不住的開關",
+        "description": "你按下 Enter 之後，Claude 到底先做了什麼，你完全看不到——直到它把答案吐出來，或者你設定的規則突然「沒生效」。這支影片把那段黑箱，一步一步拆開給你看。\n\n■ 這支影片會回答你什麼？\n\nQ：Claude 讀你交代的話，是一開對話全部讀一遍，還是講到才去翻？\nA：兩種都不對。有一批檔案（CLAUDE.md、Instructions 等）是你一個字都還沒打就已經整批塞進去的；另外還有 skills、rules、自動記憶三個機制，各自在不同時機比對不同的東西——訊息送出那一刻、開檔那一刻、跟著任務走。\n\nQ：CLAUDE.md 裡是不是有關鍵字比對，訊息提到某個字它才去讀？\nA：完全沒有這回事。CLAUDE.md 不比對任何東",
+        "thumbnailUrl": "https://i.ytimg.com/vi/wL697c6dllA/mqdefault.jpg",
+        "uploadDate": "2026-08-18T03:50:07Z",
+        "url": "https://www.youtube.com/watch?v=wL697c6dllA",
+        "embedUrl": "https://www.youtube.com/embed/wL697c6dllA",
+        "duration": "PT12M34S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 2
+        }
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@type": "VideoObject",
         "name": "你交代過的話，Claude 為什麼裝沒聽到？8 個記憶位置一次搞懂，95% 的人放錯地方",
         "description": "你跟 Claude 說「回覆用繁體中文」，隔天開一個新對話，它又給你滿螢幕英文。不是它笨，也不是你講得不夠清楚——是那句話，你寫錯了地方。\n\nClaude 能「記得」你交代的話的位置一共有八個，而大多數人只用過其中一個。這支影片把八個位置一次講透：條件只有兩層——你人在哪（聊天、Cowork、還是 Claude Code）、以及它什麼時候被讀（每次都讀，還是要有事發生才讀）。搞懂這兩層，你就知道每句話該放哪。\n\n\n■ 這支影片會回答你什麼？\n\nQ：Claude 為什麼每次都忘記我交代過的事？\nA：因為它每開一個新對話就是一次失憶，前一個對話一句都帶不過來。它唯一能「記得」的，是每次對話開始時被塞進去的那些檔案。位置一共八個，條件兩層",
         "thumbnailUrl": "https://i.ytimg.com/vi/t1TB-04_CXY/mqdefault.jpg",
         "uploadDate": "2026-08-16T01:12:36Z",
         "url": "https://www.youtube.com/watch?v=t1TB-04_CXY",
         "embedUrl": "https://www.youtube.com/embed/t1TB-04_CXY",
-        "duration": "PT40M56S"
+        "duration": "PT40M56S",
+        "interactionStatistic": {
+          "@type": "InteractionCounter",
+          "interactionType": {
+            "@type": "WatchAction"
+          },
+          "userInteractionCount": 25
+        }
       }
     },
     {
       "@type": "ListItem",
-      "position": 2,
+      "position": 4,
       "item": {
         "@type": "VideoObject",
         "name": "我只把會議記錄整份貼上，甘特圖自己改好了｜Google 試算表側欄的 AI",
@@ -113,13 +162,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 10
+          "userInteractionCount": 11
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 3,
+      "position": 5,
       "item": {
         "@type": "VideoObject",
         "name": "開完會再也不用手動改時程表：把會議記錄整份貼給 AI，它自己更新甘特圖｜Google 試算表免外掛｜7 個關鍵設定",
@@ -134,13 +183,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 3
+          "userInteractionCount": 8
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 4,
+      "position": 6,
       "item": {
         "@type": "VideoObject",
         "name": "我只打了一句話，整張表自己長出來｜Google 試算表藏著的 AI 側欄",
@@ -155,13 +204,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 18
+          "userInteractionCount": 19
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 5,
+      "position": 7,
       "item": {
         "@type": "VideoObject",
         "name": "別再浪費幾小時：Google 試算表裡 6 個把你整週工作自動化的秘密 AI 功能",
@@ -176,13 +225,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 48
+          "userInteractionCount": 50
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 8,
       "item": {
         "@type": "VideoObject",
         "name": "連點兩下 Option，Claude 從任何 App 直接浮出來｜95% 的人沒打開過的設定",
@@ -197,13 +246,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 18
+          "userInteractionCount": 22
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 9,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全教學 (下集)！這 13 個功能藏在設定裡，95% 的人沒打開過——16 頁設定我幫你全點過一遍｜無痕對話｜三層記憶｜語音叫工具｜連點兩下 Option",
@@ -218,13 +267,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 24
+          "userInteractionCount": 28
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 10,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全教學 (上集)！這 16 個角落 95% 的人沒點開過——同一個選單，Chat 跟 Code 給的功能完全不一樣｜倒帶重來｜分支對話｜雙欄並看",
@@ -239,13 +288,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 57
+          "userInteractionCount": 62
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 11,
       "item": {
         "@type": "VideoObject",
         "name": "別再複製貼上寫開發信:用 Claude 把 LinkedIn 人脈變成會自己寫信的 Notion 資料庫(不寫程式全教學)",
@@ -260,13 +309,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 9
+          "userInteractionCount": 10
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 12,
       "item": {
         "@type": "VideoObject",
         "name": "Git commit 跟 push 到底是什麼？不是 Claude 指令，新手看完就懂版本控制入門",
@@ -287,7 +336,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 13,
       "item": {
         "@type": "VideoObject",
         "name": "你的 Claude 桌面版藏著 15+ 個工具沒打開過——Connectors 連接器市集完整教學｜真實接上 Notion 示範",
@@ -302,13 +351,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 4
+          "userInteractionCount": 8
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 14,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 手機遙控：出門任務卡住怎麼辦？QR code 一掃秒接手（4 步驟＋安全模型全解析）",
@@ -323,13 +372,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 25
+          "userInteractionCount": 28
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 15,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 對話接不回來？一句 --continue 秒接昨天進度（分支＋命名找歷史全教學）",
@@ -344,13 +393,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 30
+          "userInteractionCount": 34
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 16,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版 Code 分頁教學：非工程師也能自己開 PR（附五種許可模式全解析）",
@@ -365,13 +414,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 69
+          "userInteractionCount": 72
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 17,
       "item": {
         "@type": "VideoObject",
         "name": "零基礎看懂 GitHub：Star、Fork、PR 是什麼？Vibe Coding 時代必備基本功",
@@ -386,13 +435,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 89
+          "userInteractionCount": 91
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 18,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP12｜Design 設計功能完全教學：不會設計軟體也能一句話生出簡報、線框、真網站",
@@ -407,13 +456,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 101
+          "userInteractionCount": 102
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 19,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP11｜Plugins 外掛完全教學：兩套系統一次搞懂，不再走冤枉路",
@@ -428,13 +477,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 54
+          "userInteractionCount": 58
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 20,
       "item": {
         "@type": "VideoObject",
         "name": "別讓 AI 自己在瞎搞：18 萬人在用的 grill-me，讓 Claude 動工前先烤問你",
@@ -449,13 +498,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 163
+          "userInteractionCount": 173
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 21,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP10｜讓 Claude 讀信箱查行事曆動電腦",
@@ -470,13 +519,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 64
+          "userInteractionCount": 65
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 22,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP08｜排程設好卻叫不動？因為每次執行都是「不同的 session」——改排程的兩條正路",
@@ -491,13 +540,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 17
+          "userInteractionCount": 18
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 23,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP09｜用手機遙控你的電腦：Cowork／Code／Dispatch 三支遙控器＋Remote Control 完整教學",
@@ -512,13 +561,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 174
+          "userInteractionCount": 194
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 24,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP07｜Claude 做出來的東西存哪裡？Artifacts 作品櫃完整教學：怎麼改、怎麼分享出去",
@@ -533,13 +582,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 37
+          "userInteractionCount": 39
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 25,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP06｜每次都要跟 Claude 重講一遍背景？用 Projects 專案，它永遠記得你做到哪",
@@ -554,13 +603,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 15
+          "userInteractionCount": 16
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 26,
       "item": {
         "@type": "VideoObject",
         "name": "換對話 Claude 就失憶？把它收進專案就好",
@@ -581,7 +630,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 27,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 用 @ 精準點名檔案:別再文字描述哪個檔｜3 步驟＋@ 能指到的 3 種東西(對照官方文件)",
@@ -602,7 +651,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 28,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 用 @ 秒選檔案,別再打字描述! #Shorts",
@@ -623,7 +672,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 29,
       "item": {
         "@type": "VideoObject",
         "name": "會議錄音分不清誰在講話？免費 AI 一次幫你標出來 #Shorts",
@@ -644,7 +693,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 30,
       "item": {
         "@type": "VideoObject",
         "name": "貼一段故事,AI 自動生出 27 格分鏡?Google Flow Storyboard Studio 真實操作全記錄",
@@ -659,13 +708,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 156
+          "userInteractionCount": 158
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 29,
+      "position": 31,
       "item": {
         "@type": "VideoObject",
         "name": "不用剪輯軟體，一篇文章怎麼自動變成解說影片？#Shorts",
@@ -686,7 +735,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 30,
+      "position": 32,
       "item": {
         "@type": "VideoObject",
         "name": "申請 API 當天被拒，我怎麼讓 Pinterest 自動幫我賣畫？#Shorts",
@@ -707,7 +756,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 31,
+      "position": 33,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP05｜設定完全解析：15 個分頁全部打開給你看，連 Memory 記憶怎麼設定都講清楚",
@@ -722,13 +771,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 124
+          "userInteractionCount": 128
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 32,
+      "position": 34,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版設定頁 15 分頁全打開：Memory 記憶兩個關鍵開關",
@@ -749,7 +798,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 33,
+      "position": 35,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP04｜這 20 個 Skills 我每天在用：從做簡報、生圖表到排程自動跑，逐顆實際操作給你看",
@@ -764,13 +813,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 59
+          "userInteractionCount": 63
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 34,
+      "position": 36,
       "item": {
         "@type": "VideoObject",
         "name": "發 FB 的同一把 Token，怎麼讓 IG 也每天自動發？#Shorts",
@@ -785,13 +834,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 18
+          "userInteractionCount": 20
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 35,
+      "position": 37,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 官方 20 個 Skills:教它一次,永遠記得(打一個 / 就能叫)",
@@ -812,7 +861,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 36,
+      "position": 38,
       "item": {
         "@type": "VideoObject",
         "name": "手動發小紅書要 40 分，這套一句指令 3 分鐘發完 #Shorts",
@@ -833,7 +882,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 37,
+      "position": 39,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP03｜桌面版 10 大快捷鍵排行榜:記住 Cmd+/ 等於全部背下來(附完整速查表)",
@@ -848,13 +897,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 35
+          "userInteractionCount": 37
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 38,
+      "position": 40,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版快捷鍵前 3 名:記住 Cmd+/ 等於全部背下來",
@@ -875,7 +924,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 39,
+      "position": 41,
       "item": {
         "@type": "VideoObject",
         "name": "我只對 Claude 說一句「上傳」，60 秒後 YouTube 連結就回來了 #Shorts",
@@ -896,7 +945,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 40,
+      "position": 42,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP02｜Cowork 實戰:一句話讓 Claude 整理好你的亂資料夾(全程真實示範)",
@@ -911,13 +960,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 121
+          "userInteractionCount": 127
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 41,
+      "position": 43,
       "item": {
         "@type": "VideoObject",
         "name": "一句話讓 Claude 整理好你的亂資料夾:Cowork 三步實戰",
@@ -938,7 +987,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 42,
+      "position": 44,
       "item": {
         "@type": "VideoObject",
         "name": "丟一份舊履歷給 Claude，回來 LinkedIn 已經全自動翻新好了 #Shorts",
@@ -959,7 +1008,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 43,
+      "position": 45,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版完全手冊 EP01｜首頁介面逐符號全解:28 個按鈕一次看懂(新手保姆級導覽)",
@@ -974,13 +1023,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 121
+          "userInteractionCount": 127
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 44,
+      "position": 46,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版這 3 個隱藏功能,多數人從沒點開過",
@@ -1001,7 +1050,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 45,
+      "position": 47,
       "item": {
         "@type": "VideoObject",
         "name": "第一次開蝦皮店？8 步從註冊到上架第一件商品，每步一句話 #Shorts",
@@ -1016,13 +1065,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 25
+          "userInteractionCount": 26
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 46,
+      "position": 48,
       "item": {
         "@type": "VideoObject",
         "name": "我叫 Claude 帶我開蝦皮店：8 步從註冊到上架第一件商品，每步一句話搞定｜生活應用 EP10",
@@ -1037,13 +1086,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 43
+          "userInteractionCount": 45
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 47,
+      "position": 49,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 模型怎麼選？Fable、Opus、Sonnet、Haiku 官方分工一次懂｜選對額度差 10 倍",
@@ -1064,7 +1113,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 48,
+      "position": 50,
       "item": {
         "@type": "VideoObject",
         "name": "我讓 AI 聽出會議裡「誰在說話」：Hugging Face 從註冊到實測完整教學（免費 pyannote 模型）｜生活應用 EP09",
@@ -1085,7 +1134,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 49,
+      "position": 51,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 新功能 Reflect 怎麼用？先開 Memory 才看得到，報告 4 大區塊完整解析",
@@ -1106,7 +1155,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 50,
+      "position": 52,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 設定檔跨電腦同步教學：用 GNU Stow dotfiles 一行指令搞定（含安全提醒）",
@@ -1121,13 +1170,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 237
+          "userInteractionCount": 238
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 51,
+      "position": 53,
       "item": {
         "@type": "VideoObject",
         "name": "dotfiles？symlink？7 個 Claude Code 設定名詞，搬家比喻一次搞懂",
@@ -1148,7 +1197,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 52,
+      "position": 54,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code Agent View 背景代理教學：同時開好幾個任務不用一直盯著（對照官方文件）",
@@ -1163,13 +1212,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 38
+          "userInteractionCount": 41
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 53,
+      "position": 55,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code CLAUDE.md 怎麼寫最有效？官方四層位置 + 四原則全解析（含 /init 實測）",
@@ -1190,7 +1239,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 54,
+      "position": 56,
       "item": {
         "@type": "VideoObject",
         "name": "上架一件商品，一句話 3 分鐘搞定 #Shorts｜Shopify × Claude AI（生活應用系列）",
@@ -1205,13 +1254,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 38
+          "userInteractionCount": 37
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 55,
+      "position": 57,
       "item": {
         "@type": "VideoObject",
         "name": "我讓 Claude 幫我上架 Shopify 商品：一句話 3 分鐘搞定（手動要 30 分）｜防超賣＋GEO 結構全教學｜生活應用 EP08",
@@ -1232,7 +1281,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 56,
+      "position": 58,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code Plan Mode 完整教學：先看計畫、一次決定，終結核准按到手軟（對照官方文件）",
@@ -1253,7 +1302,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 57,
+      "position": 59,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code Subagent 子代理完整教學：並行省一半時間、worktree 隔離、3 種啟動方式（含本片實測幕後）",
@@ -1268,13 +1317,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 73
+          "userInteractionCount": 75
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 58,
+      "position": 60,
       "item": {
         "@type": "VideoObject",
         "name": "我讓 Instagram 也每天自動發文，沿用發 FB 的同一把 Token｜Meta 官方 API 免月費全教學｜生活應用 EP05",
@@ -1289,13 +1338,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 280
+          "userInteractionCount": 282
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 59,
+      "position": 61,
       "item": {
         "@type": "VideoObject",
         "name": "FB 每天自動發文，40 天沒碰鍵盤 🤖 一句 prompt 搞定 #Shorts",
@@ -1316,7 +1365,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 60,
+      "position": 62,
       "item": {
         "@type": "VideoObject",
         "name": "我讓 Facebook 每天自動發文，40 天沒碰鍵盤｜Graph API 免月費串接全教學｜生活應用 EP04",
@@ -1331,13 +1380,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 58
+          "userInteractionCount": 59
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 61,
+      "position": 63,
       "item": {
         "@type": "VideoObject",
         "name": "我叫 Claude Code 自動發小紅書：一句指令 3 分鐘發完（手動 40 分）｜防封＋章節全自動｜生活應用 EP03",
@@ -1352,13 +1401,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 58
+          "userInteractionCount": 59
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 62,
+      "position": 64,
       "item": {
         "@type": "VideoObject",
         "name": "不用剪輯軟體！教你用 Claude + Remotion 把文章自動變成解說影片（6 個 prompt 全流程）｜生活應用 EP07",
@@ -1373,13 +1422,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 97
+          "userInteractionCount": 96
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 63,
+      "position": 65,
       "item": {
         "@type": "VideoObject",
         "name": "我讓 Pinterest 自動幫我賣畫：官方 API 從「申請當天被拒」到通關，33 張 Pin 鋪滿看板｜生活應用 EP06",
@@ -1400,7 +1449,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 64,
+      "position": 66,
       "item": {
         "@type": "VideoObject",
         "name": "5 分鐘設定，之後叫 Claude 一句話自動上傳 YouTube｜YouTube Data API + OAuth 完整教學（3 大坑全解）｜生活應用 EP02",
@@ -1421,7 +1470,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 65,
+      "position": 67,
       "item": {
         "@type": "VideoObject",
         "name": "用 Claude 自動翻新整個 LinkedIn｜技能 2→24、經歷 1→3｜生活應用 EP01",
@@ -1436,13 +1485,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 54
+          "userInteractionCount": 52
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 66,
+      "position": 68,
       "item": {
         "@type": "VideoObject",
         "name": "EP05｜用萬能鑰匙讓你明白密碼安全（密碼管理器＋兩步驗證）",
@@ -1463,7 +1512,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 67,
+      "position": 69,
       "item": {
         "@type": "VideoObject",
         "name": "EP04｜用門口保安讓你明白 CAPTCHA（人機驗證）",
@@ -1484,7 +1533,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 68,
+      "position": 70,
       "item": {
         "@type": "VideoObject",
         "name": "EP06｜AI 讀檔案慢 100 倍?本機路徑 vs Google Drive 實測——Claude Code 親口說「本機完勝」",
@@ -1505,7 +1554,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 69,
+      "position": 71,
       "item": {
         "@type": "VideoObject",
         "name": "EP03｜用洗衣廠後門鑰匙讓你明白 API key",
@@ -1526,7 +1575,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 70,
+      "position": 72,
       "item": {
         "@type": "VideoObject",
         "name": "EP02｜用旅館房卡讓你明白 access token（OAuth 授權）",
@@ -1547,7 +1596,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 71,
+      "position": 73,
       "item": {
         "@type": "VideoObject",
         "name": "把密碼交給 AI 安全嗎？一支旅館故事看懂帳號授權安全：access token・API key・CAPTCHA・密碼",
@@ -1568,7 +1617,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 72,
+      "position": 74,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 自訂指令 slash commands：別再天天重貼 prompt，一個 /指令搞定（建檔・範圍・參數・frontmatter，對照官方文件）",
@@ -1589,7 +1638,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 73,
+      "position": 75,
       "item": {
         "@type": "VideoObject",
         "name": "EP01｜用廚房故事讓你明白 Git & Linter & Test",
@@ -1604,13 +1653,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 22
+          "userInteractionCount": 23
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 74,
+      "position": 76,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 這 6 招就夠 #Shorts｜Skills・Subagents・MCP・Hooks・Slash・Plan Mode",
@@ -1625,13 +1674,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 43
+          "userInteractionCount": 44
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 75,
+      "position": 77,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 這 6 招就夠：Skills・Subagents・MCP・Hooks・Slash Commands・Plan Mode 一次學會",
@@ -1652,7 +1701,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 76,
+      "position": 78,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 本地 vs 雲端一張圖搞懂：容器·沙盒·Cowork·Dispatch 的記憶與檔案怎麼共存",
@@ -1667,13 +1716,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 27
+          "userInteractionCount": 28
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 77,
+      "position": 79,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）",
@@ -1688,13 +1737,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 18
+          "userInteractionCount": 19
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 78,
+      "position": 80,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 一直自動壓縮、卡在快滿？4 招穩穩解（Autocompact thrashing）",
@@ -1709,13 +1758,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 18
+          "userInteractionCount": 19
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 79,
+      "position": 81,
       "item": {
         "@type": "VideoObject",
         "name": "Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）、安裝與換機備份一次搞懂｜繁中教學",
@@ -1730,13 +1779,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 335
+          "userInteractionCount": 343
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 80,
+      "position": 82,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code Skills 實戰：讓 AI 穩定產出的 4 個關鍵（SKILL.md 怎麼寫）",
@@ -1757,7 +1806,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 81,
+      "position": 83,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 安裝經驗：我終於搞懂的 4 個關鍵（含 command not found 解法）",
@@ -1778,7 +1827,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 82,
+      "position": 84,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 手機／遠端全解析（直式手機版）｜記憶、CLAUDE.md、容器、沙盒與 Dispatch（繁中）",
@@ -1799,7 +1848,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 83,
+      "position": 85,
       "item": {
         "@type": "VideoObject",
         "name": "Claude Code 手機／遠端全解析｜記憶、CLAUDE.md、容器、沙盒與 Dispatch 一次看懂（繁中教學）",
@@ -1820,7 +1869,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 84,
+      "position": 86,
       "item": {
         "@type": "VideoObject",
         "name": "用 Remotion × Claude 打造全自動每日影片產線｜ai-daily-recap 完整教學（繁中）",
@@ -1841,7 +1890,7 @@
     },
     {
       "@type": "ListItem",
-      "position": 85,
+      "position": 87,
       "item": {
         "@type": "VideoObject",
         "name": "MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂 🔌 #Shorts",
@@ -1856,13 +1905,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 88
+          "userInteractionCount": 91
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 86,
+      "position": 88,
       "item": {
         "@type": "VideoObject",
         "name": "MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂｜MCP vs API Explained",
@@ -1877,13 +1926,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 62
+          "userInteractionCount": 69
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 87,
+      "position": 89,
       "item": {
         "@type": "VideoObject",
         "name": "Best AI Voice in 2025: ElevenLabs vs ChatTTS vs OpenAI vs Edge-TTS (Ranked)",
@@ -1898,13 +1947,13 @@
           "interactionType": {
             "@type": "WatchAction"
           },
-          "userInteractionCount": 119
+          "userInteractionCount": 122
         }
       }
     },
     {
       "@type": "ListItem",
-      "position": 88,
+      "position": 90,
       "item": {
         "@type": "VideoObject",
         "name": "Fully Automated AI Video Production Line | Cut, Re-voice & Render with Code (Remotion + OpenAI)",
@@ -1982,7 +2031,33 @@
     <div id="status" class="status"></div>
     <section id="grid" class="grid" aria-live="polite">
       <!-- SNAPSHOT:GRID:START -->
-      <!-- 自動產生於 2026-08-16T01:13:37.598Z，共 88 支；勿手動編輯，改跑 npm run snapshot -->
+      <!-- 自動產生於 2026-08-18T15:00:08.462Z，共 90 支；勿手動編輯，改跑 npm run snapshot -->
+      <a class="card" href="https://www.youtube.com/watch?v=11cvVyyIGGw" target="_blank" rel="noopener" data-id="11cvVyyIGGw" data-title="Claude 長對話後半段規則突然失靈？真正原因是這個你擋不住的開關">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/11cvVyyIGGw/mqdefault.jpg" alt="Claude 長對話後半段規則突然失靈？真正原因是這個你擋不住的開關" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Claude 長對話後半段規則突然失靈？真正原因是這個你擋不住的開關</h3>
+          <div class="card__meta">
+          <span>2026/08/18</span>
+          <span>5 次觀看</span>
+          </div>
+        </div>
+      </a>
+      <a class="card" href="https://www.youtube.com/watch?v=wL697c6dllA" target="_blank" rel="noopener" data-id="wL697c6dllA" data-title="你按下 Enter 之後，Claude 背著你做的每一步：3 道閘門、9 個位置、1 個擋不住的開關">
+        <div class="card__thumbwrap">
+          <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/wL697c6dllA/mqdefault.jpg" alt="你按下 Enter 之後，Claude 背著你做的每一步：3 道閘門、9 個位置、1 個擋不住的開關" />
+          <div class="card__play"><span>▶</span></div>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">你按下 Enter 之後，Claude 背著你做的每一步：3 道閘門、9 個位置、1 個擋不住的開關</h3>
+          <div class="card__meta">
+          <span>2026/08/18</span>
+          <span>2 次觀看</span>
+          </div>
+        </div>
+      </a>
       <a class="card" href="https://www.youtube.com/watch?v=t1TB-04_CXY" target="_blank" rel="noopener" data-id="t1TB-04_CXY" data-title="你交代過的話，Claude 為什麼裝沒聽到？8 個記憶位置一次搞懂，95% 的人放錯地方">
         <div class="card__thumbwrap">
           <img class="card__thumb" loading="lazy" src="https://i.ytimg.com/vi/t1TB-04_CXY/mqdefault.jpg" alt="你交代過的話，Claude 為什麼裝沒聽到？8 個記憶位置一次搞懂，95% 的人放錯地方" />
@@ -1992,6 +2067,7 @@
           <h3 class="card__title">你交代過的話，Claude 為什麼裝沒聽到？8 個記憶位置一次搞懂，95% 的人放錯地方</h3>
           <div class="card__meta">
           <span>2026/08/16</span>
+          <span>25 次觀看</span>
           </div>
         </div>
       </a>
@@ -2004,7 +2080,7 @@
           <h3 class="card__title">我只把會議記錄整份貼上，甘特圖自己改好了｜Google 試算表側欄的 AI</h3>
           <div class="card__meta">
           <span>2026/08/12</span>
-          <span>10 次觀看</span>
+          <span>11 次觀看</span>
           </div>
         </div>
       </a>
@@ -2017,7 +2093,7 @@
           <h3 class="card__title">開完會再也不用手動改時程表：把會議記錄整份貼給 AI，它自己更新甘特圖｜Google 試算表免外掛｜7 個關鍵設定</h3>
           <div class="card__meta">
           <span>2026/08/12</span>
-          <span>3 次觀看</span>
+          <span>8 次觀看</span>
           </div>
         </div>
       </a>
@@ -2030,7 +2106,7 @@
           <h3 class="card__title">我只打了一句話，整張表自己長出來｜Google 試算表藏著的 AI 側欄</h3>
           <div class="card__meta">
           <span>2026/08/11</span>
-          <span>18 次觀看</span>
+          <span>19 次觀看</span>
           </div>
         </div>
       </a>
@@ -2043,7 +2119,7 @@
           <h3 class="card__title">別再浪費幾小時：Google 試算表裡 6 個把你整週工作自動化的秘密 AI 功能</h3>
           <div class="card__meta">
           <span>2026/08/11</span>
-          <span>48 次觀看</span>
+          <span>50 次觀看</span>
           </div>
         </div>
       </a>
@@ -2056,7 +2132,7 @@
           <h3 class="card__title">連點兩下 Option，Claude 從任何 App 直接浮出來｜95% 的人沒打開過的設定</h3>
           <div class="card__meta">
           <span>2026/08/10</span>
-          <span>18 次觀看</span>
+          <span>22 次觀看</span>
           </div>
         </div>
       </a>
@@ -2069,7 +2145,7 @@
           <h3 class="card__title">Claude 桌面版完全教學 (下集)！這 13 個功能藏在設定裡，95% 的人沒打開過——16 頁設定我幫你全點過一遍｜無痕對話｜三層記憶｜語音叫工具｜連點兩下 Option</h3>
           <div class="card__meta">
           <span>2026/08/10</span>
-          <span>24 次觀看</span>
+          <span>28 次觀看</span>
           </div>
         </div>
       </a>
@@ -2082,7 +2158,7 @@
           <h3 class="card__title">Claude 桌面版完全教學 (上集)！這 16 個角落 95% 的人沒點開過——同一個選單，Chat 跟 Code 給的功能完全不一樣｜倒帶重來｜分支對話｜雙欄並看</h3>
           <div class="card__meta">
           <span>2026/08/09</span>
-          <span>57 次觀看</span>
+          <span>62 次觀看</span>
           </div>
         </div>
       </a>
@@ -2095,7 +2171,7 @@
           <h3 class="card__title">別再複製貼上寫開發信:用 Claude 把 LinkedIn 人脈變成會自己寫信的 Notion 資料庫(不寫程式全教學)</h3>
           <div class="card__meta">
           <span>2026/08/07</span>
-          <span>9 次觀看</span>
+          <span>10 次觀看</span>
           </div>
         </div>
       </a>
@@ -2121,7 +2197,7 @@
           <h3 class="card__title">你的 Claude 桌面版藏著 15+ 個工具沒打開過——Connectors 連接器市集完整教學｜真實接上 Notion 示範</h3>
           <div class="card__meta">
           <span>2026/08/05</span>
-          <span>4 次觀看</span>
+          <span>8 次觀看</span>
           </div>
         </div>
       </a>
@@ -2134,7 +2210,7 @@
           <h3 class="card__title">Claude Code 手機遙控：出門任務卡住怎麼辦？QR code 一掃秒接手（4 步驟＋安全模型全解析）</h3>
           <div class="card__meta">
           <span>2026/08/04</span>
-          <span>25 次觀看</span>
+          <span>28 次觀看</span>
           </div>
         </div>
       </a>
@@ -2147,7 +2223,7 @@
           <h3 class="card__title">Claude Code 對話接不回來？一句 --continue 秒接昨天進度（分支＋命名找歷史全教學）</h3>
           <div class="card__meta">
           <span>2026/08/03</span>
-          <span>30 次觀看</span>
+          <span>34 次觀看</span>
           </div>
         </div>
       </a>
@@ -2160,7 +2236,7 @@
           <h3 class="card__title">Claude 桌面版 Code 分頁教學：非工程師也能自己開 PR（附五種許可模式全解析）</h3>
           <div class="card__meta">
           <span>2026/08/02</span>
-          <span>69 次觀看</span>
+          <span>72 次觀看</span>
           </div>
         </div>
       </a>
@@ -2173,7 +2249,7 @@
           <h3 class="card__title">零基礎看懂 GitHub：Star、Fork、PR 是什麼？Vibe Coding 時代必備基本功</h3>
           <div class="card__meta">
           <span>2026/08/01</span>
-          <span>89 次觀看</span>
+          <span>91 次觀看</span>
           </div>
         </div>
       </a>
@@ -2186,7 +2262,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP12｜Design 設計功能完全教學：不會設計軟體也能一句話生出簡報、線框、真網站</h3>
           <div class="card__meta">
           <span>2026/07/30</span>
-          <span>101 次觀看</span>
+          <span>102 次觀看</span>
           </div>
         </div>
       </a>
@@ -2199,7 +2275,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP11｜Plugins 外掛完全教學：兩套系統一次搞懂，不再走冤枉路</h3>
           <div class="card__meta">
           <span>2026/07/29</span>
-          <span>54 次觀看</span>
+          <span>58 次觀看</span>
           </div>
         </div>
       </a>
@@ -2212,7 +2288,7 @@
           <h3 class="card__title">別讓 AI 自己在瞎搞：18 萬人在用的 grill-me，讓 Claude 動工前先烤問你</h3>
           <div class="card__meta">
           <span>2026/07/28</span>
-          <span>163 次觀看</span>
+          <span>173 次觀看</span>
           </div>
         </div>
       </a>
@@ -2225,7 +2301,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP10｜讓 Claude 讀信箱查行事曆動電腦</h3>
           <div class="card__meta">
           <span>2026/07/28</span>
-          <span>64 次觀看</span>
+          <span>65 次觀看</span>
           </div>
         </div>
       </a>
@@ -2238,7 +2314,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP08｜排程設好卻叫不動？因為每次執行都是「不同的 session」——改排程的兩條正路</h3>
           <div class="card__meta">
           <span>2026/07/27</span>
-          <span>17 次觀看</span>
+          <span>18 次觀看</span>
           </div>
         </div>
       </a>
@@ -2251,7 +2327,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP09｜用手機遙控你的電腦：Cowork／Code／Dispatch 三支遙控器＋Remote Control 完整教學</h3>
           <div class="card__meta">
           <span>2026/07/26</span>
-          <span>174 次觀看</span>
+          <span>194 次觀看</span>
           </div>
         </div>
       </a>
@@ -2264,7 +2340,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP07｜Claude 做出來的東西存哪裡？Artifacts 作品櫃完整教學：怎麼改、怎麼分享出去</h3>
           <div class="card__meta">
           <span>2026/07/25</span>
-          <span>37 次觀看</span>
+          <span>39 次觀看</span>
           </div>
         </div>
       </a>
@@ -2277,7 +2353,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP06｜每次都要跟 Claude 重講一遍背景？用 Projects 專案，它永遠記得你做到哪</h3>
           <div class="card__meta">
           <span>2026/07/24</span>
-          <span>15 次觀看</span>
+          <span>16 次觀看</span>
           </div>
         </div>
       </a>
@@ -2342,7 +2418,7 @@
           <h3 class="card__title">貼一段故事,AI 自動生出 27 格分鏡?Google Flow Storyboard Studio 真實操作全記錄</h3>
           <div class="card__meta">
           <span>2026/07/21</span>
-          <span>156 次觀看</span>
+          <span>158 次觀看</span>
           </div>
         </div>
       </a>
@@ -2381,7 +2457,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP05｜設定完全解析：15 個分頁全部打開給你看，連 Memory 記憶怎麼設定都講清楚</h3>
           <div class="card__meta">
           <span>2026/07/20</span>
-          <span>124 次觀看</span>
+          <span>128 次觀看</span>
           </div>
         </div>
       </a>
@@ -2407,7 +2483,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP04｜這 20 個 Skills 我每天在用：從做簡報、生圖表到排程自動跑，逐顆實際操作給你看</h3>
           <div class="card__meta">
           <span>2026/07/19</span>
-          <span>59 次觀看</span>
+          <span>63 次觀看</span>
           </div>
         </div>
       </a>
@@ -2420,7 +2496,7 @@
           <h3 class="card__title">發 FB 的同一把 Token，怎麼讓 IG 也每天自動發？#Shorts</h3>
           <div class="card__meta">
           <span>2026/07/19</span>
-          <span>18 次觀看</span>
+          <span>20 次觀看</span>
           </div>
         </div>
       </a>
@@ -2459,7 +2535,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP03｜桌面版 10 大快捷鍵排行榜:記住 Cmd+/ 等於全部背下來(附完整速查表)</h3>
           <div class="card__meta">
           <span>2026/07/18</span>
-          <span>35 次觀看</span>
+          <span>37 次觀看</span>
           </div>
         </div>
       </a>
@@ -2498,7 +2574,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP02｜Cowork 實戰:一句話讓 Claude 整理好你的亂資料夾(全程真實示範)</h3>
           <div class="card__meta">
           <span>2026/07/17</span>
-          <span>121 次觀看</span>
+          <span>127 次觀看</span>
           </div>
         </div>
       </a>
@@ -2537,7 +2613,7 @@
           <h3 class="card__title">Claude 桌面版完全手冊 EP01｜首頁介面逐符號全解:28 個按鈕一次看懂(新手保姆級導覽)</h3>
           <div class="card__meta">
           <span>2026/07/16</span>
-          <span>121 次觀看</span>
+          <span>127 次觀看</span>
           </div>
         </div>
       </a>
@@ -2563,7 +2639,7 @@
           <h3 class="card__title">第一次開蝦皮店？8 步從註冊到上架第一件商品，每步一句話 #Shorts</h3>
           <div class="card__meta">
           <span>2026/07/15</span>
-          <span>25 次觀看</span>
+          <span>26 次觀看</span>
           </div>
         </div>
       </a>
@@ -2576,7 +2652,7 @@
           <h3 class="card__title">我叫 Claude 帶我開蝦皮店：8 步從註冊到上架第一件商品，每步一句話搞定｜生活應用 EP10</h3>
           <div class="card__meta">
           <span>2026/07/15</span>
-          <span>43 次觀看</span>
+          <span>45 次觀看</span>
           </div>
         </div>
       </a>
@@ -2628,7 +2704,7 @@
           <h3 class="card__title">Claude Code 設定檔跨電腦同步教學：用 GNU Stow dotfiles 一行指令搞定（含安全提醒）</h3>
           <div class="card__meta">
           <span>2026/07/11</span>
-          <span>237 次觀看</span>
+          <span>238 次觀看</span>
           </div>
         </div>
       </a>
@@ -2654,7 +2730,7 @@
           <h3 class="card__title">Claude Code Agent View 背景代理教學：同時開好幾個任務不用一直盯著（對照官方文件）</h3>
           <div class="card__meta">
           <span>2026/07/09</span>
-          <span>38 次觀看</span>
+          <span>41 次觀看</span>
           </div>
         </div>
       </a>
@@ -2680,7 +2756,7 @@
           <h3 class="card__title">上架一件商品，一句話 3 分鐘搞定 #Shorts｜Shopify × Claude AI（生活應用系列）</h3>
           <div class="card__meta">
           <span>2026/07/07</span>
-          <span>38 次觀看</span>
+          <span>37 次觀看</span>
           </div>
         </div>
       </a>
@@ -2719,7 +2795,7 @@
           <h3 class="card__title">Claude Code Subagent 子代理完整教學：並行省一半時間、worktree 隔離、3 種啟動方式（含本片實測幕後）</h3>
           <div class="card__meta">
           <span>2026/07/06</span>
-          <span>73 次觀看</span>
+          <span>75 次觀看</span>
           </div>
         </div>
       </a>
@@ -2732,7 +2808,7 @@
           <h3 class="card__title">我讓 Instagram 也每天自動發文，沿用發 FB 的同一把 Token｜Meta 官方 API 免月費全教學｜生活應用 EP05</h3>
           <div class="card__meta">
           <span>2026/07/06</span>
-          <span>280 次觀看</span>
+          <span>282 次觀看</span>
           </div>
         </div>
       </a>
@@ -2758,7 +2834,7 @@
           <h3 class="card__title">我讓 Facebook 每天自動發文，40 天沒碰鍵盤｜Graph API 免月費串接全教學｜生活應用 EP04</h3>
           <div class="card__meta">
           <span>2026/07/06</span>
-          <span>58 次觀看</span>
+          <span>59 次觀看</span>
           </div>
         </div>
       </a>
@@ -2771,7 +2847,7 @@
           <h3 class="card__title">我叫 Claude Code 自動發小紅書：一句指令 3 分鐘發完（手動 40 分）｜防封＋章節全自動｜生活應用 EP03</h3>
           <div class="card__meta">
           <span>2026/07/05</span>
-          <span>58 次觀看</span>
+          <span>59 次觀看</span>
           </div>
         </div>
       </a>
@@ -2784,7 +2860,7 @@
           <h3 class="card__title">不用剪輯軟體！教你用 Claude + Remotion 把文章自動變成解說影片（6 個 prompt 全流程）｜生活應用 EP07</h3>
           <div class="card__meta">
           <span>2026/07/05</span>
-          <span>97 次觀看</span>
+          <span>96 次觀看</span>
           </div>
         </div>
       </a>
@@ -2823,7 +2899,7 @@
           <h3 class="card__title">用 Claude 自動翻新整個 LinkedIn｜技能 2→24、經歷 1→3｜生活應用 EP01</h3>
           <div class="card__meta">
           <span>2026/07/03</span>
-          <span>54 次觀看</span>
+          <span>52 次觀看</span>
           </div>
         </div>
       </a>
@@ -2927,7 +3003,7 @@
           <h3 class="card__title">EP01｜用廚房故事讓你明白 Git &amp; Linter &amp; Test</h3>
           <div class="card__meta">
           <span>2026/06/24</span>
-          <span>22 次觀看</span>
+          <span>23 次觀看</span>
           </div>
         </div>
       </a>
@@ -2940,7 +3016,7 @@
           <h3 class="card__title">Claude Code 這 6 招就夠 #Shorts｜Skills・Subagents・MCP・Hooks・Slash・Plan Mode</h3>
           <div class="card__meta">
           <span>2026/06/23</span>
-          <span>43 次觀看</span>
+          <span>44 次觀看</span>
           </div>
         </div>
       </a>
@@ -2966,7 +3042,7 @@
           <h3 class="card__title">Claude 本地 vs 雲端一張圖搞懂：容器·沙盒·Cowork·Dispatch 的記憶與檔案怎麼共存</h3>
           <div class="card__meta">
           <span>2026/06/22</span>
-          <span>27 次觀看</span>
+          <span>28 次觀看</span>
           </div>
         </div>
       </a>
@@ -2979,7 +3055,7 @@
           <h3 class="card__title">Claude Code Hooks 怎麼用？存檔自動格式化、擋危險指令（settings.json）</h3>
           <div class="card__meta">
           <span>2026/06/20</span>
-          <span>18 次觀看</span>
+          <span>19 次觀看</span>
           </div>
         </div>
       </a>
@@ -2992,7 +3068,7 @@
           <h3 class="card__title">Claude Code 一直自動壓縮、卡在快滿？4 招穩穩解（Autocompact thrashing）</h3>
           <div class="card__meta">
           <span>2026/06/20</span>
-          <span>18 次觀看</span>
+          <span>19 次觀看</span>
           </div>
         </div>
       </a>
@@ -3005,7 +3081,7 @@
           <h3 class="card__title">Claude 桌面版 vs CLI 差在哪？Code 分頁≡終端機（同引擎）、安裝與換機備份一次搞懂｜繁中教學</h3>
           <div class="card__meta">
           <span>2026/06/20</span>
-          <span>335 次觀看</span>
+          <span>343 次觀看</span>
           </div>
         </div>
       </a>
@@ -3083,7 +3159,7 @@
           <h3 class="card__title">MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂 🔌 #Shorts</h3>
           <div class="card__meta">
           <span>2026/06/11</span>
-          <span>88 次觀看</span>
+          <span>91 次觀看</span>
           </div>
         </div>
       </a>
@@ -3096,7 +3172,7 @@
           <h3 class="card__title">MCP vs API 差在哪？AI 的「萬能轉接頭」一次搞懂｜MCP vs API Explained</h3>
           <div class="card__meta">
           <span>2026/06/11</span>
-          <span>62 次觀看</span>
+          <span>69 次觀看</span>
           </div>
         </div>
       </a>
@@ -3109,7 +3185,7 @@
           <h3 class="card__title">Best AI Voice in 2025: ElevenLabs vs ChatTTS vs OpenAI vs Edge-TTS (Ranked)</h3>
           <div class="card__meta">
           <span>2026/06/05</span>
-          <span>119 次觀看</span>
+          <span>122 次觀看</span>
           </div>
         </div>
       </a>
